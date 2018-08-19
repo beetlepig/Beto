@@ -199,6 +199,10 @@ export class BetoMainCanvasComponent implements OnInit {
       } else {
         alert('FullScreenApi no soportado');
       }
+
+      setTimeout(() => {
+        this.onResize();
+      }, 500);
   }
 
 
