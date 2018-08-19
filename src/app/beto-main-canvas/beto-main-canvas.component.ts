@@ -81,6 +81,8 @@ export class BetoMainCanvasComponent implements OnInit {
     this.renderer.setSize(this.renderContainerParent.clientWidth, this.renderContainerParent.clientHeight );
     this.stats = new ThreeStats();
     this.renderContainerParent.appendChild(this.stats.domElement);
+
+
   }
 
   initCamera(): void {
@@ -159,5 +161,45 @@ export class BetoMainCanvasComponent implements OnInit {
     this.pyramidMesh.visible = !this.pyramidMesh.visible;
     this.cubeMesh.visible = !this.cubeMesh.visible;
   }
+
+  fullScreen() {
+
+      if (this.renderContainerParent.requestFullscreen) {
+          if (!document.fullscreenElement) {
+            this.renderContainerParent.requestFullscreen();
+          } else {
+            document.exitFullscreen();
+          }
+      } else if (this.renderContainerParent.webkitRequestFullscreen) {
+          if (!document.webkitFullscreenElement) {
+              this.renderContainerParent.webkitRequestFullscreen();
+          } else {
+              document.webkitExitFullscreen();
+          }
+           // @ts-ignore
+      } else if (this.renderContainerParent.mozRequestFullScreen) {
+           // @ts-ignore
+        if (!document.mozFullScreenElement) {
+           // @ts-ignore
+        this.renderContainerParent.mozRequestFullScreen();
+        } else {
+          // @ts-ignore
+          document.mozCancelFullScreen();
+        }
+         // @ts-ignore
+      } else if (this.renderContainerParent.msRequestFullscreen) {
+         // @ts-ignore
+        if (!document.msFullscreenElement) {
+          // @ts-ignore
+        this.renderContainerParent.msRequestFullscreen();
+        } else {
+          // @ts-ignore
+          document.msExitFullscreen();
+        }
+      } else {
+        alert('FullScreenApi no soportado');
+      }
+  }
+
 
 }

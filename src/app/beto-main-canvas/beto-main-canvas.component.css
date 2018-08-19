@@ -5,6 +5,14 @@
   width: 90%;
   height: 90%;
   background: antiquewhite;
+  overflow: auto;
+}
+
+#generalDivBeto:-webkit-full-screen {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
 
 #botonCambiar {
@@ -28,4 +36,22 @@
 #botonCambiar h2 {
   margin: auto;
   font-size: 1vw;
+}
+
+#fullScreenButton {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  width: 4vw;
+  height: 3vw;
+  background: antiquewhite;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+#fullScreenButton h2 {
+  margin: auto;
+  font-size: 0.5vw;
 }
