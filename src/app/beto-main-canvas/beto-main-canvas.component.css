@@ -1,0 +1,31 @@
+#generalDivBeto {
+  position: absolute;
+  left: 5%;
+  top: 5%;
+  width: 90%;
+  height: 90%;
+  background: antiquewhite;
+}
+
+#botonCambiar {
+  position: absolute;
+  left: 5%;
+  top: 5%;
+  width: 5vw;
+  height: 5vw;
+  background: antiquewhite;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+#botonCambiar:active {
+  background: aqua;
+  box-shadow: 0 0 1vw rgba(0,0,0,0.5);
+}
+
+#botonCambiar h2 {
+  margin: auto;
+  font-size: 1vw;
+}

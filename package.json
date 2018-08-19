@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "localRun": "ipconfig & ng serve --host 0.0.0.0"
   },
   "private": true,
   "dependencies": {
@@ -35,6 +36,7 @@
     "@types/node": "~8.9.4",
     "@types/three": "^0.92.17",
     "codelyzer": "~4.2.1",
+    "imports-loader": "^0.8.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~1.7.1",
