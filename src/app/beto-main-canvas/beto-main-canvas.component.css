@@ -55,3 +55,21 @@
   margin: auto;
   font-size: 0.5vw;
 }
+
+#runAnimationButton {
+  position: absolute;
+  left: 5%;
+  bottom: 5%;
+  width: 10vw;
+  height: 3vw;
+  background: antiquewhite;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+#runAnimationButton h2 {
+  margin: auto;
+  font-size: 1vw;
+}
