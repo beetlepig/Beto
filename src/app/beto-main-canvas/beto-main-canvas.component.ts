@@ -1,12 +1,26 @@
 import {Component, ElementRef, OnInit, ViewChild, HostListener} from '@angular/core';
 import * as THREE from 'three';
+import * as TWEEN from '@tweenjs/tween.js';
 import * as ThreeStats from 'three/examples/js/libs/stats.min';
 import 'imports-loader?THREE=three!three/examples/js/controls/OrbitControls';
 import 'imports-loader?THREE=three!three/examples/js/loaders/GLTFLoader';
-import * as TWEEN from '@tweenjs/tween.js';
-import {AnimationAction} from 'three';
-import {promise} from 'selenium-webdriver';
-import Thenable = promise.Thenable;
+
+
+import {
+  AnimationAction,
+  AnimationClip, AnimationMixer,
+  BoxBufferGeometry, Clock, Color,
+  CylinderBufferGeometry, DirectionalLight, FogExp2, Line,
+  LineBasicMaterial, LoopOnce,
+  Mesh,
+  MeshPhongMaterial, OrbitControls, PerspectiveCamera,
+  PlaneBufferGeometry, Scene, SkinnedMesh, Vector3, WebGLRenderer
+} from 'three';
+
+
+import {Tween} from '@tweenjs/tween.js';
+
+
 
 
 
@@ -35,37 +49,36 @@ export class BetoMainCanvasComponent implements OnInit {
     return this.renderContainerParent.clientWidth / this.renderContainerParent.clientHeight;
   }
 
-  camera: THREE.PerspectiveCamera;
-  controls: THREE.OrbitControls;
-  scene: THREE.Scene;
-  renderer: THREE.WebGLRenderer;
+  camera: PerspectiveCamera;
+  controls: OrbitControls;
+  scene: Scene;
+  renderer: WebGLRenderer;
   stats: any;
   count: number;
 
   // Mesh
-  pyramidMesh: THREE.Mesh;
-  cubeMesh: THREE.Mesh;
+  pyramidMesh: Mesh;
+  cubeMesh: Mesh;
 
   // Delta Time
-  now: number;
-  delta: number;
-  then: number;
   interval: number;
+  delta: number;
 
   // Model
-  beto: THREE.Scene;
-  betoAnimations: Array<THREE.AnimationClip>;
-  skinnedMesh: Array<THREE.SkinnedMesh>;
+  beto: Scene;
+  betoAnimations: Array<AnimationClip>;
+  skinnedMesh: Array<SkinnedMesh>;
 
   // Animations Controller
-  mixer: THREE.AnimationMixer;
+  mixer: AnimationMixer;
   idleAction: AnimationAction;
   runb_aimAction: AnimationAction;
   runb_skate: AnimationAction;
-  actions: AnimationAction[];
+  actions: Array<AnimationAction>;
+  actualAction: AnimationAction;
 
 
-  clock: THREE.Clock;
+  clock: Clock;
 
 
   @HostListener('window:resize', ['$event'])
@@ -77,16 +90,16 @@ export class BetoMainCanvasComponent implements OnInit {
 
 
   constructor() {
-    this.now = Date.now();
-    this.delta =  Date.now();
-    this.then =  Date.now();
-    this.interval = 1000 / 60;
+
+    this.delta = 0;
+
+    this.interval = 1 / 60;
 
     this.count = 1;
 
     this.skinnedMesh = [];
 
-    this.clock = new THREE.Clock();
+    this.clock = new Clock();
   }
 
   ngOnInit(): void {
@@ -94,21 +107,21 @@ export class BetoMainCanvasComponent implements OnInit {
   this.initRenderer();
   this.initCamera();
   this.create3DObjects();
-  this.resetView(new THREE.Vector3(10, 10, 10),
-    new THREE.Vector3(this.pyramidMesh.position.x, this.pyramidMesh.position.y, this.pyramidMesh.position.z));
+  this.resetView(new Vector3(10, 10, 10),
+    new Vector3(this.pyramidMesh.position.x, this.pyramidMesh.position.y, this.pyramidMesh.position.z));
   this.loadModelBeto();
   this.lights();
   this.update();
   }
 
   initScene(): void {
-    this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color( 0xcccccc );
-    this.scene.fog = new THREE.FogExp2( 0xcccccc, 0.002 );
+    this.scene = new Scene();
+    this.scene.background = new Color( 0xcccccc );
+    this.scene.fog = new FogExp2( 0xcccccc, 0.002 );
   }
 
   initRenderer(): void {
-    this.renderer = new THREE.WebGLRenderer( {canvas: this.renderContainer, antialias: true } );
+    this.renderer = new WebGLRenderer( {canvas: this.renderContainer, antialias: true } );
     this.renderer.setPixelRatio( window.devicePixelRatio );
     this.renderer.setSize(this.renderContainerParent.clientWidth, this.renderContainerParent.clientHeight );
     this.renderer.gammaOutput = true;
@@ -119,10 +132,10 @@ export class BetoMainCanvasComponent implements OnInit {
   }
 
   initCamera(): void {
-    this.camera = new THREE.PerspectiveCamera( 30, this.getAspectRatio, 1, 1000 );
+    this.camera = new PerspectiveCamera( 30, this.getAspectRatio, 1, 1000 );
     this.camera.position.set( 15, 15, 15 );
     // controls
-    this.controls = new THREE.OrbitControls( this.camera, this.renderer.domElement );
+    this.controls = new OrbitControls( this.camera, this.renderer.domElement );
     this.controls.enableDamping = true;
     this.controls.dampingFactor = 0.1;
     this.controls.enablePan = true;
@@ -136,14 +149,14 @@ export class BetoMainCanvasComponent implements OnInit {
     this.controls.maxPolarAngle = Math.PI ;
   }
 
-  limitPan(min: THREE.Vector3, max: THREE.Vector3): void {
+  limitPan(min: Vector3, max: Vector3): void {
     this.controls.target.clamp(min, max);
   }
 
   create3DObjects(): void {
-    let geometry: any = new THREE.CylinderBufferGeometry( 0, 2, 4, 4, 1 );
-    let material: any = new THREE.MeshPhongMaterial( { color: 0xffffff, flatShading: true } );
-    this.pyramidMesh = new THREE.Mesh( geometry, material );
+    let geometry: any = new CylinderBufferGeometry( 0, 2, 4, 4, 1 );
+    let material: any = new MeshPhongMaterial( { color: 0xffffff, flatShading: true } );
+    this.pyramidMesh = new Mesh( geometry, material );
     this.pyramidMesh.position.x = 0;
     this.pyramidMesh.position.y = 2;
     this.pyramidMesh.position.z = 0;
@@ -152,9 +165,9 @@ export class BetoMainCanvasComponent implements OnInit {
     this.pyramidMesh.visible = true;
     this.scene.add( this.pyramidMesh );
 
-    geometry = new THREE.BoxBufferGeometry( 2, 2, 4, 4, 4 );
-    material = new THREE.MeshPhongMaterial( { color: new THREE.Color('rgb(255,255,255)'), flatShading: true } );
-    this.cubeMesh = new THREE.Mesh( geometry, material );
+    geometry = new BoxBufferGeometry( 2, 2, 4, 4, 4 );
+    material = new MeshPhongMaterial( { color: new Color('rgb(255,255,255)'), flatShading: true } );
+    this.cubeMesh = new Mesh( geometry, material );
     this.cubeMesh.position.x = 0;
     this.cubeMesh.position.y = 1;
     this.cubeMesh.position.z = 0;
@@ -163,9 +176,9 @@ export class BetoMainCanvasComponent implements OnInit {
     this.cubeMesh.visible = false;
     this.scene.add( this.cubeMesh );
 
-    geometry = new THREE.PlaneBufferGeometry(100, 100, 100, 100);
-    material = new THREE.MeshBasicMaterial();
-    const planeMesh = new THREE.Line( geometry, material );
+    geometry = new PlaneBufferGeometry(100, 100, 100, 100);
+    material = new LineBasicMaterial();
+    const planeMesh = new Line( geometry, material );
     planeMesh.position.x = 0;
     planeMesh.position.y = 0;
     planeMesh.position.z = 0;
@@ -176,7 +189,7 @@ export class BetoMainCanvasComponent implements OnInit {
     this.scene.add( planeMesh );
 
 
-    this.controls.target.copy(new THREE.Vector3(  this.pyramidMesh.position.x,  this.pyramidMesh.position.y,  this.pyramidMesh.position.z));
+    this.controls.target.copy(new Vector3(  this.pyramidMesh.position.x,  this.pyramidMesh.position.y,  this.pyramidMesh.position.z));
     this.controls.reset();
   }
 
@@ -189,7 +202,7 @@ export class BetoMainCanvasComponent implements OnInit {
          // child.material.envMap = envMap;
         }
 
-        if ( child instanceof THREE.SkinnedMesh ) {
+        if ( child instanceof SkinnedMesh ) {
           this.skinnedMesh.push(child);
         }
       } );
@@ -216,15 +229,20 @@ export class BetoMainCanvasComponent implements OnInit {
 
   initAnimationMixer() {
     // Initialize mixer and clip actions
-    this.mixer = new THREE.AnimationMixer( this.skinnedMesh[0] );
+    this.mixer = new AnimationMixer( this.skinnedMesh[0] );
+    // temporal
+    this.mixer.timeScale = 2;
     this.idleAction = this.mixer.clipAction( this.betoAnimations[0] );
     this.runb_aimAction = this.mixer.clipAction( this.betoAnimations[1] );
     this.runb_skate = this.mixer.clipAction( this.betoAnimations[2] );
+    this.runb_skate.setLoop( LoopOnce, 1 );
+    this.runb_skate.clampWhenFinished = true;
     this.actions = [ this.idleAction, this.runb_aimAction, this.runb_skate ];
     this.activateAllActions();
   }
 
   activateAllActions() {
+    this.actualAction = this.idleAction;
     this.setWeight( this.idleAction, 1 );
     this.setWeight( this.runb_aimAction, 0 );
     this.setWeight( this.runb_skate, 0 );
@@ -233,22 +251,71 @@ export class BetoMainCanvasComponent implements OnInit {
     } );
   }
 
-  setWeight( action, weight ) {
+  setWeight( action, weight ): void {
     action.enabled = true;
     action.setEffectiveTimeScale( 1 );
     action.setEffectiveWeight( weight );
   }
 
-  crossfade() {
-    this.setWeight(this.idleAction, 0);
-    this.setWeight(this.runb_aimAction, 1);
+  prepareCrossFade( startAction: AnimationAction, endAction: AnimationAction, defaultDuration: number ) {
+    // Switch default / custom crossfade duration (according to the user's choice)
+    const duration = defaultDuration;
+    // If the current action is 'idle' (duration 4 sec), execute the crossfade immediately;
+    // else wait until the current action has finished its current loop
+    if ( startAction === this.idleAction ) {
+      this.executeCrossFade( startAction, endAction, duration );
+    } else {
+      this.synchronizeCrossFade( startAction, endAction, duration );
+    }
+
+  }
+
+  synchronizeCrossFade( startAction, endAction, duration ) {
+
+    const onLoopFinished = ( event ) => {
+      if ( event.action === startAction ) {
+        this.mixer.removeEventListener( 'loop', onLoopFinished );
+        this.executeCrossFade( startAction, endAction, duration );
+      }
+    };
+
+    this.mixer.addEventListener( 'loop', onLoopFinished );
+
+  }
+
+  oneRepetitionActions(startAction: AnimationAction, endAction: AnimationAction, duration: number) {
+    const onLoopFinished = ( event ) => {
+      if ( event.action === endAction ) {
+
+        this.executeCrossFade( endAction, startAction, duration );
+        this.mixer.removeEventListener( 'finished', onLoopFinished );
+      }
+    };
+
+    this.mixer.addEventListener( 'finished', onLoopFinished );
+
+
+  }
+
+  executeCrossFade( startAction, endAction, duration ) {
+    this.actualAction = endAction;
+    // Not only the start action, but also the end action must get a weight of 1 before fading
+    // (concerning the start action this is already guaranteed in this place)
+    this.setWeight( endAction, 1 );
+    endAction.reset();
+    // Crossfade with warping - you can also try without warping by setting the third parameter to false
+    startAction.crossFadeTo( endAction, duration, true );
+
+    if (endAction === this.runb_skate) {
+      this.oneRepetitionActions(startAction, endAction, duration);
+    }
   }
 
   lights(): void {
-    const lightOne = new THREE.DirectionalLight( 0xE1F5FE);
+    const lightOne = new DirectionalLight( 0xE1F5FE);
     lightOne.position.set( 1, 1, 1 );
     this.scene.add( lightOne );
-    const lightTwo = new THREE.DirectionalLight( 0x002288 );
+    const lightTwo = new DirectionalLight( 0x002288 );
     lightTwo.position.set( - 1, - 1, - 1 );
     this.scene.add( lightTwo );
   }
@@ -256,17 +323,17 @@ export class BetoMainCanvasComponent implements OnInit {
   update(): void {
 
     requestAnimationFrame( () => this.update() );
-    this.now = Date.now();
-    this.delta = this.now - this.then;
-    this.mixer.update( this.clock.getDelta() );
-    if (this.delta > this.interval) {
+   this.delta += this.clock.getDelta();
 
+
+    if (this.delta  > this.interval) {
       TWEEN.update();
-      this.limitPan(new THREE.Vector3(-4, 0, -4), new THREE.Vector3(4, 4, 4));
+      this.limitPan(new Vector3(-4, 0, -4), new Vector3(4, 4, 4));
       this.controls.update();
+      this.mixer.update( this.delta );
       this.render();
 
-      this.then = this.now - (this.delta % this.interval);
+      this.delta = this.delta % this.interval;
 
     }
 
@@ -288,8 +355,8 @@ export class BetoMainCanvasComponent implements OnInit {
         this.beto.visible = false;
 
 
-        this.resetView(new THREE.Vector3(15, 15, 15),
-          new THREE.Vector3(this.cubeMesh.position.x, this.cubeMesh.position.y, this.cubeMesh.position.z));
+        this.resetView(new Vector3(15, 15, 15),
+          new Vector3(this.cubeMesh.position.x, this.cubeMesh.position.y, this.cubeMesh.position.z));
 
         break;
       case 2:
@@ -298,8 +365,8 @@ export class BetoMainCanvasComponent implements OnInit {
         this.pyramidMesh.visible = false;
 
 
-        this.resetView(new THREE.Vector3(2, 5, 10),
-          new THREE.Vector3(this.beto.position.x, this.beto.position.y + 2.5, this.beto.position.z));
+        this.resetView(new Vector3(2, 5, 10),
+          new Vector3(this.beto.position.x, this.beto.position.y + 2.5, this.beto.position.z));
 
 
         break;
@@ -309,15 +376,15 @@ export class BetoMainCanvasComponent implements OnInit {
         this.pyramidMesh.visible = true;
         this.beto.visible = false;
 
-        this.resetView(new THREE.Vector3(10, 10, 10),
-          new THREE.Vector3(this.pyramidMesh.position.x, this.pyramidMesh.position.y, this.pyramidMesh.position.z));
+        this.resetView(new Vector3(10, 10, 10),
+          new Vector3(this.pyramidMesh.position.x, this.pyramidMesh.position.y, this.pyramidMesh.position.z));
 
         break;
     }
     this.count++;
   }
 
-  private resetView(position: THREE.Vector3, target: THREE.Vector3): void {
+  private resetView(position: Vector3, target: Vector3): void {
     this.controls.enablePan = false;
     this.controls.enableRotate = false;
     // @ts-ignore
@@ -325,16 +392,16 @@ export class BetoMainCanvasComponent implements OnInit {
     // @ts-ignore
     this.controls.target0 = target;
 
-    const tweenPositionToReset = new TWEEN.Tween( this.controls.object.position )
+    const tweenPositionToReset = new Tween( this.controls.object.position )
     // @ts-ignore
       .to( { x: this.controls.position0.x, y: this.controls.position0.y, z: this.controls.position0.z }, 3000 )
-      .easing( TWEEN.Easing.Quadratic.In )
+      .easing( TWEEN.Easing.Quartic.InOut )
       .start();
 
-    new TWEEN.Tween( this.controls.target )
+    new Tween( this.controls.target )
     // @ts-ignore
       .to( { x: this.controls.target0.x, y: this.controls.target0.y, z: this.controls.target0.z }, 2000 )
-      .easing( TWEEN.Easing.Quadratic.In )
+      .easing( TWEEN.Easing.Quadratic.InOut )
       .start();
 
     tweenPositionToReset.onComplete(() => {
