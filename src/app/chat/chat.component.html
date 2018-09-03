@@ -1,0 +1,9 @@
+<div class="chatDivGeneral">
+    <button type="button" (click)="clicked(optionAText, 'a')">{{optionAText || 'opcion 1 - pendiente'}}</button>
+    <button type="button" (click)="clicked(optionBText, 'b')">{{optionBText || 'opcion 2 - pendiente'}}</button>
+    <button type="button" (click)="clicked(optionCText, 'c')">{{optionCText || 'opcion 3 - pendiente'}}</button>
+    <button type="button" (click)="clicked(optionDText, 'd')">{{optionDText || 'opcion 4 - pendiente'}}</button>
+
+    <h2 *ngFor="let message of messagesArray" ngClass="{{message.isBeto? 'betoMessage': 'userMessage'}}">{{message.message}}</h2>
+
+</div>

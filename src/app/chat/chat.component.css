@@ -1,0 +1,15 @@
+.chatDivGeneral {
+  position: relative;
+  left: 25%;
+  width: 50%;
+  height: 50vh;
+  background-color: gray;
+}
+
+.betoMessage {
+
+}
+
+.userMessage{
+  color: red;
+}

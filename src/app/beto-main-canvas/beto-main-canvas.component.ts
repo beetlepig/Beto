@@ -99,7 +99,7 @@ export class BetoMainCanvasComponent implements OnInit {
 
     this.skinnedMesh = [];
 
-    this.clock = new Clock();
+    this.clock = new THREE.Clock();
   }
 
   ngOnInit(): void {
@@ -127,8 +127,6 @@ export class BetoMainCanvasComponent implements OnInit {
     this.renderer.gammaOutput = true;
     this.stats = new ThreeStats();
     this.renderContainerParent.appendChild(this.stats.domElement);
-
-
   }
 
   initCamera(): void {
@@ -261,7 +259,7 @@ export class BetoMainCanvasComponent implements OnInit {
     // Switch default / custom crossfade duration (according to the user's choice)
     const duration = defaultDuration;
     // If the current action is 'idle' (duration 4 sec), execute the crossfade immediately;
-    // else wait until the current action has finished its current loop
+    // else delay until the current action has finished its current loop
     if ( startAction === this.idleAction ) {
       this.executeCrossFade( startAction, endAction, duration );
     } else {
