@@ -3,6 +3,7 @@
     <button type="button" (click)="clicked(optionBText, 'b')">{{optionBText || 'opcion 2 - pendiente'}}</button>
     <button type="button" (click)="clicked(optionCText, 'c')">{{optionCText || 'opcion 3 - pendiente'}}</button>
     <button type="button" (click)="clicked(optionDText, 'd')">{{optionDText || 'opcion 4 - pendiente'}}</button>
+    <button type="button" (click)="setSustancia('coffee')">Tomar café, cansancio:{{cansancio}}</button>
 
     <h2 *ngFor="let message of messagesArray" ngClass="{{message.isBeto? 'betoMessage': 'userMessage'}}">{{message.message}}</h2>
 

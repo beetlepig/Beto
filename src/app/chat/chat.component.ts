@@ -13,6 +13,8 @@ export class ChatComponent implements OnInit {
   actualGeneralPosition: number;
   actualSubPosition: number;
 
+  cansancio: number;
+
 
 
 
@@ -36,19 +38,37 @@ export class ChatComponent implements OnInit {
           b: {message: 'mal amigo', to: 3}, c: {message: null}, d: {message: null} }, general: false, to: null},
       2: {message: 'que bien', delay: 3000, options: false, general: true, to: null},
       3: {message: 'y eso?', delay: 3000, options: {a: {message: 'el clima', to : 4}, b : {message: 'La humedad', to: 5},
-          c: {message: 'Llegue tarde a juridico', to: 6}, d: {message: null}}, general: false},
+          c: {message: 'Llegue tarde a juridico', to: 6}, d: {message: null}}, general: false, to: null},
       4: {message: 'que calor tan bravo no?', delay: 1000, options: false, general: true, to: null},
       5: {message: 'esta humedad me da gripa', delay: 1000, options: false, general: true, to: null},
       6: {message: 'pues si se levanto faltando 30', delay: 1000, options: false, general: true, to: null}
     },
     1: {
-      0: {message: 'bye socio', delay: 1000, options: false, general: true, to: null}
+      0: {message: 'Uy yo tengo ganas de cafe, pero voy como tarde', delay: 3000, options: false, general: false, to: 1},
+      1: {message: 'tengo que ir a la universidad', delay: 1000, options: {a: {message: 'que me le vaya bien', to : 2},
+          b : {message: 'que no se quede dormido no', to: 3}, c: {message: null}, d: {message: null}}, general: false, to: null},
+      2: {message: 'ty men', delay: 2000, options: false, general: true, to: null},
+      3: {message: 'pues depende del café', delay: 3000, options: false, general: true, to: null}
+    },
+    2: {
+      condictions: {0: {cansancio: '<=20'}},
+      0: {message: 'menos mal tome cafesito', delay: 2000, general: true, to: null}
+    },
+    3: {
+      condictions: {cansancio: '>20'},
+      0: {message: 'c duerme', delay: 3000, general: true, to: null}
+    },
+    4: {
+      0: {message: 'finish', delay: 1000, general: true, to: null}
+    },
+    5: {
+
     }
 
   };
 
   constructor() {
-
+    this.cansancio = 20;
   }
 
   ngOnInit() {
@@ -62,6 +82,16 @@ export class ChatComponent implements OnInit {
    });
 
 
+  }
+
+  setSustancia(kind: string) {
+    switch (kind) {
+      case 'coffee':
+        this.cansancio -= 10;
+        break;
+      case 'other':
+        break;
+    }
   }
 
   reset(tex: string[]) {
@@ -90,9 +120,18 @@ export class ChatComponent implements OnInit {
             const haveOptions =  this.script[this.actualGeneralPosition][this.actualSubPosition]['options'];
             const isGeneral: boolean =  this.script[this.actualGeneralPosition][this.actualSubPosition]['general'];
             const to = this.script[this.actualGeneralPosition][this.actualSubPosition]['to'];
+            const condictions = this.script[this.actualGeneralPosition]['condictions'];
             console.log(this.script[this.actualGeneralPosition][this.actualSubPosition]['message']);
 
-            if (isGeneral) {
+
+            if (condictions) {
+              switch (condictions) {
+                case '<20': {
+
+                }
+              }
+              console.log(condictions);
+            } else if (isGeneral) {
               this.actualGeneralPosition++;
               this.actualSubPosition = 0;
 
