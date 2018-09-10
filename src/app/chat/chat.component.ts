@@ -51,24 +51,21 @@ export class ChatComponent implements OnInit {
       3: {message: 'pues depende del café', delay: 3000, options: false, general: true, to: null}
     },
     2: {
-      condictions: {0: {cansancio: '<=20'}},
+      condictions:  [{condicion: 'cansancio', operator: '<=', valor: '20'}],
       0: {message: 'menos mal tome cafesito', delay: 2000, general: true, to: null}
     },
     3: {
-      condictions: {cansancio: '>20'},
+      condictions: [{condicion: 'cansancio', operator: '>', valor: '20'}],
       0: {message: 'c duerme', delay: 3000, general: true, to: null}
     },
     4: {
       0: {message: 'finish', delay: 1000, general: true, to: null}
-    },
-    5: {
-
     }
 
   };
 
   constructor() {
-    this.cansancio = 20;
+    this.cansancio = 40;
   }
 
   ngOnInit() {
@@ -77,11 +74,13 @@ export class ChatComponent implements OnInit {
     this.subActualLength = Object.keys(this.script[this.actualGeneralPosition]).length;
     this.actualSubPosition = 0;
 
-   this.nextiMessage().subscribe(next => {
+   this.nextiMessage().subscribe((next) => {
      console.log('entroSubscribe');
+   }, () => {
+
+   }, () => {
+      console.log('observable terminado');
    });
-
-
   }
 
   setSustancia(kind: string) {
@@ -116,22 +115,56 @@ export class ChatComponent implements OnInit {
           if (this.actualGeneralPosition < this.scriptGeneralLength) {
             console.log(this.actualSubPosition);
             const delay = this.script[this.actualGeneralPosition][this.actualSubPosition]['delay'];
-            this.messagesArray.push({message: this.script[this.actualGeneralPosition][this.actualSubPosition]['message'], isBeto: true});
             const haveOptions =  this.script[this.actualGeneralPosition][this.actualSubPosition]['options'];
             const isGeneral: boolean =  this.script[this.actualGeneralPosition][this.actualSubPosition]['general'];
             const to = this.script[this.actualGeneralPosition][this.actualSubPosition]['to'];
             const condictions = this.script[this.actualGeneralPosition]['condictions'];
+            let cumpleCondicion = true;
             console.log(this.script[this.actualGeneralPosition][this.actualSubPosition]['message']);
 
 
             if (condictions) {
-              switch (condictions) {
-                case '<20': {
+              condictions.forEach((condiction) => {
+                switch (condiction.operator) {
+                  case '<=':
+                    switch (condiction.condicion) {
+                      case 'cansancio':
+                        if  (this.cansancio <= condiction.valor) {
+                          console.log('no está cansado');
+                          cumpleCondicion = true;
+                          this.messagesArray.push({message: this.script[this.actualGeneralPosition][this.actualSubPosition]['message'],
+                            isBeto: true});
+                        } else {
+                          cumpleCondicion = false;
+                        }
+                      break;
+                    }
 
+                    break;
+
+                  case '>':
+                    switch (condiction.condicion) {
+                      case 'cansancio':
+                        if  (this.cansancio > condiction.valor) {
+                          cumpleCondicion = true;
+                          this.messagesArray.push({message: this.script[this.actualGeneralPosition][this.actualSubPosition]['message'],
+                            isBeto: true});
+                        } else {
+                          cumpleCondicion = false;
+                        }
+                      break;
+                    }
+                  break;
                 }
-              }
-              console.log(condictions);
-            } else if (isGeneral) {
+
+              });
+
+
+            } else {
+              this.messagesArray.push({message: this.script[this.actualGeneralPosition][this.actualSubPosition]['message'], isBeto: true});
+            }
+
+            if (isGeneral || !cumpleCondicion) {
               this.actualGeneralPosition++;
               this.actualSubPosition = 0;
 
@@ -185,7 +218,7 @@ export class ChatComponent implements OnInit {
 
 
           } else {
-            console.log('finished');
+            observer.complete();
           }
         };
 
