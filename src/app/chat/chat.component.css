@@ -4,6 +4,26 @@
   width: 50%;
   height: 50vh;
   background-color: gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.superiorDiv {
+  height: 10%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.messagesContainer {
+  background-color: paleturquoise;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-grow: 1
+}
+
+.chatBar {
+  height: 10%;
 }
 
 .betoMessage {
@@ -12,4 +32,10 @@
 
 .userMessage{
   color: red;
+  text-align: right;
+}
+
+.hiddenOptionsBar {
+  height: 15%;
+  background: brown;
 }

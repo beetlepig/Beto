@@ -1,10 +1,23 @@
 <div class="chatDivGeneral">
-    <button type="button" (click)="clicked(optionAText, 'a')">{{optionAText || 'opcion 1 - pendiente'}}</button>
-    <button type="button" (click)="clicked(optionBText, 'b')">{{optionBText || 'opcion 2 - pendiente'}}</button>
-    <button type="button" (click)="clicked(optionCText, 'c')">{{optionCText || 'opcion 3 - pendiente'}}</button>
-    <button type="button" (click)="clicked(optionDText, 'd')">{{optionDText || 'opcion 4 - pendiente'}}</button>
-    <button type="button" (click)="setSustancia('coffee')">Tomar café, cansancio:{{cansancio}}</button>
 
-    <h2 *ngFor="let message of messagesArray" ngClass="{{message.isBeto? 'betoMessage': 'userMessage'}}">{{message.message}}</h2>
+  <div class="superiorDiv">
+    <button type="button" (click)="setSustancia('coffee')">Tomar café</button>
+    <p>Cansancio: {{cansancio}}</p>
+  </div>
+
+
+
+  <div class="messagesContainer"><h2 *ngFor="let message of messagesArray" ngClass="{{message.isBeto? 'betoMessage': 'userMessage'}}">{{message.message}}</h2></div>
+
+  <div class="chatBar">
+
+  </div>
+
+  <div [hidden]="!optionAText && !optionBText && !optionCText && !optionDText" class="hiddenOptionsBar">
+    <button type="button" [hidden]="!optionAText" (click)="clicked(optionAText, 'a')">{{optionAText || 'opcion 1 - pendiente'}}</button>
+    <button type="button" [hidden]="!optionBText" (click)="clicked(optionBText, 'b')">{{optionBText || 'opcion 2 - pendiente'}}</button>
+    <button type="button" [hidden]="!optionCText" (click)="clicked(optionCText, 'c')">{{optionCText || 'opcion 3 - pendiente'}}</button>
+    <button type="button" [hidden]="!optionDText" (click)="clicked(optionDText, 'd')">{{optionDText || 'opcion 4 - pendiente'}}</button>
+  </div>
 
 </div>
