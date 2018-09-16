@@ -34,25 +34,68 @@ export class ChatComponent implements OnInit {
   script = {
     0: {
       0: {message: 'Hola, Hay alguien?', delay: 5000, options: {a: {message: 'Quien es?', to: 1},
-          b: {message: 'Aquí estoy', to: 2}, c: {message: 'Identifícate', to: 3}, d: {message: null} }, general: false, to: null},
+          b: {message: 'Aquí estoy', to: 2}, c: {message: 'Identifícate', to: 3}, d: {message: null} }, general: false, to: null
+      },
+
       1: {message: 'Soy Beto, Me encontré tu numero en el tablero de la u', delay: 3000, options: false, general: false, to: 4},
+
       2: {message: 'Que bueno, entonces tenes los inciensos? me encontre tu numero en la u', delay: 3000,
-         options: false, general: false, to: 4},
+         options: false, general: false, to: 4
+      },
+
       3: {message: 'Tranquilo, soy Beto. Vos sos el de las ventas? me encontré tu numero en la u', delay: 3000, options: false,
-        general: false, to: null},
+        general: false, to: 4
+      },
+
       4: {message: 'Donde se publican las ventas', delay: 3000, options: false, general: false, to: 5},
+
       5: {message: 'Decia que vendias inciensos', delay: 1000, options: {a: {message: 'Inciensos?', to: 6},
           b: {message: 'Yo no estoy vendiendo nada...', to: 7}, c: {message: 'Es una broma?', to: 8},
-          d: {message: 'no recuerdo poner mi numero en alguna parte'}, to: 9 }, general: false, to: null},
-      6: {message: 'Hombre, el spice', delay: 1000, options: {a: {message: 'Creo que te equivocaste de numero', to: 7},
-          b: {message: 'Claro, yo te vendo', to: 7}, c: {message: 'No tengo idea de lo que hablas', to: 8},
-          d: {message: 'no recuerdo poner mi numero en alguna parte'}, to: 9 }, general: false, to: 7},
-      7: {message: 'Ah no? parecía enserio', delay: 1000, options: false, general: false, to: 9},
-      8: {message: 'Eso me pregunto yo...', delay: 1000, options: false, general: false, to: 9},
-      9: {message: 'Pero si sabes de lo que hablo?', delay: 1000, options: {a: {message: 'Ni idea', to: 7},
-          b: {message: 'Creo que si se', to: 7}, c: {message: null},
-          d: {message: null }, general: false, to: null}, general: false, to: null},
-      11: {message: 'como sea, ya que encontré tu numero, ayudame con algo', delay: 1000, options: false, general: true, to: null}
+          d: {message: 'no recuerdo poner mi numero en alguna parte'}, to: 9 }, general: false, to: null
+      },
+
+      6: {message: 'Hombre, el spice', delay: 1000, options: {a: {message: 'Creo que te equivocaste de numero', to: 9},
+          b: {message: 'Claro, yo te vendo', to: 10}, c: {message: 'No tengo idea de lo que hablas', to: 11},
+          d: {message: null}, to: 9 }, general: false, to: 7
+      },
+
+      7: {message: 'Ah no? parecía enserio', delay: 1000, options: false, general: false, to: 10},
+
+      8: {message: 'Eso me pregunto yo...', delay: 1000, options: false, general: false, to: 10},
+
+      9: {message: 'Depronto fue algún socio tuyo, yo que se', delay: 1000, options: false, general: false, to: 10},
+
+      10: {message: 'Pero si sabes de lo que hablo?', delay: 1000, options: {a: {message: 'Ni idea', to: 11},
+          b: {message: 'Creo que si se', to: 13}, c: {message: null},
+          d: {message: null }, general: false, to: null}, general: false, to: null
+      },
+
+      11: {message: 'El spice, vi en un grupo de Facebook que era como la nueva mota', delay: 3000, options: false, general: false, to: 12},
+
+      12: {message: 'Pero creo que me equivoque de numero', delay: 3000, options: false, general: false, to: 18},
+
+      13: {message: 'A ver..', delay: 1000, options: {a: {message: 'Purificación espiritual', to: 14},
+          b: {message: 'Las velitas para la casa', to: 15}, c: {message: 'Vicio', to: 16},
+          d: {message: 'me suena a algo que se fuma' }, general: false, to: null}, general: false, to: 15
+      },
+
+      14: {message: 'Pues también ayuda a eso, pero digamos que no es su campo principal', delay: 4000, options: false, general: false,
+        to: 11
+      },
+
+      15: {message: 'Estas desubicado, hombre', delay: 4000, options: false, general: false,
+        to: 11
+      },
+
+      16: {message: 'Claramente', delay: 4000, options: false, general: false,
+        to: 11
+      },
+
+      17: {message: 'Eres un entendido del tema', delay: 4000, options: false, general: false,
+        to: 11
+      },
+
+      18: {message: 'como sea, ya que encontré tu numero, ayudame con algo', delay: 1000, options: false, general: true, to: null}
     },
     1: {
       0: {message: 'Uy yo tengo ganas de cafe, pero voy como tarde', delay: 3000, options: false, general: false, to: 1},
@@ -65,6 +108,7 @@ export class ChatComponent implements OnInit {
       condictions:  [{condicion: 'cansancio', operator: '<=', valor: '20'}],
       0: {message: 'menos mal tome cafesito', delay: 2000, general: true, to: null}
     },
+
     3: {
       condictions: [{condicion: 'cansancio', operator: '>', valor: '20'}],
       0: {message: 'c duerme', delay: 3000, general: true, to: null}
@@ -85,13 +129,16 @@ export class ChatComponent implements OnInit {
     this.subActualLength = Object.keys(this.script[this.actualGeneralPosition]).length;
     this.actualSubPosition = 0;
 
-   this.nextiMessage().subscribe((next) => {
-     console.log('entroSubscribe');
-   }, () => {
+    setTimeout(() => {
+      this.nextiMessage().subscribe((next) => {
+        console.log('entroSubscribe');
+      }, () => {
 
-   }, () => {
-      console.log('observable terminado');
-   });
+      }, () => {
+        console.log('observable terminado');
+      });
+    }, 4000);
+
   }
 
   setSustancia(kind: string) {
