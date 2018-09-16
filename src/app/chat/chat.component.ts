@@ -47,7 +47,12 @@ export class ChatComponent implements OnInit {
       6: {message: 'Hombre, el spice', delay: 1000, options: {a: {message: 'Creo que te equivocaste de numero', to: 7},
           b: {message: 'Claro, yo te vendo', to: 7}, c: {message: 'No tengo idea de lo que hablas', to: 8},
           d: {message: 'no recuerdo poner mi numero en alguna parte'}, to: 9 }, general: false, to: 7},
-      7: {message: 'pues si se levanto faltando 30', delay: 1000, options: false, general: true, to: null}
+      7: {message: 'Ah no? parecía enserio', delay: 1000, options: false, general: false, to: 9},
+      8: {message: 'Eso me pregunto yo...', delay: 1000, options: false, general: false, to: 9},
+      9: {message: 'Pero si sabes de lo que hablo?', delay: 1000, options: {a: {message: 'Ni idea', to: 7},
+          b: {message: 'Creo que si se', to: 7}, c: {message: null},
+          d: {message: null }, general: false, to: null}, general: false, to: null},
+      11: {message: 'como sea, ya que encontré tu numero, ayudame con algo', delay: 1000, options: false, general: true, to: null}
     },
     1: {
       0: {message: 'Uy yo tengo ganas de cafe, pero voy como tarde', delay: 3000, options: false, general: false, to: 1},
