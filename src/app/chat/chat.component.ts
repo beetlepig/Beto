@@ -33,15 +33,21 @@ export class ChatComponent implements OnInit {
 
   script = {
     0: {
-      0: {message: 'hola amigazo', delay: 3000, options: false, general: false, to: 1},
-      1: {message: 'como estas', delay: 5000, options: {a: {message: 'bien amigo', to: 2},
-          b: {message: 'mal amigo', to: 3}, c: {message: null}, d: {message: null} }, general: false, to: null},
-      2: {message: 'que bien', delay: 3000, options: false, general: true, to: null},
-      3: {message: 'y eso?', delay: 3000, options: {a: {message: 'el clima', to : 4}, b : {message: 'La humedad', to: 5},
-          c: {message: 'Llegue tarde a juridico', to: 6}, d: {message: null}}, general: false, to: null},
-      4: {message: 'que calor tan bravo no?', delay: 1000, options: false, general: true, to: null},
-      5: {message: 'esta humedad me da gripa', delay: 1000, options: false, general: true, to: null},
-      6: {message: 'pues si se levanto faltando 30', delay: 1000, options: false, general: true, to: null}
+      0: {message: 'Hola, Hay alguien?', delay: 5000, options: {a: {message: 'Quien es?', to: 1},
+          b: {message: 'Aquí estoy', to: 2}, c: {message: 'Identifícate', to: 3}, d: {message: null} }, general: false, to: null},
+      1: {message: 'Soy Beto, Me encontré tu numero en el tablero de la u', delay: 3000, options: false, general: false, to: 4},
+      2: {message: 'Que bueno, entonces tenes los inciensos? me encontre tu numero en la u', delay: 3000,
+         options: false, general: false, to: 4},
+      3: {message: 'Tranquilo, soy Beto. Vos sos el de las ventas? me encontré tu numero en la u', delay: 3000, options: false,
+        general: false, to: null},
+      4: {message: 'Donde se publican las ventas', delay: 3000, options: false, general: false, to: 5},
+      5: {message: 'Decia que vendias inciensos', delay: 1000, options: {a: {message: 'Inciensos?', to: 6},
+          b: {message: 'Yo no estoy vendiendo nada...', to: 7}, c: {message: 'Es una broma?', to: 8},
+          d: {message: 'no recuerdo poner mi numero en alguna parte'}, to: 9 }, general: false, to: null},
+      6: {message: 'Hombre, el spice', delay: 1000, options: {a: {message: 'Creo que te equivocaste de numero', to: 7},
+          b: {message: 'Claro, yo te vendo', to: 7}, c: {message: 'No tengo idea de lo que hablas', to: 8},
+          d: {message: 'no recuerdo poner mi numero en alguna parte'}, to: 9 }, general: false, to: 7},
+      7: {message: 'pues si se levanto faltando 30', delay: 1000, options: false, general: true, to: null}
     },
     1: {
       0: {message: 'Uy yo tengo ganas de cafe, pero voy como tarde', delay: 3000, options: false, general: false, to: 1},
