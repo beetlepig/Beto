@@ -29,7 +29,7 @@ export class ChatComponent implements OnInit {
   private resolve: Function|null = null;
   clickPromise: Promise<string>|null = null;
 
-
+ // TODO: HACER QUE LAS SECCIONES GENERALES TAMBIEN SIRVAN CON TO
 
   script = {
     0: {
@@ -39,7 +39,7 @@ export class ChatComponent implements OnInit {
 
       1: {message: 'Soy Beto, Me encontré tu numero en el tablero de la u', delay: 3000, options: false, general: false, to: 4},
 
-      2: {message: 'Que bueno, entonces tenes los inciensos? me encontre tu numero en la u', delay: 3000,
+      2: {message: 'Que bueno, Me dicen Beto. Entonces tenes los inciensos? me encontre tu numero en la u', delay: 3000,
          options: false, general: false, to: 4
       },
 
@@ -49,9 +49,9 @@ export class ChatComponent implements OnInit {
 
       4: {message: 'Donde se publican las ventas', delay: 3000, options: false, general: false, to: 5},
 
-      5: {message: 'Decia que vendias inciensos', delay: 1000, options: {a: {message: 'Inciensos?', to: 6},
+      5: {message: 'Decia que vendias inciensos', delay: 3000, options: {a: {message: 'Inciensos?', to: 6},
           b: {message: 'Yo no estoy vendiendo nada...', to: 7}, c: {message: 'Es una broma?', to: 8},
-          d: {message: 'no recuerdo poner mi numero en alguna parte'}, to: 9 }, general: false, to: null
+          d: {message: 'no recuerdo poner mi numero en alguna parte', to: 9}}, general: false, to: null
       },
 
       6: {message: 'Hombre, el spice', delay: 1000, options: {a: {message: 'Creo que te equivocaste de numero', to: 9},
@@ -63,11 +63,11 @@ export class ChatComponent implements OnInit {
 
       8: {message: 'Eso me pregunto yo...', delay: 1000, options: false, general: false, to: 10},
 
-      9: {message: 'Depronto fue algún socio tuyo, yo que se', delay: 1000, options: false, general: false, to: 10},
+      9: {message: 'Depronto fue algún socio tuyo, yo que se', delay: 4000, options: false, general: false, to: 10},
 
       10: {message: 'Pero si sabes de lo que hablo?', delay: 1000, options: {a: {message: 'Ni idea', to: 11},
           b: {message: 'Creo que si se', to: 13}, c: {message: null},
-          d: {message: null }, general: false, to: null}, general: false, to: null
+          d: {message: null }}, general: false, to: null
       },
 
       11: {message: 'El spice, vi en un grupo de Facebook que era como la nueva mota', delay: 3000, options: false, general: false, to: 12},
@@ -95,14 +95,36 @@ export class ChatComponent implements OnInit {
         to: 11
       },
 
-      18: {message: 'como sea, ya que encontré tu numero, ayudame con algo', delay: 1000, options: false, general: true, to: null}
+      18: {message: 'como sea, ya que encontré tu numero, ayúdame con algo', delay: 3000, options: false, general: true, to: null}
     },
     1: {
-      0: {message: 'Uy yo tengo ganas de cafe, pero voy como tarde', delay: 3000, options: false, general: false, to: 1},
-      1: {message: 'tengo que ir a la universidad', delay: 1000, options: {a: {message: 'que me le vaya bien', to : 2},
-          b : {message: 'que no se quede dormido no', to: 3}, c: {message: null}, d: {message: null}}, general: false, to: null},
-      2: {message: 'ty men', delay: 2000, options: false, general: true, to: null},
-      3: {message: 'pues depende del café', delay: 3000, options: false, general: true, to: null}
+      0: {message: 'Le voy a comprar eso al contacto de Facebook', delay: 3000, options: false, general: false, to: 1},
+      1: {message: 'Vos de casualidad sabes cuales con las diferencias con la mota de siempre?', delay: 4000, options: null, general: false,
+        to: 2},
+      2: {message: 'Es que no encuentro nada al respecto y me da pena preguntarle al tipo', delay: 2000,
+          options: {a: {message: 'Pues a decir verdad yo tampoco lo se', to: 3},
+          b: {message: 'Me han dicho que esa vaina es como mas suave', to: 4},
+          c: {message: 'He leído que esa vaina es re impredecible', to: 5},
+          d: {message: 'Me han dicho que es mas fuerte', to: 6},
+          }, general: false, to: null
+      },
+      3: {message: 'Entonces tocará arriesgarse', delay: 3000, options: false, general: false, to: 7},
+      4: {message: 'Noo que pereza, entonces voy a comprar mas', delay: 3000, options: false, general: false, to: 7},
+      5: {message: 'Uy ya me metiste miedo', delay: 3000, options: false, general: false, to: 7},
+      6: {message: 'Pues mejor cogerlo con cuidado', delay: 3000, options: false, general: false, to: 7},
+      7: {message: 'Le voy a preguntar a ver, dame un momento', delay: 10000, options: false, general: false, to: 8},
+      8: {message: 'El tipo de dice que es marihuana sintetica, pero que sabe mejor y que no es tan fuerte', delay: 3000, options: false,
+           general: false, to: 9},
+      9: {message: 'vos que decis?', delay: 10000, options: {a: {message: 'Vos verás', to: 10},
+          b: {message: 'Tengo mi dudas', to: 11},
+          c: {message: 'Dale, no se ve tan heavy', to: 12},
+          d: {message: null},
+         }, general: false, to: null},
+      10: {message: 'Igual podes decirme lo que creas mejor', delay: 3000, options: false, general: false, to: 13},
+      11: {message: 'Se ve que eres prudente, igual no siempre hay peligro', delay: 3000, options: false, general: false, to: 13},
+      12: {message: 'Me gusta esa actitud', delay: 3000, options: false, general: false, to: 13},
+      13: {message: 'Le dire entonces al tipo que me lo traiga a domicilio', delay: 3000, options: false, general: false, to: 14},
+      14: {message: 'Te hablo cuando llegue', delay: 20000, options: false, general: true, to: null},
     },
     2: {
       condictions:  [{condicion: 'cansancio', operator: '<=', valor: '20'}],
@@ -259,8 +281,10 @@ export class ChatComponent implements OnInit {
               }
               this.reset(opcionesTextos);
               this.clickPromise.then((resolve) => {
-                console.log(resolve[0]);
+                console.log(resolve);
                 this.actualSubPosition  = haveOptions[resolve[1]]['to'];
+                console.log(haveOptions);
+                console.log('siguiente posicion:' + this.actualSubPosition);
                 this.messagesArray.push({message: resolve[0], isBeto: false});
                 this.optionAText = null;
                 this.optionBText = null;
