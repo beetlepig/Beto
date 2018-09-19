@@ -14,6 +14,7 @@ export class ChatComponent implements OnInit {
   actualSubPosition: number;
 
   cansancio: number;
+  estado: string;
 
 
 
@@ -127,15 +128,51 @@ export class ChatComponent implements OnInit {
       14: {message: 'Te hablo cuando llegue', delay: 20000, options: false, general: true, to: null},
     },
     2: {
+      0: {message: 'Ya llegó', delay: 2000, options: {a: {message: 'Tiene contraindicaciones?', to: 1},
+          b: {message: 'como es?', to: 2},
+          c: {message: 'Dice la composición?', to: 3},
+          d: {message: null},
+      }, general: true, to: null},
+      1: {message: 'no, solo dice de que es más potente y se refieren como una "fake weed". Que raro', delay: 3000, options: false,
+        general: false, to: 4},
+      2: {message: 'El empaque es plástico y tiene impreso un diseño con el logo de la marca', delay: 3000, options: false,
+        general: false, to: 4},
+      3: {message: 'Negativo, no dice nada de eso', delay: 3000, options: false,
+        general: false, to: 4},
+      4: {message: 'Bueno, como sea. Llego el momento', delay: 3000, options: {a: {message: 'Momento para qué?', to: 5},
+          b: {message: 'vas a quemar?', to: 5},
+          c: {message: null},
+          d: {message: null},
+        },
+        general: false, to: null},
+      5: {message: 'pa quemar la weed, o lo que sea esto', delay: 3000, options: false,
+        general: false, to: 4
+      },
+
+      6: {message: 'Depronto', delay: 3000, options: false,
+        general: false, to: 4
+      },
+
+      7: {message: 'Ahora tengo una party y quiero llegar ready', delay: 3000, options: false,
+        general: false, to: 4
+      },
+
+      8: {message: 'Me voy a alistar y ver si quemo de una vez', delay: 30000, options: false,
+        general: false, to: 4
+      },
+
+    },
+    4: {
       condictions:  [{condicion: 'cansancio', operator: '<=', valor: '20'}],
       0: {message: 'menos mal tome cafesito', delay: 2000, general: true, to: null}
     },
 
-    3: {
+    5: {
       condictions: [{condicion: 'cansancio', operator: '>', valor: '20'}],
       0: {message: 'c duerme', delay: 3000, general: true, to: null}
     },
-    4: {
+
+    6: {
       0: {message: 'finish', delay: 1000, general: true, to: null}
     }
 
@@ -143,6 +180,7 @@ export class ChatComponent implements OnInit {
 
   constructor() {
     this.cansancio = 40;
+    this.estado = '';
   }
 
   ngOnInit() {
