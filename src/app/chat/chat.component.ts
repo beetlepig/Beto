@@ -16,7 +16,7 @@ export class ChatComponent implements OnInit {
   cansancio: number;
   estado: string;
 
-
+  showSpice: boolean;
 
 
 
@@ -30,7 +30,7 @@ export class ChatComponent implements OnInit {
   private resolve: Function|null = null;
   clickPromise: Promise<string>|null = null;
 
- // TODO: HACER QUE LAS SECCIONES GENERALES TAMBIEN SIRVAN CON TO
+ // TODO: HACER QUE LAS SECCIONES GENERALES TAMBIÉN SIRVAN CON TO
 
   script = {
     0: {
@@ -44,7 +44,7 @@ export class ChatComponent implements OnInit {
          options: false, general: false, to: 4
       },
 
-      3: {message: 'Tranquilo, soy Beto. Vos sos el de las ventas? me encontré tu numero en la u', delay: 3000, options: false,
+      3: {message: 'Tranquilo, soy Beto. Vos sos el del incienso? me encontré tu numero en la u', delay: 3000, options: false,
         general: false, to: 4
       },
 
@@ -77,7 +77,7 @@ export class ChatComponent implements OnInit {
 
       13: {message: 'A ver..', delay: 1000, options: {a: {message: 'Purificación espiritual', to: 14},
           b: {message: 'Las velitas para la casa', to: 15}, c: {message: 'Vicio', to: 16},
-          d: {message: 'me suena a algo que se fuma' }, general: false, to: null}, general: false, to: 15
+          d: {message: 'me suena a algo que se fuma', to: 17 }, general: false, to: null}, general: false, to: 15
       },
 
       14: {message: 'Pues también ayuda a eso, pero digamos que no es su campo principal', delay: 4000, options: false, general: false,
@@ -110,7 +110,7 @@ export class ChatComponent implements OnInit {
           }, general: false, to: null
       },
       3: {message: 'Entonces tocará arriesgarse', delay: 3000, options: false, general: false, to: 7},
-      4: {message: 'Noo que pereza, entonces voy a comprar mas', delay: 3000, options: false, general: false, to: 7},
+      4: {message: 'Noo que pereza, entonces tocará comprar más', delay: 3000, options: false, general: false, to: 7},
       5: {message: 'Uy ya me metiste miedo', delay: 3000, options: false, general: false, to: 7},
       6: {message: 'Pues mejor cogerlo con cuidado', delay: 3000, options: false, general: false, to: 7},
       7: {message: 'Le voy a preguntar a ver, dame un momento', delay: 10000, options: false, general: false, to: 8},
@@ -132,47 +132,131 @@ export class ChatComponent implements OnInit {
           b: {message: 'como es?', to: 2},
           c: {message: 'Dice la composición?', to: 3},
           d: {message: null},
-      }, general: true, to: null},
+      }, general: false, to: null},
+
       1: {message: 'no, solo dice de que es más potente y se refieren como una "fake weed". Que raro', delay: 3000, options: false,
-        general: false, to: 4},
+        general: false, to: 4
+      },
+
       2: {message: 'El empaque es plástico y tiene impreso un diseño con el logo de la marca', delay: 3000, options: false,
-        general: false, to: 4},
+        general: false, to: 4
+      },
+
       3: {message: 'Negativo, no dice nada de eso', delay: 3000, options: false,
-        general: false, to: 4},
+        general: false, to: 4
+      },
+
       4: {message: 'Bueno, como sea. Llego el momento', delay: 3000, options: {a: {message: 'Momento para qué?', to: 5},
-          b: {message: 'vas a quemar?', to: 5},
+          b: {message: 'vas a quemar?', to: 6},
           c: {message: null},
           d: {message: null},
         },
         general: false, to: null},
       5: {message: 'pa quemar la weed, o lo que sea esto', delay: 3000, options: false,
-        general: false, to: 4
+        general: false, to: 7
       },
 
       6: {message: 'Depronto', delay: 3000, options: false,
-        general: false, to: 4
+        general: false, to: 7
       },
 
       7: {message: 'Ahora tengo una party y quiero llegar ready', delay: 3000, options: false,
-        general: false, to: 4
+        general: false, to: 8
       },
 
       8: {message: 'Me voy a alistar y ver si quemo de una vez', delay: 30000, options: false,
-        general: false, to: 4
+        general: true, to: null
       },
 
     },
+    3: {
+      condictions:  [{condicion: 'estado', operator: '===', valor: ''}],
+      0: {message: 'No alcanzo a quemar, igual lo voy a llevar a la party por si algo', delay: 2000, general: false, to: null},
+      1: {message: 'Un parcero me dijo que quiere probar', delay: 2000, options: {a: {message: 'Pinta bien, depronto le guste', to: 2},
+          b: {message: 'pero eso ni es hierba de verdad', to: 3},
+          c: {message: 'solo sea piadoso con el chino, no se pase de verga', to: 3},
+          d: {message: 'que la primera fumada sea esa vaina? no me cuadra mucho', to: 3},
+      }, general: false, to: null},
+
+      2: {message: 'El man es temerario, seguro le gusta', delay: 2000,
+         options: false, general: false, to: 6
+      },
+
+      3: {message: 'pero si igual son especias, es natural no? lo natural no cae mal', delay: 2000,
+        options: false, general: false, to: 6
+      },
+
+      4: {message: 'jajaj le voy a dar lo normal, si el me pide más no es mi culpa', delay: 2000,
+        options: false, general: false, to: 6
+      },
+
+      5: {message: 'prefiero que la primera fumada sea hierba a otra vaina peligrosa', delay: 2000,
+        options: false, general: false, to: 6
+      },
+
+      6: {message: 'Preparo mi nave y despego para allá, hablamos', delay: 2000,
+        options: false, general: false, to: null
+      },
+    },
+
     4: {
-      condictions:  [{condicion: 'cansancio', operator: '<=', valor: '20'}],
-      0: {message: 'menos mal tome cafesito', delay: 2000, general: true, to: null}
+      condictions: [{condicion: 'estado', operator: '===', valor: 'spice'}],
+      0: {message: 'listo, al fin quemé', delay: 3000, options: {a: {message: 'y que tal?', to: 1},
+          b: {message: 'te sientes bien?', to: 2},
+          c: {message: 'eso si es mota?', to: 3},
+          d: {message: null},
+        }, general: false, to: null},
+      1: {message: 'Si es mas fuerte que la hierba normal, no se por que me dijo que no', delay: 3000, options: false,
+        general: false, to: 4
+      },
+      2: {message: 'uff super bien, ya estoy ready para la party', delay: 3000, options: false,
+        general: false, to: 5
+      },
+      3: {message: 'no sabe como a mota, parece mas bien una mezcla de diferentes hierbas', delay: 3000, options: false,
+        general: false, to: 6
+      },
+      4: {message: 'y el sabor si es mejor, es como una combinación de diferentes hierbas', delay: 3000, options: false,
+        general: false, to: 8
+      },
+      5: {message: 'Aunque si es mas fuerte que la hierba normal, no se por que el dealer me dijo que no', delay: 3000, options: false,
+        general: false, to: 7
+      },
+      6: {message: 'y también es mas fuerte que la hierba normal, no se por que el dealer me dijo lo contrario', delay: 3000,
+        options: false,
+        general: false, to: 8
+      },
+      7: {message: 'a parte que no sabe como a mota, parece mas bien una mezcla de diferentes hierbas', delay: 3000,
+        options: false,
+        general: false, to: 8
+      },
+      8: {message: 'Está potente', delay: 3000,
+        options: {
+          a: {message: 'a vos te cayó mal eso', to: 9},
+          b: {message: 'no exageraste no?', to: 10},
+          c: {message: null},
+          d: {message: null},
+        },
+        general: false, to: 8
+      },
+      9: {message: 'no para nada, solo está un poco fuerte y ya', delay: 3000,
+        options: false,
+        general: false, to: 11
+      },
+      10: {message: 'pues yo fumé lo de siempre, no se si este habia que medirlo', delay: 3000,
+        options: false,
+        general: false, to: 12
+      },
+      11: {message: 'y fumé la cantidad de siempre', delay: 3000,
+        options: false,
+        general: false, to: 12
+      },
+      12: {message: 'en breves me embarco en mi nave, depronto hablemos mas tarde nuevo amigo', delay: 30000,
+        options: false,
+        general: true, to: 12
+      },
     },
 
     5: {
-      condictions: [{condicion: 'cansancio', operator: '>', valor: '20'}],
-      0: {message: 'c duerme', delay: 3000, general: true, to: null}
-    },
-
-    6: {
       0: {message: 'finish', delay: 1000, general: true, to: null}
     }
 
@@ -181,6 +265,7 @@ export class ChatComponent implements OnInit {
   constructor() {
     this.cansancio = 40;
     this.estado = '';
+    this.showSpice = false;
   }
 
   ngOnInit() {
@@ -192,6 +277,11 @@ export class ChatComponent implements OnInit {
     setTimeout(() => {
       this.nextiMessage().subscribe((next) => {
         console.log('entroSubscribe');
+        if (this.actualGeneralPosition === 2) {
+          this.showSpice = true;
+        } else {
+          this.showSpice = false;
+        }
       }, () => {
 
       }, () => {
@@ -206,7 +296,8 @@ export class ChatComponent implements OnInit {
       case 'coffee':
         this.cansancio -= 10;
         break;
-      case 'other':
+      case 'spice':
+        this.estado = 'spice';
         break;
     }
   }
@@ -273,6 +364,22 @@ export class ChatComponent implements OnInit {
                       break;
                     }
                   break;
+
+                  case '===':
+
+                    switch (condiction.condicion) {
+                      case 'estado':
+                        if  (this.estado === condiction.valor) {
+                          cumpleCondicion = true;
+                          this.messagesArray.push({message: this.script[this.actualGeneralPosition][this.actualSubPosition]['message'],
+                            isBeto: true});
+                        } else {
+                          cumpleCondicion = false;
+                        }
+                        break;
+                    }
+
+                      break;
                 }
 
               });

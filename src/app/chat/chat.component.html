@@ -1,8 +1,8 @@
 <div class="chatDivGeneral">
 
   <div class="superiorDiv">
-   <!-- <button type="button" (click)="setSustancia('coffee')">Tomar café</button> -->
-   <!-- <p>Cansancio: {{cansancio}}</p> -->
+   <button type="button" [hidden]="!showSpice" [disabled]="estado" (click)="setSustancia('spice')">Fumar Spice</button>
+   <p [hidden]="!estado">Estado: {{estado}}</p>
   </div>
 
 
