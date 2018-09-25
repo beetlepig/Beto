@@ -253,7 +253,7 @@ export class ChatComponent implements OnInit {
       12: {message: 'en breves me embarco en mi nave, depronto hablemos mas tarde nuevo amigo', delay: 30000,
         options: false,
         general: true, to: 12
-      },
+      }
     },
 
     5: {
