@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./information-section.component.css']
 })
 export class InformationSectionComponent implements OnInit {
+  sustancia = [{nombre: 'Cafeína', presentacion: [{tipo: ''}]}, {}];
 
   constructor() { }
 

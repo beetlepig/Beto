@@ -39,9 +39,9 @@ export class ChatComponent implements OnInit {
       2: {message: 'que bien', delay: 3000, options: false, general: true, to: null},
       3: {message: 'y eso?', delay: 3000, options: {a: {message: 'el clima', to : 4}, b : {message: 'La humedad', to: 5},
           c: {message: 'Llegue tarde a juridico', to: 6}, d: {message: null}}, general: false, to: null},
-      4: {message: 'que calor tan bravo no?', delay: 1000, options: false, general: true, to: null},
-      5: {message: 'esta humedad me da gripa', delay: 1000, options: false, general: true, to: null},
-      6: {message: 'pues si se levanto faltando 30', delay: 1000, options: false, general: true, to: null}
+      4: {message: 'que calor tan bravo no?', delay: 4000, options: false, general: true, to: null},
+      5: {message: 'esta humedad me da gripa', delay: 4000, options: false, general: true, to: null},
+      6: {message: 'pues si se levanto faltando 30', delay: 4000, options: false, general: true, to: null}
     },
     1: {
       0: {message: 'Uy yo tengo ganas de cafe, pero voy como tarde', delay: 3000, options: false, general: false, to: 1},
@@ -105,7 +105,6 @@ export class ChatComponent implements OnInit {
     if (this.resolve !== null && this.resolve !== undefined && pickedOption !== null) {
       this.resolve  = this.resolve([pickedOption, key]);
     }
-
   }
 
   nextiMessage(): Observable<void> {

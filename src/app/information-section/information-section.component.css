@@ -1,0 +1,66 @@
+.interactionContainer {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  background-color: aliceblue;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.listContainer {
+  width: 33%;
+  height: 90%;
+  background-color: beige;
+}
+
+.listContainer ul {
+  margin: 0;
+}
+
+.characterContainer {
+  width: 33%;
+  height: 100%;
+  background-color: chartreuse;
+}
+
+.characterCanvas {
+  width: 100%;
+  height: 90%;
+  background-color: fuchsia;
+}
+
+.faseConsumoContainer {
+  height: 10%;
+  width: 100%;
+  background-color: goldenrod;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.faseConsumoContainer p {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.containerFaseDiv {
+  display: flex;
+  justify-content: space-around;
+}
+
+.substanceContainer {
+  width: 33%;
+  height: 90%;
+  background-color: dodgerblue;
+}
+
+.substanceDiv {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  width: 100%;
+  height: 30%;
+  background-color: darkred;
+}
