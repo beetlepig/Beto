@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -7,6 +8,7 @@ import { ChatComponent } from './chat/chat.component';
 import {RouterModule, Routes} from '@angular/router';
 import { InformationSectionComponent } from './information-section/information-section.component';
 import { MenuComponent } from './menu/menu.component';
+
 
 
 const appRoutes: Routes = [
@@ -26,6 +28,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

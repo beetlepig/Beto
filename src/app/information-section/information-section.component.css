@@ -38,14 +38,24 @@
 .characterAnimateDiv {
   width: 30%;
   height: 0;
-  padding-bottom: 55%;
+  padding-bottom: 54%;
   background-image: url("/assets/SpriteSheet/charzera.png");
   background-color: rgba(100,100,100,1);
   background-position: 0 0;
   background-size: 1400%;
   display: block;
- animation: idle 1s steps(13) infinite;
+  animation: idle 1s steps(13) infinite;
+  /*animation: run 1s steps(13) infinite;*/
 }
+
+.characterAnimateRun{
+  animation: run 1s steps(13);
+}
+
+.characterAnimateJump{
+  animation: jump 1s steps(13);
+}
+
 
 @keyframes idle {
   0% {
@@ -54,6 +64,26 @@
 
   100% {
     background-position: 100% 0;
+  }
+}
+
+@keyframes run {
+  0% {
+    background-position: 0 100%;
+  }
+
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+@keyframes jump {
+  0% {
+    background-position: 0 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
   }
 }
 
@@ -88,4 +118,18 @@
   width: 100%;
   height: 30%;
   background-color: darkred;
+}
+
+.presentationImageContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.presentationImageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.leftArrow {
+  float: left;
 }
