@@ -35,12 +35,12 @@
       </div>
     </div>
 
-    <div class="substanceDiv ">
-      <div class="leftArrow"></div>
-      <div class="rigthArrow"></div>
+    <div class="substanceDiv substanceSelectorGeneral">
+      <div class="leftArrow" (click)="eliminateDosis()"></div>
       <div class="dosisContainer">
-
+        <div *ngFor='let in of counter(actualDosis) ;let i = index' class="repeatedImages"></div>
       </div>
+      <div class="rightArrow" (click)="addDosis()"></div>
     </div>
 
     <button class="buttonProbar">

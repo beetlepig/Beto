@@ -133,3 +133,26 @@
 .leftArrow {
   float: left;
 }
+
+.substanceSelectorGeneral {
+  display: flex;
+  justify-content: space-between;
+}
+.leftArrow {
+  width: 20%;
+  background-color: #e2ee30;
+}
+
+.rightArrow {
+  width: 20%;
+  background-color: violet;
+}
+
+.dosisContainer {
+  width: 100%;
+  background-color: rgba(50, 200, 140, 1);
+}
+
+.repeatedImages {
+  background-color: blue;
+}
