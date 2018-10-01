@@ -11,14 +11,15 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
     new SubstanceObjectModel('Cafeína', [
       new SubstancePresentationModel('Sobre', '/assets/substancesImg/7702040127008.jpg', '10'),
       new SubstancePresentationModel('Liquido', '/assets/substancesImg/buen-cafe-full.jpg', '15')],
-      'characterAnimateRun'
+      'characterAnimateRun', 'Te duele la Cabeza', 'Ojos llorosos y pupila dilatada',
+      '90 pulsaciones por minuto', 'aquí iria la información completa'
     ),
 
 
     new SubstanceObjectModel('Weed', [
       new SubstancePresentationModel('Mota', '/assets/substancesImg/1423530503.jpg', '20'),
       new SubstancePresentationModel('Chocolate', '/assets/substancesImg/Kiva_Tangerine_Large.jpg', '5')],
-      'characterAnimateJump'
+      'characterAnimateJump', 'mareos', 'unicornios', 'posible paro cardiaco', 'información sobre la hierba'
     )
   ];
 
@@ -27,13 +28,13 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   actualDosis: number;
   clase: Array<string>;
   animationRunning: boolean;
-
+  characterState: CharacterStateModel;
   constructor() {
     this.animationRunning = false;
     this.clase = new Array<string>(2);
     this.clase[0] = 'characterAnimateDiv';
     this.clase[1] = '';
-    this.actualDosis = 0;
+    this.actualDosis = 1;
   }
 
   ngOnInit() {
@@ -63,14 +64,16 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   changeSelectedSubstance(substance: SubstanceObjectModel) {
     this.selectedSubstance = substance;
     this.selectedPresentation = this.selectedSubstance.presentacion[0];
+    this.actualDosis = 1;
   }
 
   changePresentationImage(selectedSubstance: SubstancePresentationModel) {
     this.selectedPresentation = selectedSubstance;
+    this.actualDosis = 1;
   }
 
   eliminateDosis() {
-    if (this.actualDosis > 0) {
+    if (this.actualDosis > 1) {
       this.actualDosis--;
     }
   }
@@ -78,6 +81,18 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   addDosis() {
     if (this.actualDosis < parseInt(this.selectedPresentation.dosisMax, 10)) {
       this.actualDosis++;
+    }
+  }
+
+  probarSustancia() {
+    if ( this.actualDosis > 0) {
+      for (let i = 1; i < this.clase.length; i++) {
+        this.clase[i] = '';
+      }
+      this.animationRunning = true;
+      this.clase[1] = this.selectedSubstance.animation;
+      this.characterState = new CharacterStateModel(this.selectedSubstance.nombre, this.selectedSubstance.headInfo,
+        this.selectedSubstance.eyeInfo, this.selectedSubstance.heardInfo);
     }
   }
 
@@ -123,12 +138,20 @@ class SubstanceObjectModel {
   nombre: string;
   presentacion: SubstancePresentationModel[];
   animation: string;
+  headInfo: string;
+  eyeInfo: string;
+  heardInfo: string;
+  completeInfo: string;
 
-  constructor (name: string, presentaciones: SubstancePresentationModel[], animacion: string) {
+  constructor (name: string, presentaciones: SubstancePresentationModel[], animacion: string, _headInfo: string,
+               _eyeInfo: string, _heardInfo: string, _completeInfo: string) {
     this.nombre = name;
     this.presentacion = presentaciones;
     this.animation = animacion;
-
+    this.headInfo = _headInfo;
+    this.eyeInfo = _eyeInfo;
+    this.heardInfo = _heardInfo;
+    this.completeInfo = _completeInfo;
   }
 }
 
@@ -141,5 +164,18 @@ class SubstancePresentationModel {
     this.tipo = tipin;
     this.img = laimagen;
     this.dosisMax = dosisMaxima;
+  }
+}
+
+class CharacterStateModel {
+  name: string;
+  headInfo: string;
+  eyeInfo: string;
+  heardInfo: string;
+  constructor(_name: string, _headInfo: string, _eyeInfo: string, _heardInfo: string) {
+    this.headInfo = _headInfo;
+    this.eyeInfo = _eyeInfo;
+    this.heardInfo = _heardInfo;
+    this.name = _name;
   }
 }
