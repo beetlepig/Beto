@@ -12,8 +12,10 @@ import { HomeComponent } from './home/home.component';
 
 
 const appRoutes: Routes = [
+  { path: '', pathMatch: 'full' , component: HomeComponent },
   { path: 'chat', component: ChatComponent },
   { path: 'information', component: InformationSectionComponent },
+  { path: '**', component: HomeComponent }
 ];
 
 
