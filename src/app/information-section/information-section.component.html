@@ -1,0 +1,58 @@
+<div class="interactionContainer">
+
+  <div class="listContainer">
+    <ul>
+      <li *ngFor="let sustancita of sustancia" (click)="changeSelectedSubstance(sustancita)">
+        {{ sustancita.nombre }}
+      </li>
+    </ul>
+  </div>
+  <div class="characterContainer">
+    <div class="characterGeneralContainer">
+      <div [ngClass]="clase" #AnimatedCharacter>
+
+      </div>
+
+      <div *ngIf="characterState">
+      <div class="eyesInfoDiv">{{characterState.eyeInfo}}</div>
+      <div class="heardInfoDiv">{{characterState.heardInfo}}</div>
+      <div class="headInfoDiv">{{characterState.headInfo}}</div>
+      </div>
+
+    </div>
+  <div class="faseConsumoContainer">
+      <p>Consumo</p>
+      <div class="containerFaseDiv">
+        <button type="button" [disabled]="animationRunning" >Experimental</button>
+        <button type="button" [disabled]="animationRunning" >Regular</button>
+        <button type="button" [disabled]="animationRunning" >Abusivo</button>
+      </div>
+    </div>
+  </div>
+  <div class="substanceContainer">
+    <div class="substanceDiv">
+      <div *ngFor="let sustancitaPresenteishon of selectedSubstance.presentacion" (click)="changePresentationImage(sustancitaPresenteishon)">
+        <p>{{ sustancitaPresenteishon.tipo }}</p>
+      </div>
+    </div>
+
+    <div class="substanceDiv">
+      <div class="presentationImageContainer">
+        <img [src]="selectedPresentation.img">
+      </div>
+    </div>
+
+    <div class="substanceDiv substanceSelectorGeneral">
+      <div class="leftArrow" (click)="eliminateDosis()"></div>
+      <div class="dosisContainer">
+        <div *ngFor='let in of counter(actualDosis)' class="repeatedImages" [style.backgroundImage]="'url('+ selectedPresentation.img +')'"></div>
+      </div>
+      <div class="rightArrow" (click)="addDosis()"></div>
+    </div>
+
+    <button class="buttonProbar" [disabled]="animationRunning" (click)="probarSustancia()">
+      Probar
+    </button>
+  </div>
+
+</div>

@@ -1,5 +1,6 @@
 .chatDivGeneral {
-  position: relative;
+  position: absolute;
+  top: 15%;
   left: 25%;
   width: 50%;
   height: 50vh;

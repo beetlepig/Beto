@@ -1,0 +1,195 @@
+.interactionContainer {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  background-color: aliceblue;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.listContainer {
+  width: 33%;
+  height: 90%;
+  background-color: beige;
+}
+
+.listContainer ul {
+  margin: 0;
+}
+
+.characterContainer {
+  width: 33%;
+  height: 100%;
+  background-color: chartreuse;
+}
+
+.characterGeneralContainer {
+  width: 100%;
+  height: 90%;
+  background: rgba(100,100,100,1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.characterAnimateDiv {
+  width: 30%;
+  height: 0;
+  padding-bottom: 54%;
+  background-image: url("/assets/SpriteSheet/charzera.png");
+  background-color: rgba(100,100,100,1);
+  background-position: 0 0;
+  background-size: 1400%;
+  display: block;
+  animation: idle 1s steps(13) infinite;
+  /*animation: run 1s steps(13) infinite;*/
+}
+
+.characterAnimateRun{
+  animation: run 1s steps(13);
+}
+
+.characterAnimateJump{
+  animation: jump 1s steps(13);
+}
+
+
+@keyframes idle {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes run {
+  0% {
+    background-position: 0 100%;
+  }
+
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+@keyframes jump {
+  0% {
+    background-position: 0 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.faseConsumoContainer {
+  height: 10%;
+  width: 100%;
+  background-color: goldenrod;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.faseConsumoContainer p {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.containerFaseDiv {
+  display: flex;
+  justify-content: space-around;
+}
+
+.substanceContainer {
+  width: 33%;
+  height: 90%;
+  background-color: dodgerblue;
+}
+
+.substanceDiv {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  width: 100%;
+  height: 30%;
+  background-color: darkred;
+}
+
+.presentationImageContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.presentationImageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.leftArrow {
+  float: left;
+}
+
+.substanceSelectorGeneral {
+  display: flex;
+  justify-content: space-between;
+}
+.leftArrow {
+  width: 20%;
+  background-color: #e2ee30;
+}
+
+.rightArrow {
+  width: 20%;
+  background-color: violet;
+}
+
+.dosisContainer {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(50, 200, 140, 1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.repeatedImages {
+  margin: 1%;
+  flex-grow: 1;
+  background-color: blue;
+  min-width: 20%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.eyesInfoDiv {
+  position: absolute;
+  top: 1%;
+  left: 35%;
+  width: 10%;
+  height: 15%;
+  background: gray;
+}
+
+.heardInfoDiv {
+  position: absolute;
+  top: 1%;
+  left: 45%;
+  width: 10%;
+  height: 15%;
+  background: darkmagenta;
+}
+
+.headInfoDiv {
+  position: absolute;
+  top: 1%;
+  left: 55%;
+  width: 10%;
+  height: 15%;
+  background: orange;
+}

@@ -1,10 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese');
 
-
+html {
+  overflow: auto;
+}
 body {
   width: 100%;
-  padding: 20vh 0 0 0;
+  height: 100%;
   margin: 0;
   overflow: auto;
+  font-family: 'Roboto', sans-serif;
 }
 
 canvas {
