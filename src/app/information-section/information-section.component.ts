@@ -8,23 +8,51 @@ import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from
 export class InformationSectionComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('AnimatedCharacter') myCharacter: ElementRef;
   sustancia = [
-    new SubstanceObjectModel('Cafeína', [
-      new SubstancePresentationModel('Sobre', '/assets/substancesImg/7702040127008.jpg', '10'),
-      new SubstancePresentationModel('Liquido', '/assets/substancesImg/buen-cafe-full.jpg', '15')],
-      'characterAnimateRun', 'Te duele la Cabeza', 'Ojos llorosos y pupila dilatada',
-      '90 pulsaciones por minuto', 'aquí iria la información completa'
+    new SubstanceObjectModel('Cafeína',
+      [
+        new SubstancePresentationModel('Sobre', '/assets/substancesImg/7702040127008.jpg',
+          [
+                        new DosisAndInformationModel('head dosis sobre 1', 'eye dosis sobre 1', 'heard dosis sobre 1'),
+                        new DosisAndInformationModel('head dosis sobre 2', 'eye dosis sobre 2', 'heard dosis sobre 2')
+          ]
+        ),
+        new SubstancePresentationModel('Liquido', '/assets/substancesImg/buen-cafe-full.jpg',
+          [
+                        new DosisAndInformationModel('head dosis liquido 1', 'eye dosis liquido 1', 'heard dosis liquido 1'),
+                        new DosisAndInformationModel('head dosis liquido 2', 'eye dosis liquido 2', 'heard dosis liquido 2'),
+                        new DosisAndInformationModel('head dosis liquido 3', 'eye dosis liquido 3', 'heard dosis liquido 3'),
+                        new DosisAndInformationModel('head dosis liquido 4', 'eye dosis liquido 4', 'heard dosis liquido 4'),
+                        new DosisAndInformationModel('head dosis liquido 5', 'eye dosis liquido 5', 'heard dosis liquido 5')
+          ]
+        )
+      ],
+      'characterAnimateRun', 'esta es la info completa'
     ),
 
 
-    new SubstanceObjectModel('Weed', [
-      new SubstancePresentationModel('Mota', '/assets/substancesImg/1423530503.jpg', '20'),
-      new SubstancePresentationModel('Chocolate', '/assets/substancesImg/Kiva_Tangerine_Large.jpg', '5')],
-      'characterAnimateJump', 'mareos', 'unicornios', 'posible paro cardiaco', 'información sobre la hierba'
+    new SubstanceObjectModel('Weed',
+      [
+        new SubstancePresentationModel('Mota', '/assets/substancesImg/1423530503.jpg',
+          [
+                          new DosisAndInformationModel('head dosis mota 1', 'eye dosis mota 1', 'heard dosis mota 1'),
+                          new DosisAndInformationModel('head dosis mota 2', 'eye dosis mota 2', 'heard dosis mota 2'),
+                          new DosisAndInformationModel('head dosis mota 3', 'eye dosis mota 3', 'heard dosis mota 3')
+          ]
+        ),
+        new SubstancePresentationModel('Chocolate', '/assets/substancesImg/Kiva_Tangerine_Large.jpg',
+          [
+                          new DosisAndInformationModel('head chocolate 1', 'eye chocolate 1', 'heard chocolate 1'),
+                          new DosisAndInformationModel('head chocolate 2', 'eye chocolate 2', 'heard chocolate 2')
+          ]
+        )
+      ],
+      'characterAnimateJump', 'información sobre la hierba'
     )
   ];
 
   selectedSubstance: SubstanceObjectModel;
   selectedPresentation: SubstancePresentationModel;
+  selectedDosisInfo: DosisAndInformationModel;
   actualDosis: number;
   clase: Array<string>;
   animationRunning: boolean;
@@ -40,6 +68,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   ngOnInit() {
     this.selectedSubstance = this.sustancia[0];
     this.selectedPresentation = this.selectedSubstance.presentacion[0];
+    this.selectedDosisInfo = this.selectedPresentation.infoPerDosis[0];
   }
 
   clickElBoton(hi: number) {
@@ -79,7 +108,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   }
 
   addDosis() {
-    if (this.actualDosis < parseInt(this.selectedPresentation.dosisMax, 10)) {
+    if (this.actualDosis < this.selectedPresentation.infoPerDosis.length) {
       this.actualDosis++;
     }
   }
@@ -91,8 +120,8 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
       }
       this.animationRunning = true;
       this.clase[1] = this.selectedSubstance.animation;
-      this.characterState = new CharacterStateModel(this.selectedSubstance.nombre, this.selectedSubstance.headInfo,
-        this.selectedSubstance.eyeInfo, this.selectedSubstance.heardInfo);
+      this.selectedDosisInfo = this.selectedPresentation.infoPerDosis[this.actualDosis - 1];
+      this.characterState = null;
     }
   }
 
@@ -112,6 +141,8 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
         this.clase[i] = '';
       }
       this.animationRunning = false;
+      this.characterState = new CharacterStateModel(this.selectedSubstance.nombre, this.selectedDosisInfo.headInfo,
+        this.selectedDosisInfo.eyeInfo, this.selectedDosisInfo.heardInfo);
     }
       switch (event.animationName) {
         case 'idle':
@@ -138,19 +169,12 @@ class SubstanceObjectModel {
   nombre: string;
   presentacion: SubstancePresentationModel[];
   animation: string;
-  headInfo: string;
-  eyeInfo: string;
-  heardInfo: string;
   completeInfo: string;
 
-  constructor (name: string, presentaciones: SubstancePresentationModel[], animacion: string, _headInfo: string,
-               _eyeInfo: string, _heardInfo: string, _completeInfo: string) {
+  constructor (name: string, presentaciones: SubstancePresentationModel[], animacion: string, _completeInfo: string) {
     this.nombre = name;
     this.presentacion = presentaciones;
     this.animation = animacion;
-    this.headInfo = _headInfo;
-    this.eyeInfo = _eyeInfo;
-    this.heardInfo = _heardInfo;
     this.completeInfo = _completeInfo;
   }
 }
@@ -159,12 +183,25 @@ class SubstanceObjectModel {
 class SubstancePresentationModel {
   tipo: string;
   img: string;
-  dosisMax: string;
-  constructor(tipin: string, laimagen: string, dosisMaxima: string) {
+  infoPerDosis: DosisAndInformationModel[];
+  constructor(tipin: string, laimagen: string, _infoPerDosis: DosisAndInformationModel[]) {
     this.tipo = tipin;
     this.img = laimagen;
-    this.dosisMax = dosisMaxima;
+    this.infoPerDosis = _infoPerDosis;
   }
+}
+
+class DosisAndInformationModel {
+  headInfo: string;
+  eyeInfo: string;
+  heardInfo: string;
+
+  constructor (_headInfo: string, _eyeInfo: string, _heardInfo: string) {
+    this.headInfo = _headInfo;
+    this.eyeInfo = _eyeInfo;
+    this.heardInfo = _heardInfo;
+  }
+
 }
 
 class CharacterStateModel {
