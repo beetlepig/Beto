@@ -1,12 +1,12 @@
 <div class="menuDiv" (click)="menuClick()">
 
   <div class="routerSectionDiv">
-    <div class="borderLine"></div>
+    <div class="borderLine" routerLink="/Team" routerLinkActive="activeLineMenu"></div>
   </div>
 
 
-  <div class="routerSectionDiv"  >
-    <div class="borderLine"></div>
+  <div class="routerSectionDiv">
+    <div class="borderLine" routerLink="/Alex" routerLinkActive="activeLineMenu"></div>
     <div class="MenuContainerTextAndDivs">
       <div>
         <h2>MENÚ</h2>
@@ -22,9 +22,9 @@
 
 
   <div class="routerSectionDiv">
-    <div class="borderLine"></div>
+    <div class="borderLine" routerLink="/Contact" routerLinkActive="activeLineMenu"></div>
   </div>
 
 </div>
 
-<app-dropdown-menu [show]="showDropDownMenu"></app-dropdown-menu>
+<app-dropdown-menu [show]="showDropDownMenu" (clickInLink)="showDropDownMenu = $event"></app-dropdown-menu>

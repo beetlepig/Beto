@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
@@ -23,19 +23,25 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
       state('1', style({
         opacity: 0
       })),
-      transition('*=>0', animate('500ms 500ms ease-in-out')),
+      transition('*=>0', animate('500ms 400ms ease-in-out')),
       transition('*=>1', animate('500ms ease-in-out'))
     ])
   ]
 })
 export class DropdownMenuComponent implements OnInit {
   @Input() show: boolean;
+  @Output() clickInLink: EventEmitter<boolean>;
 
   constructor() {
     this.show = true;
+    this.clickInLink = new EventEmitter<boolean>();
   }
 
   ngOnInit() {
+  }
+
+  onClickRouterLink() {
+    this.clickInLink.emit(true);
   }
 
 }

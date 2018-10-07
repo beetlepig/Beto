@@ -17,7 +17,6 @@ export class MenuComponent implements OnInit {
 
   menuClick() {
     this.showDropDownMenu = !this.showDropDownMenu;
-    console.log('entro');
   }
 
 }

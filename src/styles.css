@@ -10,6 +10,7 @@ body {
   margin: 0;
   overflow: auto;
   font-family: 'Roboto', sans-serif;
+  background: rgba(244, 244, 244, 1) url("/assets/pattern.png") center;
 }
 
 canvas {
