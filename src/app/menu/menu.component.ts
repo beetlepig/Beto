@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+  showDropDownMenu: boolean;
 
-  constructor() { }
+  constructor() {
+    this.showDropDownMenu = true;
+  }
 
   ngOnInit() {
+  }
+
+  menuClick() {
+    this.showDropDownMenu = !this.showDropDownMenu;
+    console.log('entro');
   }
 
 }

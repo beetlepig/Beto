@@ -8,6 +8,8 @@ import {RouterModule, Routes} from '@angular/router';
 import { InformationSectionComponent } from './information-section/information-section.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
+import { GridComponent } from './grid/grid.component';
+import { DropdownMenuComponent } from './menu/dropdown-menu/dropdown-menu.component';
 
 
 
@@ -25,7 +27,9 @@ const appRoutes: Routes = [
     ChatComponent,
     InformationSectionComponent,
     MenuComponent,
-    HomeComponent
+    HomeComponent,
+    GridComponent,
+    DropdownMenuComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,59 @@
+.dropdownContainer {
+  position: absolute;
+  left: 8.8%;
+  bottom: 0;
+  width: 41%;
+  height: 0;
+  background-color: blue;
+}
+
+.dropdownMenu {
+  position: absolute;
+  left: 16.8%;
+  top: 20%;
+  width: 16.3%;
+  height: 60%;
+  background-color: blue;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+  opacity: 0;
+}
+
+.flexChildDropdown {
+  background-color: rosybrown;
+}
+
+.lineDropdownDiv {
+  height: 25%;
+  width: 100%;
+}
+
+.lineDiv {
+  width: 2%;
+  height: 100%;
+  margin-left: 12%;
+  background-color: brown;
+  border-radius: 100vh;
+}
+
+.menuDropdownMenu {
+  flex-grow: 1;
+  background-color: #e2ee30;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.menuDropdownMenu h3 {
+  margin: 0;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 700;
+  font-size: 1.5vw;
+}
+
+.menuDropdownMenu h3:hover {
+  color: rgba(213, 133, 77, 1);
+  cursor: pointer;
+}
