@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  selector: 'app-mini-menu',
+  templateUrl: './mini-menu.component.html',
+  styleUrls: ['./mini-menu.component.css'],
   animations: [
     trigger('slideAnimation', [
-     state('0', style({
+      state('0', style({
         width: 0
       })),
       state('1', style({
@@ -18,7 +18,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
     ])
   ]
 })
-export class HomeComponent implements OnInit {
+export class MiniMenuComponent implements OnInit {
   isHoverOne: boolean;
   isHoverTwo: boolean;
 

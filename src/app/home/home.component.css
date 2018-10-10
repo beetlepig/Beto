@@ -16,7 +16,7 @@
   align-items: center;
 }
 .homeTitleContainer {
-  padding: 0 0.3vw;
+  padding: 0 0.5vw;
   background-color: rgba(237, 134, 72, 1);
 }
 
@@ -34,10 +34,37 @@
   align-items: center;
 }
 
-.menuHomeTitlesContainer h2 {
-  margin: 0 0 1vh 0;
+.menuHomeTitlesContainer div {
+  cursor: pointer;
 }
 
-.menuHomeTitlesContainer h1 {
+.menuHomeTitlesContainer div:hover > h1 {
+  color: rgba(212, 132, 77, 1);
+}
+.menuHomeTitlesContainer div:hover > h2 {
+  color: rgba(212, 132, 77, 1);
+}
+
+.jugarClass {
+  margin: 0 0 1vh 0;
+  font-size: 2.5vw;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 700;
+  color: rgba(34, 26, 23, 1);
+}
+
+.explorarClass {
   margin: 1vh 0 0 0;
+  font-size: 2.5vw;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 700;
+  color: rgba(34, 26, 23, 1);
+}
+
+
+.animatedSubLine {
+  height: 0.5vh;
+  width: 0;
+  background-color: rgba(212, 132, 77, 1);
+  border-radius: 100vh;
 }

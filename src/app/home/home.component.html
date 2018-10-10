@@ -5,8 +5,14 @@
       </div>
 
     <div class="menuHomeTitlesContainer">
-      <h2>JUGAR</h2>
-      <h1>EXPLORAR</h1>
+      <div (mouseenter)="onHoverTitle(0)" (mouseleave)="onHoverOutTile(0)" routerLink="/chat">
+        <h2 class="jugarClass">JUGAR</h2>
+        <div class="animatedSubLine" [@slideAnimation]="isHoverOne"></div>
+      </div>
+      <div (mouseenter)="onHoverTitle(1)" (mouseleave)="onHoverOutTile(1)" routerLink="/information">
+        <h1 class="explorarClass">EXPLORAR</h1>
+        <div class="animatedSubLine" [@slideAnimation]="isHoverTwo"></div>
+      </div>
     </div>
   </div>
 </div>

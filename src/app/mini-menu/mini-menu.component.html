@@ -1,0 +1,10 @@
+<div class="miniMenuContainer">
+  <div (mouseenter)="onHoverTitle(0)" (mouseleave)="onHoverOutTile(0)" routerLink="/chat">
+    <h2>JUGAR</h2>
+    <div class="animatedSubLine" [@slideAnimation]="isHoverOne"></div>
+  </div>
+  <div (mouseenter)="onHoverTitle(1)" (mouseleave)="onHoverOutTile(1)" routerLink="/information">
+    <h2>EXPLORAR</h2>
+    <div class="animatedSubLine" [@slideAnimation]="isHoverTwo"></div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 .menuDiv {
   position: fixed;
-  width: 8.3%;
+  width: 5.5%;
   height: 100%;
   background-color: rgba(69,90,100 ,0);
   display: flex;
@@ -12,7 +12,7 @@
 }
 
 .MenuContainerTextAndDivs {
-  width: 100%;
+  width: 130%;
   transform: rotate(-90deg);
   display: flex;
   background: rgba(200,200,50,0);
@@ -32,7 +32,7 @@
   transition: .35s ease-in;
   position: absolute;
   right: 0;
-  width: 2%;
+  width: 3%;
   height: 32%;
   border-radius: 100vh;
   background-color: rgba(0, 0, 0, 0.2);

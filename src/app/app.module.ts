@@ -10,6 +10,7 @@ import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { GridComponent } from './grid/grid.component';
 import { DropdownMenuComponent } from './menu/dropdown-menu/dropdown-menu.component';
+import { MiniMenuComponent } from './mini-menu/mini-menu.component';
 
 
 
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
     MenuComponent,
     HomeComponent,
     GridComponent,
-    DropdownMenuComponent
+    DropdownMenuComponent,
+    MiniMenuComponent
   ],
   imports: [
     BrowserModule,
