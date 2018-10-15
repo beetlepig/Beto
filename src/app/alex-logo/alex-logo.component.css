@@ -1,0 +1,11 @@
+.alexLogoContainer {
+  padding: 0 0.5vw;
+  background-color: rgba(237, 134, 72, 1);
+}
+
+.alexLogoContainer h1 {
+  margin: 0;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 1);
+}

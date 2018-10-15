@@ -21,7 +21,8 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
         opacity: 1
       })),
       state('1', style({
-        opacity: 0
+        opacity: 0,
+        display: 'none'
       })),
       transition('*=>0', animate('500ms 400ms ease-in-out')),
       transition('*=>1', animate('500ms ease-in-out'))

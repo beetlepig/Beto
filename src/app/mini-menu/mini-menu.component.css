@@ -1,5 +1,5 @@
 .miniMenuContainer {
-  position: fixed;
+  position: absolute;
   right: 8.4%;
   bottom: 5%;
   width: 8%;

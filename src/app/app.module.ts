@@ -12,6 +12,7 @@ import { GridComponent } from './grid/grid.component';
 import { DropdownMenuComponent } from './menu/dropdown-menu/dropdown-menu.component';
 import { MiniMenuComponent } from './mini-menu/mini-menu.component';
 import { AboutAlexComponent } from './about-alex/about-alex.component';
+import { AlexLogoComponent } from './alex-logo/alex-logo.component';
 
 
 
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
     GridComponent,
     DropdownMenuComponent,
     MiniMenuComponent,
-    AboutAlexComponent
+    AboutAlexComponent,
+    AlexLogoComponent
   ],
   imports: [
     BrowserModule,

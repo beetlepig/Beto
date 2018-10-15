@@ -17,18 +17,6 @@
   justify-content: space-between;
   align-items: center;
 }
-.homeTitleContainer {
-  padding: 0 0.25vw;
-  background-color: rgba(237, 134, 72, 1);
-}
-
-.homeTitleContainer h1 {
-  margin: auto;
-  font-family: 'Dosis', sans-serif;
-  font-weight: 700;
-  font-size: 2.5vw;
-  color: rgba(255, 255, 255, 1);
-}
 
 .menuHomeTitlesContainer {
   display: flex;
