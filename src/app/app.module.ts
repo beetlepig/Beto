@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { GridComponent } from './grid/grid.component';
 import { DropdownMenuComponent } from './menu/dropdown-menu/dropdown-menu.component';
 import { MiniMenuComponent } from './mini-menu/mini-menu.component';
+import { AboutAlexComponent } from './about-alex/about-alex.component';
 
 
 
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
   { path: '', pathMatch: 'full' , component: HomeComponent },
   { path: 'chat', component: ChatComponent },
   { path: 'information', component: InformationSectionComponent },
+  { path: 'Alex', component: AboutAlexComponent },
   { path: '**', component: HomeComponent }
 ];
 
@@ -31,7 +33,8 @@ const appRoutes: Routes = [
     HomeComponent,
     GridComponent,
     DropdownMenuComponent,
-    MiniMenuComponent
+    MiniMenuComponent,
+    AboutAlexComponent
   ],
   imports: [
     BrowserModule,
