@@ -13,6 +13,8 @@ import { DropdownMenuComponent } from './menu/dropdown-menu/dropdown-menu.compon
 import { MiniMenuComponent } from './mini-menu/mini-menu.component';
 import { AboutAlexComponent } from './about-alex/about-alex.component';
 import { AlexLogoComponent } from './alex-logo/alex-logo.component';
+import { ContactoComponent } from './contacto/contacto.component';
+import {FormsModule} from '@angular/forms';
 
 
 
@@ -21,6 +23,7 @@ const appRoutes: Routes = [
   { path: 'chat', component: ChatComponent },
   { path: 'information', component: InformationSectionComponent },
   { path: 'Alex', component: AboutAlexComponent },
+  { path: 'Contact', component: ContactoComponent },
   { path: '**', component: HomeComponent }
 ];
 
@@ -36,11 +39,13 @@ const appRoutes: Routes = [
     DropdownMenuComponent,
     MiniMenuComponent,
     AboutAlexComponent,
-    AlexLogoComponent
+    AlexLogoComponent,
+    ContactoComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
