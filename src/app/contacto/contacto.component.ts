@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FirestoreService} from '../firestore/firestore.service';
 
 @Component({
   selector: 'app-contacto',
@@ -9,13 +10,14 @@ export class ContactoComponent implements OnInit {
 
   model = new MailForm('', '');
 
-  constructor() { }
+  constructor(private fireService: FirestoreService) { }
 
   ngOnInit() {
 
   }
 
   sendMessage() {
+    this.fireService.sendMessageWithMail(this.model.mail, this.model.content);
     this.model = new MailForm('', '');
   }
 

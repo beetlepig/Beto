@@ -1,7 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { AngularFireModule } from '@angular/fire';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
 
+import {environment} from '../environments/environment';
 import { AppComponent } from './app.component';
 import { ChatComponent } from './chat/chat.component';
 import {RouterModule, Routes} from '@angular/router';
@@ -46,6 +49,8 @@ const appRoutes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
