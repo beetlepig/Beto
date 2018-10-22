@@ -35,7 +35,7 @@ export class FirestoreService {
   sendMessageWithMail(_mail: string, _message: string) {
     this.usersCollection.add({mail: _mail, password: null, user: null}).then((value: DocumentReference) => {
       this.messagesCollection.doc(value.id).set({chat: null, toMailMessage: _message}).then((value1: void) => {
-        console.log(value1);
+      //  console.log(value1);
       }).catch((reason: any) => {
         console.log(reason);
       });

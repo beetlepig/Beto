@@ -3,23 +3,32 @@
   <div class="containerGeneralMail">
     <div class="selectorDiv">
       <h2>CONTACTO</h2>
-      <div>Correo</div>
-      <div>Cuenta Anónima</div>
+      <div (click)="onChangeSection(false)">Correo</div>
+      <div (click)="onChangeSection(true)">Cuenta Anónima</div>
     </div>
-    <div class="inputsDiv">
-      <form (ngSubmit)="sendMessage(); contactForm.reset()" #contactForm="ngForm">
-        <div>
-          <label for="mail"></label>
-          <input type="email" id="mail" placeholder="Tú Correo" required [(ngModel)]="model.mail" name="mail">
-        </div>
-        <div>
-          <label for="contenido"></label>
-          <textarea class="textareaContenido" placeholder="Mensaje" maxlength="500" rows="15" cols="100" id="contenido" required [(ngModel)]="model.content" name="content"></textarea>
-        </div>
+    <div *ngIf="!section;then correoContent else userContent"></div>
 
-        <button type="submit" [disabled]="!contactForm.form.valid">Enviar</button>
-      </form>
-    </div>
+    <ng-template #correoContent>
+      <div class="inputsDiv">
+        <form (ngSubmit)="sendMessage(); contactForm.reset()" #contactForm="ngForm">
+          <div>
+            <label for="mail"></label>
+            <input type="email" id="mail" placeholder="Tú Correo" required [(ngModel)]="model.mail" name="mail">
+          </div>
+          <div>
+            <label for="contenido"></label>
+            <textarea class="textareaContenido" placeholder="Mensaje" maxlength="500" rows="15" cols="100" id="contenido" required [(ngModel)]="model.content" name="content"></textarea>
+          </div>
+
+          <button type="submit" [disabled]="!contactForm.form.valid">Enviar</button>
+        </form>
+      </div>
+    </ng-template>
+
+    <ng-template #userContent>
+
+    </ng-template>
+
   </div>
 
 

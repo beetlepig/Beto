@@ -9,8 +9,11 @@ import {FirestoreService} from '../firestore/firestore.service';
 export class ContactoComponent implements OnInit {
 
   model = new MailForm('', '');
+  section: boolean;
 
-  constructor(private fireService: FirestoreService) { }
+  constructor(private fireService: FirestoreService) {
+    this.section = false;
+  }
 
   ngOnInit() {
 
@@ -19,6 +22,10 @@ export class ContactoComponent implements OnInit {
   sendMessage() {
     this.fireService.sendMessageWithMail(this.model.mail, this.model.content);
     this.model = new MailForm('', '');
+  }
+
+  onChangeSection(_section: boolean) {
+    this.section = _section;
   }
 
 
