@@ -9,6 +9,7 @@ import {FirestoreService} from '../firestore/firestore.service';
 export class ContactoComponent implements OnInit {
 
   model = new MailForm('', '');
+  modelUser = new UserForm('', '');
   section: boolean;
 
   constructor(private fireService: FirestoreService) {
@@ -24,6 +25,10 @@ export class ContactoComponent implements OnInit {
     this.model = new MailForm('', '');
   }
 
+  loginUser() {
+    this.fireService.verifyLoginUser(this.modelUser.usuario, this.modelUser.contrasena);
+  }
+
   onChangeSection(_section: boolean) {
     this.section = _section;
   }
@@ -36,4 +41,10 @@ export class MailForm {
   constructor(
     public mail: string,
     public content: string) { }
+}
+
+export class UserForm {
+  constructor(
+    public usuario: string,
+    public contrasena: string) { }
 }

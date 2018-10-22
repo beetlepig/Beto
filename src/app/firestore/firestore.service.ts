@@ -44,4 +44,9 @@ export class FirestoreService {
     });
   }
 
+  verifyLoginUser(_usuario: string, __password: string) {
+    console.log(this.usersCollection.ref.where('size', '==', _usuario).where('size', '==', __password));
+  }
 }
+
+
