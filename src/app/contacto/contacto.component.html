@@ -3,8 +3,13 @@
   <div class="containerGeneralMail">
     <div class="selectorDiv">
       <h2>CONTACTO</h2>
-      <div (click)="onChangeSection(false)">Correo</div>
-      <div (click)="onChangeSection(true)">Cuenta Anónima</div>
+      <h4 *ngIf="fireService.loggedUser; else loggedOut" (click)="logout()">
+        Cerrar Sesión
+      </h4>
+      <ng-template #loggedOut>
+        <div (click)="onChangeSection(false)">Correo</div>
+        <div (click)="onChangeSection(true)">Cuenta Anónima</div>
+      </ng-template>
     </div>
     <div *ngIf="!section;then correoContent else userContent"></div>
 
@@ -26,7 +31,7 @@
     </ng-template>
 
     <ng-template #userContent>
-      <div class="inputsDiv">
+      <div class="inputsDiv" *ngIf="!registro; else createAccount">
         <form (ngSubmit)="loginUser(); contactForm.reset()" #contactForm="ngForm">
           <div>
             <label for="user"></label>
@@ -39,6 +44,25 @@
 
           <button type="submit" [disabled]="!contactForm.form.valid">Enviar</button>
         </form>
+        <button type="button" (click)="registro = true; reset()">Registrarse</button>
+      </div>
+    </ng-template>
+
+    <ng-template #createAccount>
+      <div class="inputsDiv">
+      <form (ngSubmit)="createUser(); contactForm.reset()" #contactForm="ngForm">
+        <div>
+          <label for="userCreate"></label>
+          <input type="email" id="userCreate" placeholder="Usuario" required [(ngModel)]="modelUser.usuario" name="mail">
+        </div>
+        <div>
+          <label for="passwordCreate"></label>
+          <input  placeholder="Contraseña" id="passwordCreate" required [(ngModel)]="modelUser.contrasena" name="content">
+        </div>
+
+        <button type="submit" [disabled]="!contactForm.form.valid">Enviar</button>
+      </form>
+      <button type="button" (click)="registro = false; reset()">Login</button>
       </div>
     </ng-template>
 
