@@ -11,7 +11,7 @@
         <div (click)="onChangeSection(true)">Cuenta Anónima</div>
       </ng-template>
     </div>
-    <div *ngIf="!section;then correoContent else userContent"></div>
+    <div *ngIf="!section;then correoContent else userContent">  </div>
 
     <ng-template #correoContent>
       <div class="inputsDiv">
@@ -67,6 +67,8 @@
     </ng-template>
 
   </div>
+
+
 
 
   <app-mini-menu></app-mini-menu>
