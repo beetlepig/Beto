@@ -10,12 +10,10 @@ export class ContactoComponent implements OnInit {
 
   model = new MailForm('', '');
   modelUser = new UserForm('', '');
-  section: boolean;
-  registro: boolean;
+  section: string;
 
   constructor(public fireService: FirestoreService) {
-    this.section = false;
-    this.registro = false;
+    this.section = 'MAIL';
   }
 
   ngOnInit() {
@@ -30,7 +28,7 @@ export class ContactoComponent implements OnInit {
   loginUser() {
     this.fireService.verifyLoginUser(this.modelUser.usuario, this.modelUser.contrasena).then((userLogged) => {
       this.fireService.loggedUser = userLogged;
-      console.log(userLogged);
+      this.getMessages();
     }).catch((error) => {
       console.error(error);
     });
@@ -39,13 +37,17 @@ export class ContactoComponent implements OnInit {
   createUser() {
     this.fireService.verifyUserExist(this.modelUser.usuario).then(() => {
       this.fireService.createAccount(this.modelUser.usuario, this.modelUser.contrasena).then((ok: string) => {
-        console.log(ok);
+        this.loginUser();
       }).catch((error) => {
         console.error(error);
       });
     }).catch((error) => {
       console.error(error);
     });
+  }
+
+  getMessages() {
+    this.section = 'CHAT';
   }
 
   reset() {
@@ -56,7 +58,7 @@ export class ContactoComponent implements OnInit {
     this.fireService.loggedUser = null;
   }
 
-  onChangeSection(_section: boolean) {
+  onChangeSection(_section: string) {
     this.section = _section;
   }
 

@@ -7,13 +7,13 @@
         Cerrar Sesión
       </h4>
       <ng-template #loggedOut>
-        <div (click)="onChangeSection(false)">Correo</div>
-        <div (click)="onChangeSection(true)">Cuenta Anónima</div>
+        <div (click)="onChangeSection('MAIL')">Correo</div>
+        <div (click)="onChangeSection('ACCOUNTLOGIN')">Cuenta Anónima</div>
       </ng-template>
     </div>
-    <div *ngIf="!section;then correoContent else userContent">  </div>
 
-    <ng-template #correoContent>
+    <div [ngSwitch]="section">
+      <ng-container *ngSwitchCase="'MAIL'">
       <div class="inputsDiv">
         <form (ngSubmit)="sendMessage(); contactForm.reset()" #contactForm="ngForm">
           <div>
@@ -28,10 +28,9 @@
           <button type="submit" [disabled]="!contactForm.form.valid">Enviar</button>
         </form>
       </div>
-    </ng-template>
-
-    <ng-template #userContent>
-      <div class="inputsDiv" *ngIf="!registro; else createAccount">
+    </ng-container>
+      <ng-container *ngSwitchCase="'ACCOUNTLOGIN'">
+      <div class="inputsDiv">
         <form (ngSubmit)="loginUser(); contactForm.reset()" #contactForm="ngForm">
           <div>
             <label for="user"></label>
@@ -44,11 +43,10 @@
 
           <button type="submit" [disabled]="!contactForm.form.valid">Enviar</button>
         </form>
-        <button type="button" (click)="registro = true; reset()">Registrarse</button>
+        <button type="button" (click)="onChangeSection('ACCOUNTREGISTER'); reset()">Registrarse</button>
       </div>
-    </ng-template>
-
-    <ng-template #createAccount>
+    </ng-container>
+      <ng-container *ngSwitchCase="'ACCOUNTREGISTER'">
       <div class="inputsDiv">
       <form (ngSubmit)="createUser(); contactForm.reset()" #contactForm="ngForm">
         <div>
@@ -62,13 +60,13 @@
 
         <button type="submit" [disabled]="!contactForm.form.valid">Enviar</button>
       </form>
-      <button type="button" (click)="registro = false; reset()">Login</button>
+      <button type="button" (click)="onChangeSection('ACCOUNTLOGIN'); reset()">Login</button>
       </div>
-    </ng-template>
+    </ng-container>
+      <ng-container *ngSwitchCase="'CHAT'"></ng-container>
+    </div>
 
   </div>
-
-
 
 
   <app-mini-menu></app-mini-menu>
