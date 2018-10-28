@@ -56,6 +56,7 @@ export class ContactoComponent implements OnInit {
 
   logout() {
     this.fireService.loggedUser = null;
+    this.section = 'MAIL';
   }
 
   onChangeSection(_section: string) {

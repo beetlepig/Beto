@@ -24,7 +24,8 @@
 }
 
 .selectorDiv {
-  flex-grow: 1;
+  width: 28%;
+  margin-right: 0.6%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -32,11 +33,23 @@
 }
 
 .inputsDiv {
-  flex-grow: 2;
-  background-color: rgba(200, 100, 100, 0.3);
+  flex-grow: 1;
+  background-color: rgba(200, 100, 200, 0.5);
+}
+
+.contactoForms {
+  height: 80%;
+}
+
+.textAreaContainerDiv {
+  height: 50%;
+  background-color: red;
 }
 
 .textareaContenido {
   resize: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
 }
 
