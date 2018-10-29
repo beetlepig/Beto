@@ -32,7 +32,7 @@ export class ContactoComponent implements OnInit {
 
   sendChatMessage() {
     this.chatMessagesArray.push({by: 'user', message: this.inputMessageChat});
-    this.fireService.sendChatMessage(new MessageModel(this.chatMessagesArray, null)).then(() => {
+    this.fireService.sendChatMessage(new MessageModel(this.chatMessagesArray)).then(() => {
       this.inputMessageChat = '';
     }).catch((error) => {
       console.error(error);
@@ -76,13 +76,11 @@ export class ContactoComponent implements OnInit {
   }
 
   logout() {
-    this.fireService.loggedUser = null;
+    this.fireService.logout();
     this.section = 'MAIL';
     this.inputMessageChat = null;
     this.chatMessagesArray = null;
     this.messagesSubscription.unsubscribe();
-    this.fireService.itemMessage = null;
-    this.fireService.messageDoc = null;
   }
 
   onChangeSection(_section: string) {
