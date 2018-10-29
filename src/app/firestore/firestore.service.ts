@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference} from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+  AngularFirestoreDocument, DocumentChangeAction,
+  DocumentReference,
+  QueryDocumentSnapshot
+} from '@angular/fire/firestore';
 import {map, take} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 
@@ -21,7 +27,7 @@ export interface IMessage {
 
 export interface IMailMessage {
   mail: string;
-  message: string;
+  message: string[];
 }
 
 export interface SimpleMessage {
@@ -78,11 +84,22 @@ export class FirestoreService {
   }
 
   sendMessageWithMail(_mail: string, _message: string) {
-      this.messagesMailCollection.add({mail: _mail, message: _message}).then((docRef: DocumentReference) => {
-      //  console.log(value1);
-      }).catch((reason: any) => {
-        console.log(reason);
-      });
+    this.afs.collection('mailMessages', ref =>
+      ref.where('mail', '==', _mail )).snapshotChanges().pipe(take(1)).subscribe((val: DocumentChangeAction<IMailMessage>[]) => {
+        if (val.length === 0) {
+          this.messagesMailCollection.add({mail: _mail, message: [_message]}).then((docRef: DocumentReference) => {
+            //  console.log(value1);
+          }).catch((reason: any) => {
+            console.log(reason);
+          });
+        } else {
+          const valSnapshot = val[0];
+          const newMailMessagesArray = valSnapshot.payload.doc.data().message;
+          newMailMessagesArray.push(_message);
+          valSnapshot.payload.doc.ref.update({mail: _mail, message: newMailMessagesArray});
+        }
+    });
+
   }
 
   verifyLoginUser(_usuario: string, _password: string): Promise<IUserID> {
