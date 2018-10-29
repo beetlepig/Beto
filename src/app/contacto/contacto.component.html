@@ -28,34 +28,34 @@
         </form>
     </ng-container>
       <ng-container *ngSwitchCase="'ACCOUNTLOGIN'">
-        <form (ngSubmit)="loginUser(); contactForm.reset()" #contactForm="ngForm">
+        <form (ngSubmit)="loginUser(modelUser); contactForm.reset()" #contactForm="ngForm">
           <div>
             <label for="user"></label>
             <input type="email" id="user" placeholder="Usuario" required [(ngModel)]="modelUser.usuario" name="mail">
           </div>
           <div>
             <label for="password"></label>
-            <input  placeholder="Contraseña" id="password" required [(ngModel)]="modelUser.contrasena" name="content">
+            <input type="password"  placeholder="Contraseña" id="password" required [(ngModel)]="modelUser.contrasena" name="content">
           </div>
 
           <button type="submit" [disabled]="!contactForm.form.valid">Enviar</button>
         </form>
-        <button type="button" (click)="onChangeSection('ACCOUNTREGISTER'); reset()">Registrarse</button>
+        <button type="button" (click)="onChangeSection('ACCOUNTREGISTER'); contactForm.reset()">Registrarse</button>
     </ng-container>
       <ng-container *ngSwitchCase="'ACCOUNTREGISTER'">
-      <form (ngSubmit)="createUser(); contactForm.reset()" #contactForm="ngForm">
+      <form (ngSubmit)="createUser(); CreateUserForm.reset()" #CreateUserForm="ngForm">
         <div>
           <label for="userCreate"></label>
-          <input type="email" id="userCreate" placeholder="Usuario" required [(ngModel)]="modelUser.usuario" name="mail">
+          <input type="text" id="userCreate" placeholder="Usuario" required [(ngModel)]="modelUser.usuario" name="usuario">
         </div>
         <div>
           <label for="passwordCreate"></label>
-          <input  placeholder="Contraseña" id="passwordCreate" required [(ngModel)]="modelUser.contrasena" name="content">
+          <input type="password"  placeholder="Contraseña" id="passwordCreate" required [(ngModel)]="modelUser.contrasena" name="contrasena">
         </div>
 
-        <button type="submit" [disabled]="!contactForm.form.valid">Enviar</button>
+        <button type="submit" [disabled]="!CreateUserForm.form.valid">Enviar</button>
       </form>
-      <button type="button" (click)="onChangeSection('ACCOUNTLOGIN'); reset()">Login</button>
+      <button type="button" (click)="onChangeSection('ACCOUNTLOGIN'); CreateUserForm.reset()">Login</button>
     </ng-container>
       <ng-container *ngSwitchCase="'CHAT'">
         <div class="chatContactContainer">

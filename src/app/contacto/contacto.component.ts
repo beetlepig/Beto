@@ -39,8 +39,9 @@ export class ContactoComponent implements OnInit {
     });
   }
 
-  loginUser() {
-    this.fireService.verifyLoginUser(this.modelUser.usuario, this.modelUser.contrasena).then((userLogged) => {
+  loginUser(_model: UserForm) {
+    const model = _model;
+    this.fireService.verifyLoginUser(model.usuario, model.contrasena).then((userLogged) => {
       this.fireService.loggedUser = userLogged;
       this.getMessages();
     }).catch((error) => {
@@ -49,9 +50,10 @@ export class ContactoComponent implements OnInit {
   }
 
   createUser() {
-    this.fireService.verifyUserExist(this.modelUser.usuario).then(() => {
-      this.fireService.createAccount(this.modelUser.usuario, this.modelUser.contrasena).then((ok: string) => {
-        this.loginUser();
+    const model = {usuario: this.modelUser.usuario, contrasena: this.modelUser.contrasena};
+    this.fireService.verifyUserExist(model.usuario).then(() => {
+      this.fireService.createAccount(model.usuario, model.contrasena).then((ok: string) => {
+        this.loginUser(model);
       }).catch((error) => {
         console.error(error);
       });
@@ -70,6 +72,7 @@ export class ContactoComponent implements OnInit {
 
   reset() {
     this.modelUser = new UserForm('', '');
+    this.model = new MailForm('', '');
   }
 
   logout() {
