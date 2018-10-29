@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import {AngularFirestore, AngularFirestoreCollection, DocumentReference} from '@angular/fire/firestore';
-import {take} from 'rxjs/operators';
+import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference} from '@angular/fire/firestore';
+import {map, take} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 
 export interface IUser {
@@ -9,11 +10,39 @@ export interface IUser {
   user: string|null;
 }
 
-export class LoggedUserModel implements  IUser {
+export interface IUserID extends IUser {
+  id: string;
+  mail: string|null;
+  password: string|null;
+  user: string|null;
+}
+
+export interface IMessage {
+  chat: SimpleMessage[] | null;
+  toMailMessage: string | null;
+}
+
+export interface SimpleMessage {
+  by: string;
+  message: string;
+}
+
+export class MessageModel implements  IMessage {
+  chat: SimpleMessage[] | null;
+  toMailMessage: string | null;
+  constructor(_chat: SimpleMessage[] | null, _toMailMessage: string | null) {
+    this.chat = _chat;
+    this.toMailMessage = _toMailMessage;
+  }
+}
+
+export class LoggedUserModel implements  IUserID {
+  id: string;
   mail: string | null;
   password: string | null;
   user: string | null;
-  constructor (_mail: string | null, _password: string | null, _user: string | null) {
+  constructor (_id: string, _mail: string | null, _password: string | null, _user: string | null) {
+    this.id = _id;
     this.mail = _mail;
     this.password = _password;
     this.user = _user;
@@ -38,8 +67,10 @@ export interface IMessages {
 export class FirestoreService {
   private usersCollection: AngularFirestoreCollection<IUser>;
   private messagesCollection: AngularFirestoreCollection<IMessages>;
+  messageDoc: AngularFirestoreDocument<IMessage>;
+  itemMessage: Observable<IMessage>;
 
-  loggedUser: IUser;
+  loggedUser: IUserID;
 
   constructor(private afs: AngularFirestore) {
     this.usersCollection = afs.collection<IUser>('usuarios');
@@ -59,15 +90,20 @@ export class FirestoreService {
     });
   }
 
-  verifyLoginUser(_usuario: string, _password: string): Promise<IUser> {
-    return new Promise<IUser>((resolve, reject) => {
+  verifyLoginUser(_usuario: string, _password: string): Promise<IUserID> {
+    return new Promise<IUserID>((resolve, reject) => {
       this.afs.collection('usuarios', ref =>
-        ref.where('user', '==', _usuario ).where('password', '==', _password)).valueChanges().pipe(take(1)).subscribe((val) => {
-          if (val.length === 0) {
-            reject('no user found');
-          }
-        val.forEach((documentValues: IUser) => {
-          resolve(new LoggedUserModel(documentValues.mail, documentValues.password, documentValues.user));
+        ref.where('user', '==', _usuario ).where('password', '==', _password)).snapshotChanges().pipe(take(1),
+        map(actions => actions.map(a => {
+          const data = a.payload.doc.data() as IUser;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        }))).subscribe((val) => {
+              if (val.length === 0) {
+                reject('no user found');
+              }
+        val.forEach((documentValues: IUserID) => {
+          resolve(new LoggedUserModel(documentValues.id, documentValues.mail, documentValues.password, documentValues.user));
         });
       }, (error) => {
           reject(error);
@@ -75,6 +111,15 @@ export class FirestoreService {
         //  console.log('complete');
       });
     });
+  }
+
+  getUserMessages() {
+   this.messageDoc = this.messagesCollection.doc(this.loggedUser.id);
+   this.itemMessage = this.messageDoc.valueChanges();
+  }
+
+  sendChatMessage(arrayChat: IMessage): Promise<void> {
+    return this.messageDoc.update({chat: arrayChat.chat, toMailMessage: arrayChat.toMailMessage});
   }
 
   verifyUserExist(_usuario: string) {

@@ -53,3 +53,35 @@
   height: 100%;
 }
 
+.chatContactContainer {
+  width: 100%;
+  height: 90%;
+  background-color: red;
+}
+
+.inputChatContactDiv {
+  height: 10%;
+  display: flex;
+  background-color: aquamarine;
+}
+
+.inputChatContactDiv input {
+  padding-left: 1%;
+  padding-right: 1%;
+  flex-grow: 5;
+}
+
+.inputChatContactDiv div {
+  flex-grow: 1;
+}
+
+.chatContactContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.userContactMessage {
+  align-self: flex-end;
+}
+
+

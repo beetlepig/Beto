@@ -58,7 +58,10 @@
       <button type="button" (click)="onChangeSection('ACCOUNTLOGIN'); reset()">Login</button>
     </ng-container>
       <ng-container *ngSwitchCase="'CHAT'">
-        <div></div>
+        <div class="chatContactContainer">
+          <h2 *ngFor="let message of chatMessagesArray" ngClass="{{(message.by == 'user')? 'userContactMessage': 'adminMessage'}}">{{message.message}}</h2>
+        </div>
+        <div class="inputChatContactDiv"><input type="text" placeholder="Escribe un Mensaje" #box (keyup)="onKey(box.value)"><button type="button" (click)="sendChatMessage(); box.value = ''">send</button></div>
       </ng-container>
     </div>
 

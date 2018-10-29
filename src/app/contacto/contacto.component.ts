@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FirestoreService} from '../firestore/firestore.service';
+import {FirestoreService, IMessage, MessageModel, SimpleMessage} from '../firestore/firestore.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-contacto',
@@ -11,9 +12,13 @@ export class ContactoComponent implements OnInit {
   model = new MailForm('', '');
   modelUser = new UserForm('', '');
   section: string;
+  inputMessageChat: string;
+  messagesSubscription: Subscription;
+  chatMessagesArray: SimpleMessage[];
 
   constructor(public fireService: FirestoreService) {
     this.section = 'MAIL';
+    this.inputMessageChat = '';
   }
 
   ngOnInit() {
@@ -23,6 +28,15 @@ export class ContactoComponent implements OnInit {
   sendMessage() {
     this.fireService.sendMessageWithMail(this.model.mail, this.model.content);
     this.model = new MailForm('', '');
+  }
+
+  sendChatMessage() {
+    this.chatMessagesArray.push({by: 'user', message: this.inputMessageChat});
+    this.fireService.sendChatMessage(new MessageModel(this.chatMessagesArray, null)).then(() => {
+      this.inputMessageChat = '';
+    }).catch((error) => {
+      console.error(error);
+    });
   }
 
   loginUser() {
@@ -48,6 +62,10 @@ export class ContactoComponent implements OnInit {
 
   getMessages() {
     this.section = 'CHAT';
+    this.fireService.getUserMessages();
+    this.messagesSubscription = this.fireService.itemMessage.subscribe((value: IMessage) => {
+      this.chatMessagesArray = value.chat;
+    });
   }
 
   reset() {
@@ -57,10 +75,19 @@ export class ContactoComponent implements OnInit {
   logout() {
     this.fireService.loggedUser = null;
     this.section = 'MAIL';
+    this.inputMessageChat = null;
+    this.chatMessagesArray = null;
+    this.messagesSubscription.unsubscribe();
+    this.fireService.itemMessage = null;
+    this.fireService.messageDoc = null;
   }
 
   onChangeSection(_section: string) {
     this.section = _section;
+  }
+
+  onKey(value: string) {
+    this.inputMessageChat = value;
   }
 
 
