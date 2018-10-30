@@ -18,6 +18,7 @@ import { AboutAlexComponent } from './about-alex/about-alex.component';
 import { AlexLogoComponent } from './alex-logo/alex-logo.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import {FormsModule} from '@angular/forms';
+import { AdminComponent } from './admin/admin.component';
 
 
 
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
   { path: 'information', component: InformationSectionComponent },
   { path: 'Alex', component: AboutAlexComponent },
   { path: 'Contact', component: ContactoComponent },
+  { path: 'Admin', component: AdminComponent },
   { path: '**', component: HomeComponent }
 ];
 
@@ -43,7 +45,8 @@ const appRoutes: Routes = [
     MiniMenuComponent,
     AboutAlexComponent,
     AlexLogoComponent,
-    ContactoComponent
+    ContactoComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

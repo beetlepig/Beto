@@ -3,8 +3,7 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
   AngularFirestoreDocument, DocumentChangeAction,
-  DocumentReference,
-  QueryDocumentSnapshot
+  DocumentReference
 } from '@angular/fire/firestore';
 import {map, take} from 'rxjs/operators';
 import {Observable} from 'rxjs';
@@ -21,9 +20,7 @@ export interface IUserID extends IUser {
   user: string;
 }
 
-export interface IMessage {
-  chat: SimpleMessage[] | null;
-}
+
 
 export interface IMailMessage {
   mail: string;
@@ -33,13 +30,6 @@ export interface IMailMessage {
 export interface SimpleMessage {
   by: string;
   message: string;
-}
-
-export class MessageModel implements  IMessage {
-  chat: SimpleMessage[] | null;
-  constructor(_chat: SimpleMessage[]) {
-    this.chat = _chat;
-  }
 }
 
 export class LoggedUserModel implements  IUserID {
@@ -59,7 +49,12 @@ interface IChatAttributes {
 }
 
 export interface IMessages {
+  user: string;
   chat: IChatAttributes[];
+}
+
+export interface IMessagesID extends IMessages {
+  id: string;
 }
 
 
@@ -69,18 +64,24 @@ export interface IMessages {
 
 export class FirestoreService {
   private usersCollection: AngularFirestoreCollection<IUser>;
+  private adminCollection: AngularFirestoreCollection<IUser>;
   private messagesCollection: AngularFirestoreCollection<IMessages>;
   private messagesMailCollection: AngularFirestoreCollection<IMailMessage>;
-  private messageDoc: AngularFirestoreDocument<IMessage>;
-  itemMessage: Observable<IMessage>;
+  private messageDoc: AngularFirestoreDocument<IMessages>;
+  itemMessage: Observable<IMessagesID>;
+  allMails: Observable<IMailMessage[]>;
+  allChats: Observable<IMessagesID[]>;
 
   loggedUser: IUserID;
+  loggedAdmin: IUser;
 
   constructor(private afs: AngularFirestore) {
     this.usersCollection = afs.collection<IUser>('usuarios');
+    this.adminCollection = afs.collection<IUser>('usuariosAdmin');
     this.messagesCollection = afs.collection<IMessages>('mensajes');
     this.messagesMailCollection = afs.collection<IMailMessage>('mailMessages');
     this.loggedUser = null;
+    this.loggedAdmin = null;
   }
 
   sendMessageWithMail(_mail: string, _message: string) {
@@ -125,13 +126,47 @@ export class FirestoreService {
     });
   }
 
-  getUserMessages() {
-   this.messageDoc = this.messagesCollection.doc(this.loggedUser.id);
-   this.itemMessage = this.messageDoc.valueChanges();
+  verifyLoginAdmin(_usuario: string, _password: string): Promise<IUser> {
+    return new Promise<IUser>((resolve, reject) => {
+      this.afs.collection('usuariosAdmin', ref =>
+        ref.where('user', '==', _usuario ).where('password', '==', _password)).valueChanges().pipe(take(1)).subscribe((val) => {
+        if (val.length === 0) {
+          reject('no user found');
+        }
+        val.forEach((documentValues: IUser) => {
+          resolve({user: documentValues.password, password: documentValues.user});
+        });
+      }, (error) => {
+        reject(error);
+      }, () => {
+        //  console.log('complete');
+      });
+    });
   }
 
-  sendChatMessage(arrayChat: IMessage): Promise<void> {
-    return this.messageDoc.update({chat: arrayChat.chat});
+  getUserMessages() {
+   this.messageDoc = this.messagesCollection.doc(this.loggedUser.id);
+   this.itemMessage = this.messageDoc.snapshotChanges().pipe(map(action => {
+     const data = action.payload.data() as IMessages;
+     const id = action.payload.id;
+     return { id, ...data };
+   }));
+  }
+
+  getAllUserMessages() {
+    this.allChats = this.messagesCollection.snapshotChanges().pipe(map(actions => actions.map(a => {
+      const data = a.payload.doc.data() as IMessages;
+      const id = a.payload.doc.id;
+      return { id, ...data };
+    })));
+  }
+
+  getMailMessages() {
+    this.allMails = this.messagesMailCollection.valueChanges();
+  }
+
+  sendChatMessage(arrayChat: IMessagesID): Promise<void> {
+   return this.messagesCollection.doc(arrayChat.id).update({chat: arrayChat.chat});
   }
 
   verifyUserExist(_usuario: string) {

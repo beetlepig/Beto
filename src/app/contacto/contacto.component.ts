@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FirestoreService, IMessage, MessageModel, SimpleMessage} from '../firestore/firestore.service';
+import {FirestoreService, IMessages, IMessagesID, SimpleMessage} from '../firestore/firestore.service';
 import {Subscription} from 'rxjs';
 
 @Component({
@@ -14,7 +14,7 @@ export class ContactoComponent implements OnInit {
   section: string;
   inputMessageChat: string;
   messagesSubscription: Subscription;
-  chatMessagesArray: SimpleMessage[];
+  chatDoc: IMessagesID;
 
   constructor(public fireService: FirestoreService) {
     this.section = 'MAIL';
@@ -31,8 +31,8 @@ export class ContactoComponent implements OnInit {
   }
 
   sendChatMessage() {
-    this.chatMessagesArray.push({by: 'user', message: this.inputMessageChat});
-    this.fireService.sendChatMessage(new MessageModel(this.chatMessagesArray)).then(() => {
+    this.chatDoc.chat.push({by: 'user', message: this.inputMessageChat});
+    this.fireService.sendChatMessage({id: this.chatDoc.id, user: this.fireService.loggedUser.user, chat: this.chatDoc.chat}).then(() => {
       this.inputMessageChat = '';
     }).catch((error) => {
       console.error(error);
@@ -65,8 +65,8 @@ export class ContactoComponent implements OnInit {
   getMessages() {
     this.section = 'CHAT';
     this.fireService.getUserMessages();
-    this.messagesSubscription = this.fireService.itemMessage.subscribe((value: IMessage) => {
-      this.chatMessagesArray = value.chat;
+    this.messagesSubscription = this.fireService.itemMessage.subscribe((value: IMessagesID) => {
+      this.chatDoc = value;
     });
   }
 
@@ -79,7 +79,7 @@ export class ContactoComponent implements OnInit {
     this.fireService.logout();
     this.section = 'MAIL';
     this.inputMessageChat = null;
-    this.chatMessagesArray = null;
+    this.chatDoc = null;
     this.messagesSubscription.unsubscribe();
   }
 
