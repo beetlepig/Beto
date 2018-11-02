@@ -59,7 +59,9 @@
     </ng-container>
       <ng-container *ngSwitchCase="'CHAT'">
         <div class="chatContactContainer">
-          <h2 *ngFor="let message of chatDoc.chat" ngClass="{{(message.by == 'user')? 'userContactMessage': 'adminMessage'}}">{{message.message}}</h2>
+          <div *ngIf="chatDoc" class="messagesIfContainer">
+          <h2  *ngFor="let message of chatDoc.chat" ngClass="{{(message.by == 'user')? 'userContactMessage': 'adminMessage'}}">{{message.message}}</h2>
+          </div>
         </div>
         <div class="inputChatContactDiv"><input type="text" placeholder="Escribe un Mensaje" #box (keyup)="onKey(box.value)"><button type="button" (click)="sendChatMessage(); box.value = ''">send</button></div>
       </ng-container>
