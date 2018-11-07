@@ -7,7 +7,7 @@
 
 
 
-  <div class="messagesContainer"><h2 *ngFor="let message of messagesArray" ngClass="{{message.isBeto? 'betoMessage': 'userMessage'}}">{{message.message}}</h2></div>
+  <div class="messagesContainer" #scrollMePapu><h2 *ngFor="let message of messagesArray" ngClass="{{message.isBeto? 'betoMessage': 'userMessage'}}">{{message.message}}</h2></div>
 
   <div class="chatBar">
 

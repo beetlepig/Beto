@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewChecked, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -6,7 +6,8 @@ import {Observable} from 'rxjs';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, AfterViewChecked {
+  @ViewChild('scrollMePapu') private elChatContainer: ElementRef;
 
   scriptGeneralLength: number;
   subActualLength: number;
@@ -451,6 +452,18 @@ export class ChatComponent implements OnInit {
 
         ejecutar();
     });
+  }
+
+  ngAfterViewChecked(): void {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom(): void {
+    try {
+      this.elChatContainer.nativeElement.scrollTop = this.elChatContainer.nativeElement.scrollHeight;
+    } catch (err) {
+
+    }
   }
 
 
