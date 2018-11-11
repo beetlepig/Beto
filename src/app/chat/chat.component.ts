@@ -39,13 +39,13 @@ export class ChatComponent implements OnInit, AfterViewChecked {
           b: {message: 'Aquí estoy', to: 2}, c: {message: 'Identifícate', to: 3}, d: {message: null} }, general: false, to: null
       },
 
-      1: {message: 'Soy Beto, Me encontré tu numero en el tablero de la u', delay: 3000, options: false, general: false, to: 4},
+      1: {message: 'Soy Alex, Me encontré tu numero en el tablero de la u', delay: 3000, options: false, general: false, to: 4},
 
-      2: {message: 'Que bueno, Me dicen Beto. Entonces tenes los inciensos? me encontre tu numero en la u', delay: 3000,
+      2: {message: 'Que bueno, Me dicen Alex. Entonces tenes los inciensos? me encontre tu numero en la u', delay: 3000,
          options: false, general: false, to: 4
       },
 
-      3: {message: 'Tranquilo, soy Beto. Vos sos el del incienso? me encontré tu numero en la u', delay: 3000, options: false,
+      3: {message: 'Tranquilo, soy Alex. Vos sos el del incienso? me encontré tu numero en la u', delay: 3000, options: false,
         general: false, to: 4
       },
 
@@ -172,7 +172,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     },
     3: {
       condictions:  [{condicion: 'estado', operator: '===', valor: ''}],
-      0: {message: 'No alcanzo a quemar, igual lo voy a llevar a la party por si algo', delay: 2000, general: false, to: null},
+      0: {message: 'No alcanzo a quemar, igual lo voy a llevar a la party por si algo', delay: 2000, general: false, to: 1},
       1: {message: 'Un parcero me dijo que quiere probar', delay: 2000, options: {a: {message: 'Pinta bien, depronto le guste', to: 2},
           b: {message: 'pero eso ni es hierba de verdad', to: 3},
           c: {message: 'solo sea piadoso con el chino, no se pase de verga', to: 3},
@@ -187,7 +187,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
         options: false, general: false, to: 6
       },
 
-      4: {message: 'jajaj le voy a dar lo normal, si el me pide más no es mi culpa', delay: 2000,
+      4: {message: 'jajaj le voy a dar lo normal, si el me pide más ahí vemos', delay: 2000,
         options: false, general: false, to: 6
       },
 
@@ -195,12 +195,182 @@ export class ChatComponent implements OnInit, AfterViewChecked {
         options: false, general: false, to: 6
       },
 
-      6: {message: 'Preparo mi nave y despego para allá, hablamos', delay: 2000,
-        options: false, general: false, to: null
-      },
+      6: {message: 'Preparo mi nave y despego para allá, hablamos', delay: 15000,
+        options: false, general: true, to: null
+      }
     },
 
     4: {
+      condictions:  [{condicion: 'estado', operator: '===', valor: ''}],
+      0: {message: 'Qué más', delay: 2000,
+        options: false, general: false, to: 1
+      },
+      1: {message: 'Hablamelo', delay: 2000, options: {a: {message: 'Como está la fiesta?', to: 2},
+          b: {message: 'no te pillaron el paquete?', to: 3},
+          c: {message: null},
+          d: {message: null},
+        },
+        general: false, to: null
+      },
+      2 : {message: 'Excelente, apenas llegue pero promete', delay: 2000,
+        options: false, general: false, to: 4
+      },
+      3 : {message: 'Para nada, como saque el material del sobre y lo puse en una bolsa, casí no se notaba', delay: 5000,
+        options: false, general: false, to: 4
+      },
+      4 : {message: 'Ahí acabo de llegar Milton', delay: 5000,
+        options: {
+          a: {message: 'El socio que decias?', to: 5},
+          b: {message: null},
+          c: {message: null},
+          d: {message: null}
+        },
+        general: false, to: null
+      },
+      5 : {message: 'No, Milton es el que compra el guaro', delay: 5000,
+        options: {
+          a: {message: 'Ese milton es una mala influencia', to: 6},
+          b: {message: 'Entonces quien es el que decias?', to: 7},
+          c: {message: null},
+          d: {message: null}
+        },
+        general: false, to: null
+      },
+      6 : {message: 'Desde cuando gastar el guaro es ser mala influencia, de donde yo vengo es todo lo contrario', delay: 5000,
+        options: {
+          a: {message: 'Entonces quien es el que decias?', to: 7},
+          b: {message: null},
+          c: {message: null},
+          d: {message: null}
+        },
+        general: false, to: null
+      },
+      7 : {message: 'Se llama Beto, lo conozco desde que eramos niños', delay: 5000,
+        options: {
+          a: {message: 'Y como es el?', to: 8},
+          b: {message: 'Socios de toda la vida pues', to: 10},
+          c: {message: 'Para conocerce de siempre, es raro que el nunca haya fumado', to: 11},
+          d: {message: null}
+          },
+        general: false, to: null
+      },
+      8 : {message: 'Es bastante pro en el fornite, además es todo estudioso y casi no le gustan las rumbas.', delay: 3000,
+        options: false, general: false, to: 9
+      },
+      9 : {message: 'Fue dificil convencerlo para que viniera', delay: 3000,
+        options:
+          {
+            a: {message: 'Como lo suponia, son bastantes diferentes', to: 13},
+            b: {message: null},
+            c: {message: null},
+            d: {message: null},
+          },
+        general: false, to: null
+      },
+      10 : {message: 'De siempre, aunque al man casi no le gusta salir conmigo', delay: 3000,
+        options: {
+          a: {message: 'Por qué, Alex?', to: 13},
+          b: {message: null},
+          c: {message: null},
+          d: {message: null}
+        },
+        general: false, to: null
+      },
+      11 : {message: 'Es que casi no sale conmigo, normalmente se la pasa estudiando.', delay: 3000,
+        options: {
+          a: {message: 'Es lo contrario a vos', to: 12},
+          b: {message: null},
+          c: {message: null},
+          d: {message: null},
+        },
+        general: false, to: null
+      },
+      12 : {message: 'jajaja yo tambien estudio, solo que me gusta salir.', delay: 3000,
+        options: false, general: false, to: 13
+      },
+      13 : {message: 'Lo que pasa es que él ha estudiado casi toda su vida becado, ' +
+          'no tiene mucha plata que digamos para pagar una matricula completa', delay: 3000,
+        options: false, general: false, to: 14
+      },
+      14 : {message: 'Por eso perdio el habito de salir, no le queda tiempo', delay: 3000,
+        options: false, general: false, to: 15
+      },
+      15 : {message: 'Hablando del rey de roma, adivina quien llegó', delay: 3000,
+        options: {
+          a: {message: 'La policia?', to: 16},
+          b: {message: 'Beto?', to: 16},
+          c: {message: null},
+          d: {message: null},
+        },
+        general: false, to: null
+      },
+      16 : {message: 'No, llego el flaco, ese man pone la musica sabrosa', delay: 3000,
+        options: {
+            a: {message: '.-.', to: 17},
+            b: {message: '(._.)', to: 17},
+            c: {message: '(._. ) ( ._.)', to: 17},
+            d: {message: '( ._.) (._. )', to: 17}
+        },
+        general: false, to: null
+      },
+      17 : {message: 'Te voy a decir algo', delay: 5000,
+        options: false, general: false, to: 18
+      },
+      18 : {message: 'En realidad el no me dijo que queria fumar, le voy a decir que es otra cosa para pruebe', delay: 3000,
+        options: false, general: false, to: 19
+      },
+      19 : {message: 'Ya es hora que se gradue no?', delay: 3000,
+        options:
+          {
+            a: {message: 'Claro que no, el debe decidir por si mismo', to: 20},
+            b: {message: 'Si, dale', to: 21},
+            c: {message: 'Yo creo que le harias un favor, a ver si se relaja un poco del estudio', to: 22},
+            d: {message: 'Si es con hierba, pues está bien creo yo', to: 23}
+          },
+        general: false, to: null
+      },
+      20 : {
+        message: 'El va a decidir voluntariamente que quiere probar :)', delay: 6000,
+        options: false, general: false, to: 24
+      },
+      21 : {
+        message: 'Sisa, solo es para que se relaje, no es nada del otro mundo', delay: 6000,
+        options: false, general: false, to: 24
+      },
+      22 : {
+        message: 'Nada como un buen chirrete despues de un parcial', delay: 6000,
+        options: false, general: false, to: 24
+      },
+      23 : {
+        message: 'See, y este spice hasta huele a aromatica', delay: 6000,
+        options: false, general: false, to: 24
+      },
+      24 : {
+        message: 'Por fin llegó Beto, voy a hablar muy seriamente con el muchacho.', delay: 15000,
+        options: false, general: false, to: 25
+      },
+      25 : {
+        message: '', delay: 5000,
+        options:
+          {
+            a: {message: 'Hola?', to: 26},
+            b: {message: null},
+            c: {message: null},
+            d: {message: null},
+          },
+        general: false, to: null
+      },
+      26 : {
+        message: 'Ayudame', delay: 3000,
+        options: false, general: false, to: 27
+      },
+      27 : {
+        message: 'Este man se puso mal', delay: 5000,
+        options: false, general: true, to: null
+      }
+    },
+
+    5: {
       condictions: [{condicion: 'estado', operator: '===', valor: 'spice'}],
       0: {message: 'listo, al fin quemé', delay: 3000, options: {a: {message: 'y que tal?', to: 1},
           b: {message: 'te sientes bien?', to: 2},
@@ -257,7 +427,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
       }
     },
 
-    5: {
+    6: {
       0: {message: 'finish', delay: 1000, general: true, to: null}
     }
 
