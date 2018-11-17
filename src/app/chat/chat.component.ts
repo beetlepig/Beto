@@ -361,13 +361,49 @@ export class ChatComponent implements OnInit, AfterViewChecked {
         general: false, to: null
       },
       26 : {
-        message: 'Ayudame', delay: 3000,
+        message: 'Ayudame', delay: 9000,
         options: false, general: false, to: 27
       },
       27 : {
         message: 'Este man se puso mal', delay: 5000,
+        options:
+          {
+            a: {message: 'Que tiene?', to: 28},
+            b: {message: 'Llevalo al hospital', to: 30},
+            c: {message: 'por lo que le diste?', to: 31},
+            d: {message: null},
+          }, general: false, to: null
+      },
+      28 : {
+        message: 'Está muy alterado y sudando mucho', delay: 5000,
+        options: false, general: false, to: 29
+      },
+      29 : {
+        message: 'Me estoy asustando porque dice que le duele el corazon', delay: 5000,
+        options: {
+          a: {message: 'Llevalo al hospital', to: 30},
+          b: {message: null},
+          c: {message: null},
+          d: {message: null},
+        }, general: false, to: null
+      },
+      30 : {
+        message: 'Está bien, pedire un taxi', delay: 5000,
+        options: false, general: false, to: 32
+      },
+      31 : {
+        message: 'Es lo mas seguro, fue justo despues de que fumara', delay: 5000,
+        options: {
+          a: {message: 'Que tiene?', to: 28},
+          b: {message: 'Llevalo al hospital', to: 30},
+          c: {message: null},
+          d: {message: null},
+        }, general: false, to: null
+      },
+      32 : {
+        message: 'Ya llego el taxi, hablamos cuando llegue al hospital', delay: 12000,
         options: false, general: true, to: null
-      }
+      },
     },
 
     5: {
@@ -449,7 +485,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
       this.nextiMessage().subscribe((next) => {
         console.log('entroSubscribe');
         if (this.actualGeneralPosition === 2) {
-          this.showSpice = true;
+         // this.showSpice = true;
         } else {
           this.showSpice = false;
         }
