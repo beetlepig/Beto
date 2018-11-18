@@ -135,7 +135,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
           d: {message: null},
       }, general: false, to: null},
 
-      1: {message: 'no, solo dice de que es más potente y se refieren como una "fake weed". Que raro', delay: 3000, options: false,
+      1: {message: 'no, solo dice "not for human consumption" y se refieren como una "fake weed". Que raro', delay: 3000, options: false,
         general: false, to: 4
       },
 
@@ -215,7 +215,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
       2 : {message: 'Excelente, apenas llegue pero promete', delay: 2000,
         options: false, general: false, to: 4
       },
-      3 : {message: 'Para nada, como saque el material del sobre y lo puse en una bolsa, casí no se notaba', delay: 5000,
+      3 : {message: 'Para nada, como saque el material del sobre y lo puse en una bolsa, casi no se notaba', delay: 5000,
         options: false, general: false, to: 4
       },
       4 : {message: 'Ahí acabo de llegar Milton', delay: 5000,
@@ -405,8 +405,222 @@ export class ChatComponent implements OnInit, AfterViewChecked {
         options: false, general: true, to: null
       },
     },
-
     5: {
+      condictions:  [{condicion: 'estado', operator: '===', valor: ''}],
+      0: {message: 'Beto llego inconsciente, ya lo están revisando', delay: 2000,
+        options: {
+          a: {message: 'Pero que pasó exactamente?', to: 1},
+          b: {message: null},
+          c: {message: null},
+          d: {message: null},
+        }, general: false, to: null
+      },
+      1: {message: 'Preparé el spice y se lo ofrecí a beto para que fuera el primero en fumar', delay: 2000,
+        options: false, general: false, to: 2
+      },
+      2: {message: 'Después de convencerlo, se fumo como medio Blunt y fue cuando se empezó a poner raro', delay: 2000,
+        options: false, general: false, to: 3
+      },
+      3: {message: 'Empezó a decir que por que estaba ahi, que por que no lo dejaban ir, se puso un poco agresivo', delay: 2000,
+        options: false, general: false, to: 4
+      },
+      4: {message: 'Hasta ese momento no me preocupe mucho, porque sabia que para algunos es ' +
+          'normal que no les caiga bien la mota', delay: 2000,
+        options: false, general: false, to: 5
+      },
+      5: {message: 'Pero luego empezó a gritar, sudar y decir que le dolía el corazón, ahi fue cuando te hablé', delay: 2000,
+        options: false, general: false, to: 6
+      },
+      6: {message: 'Y luego en el taxi se desmayó', delay: 2000,
+        options: {
+          a: {message: 'Es la primera vez que ves also así?', to: 7},
+          b: {message: 'No decías que ese spice era seguro?', to: 8},
+          c: {message: 'Es tu culpa, ruega que no se muera', to: 10},
+          d: {message: null},
+        }, general: false, to: null
+      },
+      7: {message: 'La primera vez. Tras que no es normal un mal viaje así, que además ' +
+          'le duela el corazón y se ponga a sudar así, me preocupó', delay: 2000,
+        options: false, general: false, to: 8
+      },
+      8: {message: 'Esa vaina que me vendieron, dios sabe que era, para nada es hierba', delay: 2000,
+        options: false, general: false, to: 9
+      },
+      9: {message: 'Ese man que me la vendió me dijo dizque era super parecida, que más segura y dizque legal', delay: 2000, // Cambiar to
+        options: false, general: false, to: 12
+      },
+      10: {message: 'No me digas eso, no lo hice a propósito, vos sabes', delay: 2000,
+        options: false, general: false, to: 11
+      },
+      11: {message: 'Yo me deje convencer del man ese', delay: 2000,
+        options: false, general: false, to: 8
+      },
+      12: {message: 'Esperemos que beto despierte, cuando me digan algo te escribo', delay: 2000,
+        options: {
+          a: {message: 'Esperemos que no sea algo grave', to: 13},
+          b: {message: 'Terminaras en prisión', to: 14},
+          c: {message: null},
+          d: {message: null},
+        }, general: false, to: 8
+      },
+      13: {message: 'Eso mismo, ahora hablamos', delay: 15000,
+        options: false, general: true, to: null
+      },
+      14: {message: 'WTF, ahora hablamos', delay: 15000,
+        options: false, general: true, to: null
+      }
+    },
+    6: {
+      condictions:  [{condicion: 'estado', operator: '===', valor: ''}],
+      0: {message: 'Hola?', delay: 15000,
+        options: {
+          a: {message: 'Te escucho', to: 1},
+          b: {message: null},
+          c: {message: null},
+          d: {message: null},
+        }, general: false, to: null
+      },
+      1: {message: 'Ya hable con el medico', delay: 5000,
+        options: {
+          a: {message: 'Y que dice', to: 2},
+          b: {message: 'Como está Beto?', to: 3}, // cambiar to
+          c: {message: null},
+          d: {message: null},
+        }, general: false, to: null
+      },
+      2: {message: 'Me toco darle el resto del spice que tenia para identificara de que se trataba', delay: 5000,
+        options: {
+          a: {message: 'Al fin que era?', to: 3},
+          b: {message: 'Adivino, era algún alucinógeno del Amazonas', to: 7},
+          c: {message: null},
+          d: {message: null},
+        }, general: false, to: null
+      },
+      3: {message: 'Literalmente era marihuana sintética, solo que lo único natural eran los pedazos de matas, que no hacían ' +
+          'nada de por si', delay: 5000,
+        options: false, general: false, to: 4
+      },
+      4: {message: 'Me dijo que lo psicoactivo eran una o varias sustancias que rociaban a las especias trituradas', delay: 5000,
+        options: false, general: false, to: 5
+      },
+      5: {message: 'Que esta sustancia es sintética, es nueva y muy poco documentada, por lo que aun no está declarada ilegal', delay: 5000,
+        options: {
+          a: {message: 'Men, eso no suena nada bien', to: 6},
+          b: {message: 'Entonces ya saben lo que tiene beto?', to: 8},
+          c: {message: null},
+          d: {message: null},
+        }, general: false, to: null
+      },
+      6: {message: 'Para nada, por ahora Beto se está recuperando', delay: 5000,
+        options: false, general: false, to: 10
+      },
+      7: {message: 'Para saber de donde viene eso, lo que si era es literalmente marihuana sintética, ' +
+          'solo que lo único natural eran los pedazos de matas, que no hacían nada de por si', delay: 5000,
+        options: false, general: false, to: 4
+      },
+      8: {message: 'Exactamente no se sabe, está intoxicado por este spice', delay: 5000,
+        options: false, general: false, to: 10
+      },
+      9: {message: 'Sigue inconsciente, pero ya se estabilizo', delay: 5000,
+        options: {
+          a: {message: 'Al fin que era el tal spice?', to: 3},
+          b: {message: null},
+          c: {message: null},
+          d: {message: null},
+        }, general: false, to: null
+      },
+      10: {message: 'Si pasa algo más de hablo', delay: 5000,
+        options: {
+          a: {message: 'ok', to: 11},
+          b: {message: null},
+          c: {message: null},
+          d: {message: null},
+        }, general: false, to: null
+      },
+      11: {message: '', delay: 15000,
+        options: false, general: true, to: null
+      }
+    },
+    7: {
+      condictions:  [{condicion: 'estado', operator: '===', valor: ''}],
+      0: {message: 'Podes creer que beto tenia problemas de corazón?', delay: 2000,
+        options: {
+          a: {message: 'Por eso se puso así?', to: 1},
+          b: {message: 'Acaso fue un infarto?', to: 2},
+          c: {message: null},
+          d: {message: null},
+        }, general: false, to: null
+      },
+      1: {message: 'En parte, parece que el compuesto del spice aumenta la presión arterial de forma significativa', delay: 2000,
+        options: false, general: false, to: 4
+      },
+      2: {message: 'Noooo!!, pero estuvo cerca', delay: 2000,
+        options: false, general: false, to: 3
+      },
+      3: {message: 'parece que el compuesto del spice aumenta la presión arterial de forma significativa, además ' +
+          'de provocar efectos psicóticos', delay: 2000,
+        options: false, general: false, to: 4
+      },
+      4: {message: 'y presión arterial alta, mas problemas de corazón no hacen buena combinación', delay: 2000,
+        options: {
+          a: {message: 'Estuviste a punto de acabar en prisión', to: 5},
+          b: {message: 'No te han dicho nada más de esa droga?', to: 7},
+          c: {message: null},
+          d: {message: null},
+        }, general: false, to: null
+      },
+      5: {message: 'Te llevo a vos conmigo por cómplice', delay: 2000,
+        options: {
+          a: {message: 'Mentiras, calma', to: 6},
+          b: {message: ':c No te han dicho nada más de esa droga?', to: 7},
+          c: {message: null},
+          d: {message: null},
+        }, general: false, to: null
+      },
+      6: {message: 'Mentiras, no tuviste nada que ver. En cuanto a esa droga...', delay: 2000,
+        options: false, general: false, to: 7
+      },
+      7: {message: 'Al parecer han habido bastantes casos similares', delay: 2000,
+        options: false, general: false, to: 8
+      },
+      8: {message: 'La droga intenta replicar lo que hace el THC, que es el compuesto activo de la marihuana', delay: 2000,
+        options: false, general: false, to: 9
+      },
+      9: {message: 'Pero al tratarse de componentes sintéticos tiene un efecto potencialmente superior y nocivo', delay: 2000,
+        options: false, general: false, to: 10
+      },
+      10: {message: 'Las sustancias que le rocían a eso cambian cada cierto tiempo, a veces contiene plomo y así', delay: 2000,
+        options: false, general: false, to: 11
+      },
+      11: {message: 'En esta ola de afectados, parece que el spice tenia fentanil, esa vaina es ' +
+          'hasta 50 veces mas fuerte que la heroína', delay: 2000,
+        options: false, general: false, to: 12
+      },
+      12: {message: 'Consumir eso es como jugarse una lotería', delay: 2000,
+        options: {
+          a: {message: 'Entonces a tu amigo le dio una sobredosis por fumarse medio porro?', to: 13},
+          b: {message: null},
+          c: {message: null},
+          d: {message: null},
+        }, general: false, to: null
+      },
+      13: {message: 'Técnicamente, si. El medico también me dijo que algunos lotes vienen ' +
+          'con más concentración de sustancia, que no es algo bien medido', delay: 2000,
+        options: false, general: false, to: 14
+      },
+      14: {message: 'Ya sabemos para la próxima', delay: 2000,
+        options: {
+          a: {message: 'Si :(', to: 15},
+          b: {message: null},
+          c: {message: null},
+          d: {message: null},
+        }, general: false, to: null
+      },
+      15: {message: '', delay: 2000,
+        options: false, general: true, to: null
+      }
+    },
+    8: {
       condictions: [{condicion: 'estado', operator: '===', valor: 'spice'}],
       0: {message: 'listo, al fin quemé', delay: 3000, options: {a: {message: 'y que tal?', to: 1},
           b: {message: 'te sientes bien?', to: 2},
@@ -462,11 +676,9 @@ export class ChatComponent implements OnInit, AfterViewChecked {
         general: true, to: 12
       }
     },
-
-    6: {
+    9: {
       0: {message: 'finish', delay: 1000, general: true, to: null}
     }
-
   };
 
   constructor() {
