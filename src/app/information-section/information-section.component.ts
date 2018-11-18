@@ -1,4 +1,5 @@
 import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import * as p5 from 'p5';
 
 @Component({
   selector: 'app-information-section',
@@ -7,6 +8,7 @@ import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from
 })
 export class InformationSectionComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('AnimatedCharacter') myCharacter: ElementRef;
+  @ViewChild('p5CanvasContainer', {read: ElementRef}) containerSketch: ElementRef;
   sustancia = [
     new SubstanceObjectModel('Cafeína',
       [
@@ -49,6 +51,8 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
       'characterAnimateJump', 'información sobre la hierba'
     )
   ];
+
+  canvas: p5;
 
   selectedSubstance: SubstanceObjectModel;
   selectedPresentation: SubstancePresentationModel;
@@ -133,6 +137,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
     this.myCharacter.nativeElement.addEventListener('animationstart', this.animationListener.bind(this), false);
     this.myCharacter.nativeElement.addEventListener('animationiteration', this.animationListener.bind(this), false);
     this.myCharacter.nativeElement.addEventListener('animationend', this.animationListener.bind(this), false);
+    this.createCanvas();
   }
 
   animationListener (event: AnimationEvent) {
@@ -161,7 +166,95 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
     this.myCharacter.nativeElement.removeEventListener('animationstart', this.animationListener, false);
     this.myCharacter.nativeElement.removeEventListener('animationiteration', this.animationListener, false);
     this.myCharacter.nativeElement.removeEventListener('animationend', this.animationListener, false);
+    this.destroyCanvas();
   }
+
+
+
+  private createCanvas () {
+    const sketchFinal = this.createSketch(this.containerSketch.nativeElement.clientWidth, this.containerSketch.nativeElement.clientHeight);
+    this.canvas = new p5(sketchFinal, this.containerSketch.nativeElement);
+  }
+
+  private destroyCanvas () {
+    if (this.canvas) {
+      this.canvas.remove();
+    }
+  }
+
+  private createSketch(width: number, height: number) {
+
+    return function sketch(p: p5) {
+      const sketchWidth: number = width;
+      const sketchHeight: number = height;
+      let puntos: PuntoPalpitante[];
+
+      p.setup = function() {
+        puntos = [];
+
+        p.createCanvas(sketchWidth, sketchHeight);
+        p.rectMode(p.CENTER);
+
+        puntos.push(new PuntoPalpitante(sketchWidth / 10, sketchHeight / 10,  sketchWidth, sketchHeight, p));
+
+      };
+
+      p.draw = function () {
+        p.clear();
+        puntos.forEach(function(puntoQuePalpita: PuntoPalpitante) {
+          puntoQuePalpita.update();
+        });
+      };
+    };
+  }
+
+
+}
+
+
+class PuntoPalpitante {
+  private xPos: number;
+  private yPos: number;
+
+  private xSize: number;
+  private ySize: number;
+  private fillOpacity: number;
+
+  private canvasWidth: number;
+  private canvasHeight: number;
+  private pInstance: p5;
+
+  constructor(_xPos: number, _yPos: number, _canvasWidth: number, _canvasHeight: number, _p: p5) {
+    this.xPos = _xPos;
+    this.yPos = _yPos;
+    this.canvasWidth = _canvasWidth;
+    this.canvasHeight = _canvasHeight;
+
+    this.xSize = this.canvasWidth / 40;
+    this.ySize = this.canvasWidth / 40;
+    this.fillOpacity = 255;
+
+    this.pInstance = _p;
+  }
+
+  update() {
+    this.animatePoint();
+    this.pInstance.noStroke();
+    this.pInstance.fill(230, this.fillOpacity);
+    this.pInstance.ellipse(this.xPos, this.yPos, this.xSize, this.ySize);
+  }
+
+  animatePoint() {
+    this.xSize += 0.1;
+    this.ySize += 0.1;
+    this.fillOpacity--;
+    if (this.xSize > this.canvasWidth / 20 || this.ySize > this.canvasWidth / 20) {
+      this.xSize = 0;
+      this.ySize = 0;
+      this.fillOpacity = 255;
+    }
+  }
+
 }
 
 

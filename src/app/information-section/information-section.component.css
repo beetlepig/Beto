@@ -27,6 +27,7 @@
 }
 
 .characterGeneralContainer {
+  position: relative;
   width: 100%;
   height: 90%;
   background: rgba(100,100,100,1);
@@ -192,4 +193,10 @@
   width: 10%;
   height: 15%;
   background: orange;
+}
+
+#p5CanvasContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
