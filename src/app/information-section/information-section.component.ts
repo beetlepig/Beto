@@ -1,4 +1,4 @@
-import {AfterViewChecked, AfterViewInit, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {createSketch, Ip5WithCustomAtributes} from './sketch.p5';
 import * as p5 from 'p5';
 
@@ -147,7 +147,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
     this.myCharacter.nativeElement.addEventListener('animationstart', this.animationListener.bind(this), false);
     this.myCharacter.nativeElement.addEventListener('animationiteration', this.animationListener.bind(this), false);
     this.myCharacter.nativeElement.addEventListener('animationend', this.animationListener.bind(this), false);
-    this.canvas.onResize(this.containerSketch.nativeElement.clientWidth, this.containerSketch.nativeElement.clientHeight);
+    // this.canvas.onResize(this.containerSketch.nativeElement.clientWidth, this.containerSketch.nativeElement.clientHeight);
   }
 
   animationListener (event: AnimationEvent) {
@@ -156,8 +156,11 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
         this.clase[i] = '';
       }
       this.animationRunning = false;
+
       this.characterState = new CharacterStateModel(this.selectedSubstance.nombre, this.selectedDosisInfo.headInfo,
-        this.selectedDosisInfo.eyeInfo, this.selectedDosisInfo.heardInfo);
+      this.selectedDosisInfo.eyeInfo, this.selectedDosisInfo.heardInfo);
+
+      this.canvas.changeTextInBox([this.characterState.headInfo, this.characterState.eyeInfo, this.characterState.heardInfo]);
     }
       switch (event.animationName) {
         case 'idle':
