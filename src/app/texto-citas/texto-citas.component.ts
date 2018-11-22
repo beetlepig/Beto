@@ -10,11 +10,11 @@ import {animate, keyframes, state, style, transition, trigger, AnimationEvent} f
       state('0', style({
         transform: 'rotate(-90deg) translateX(0)'
       })),
-      transition('*=>0', animate('1000ms cubic-bezier(.19,.61,.43,.86)', keyframes([
+      transition('*=>0', animate('1700ms cubic-bezier(.19,.61,.43,.86)', keyframes([
         style({transform: 'rotate(-90deg) translateX(-180%)',        offset: 0}),
         style({transform: 'rotate(-90deg) translateX(0)',            offset: 1.0})
       ]))),
-      transition('*=>1', animate('1000ms cubic-bezier(.80,.01,.46,.89)', keyframes([
+      transition('*=>1', animate('1700ms cubic-bezier(.80,.01,.46,.89)', keyframes([
         style({transform: 'rotate(-90deg) translateX(0)',        offset: 0}),
         style({transform: 'rotate(-90deg) translateX(180%)',     offset: 1.0})
       ])))
@@ -26,8 +26,18 @@ import {animate, keyframes, state, style, transition, trigger, AnimationEvent} f
       state('1', style({
         opacity: 0
       })),
-      transition('*=>0', animate('1000ms cubic-bezier(.19,.61,.43,.86)')),
-      transition('*=>1', animate('1000ms 200ms cubic-bezier(.80,.01,.46,.89)'))
+      transition('*=>0', animate('1000ms 200ms')),
+      transition('*=>1', animate('1000ms 200ms'))
+    ]),
+    trigger('smallTextFade', [
+      state('0', style({
+        opacity: 1
+      })),
+      state('1', style({
+        opacity: 0
+      })),
+      transition('*=>0', animate('1000ms 400ms')),
+      transition('*=>1', animate('1000ms 400ms'))
     ])
   ]
 })

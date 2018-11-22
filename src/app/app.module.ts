@@ -20,6 +20,7 @@ import { ContactoComponent } from './contacto/contacto.component';
 import {FormsModule} from '@angular/forms';
 import { AdminComponent } from './admin/admin.component';
 import { TextoCitasComponent } from './texto-citas/texto-citas.component';
+import { TeamComponent } from './team/team.component';
 
 
 
@@ -28,6 +29,7 @@ const appRoutes: Routes = [
   { path: 'chat', component: ChatComponent },
   { path: 'information', component: InformationSectionComponent },
   { path: 'Alex', component: AboutAlexComponent },
+  { path: 'Team', component: TeamComponent },
   { path: 'Contact', component: ContactoComponent },
   { path: 'Admin', component: AdminComponent },
   { path: '**', component: HomeComponent }
@@ -48,7 +50,8 @@ const appRoutes: Routes = [
     AlexLogoComponent,
     ContactoComponent,
     AdminComponent,
-    TextoCitasComponent
+    TextoCitasComponent,
+    TeamComponent
   ],
   imports: [
     BrowserModule,

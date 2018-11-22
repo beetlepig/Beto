@@ -37,9 +37,14 @@ export function createSketch(width: number, height: number) {
 
     p.draw = function () {
       p.clear();
+      /*
       puntos.forEach(function(puntoQuePalpita: PuntoPalpitante) {
         puntoQuePalpita.update();
       });
+      */
+      for (let i = puntos.length - 1; i >= 0; i--) {
+        puntos[i].update();
+      }
     };
 
     p.mouseMoved = function() {
@@ -174,6 +179,8 @@ class TextBox {
   text: string;
   drawText: boolean;
 
+  boxColorAlpha: number;
+
   private p5Instance: p5;
 
 
@@ -181,23 +188,33 @@ class TextBox {
     this.position = _position;
     this.boxWidth = _boxWidth;
     this.boxHeight = _boxHeight;
+    this.boxColorAlpha = 0;
     this.text = _text;
     this.drawText = false;
     this.p5Instance = _p5Instance;
   }
 
   update() {
-    if (this.drawText) {
-      this.p5Instance.fill(155, 155, 255);
-      this.p5Instance.rect(this.position.x, this.position.y, this.boxWidth, this.boxHeight);
-      this.p5Instance.fill(50);
-      this.p5Instance.text(this.text, this.position.x, this.position.y, this.boxWidth, this.boxHeight);
+    this.fadeBox();
+    this.p5Instance.fill(155, 155, 255, this.boxColorAlpha);
+    this.p5Instance.rect(this.position.x * 1.05, this.position.y * 1.05, this.boxWidth, this.boxHeight);
+    this.p5Instance.fill(50, this.boxColorAlpha);
+    this.p5Instance.text(this.text, this.position.x * 1.05, this.position.y * 1.05, this.boxWidth, this.boxHeight);
+
+  }
+
+  fadeBox() {
+    if (this.drawText && this.boxColorAlpha < 255) {
+      this.boxColorAlpha += 30;
+    } else if (!this.drawText && this.boxColorAlpha > 0) {
+      this.boxColorAlpha -= 30;
     }
   }
 
   moved() {
     const mouseX = this.p5Instance.mouseX;
     const mouseY = this.p5Instance.mouseY;
+    /*
     if ( (p5.Vector.dist(this.position, this.p5Instance.createVector(this.p5Instance.mouseX, this.p5Instance.mouseY)) < 20) ||
       (this.drawText && ((mouseX > this.position.x && mouseX < this.position.x + this.boxWidth) &&
         (mouseY > this.position.y && mouseY < this.position.y + this.boxHeight)) )) {
@@ -205,6 +222,8 @@ class TextBox {
     } else {
       this.drawText = false;
     }
+    */
+    this.drawText = p5.Vector.dist(this.position, this.p5Instance.createVector(mouseX, mouseY)) < 20;
   }
 
   onResize(_position: p5.Vector, _boxWidth: number, _boxHeight: number) {
