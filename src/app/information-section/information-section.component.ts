@@ -1,11 +1,35 @@
 import {AfterViewInit, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {createSketch, Ip5WithCustomAtributes} from './sketch.p5';
 import * as p5 from 'p5';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-information-section',
   templateUrl: './information-section.component.html',
-  styleUrls: ['./information-section.component.css']
+  styleUrls: ['./information-section.component.css'],
+  animations: [
+    trigger('transformAnimation', [
+      state('0', style({
+        transform: 'translateY(85vh)'
+      })),
+      state('1', style({
+        transform: 'translateY(0)'
+      })),
+      transition('*=>0', animate('500ms cubic-bezier(.19,.61,.43,.86)')),
+      transition('*=>1', animate('500ms cubic-bezier(.80,.01,.46,.89)'))
+    ]),
+    trigger('opacityAnimation', [
+      state('1', style({
+        opacity: 1
+      })),
+      state('0', style({
+        opacity: 0,
+        display: 'none'
+      })),
+      transition('*=>0', animate('1000ms')),
+      transition('*=>1', animate('1000ms'))
+    ])
+  ]
 })
 export class InformationSectionComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('AnimatedCharacter') myCharacter: ElementRef;
@@ -29,7 +53,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
           ]
         )
       ],
-      'characterAnimateRun', 'esta es la info completa'
+      'characterAnimateRun', 'esta es la info completa del café'
     ),
 
 
@@ -63,6 +87,8 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   animationRunning: boolean;
   characterState: CharacterStateModel;
 
+  showAllInfo: boolean;
+
 
   @HostListener('window:resize')
   onResize() {
@@ -72,6 +98,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
 
   constructor() {
     this.animationRunning = false;
+    this.showAllInfo =  true;
     this.clase = new Array<string>(2);
     this.clase[0] = 'characterAnimateDiv';
     this.clase[1] = '';
@@ -172,6 +199,15 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
 
           break;
       }
+  }
+
+  closeOrOpenInfoPanel(closeOrOpen: boolean) {
+    this.showAllInfo = closeOrOpen;
+  }
+
+  scrollHandler(event){
+    console.log(event);
+    console.log('hi');
   }
 
 

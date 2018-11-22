@@ -200,3 +200,32 @@
   width: 100%;
   height: 100%;
 }
+
+.panelInfoGeneralContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.completeInfoWindowBlack {
+  pointer-events: all;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.completeInfoWindow {
+  pointer-events: all;
+  position: absolute;
+  left: 16.67%;
+  top: 10%;
+  width: 66.7%;
+  height: 70%;
+  background-color: cornflowerblue;
+}

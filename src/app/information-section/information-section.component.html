@@ -59,4 +59,11 @@
 
 </div>
 
-<app-mini-menu></app-mini-menu>
+<div class="panelInfoGeneralContainer">
+  <div class="completeInfoWindowBlack" [@opacityAnimation]="showAllInfo" (click)="closeOrOpenInfoPanel(false)"></div>
+  <div class="completeInfoWindow" [@transformAnimation]="showAllInfo" (click)="closeOrOpenInfoPanel(true)">
+    <h3>{{selectedSubstance.completeInfo}}</h3>
+  </div>
+</div>
+
+

@@ -11,12 +11,12 @@ import {animate, keyframes, state, style, transition, trigger, AnimationEvent} f
         transform: 'rotate(-90deg) translateX(0)'
       })),
       transition('*=>0', animate('1700ms cubic-bezier(.19,.61,.43,.86)', keyframes([
-        style({transform: 'rotate(-90deg) translateX(-180%)',        offset: 0}),
+        style({transform: 'rotate(-90deg) translateX(-8vh)',        offset: 0}),
         style({transform: 'rotate(-90deg) translateX(0)',            offset: 1.0})
       ]))),
       transition('*=>1', animate('1700ms cubic-bezier(.80,.01,.46,.89)', keyframes([
         style({transform: 'rotate(-90deg) translateX(0)',        offset: 0}),
-        style({transform: 'rotate(-90deg) translateX(180%)',     offset: 1.0})
+        style({transform: 'rotate(-90deg) translateX(8vh)',     offset: 1.0})
       ])))
     ]),
     trigger('bigTextFade', [
