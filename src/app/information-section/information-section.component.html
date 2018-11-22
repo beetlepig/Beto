@@ -1,4 +1,4 @@
-<div class="interactionContainer">
+<div class="interactionContainer" (wheel)="onMouseWheel($event)">
 
   <div class="listContainer">
     <ul>
@@ -59,7 +59,7 @@
 
 </div>
 
-<div class="panelInfoGeneralContainer">
+<div class="panelInfoGeneralContainer" (wheel)="onMouseWheel($event)">
   <div class="completeInfoWindowBlack" [@opacityAnimation]="showAllInfo" (click)="closeOrOpenInfoPanel(false)"></div>
   <div class="completeInfoWindow" [@transformAnimation]="showAllInfo" (click)="closeOrOpenInfoPanel(true)">
     <h3>{{selectedSubstance.completeInfo}}</h3>

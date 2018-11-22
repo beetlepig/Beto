@@ -10,7 +10,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   animations: [
     trigger('transformAnimation', [
       state('0', style({
-        transform: 'translateY(85vh)'
+        transform: 'translateY(90vh)'
       })),
       state('1', style({
         transform: 'translateY(0)'
@@ -98,7 +98,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
 
   constructor() {
     this.animationRunning = false;
-    this.showAllInfo =  true;
+    this.showAllInfo =  false;
     this.clase = new Array<string>(2);
     this.clase[0] = 'characterAnimateDiv';
     this.clase[1] = '';
@@ -160,6 +160,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
         this.clase[i] = '';
       }
       this.animationRunning = true;
+      this.canvas.canDraw = false;
       this.clase[1] = this.selectedSubstance.animation;
       this.selectedDosisInfo = this.selectedPresentation.infoPerDosis[this.actualDosis - 1];
       this.characterState = null;
@@ -183,6 +184,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
         this.clase[i] = '';
       }
       this.animationRunning = false;
+      this.canvas.canDraw = true;
 
       this.characterState = new CharacterStateModel(this.selectedSubstance.nombre, this.selectedDosisInfo.headInfo,
       this.selectedDosisInfo.eyeInfo, this.selectedDosisInfo.heardInfo);
@@ -205,9 +207,8 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
     this.showAllInfo = closeOrOpen;
   }
 
-  scrollHandler(event){
-    console.log(event);
-    console.log('hi');
+  onMouseWheel(evt: Event) {
+    this.showAllInfo =  !this.showAllInfo;
   }
 
 

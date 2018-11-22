@@ -3,6 +3,7 @@ import * as p5 from 'p5';
 export interface Ip5WithCustomAtributes extends p5 {
   onResize: (width: number, height: number) => void;
   changeTextInBox: (texts: string[]) => void;
+  canDraw: boolean;
 }
 
 export function createSketch(width: number, height: number) {
@@ -16,6 +17,8 @@ export function createSketch(width: number, height: number) {
     let heardPointPos: p5.Vector;
 
     let puntos: PuntoPalpitante[];
+
+    p.canDraw = false;
 
     p.setup = function() {
       p.createCanvas(sketchWidth, sketchHeight);
@@ -42,8 +45,10 @@ export function createSketch(width: number, height: number) {
         puntoQuePalpita.update();
       });
       */
-      for (let i = puntos.length - 1; i >= 0; i--) {
-        puntos[i].update();
+      if (p.canDraw) {
+        for (let i = puntos.length - 1; i >= 0; i--) {
+          puntos[i].update();
+        }
       }
     };
 
