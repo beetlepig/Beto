@@ -19,6 +19,7 @@ import { AlexLogoComponent } from './alex-logo/alex-logo.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import {FormsModule} from '@angular/forms';
 import { AdminComponent } from './admin/admin.component';
+import { TextoCitasComponent } from './texto-citas/texto-citas.component';
 
 
 
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
     AboutAlexComponent,
     AlexLogoComponent,
     ContactoComponent,
-    AdminComponent
+    AdminComponent,
+    TextoCitasComponent
   ],
   imports: [
     BrowserModule,

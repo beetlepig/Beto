@@ -1,0 +1,66 @@
+.containerFrases {
+  position: absolute;
+  background-color: red;
+  width: 25%;
+  height: 20%;
+  left: 8.3%;
+  bottom: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-content: stretch;
+}
+
+
+.fuenteText {
+  position: relative;
+  width: 100%;
+  flex-grow: 2.5;
+  background-color: blue;
+}
+
+.leftDivTextContainer {
+  width: 5%;
+  height: 100%;
+  background-color: chartreuse;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.leftDivTextContainer h4 {
+  margin: 0;
+  text-align: center;
+  transform: rotate(-90deg) translateX(0);
+}
+
+
+.bigText {
+  width: 100%;
+  flex-grow: 1.5;
+  background-color: chocolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bigText h3 {
+  padding-left: 1%;
+  margin: 0;
+}
+
+.smallText {
+  width: 100%;
+  flex-grow: 1;
+  background-color: forestgreen;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.smallText h4 {
+  padding-left: 1%;
+  margin: 0;
+}

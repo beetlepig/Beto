@@ -1,0 +1,9 @@
+<div class="containerFrases">
+  <div class="fuenteText">
+    <div class="leftDivTextContainer">
+      <h4 [@moveSourceAnimation]="changeInfo" (@moveSourceAnimation.done)="animEnd($event)">{{activeInfo.sourceText}}</h4>
+    </div>
+  </div>
+  <div class="bigText"><h3 [@bigTextFade]="changeInfo">{{activeInfo.bigText}}</h3></div>
+  <div class="smallText"><h4>{{activeInfo.smallText}}</h4></div>
+</div>
