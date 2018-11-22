@@ -4,7 +4,7 @@
 
 <router-outlet></router-outlet>
 
-<app-mini-menu></app-mini-menu>
+<app-mini-menu *ngIf="router.url != '/'"></app-mini-menu>
 
 <app-menu></app-menu>
 
