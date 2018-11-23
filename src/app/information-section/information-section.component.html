@@ -2,8 +2,8 @@
 
   <div class="listContainer">
     <ul>
-      <li *ngFor="let sustancita of sustancia" (click)="changeSelectedSubstance(sustancita)">
-        {{ sustancita.nombre }}
+      <li *ngFor="let sustancita of sustancia" (click)="changeSelectedSubstance(sustancita)" [className]="selectedSubstance === sustancita ? 'liItemActive' : ''">
+        <h5>{{ sustancita.nombre }}</h5>
       </li>
     </ul>
   </div>
@@ -32,10 +32,17 @@
     </div>
   </div>
   <div class="substanceContainer">
-    <div class="substanceDiv">
-      <div *ngFor="let sustancitaPresenteishon of selectedSubstance.presentacion" (click)="changePresentationImage(sustancitaPresenteishon)">
-        <p>{{ sustancitaPresenteishon.tipo }}</p>
+    <div class="substanceDiv presentationSelectorContainer">
+      <h3>PRESENTACIÓN DE SPA</h3>
+      <div class="arrowsPresentationSelectorContainer">
+        <div class="arrowPresentation arrowPresentationLeft" (click)="changePresentationImage('iz')"></div>
+        <div class="substancePresentationText"><h5>{{selectedPresentation.tipo}}</h5></div>
+        <div class="arrowPresentation arrowPresentationRight" (click)="changePresentationImage('der')"></div>
       </div>
+
+      <!--<div *ngFor="let sustancitaPresenteishon of selectedSubstance.presentacion" (click)="changePresentationImage(sustancitaPresenteishon)">
+        <p>{{ sustancitaPresenteishon.tipo }}</p>
+      </div>-->
     </div>
 
     <div class="substanceDiv">
@@ -60,7 +67,7 @@
 </div>
 
 <div class="panelInfoGeneralContainer" (wheel)="onMouseWheel($event)" [hidden]="hideContainer">
-  <div class="completeInfoWindowBlack" [@opacityAnimation]="showAllInfo" (@opacityAnimation.done)="onAnimationEnd($event)" (click)="closeOrOpenInfoPanel(false)"></div>
+  <div class="completeInfoWindowBlack" [@opacityAnimation]="showAllInfo" (@opacityAnimation.done)="onAnimationEnd($event)" (@opacityAnimation.start)="onAnimationStart($event)" (click)="closeOrOpenInfoPanel(false)"></div>
   <div class="completeInfoWindow" [@transformAnimation]="showAllInfo" (click)="closeOrOpenInfoPanel(true)">
     <h3>{{selectedSubstance.completeInfo}}</h3>
   </div>

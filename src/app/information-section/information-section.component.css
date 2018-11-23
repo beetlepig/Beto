@@ -3,7 +3,7 @@
   top: 15%;
   left: 10%;
   width: 80%;
-  height: 70%;
+  height: 65%;
   background-color: aliceblue;
   display: flex;
   justify-content: space-around;
@@ -13,11 +13,45 @@
 .listContainer {
   width: 33%;
   height: 90%;
-  background-color: beige;
+  box-sizing: border-box;
+  border-right: solid rgba(215, 215, 215, 1);
+  border-width: 0.15vw;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .listContainer ul {
   margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  overflow: auto;
+}
+
+.listContainer ul li {
+  margin: 1vh 0 1vh 0.5vw;
+  list-style-type: none;
+}
+
+.listContainer ul li:hover {
+  background-color: rgba(237, 134, 72, 1);
+  cursor: pointer;
+}
+
+.liItemActive {
+  background-color: rgba(237, 134, 72, 1);
+}
+
+.listContainer ul li h5 {
+  margin: 0;
+  padding: 0.2vh 1vw;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 600;
+  font-size: 1.5vw;
+  text-align: right;
+  color: rgba(31, 20, 15, 1);
 }
 
 .characterContainer {
@@ -111,14 +145,79 @@
   width: 33%;
   height: 90%;
   background-color: dodgerblue;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-left: solid rgba(215, 215, 215, 1);
+  border-width: 0.15vw;
 }
 
 .substanceDiv {
   margin-top: 2%;
   margin-bottom: 2%;
   width: 100%;
-  height: 30%;
-  background-color: darkred;
+  height: 10%;
+  flex-grow: 1;
+}
+
+.presentationSelectorContainer {
+  flex-grow: 0.2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.presentationSelectorContainer h3{
+  margin: 0;
+  box-sizing: border-box;
+  border-bottom: solid rgba(215, 215, 215, 1);
+  border-width: 0.25vh;
+  color: rgba(215, 215, 215, 1);
+  font-weight: 500;
+  font-size: 1vw;
+}
+
+.arrowsPresentationSelectorContainer {
+  margin-top: 1vh;
+  width: 80%;
+  height: 10%;
+  flex-grow: 1;
+  display: flex;
+  justify-content: stretch;
+}
+
+.arrowsPresentationSelectorContainer div {
+  margin: 1%;
+  width: 10%;
+}
+
+.substancePresentationText {
+  flex-grow: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.substancePresentationText h5 {
+  margin: 0;
+  text-align: center;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 600;
+  font-size: 1.2vw;
+  color: rgba(81, 80, 80, 1);
+}
+
+.arrowPresentation {
+  flex-grow: 1;
+}
+
+.arrowPresentationLeft {
+  background: url("/assets/general/Arrow.svg") no-repeat center / contain;
+}
+
+.arrowPresentationRight {
+  transform: rotate(180deg);
+  background: url("/assets/general/Arrow.svg") no-repeat center / contain;
 }
 
 .presentationImageContainer {
@@ -235,7 +334,7 @@
 .scrollIcon {
   position: absolute;
   left: 47%;
-  bottom: 3%;
+  bottom: 5%;
   width: 6%;
   height: 6%;
   background: url("/assets/general/ScrollSvg.svg") no-repeat center;

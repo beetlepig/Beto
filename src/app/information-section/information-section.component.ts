@@ -35,15 +35,15 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   @ViewChild('AnimatedCharacter') myCharacter: ElementRef;
   @ViewChild('p5CanvasContainer') containerSketch: ElementRef;
   sustancia = [
-    new SubstanceObjectModel('Cafeína',
+    new SubstanceObjectModel('CAFEÍNA',
       [
-        new SubstancePresentationModel('Sobre', '/assets/substancesImg/7702040127008.jpg',
+        new SubstancePresentationModel('SOBRE', '/assets/substancesImg/7702040127008.jpg',
           [
                         new DosisAndInformationModel('head dosis sobre 1', 'eye dosis sobre 1', 'heard dosis sobre 1'),
                         new DosisAndInformationModel('head dosis sobre 2', 'eye dosis sobre 2', 'heard dosis sobre 2')
           ]
         ),
-        new SubstancePresentationModel('Liquido', '/assets/substancesImg/buen-cafe-full.jpg',
+        new SubstancePresentationModel('LIQUIDO', '/assets/substancesImg/buen-cafe-full.jpg',
           [
                         new DosisAndInformationModel('head dosis liquido 1', 'eye dosis liquido 1', 'heard dosis liquido 1'),
                         new DosisAndInformationModel('head dosis liquido 2', 'eye dosis liquido 2', 'heard dosis liquido 2'),
@@ -57,7 +57,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
     ),
 
 
-    new SubstanceObjectModel('Weed',
+    new SubstanceObjectModel('WEED',
       [
         new SubstancePresentationModel('Mota', '/assets/substancesImg/1423530503.jpg',
           [
@@ -100,7 +100,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   constructor() {
     this.animationRunning = false;
     this.showAllInfo =  false;
-    this.hideContainer = true;
+    this.hideContainer = false;
     this.clase = new Array<string>(2);
     this.clase[0] = 'characterAnimateDiv';
     this.clase[1] = '';
@@ -139,8 +139,26 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
     this.actualDosis = 1;
   }
 
-  changePresentationImage(selectedSubstance: SubstancePresentationModel) {
-    this.selectedPresentation = selectedSubstance;
+  changePresentationImage(direction: string) {
+    const actualIndex: number = this.selectedSubstance.presentacion.indexOf(this.selectedPresentation);
+    switch (direction) {
+      case 'iz':
+        if (actualIndex - 1 >= 0) {
+         this.selectedPresentation = this.selectedSubstance.presentacion[actualIndex - 1];
+        } else {
+          this.selectedPresentation = this.selectedSubstance.presentacion[this.selectedSubstance.presentacion.length - 1];
+        }
+        break;
+
+      case 'der':
+        if (actualIndex + 1 <= this.selectedSubstance.presentacion.length - 1) {
+          this.selectedPresentation = this.selectedSubstance.presentacion[actualIndex + 1];
+        } else {
+          this.selectedPresentation = this.selectedSubstance.presentacion[0];
+        }
+        break;
+    }
+    // this.selectedPresentation = selectedSubstance;
     this.actualDosis = 1;
   }
 
@@ -200,15 +218,17 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   }
 
   onAnimationEnd(evt: AnimationEvent) {
-    console.log(evt);
     if (!evt.toState) {
       this.hideContainer = true;
     }
   }
 
+  onAnimationStart(evt: AnimationEvent) {
+    this.hideContainer = false;
+  }
+
   onMouseWheel(evt: Event) {
     this.showAllInfo =  !this.showAllInfo;
-    this.hideContainer = false;
   }
 
 
