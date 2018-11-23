@@ -134,25 +134,25 @@ class PuntoPalpitante {
     this.animatePoint();
     this.textRect.update();
     this.pInstance.noStroke();
-    this.pInstance.fill(255, 200, 200, this.fillOpacity);
+    this.pInstance.fill(255, 150, 150, this.fillOpacity);
     this.pInstance.ellipse(this.xPos, this.yPos, this.xSize, this.ySize);
-    this.pInstance.fill(200, 255, 200, this.fillOpacityTwo);
+    this.pInstance.fill(255, 150, 150, this.fillOpacityTwo);
     this.pInstance.ellipse(this.xPos, this.yPos, this.xSizeTwo, this.ySizeTwo);
   }
 
   animatePoint() {
-    this.xSize += 0.3;
-    this.ySize += 0.3;
-    this.fillOpacity -= 2;
+    this.xSize += 1;
+    this.ySize += 1;
+    this.fillOpacity -= 5;
     if (this.fillOpacity <= 0) {
       this.xSize = 0;
       this.ySize = 0;
       this.fillOpacity = 255;
     }
 
-    this.xSizeTwo += 0.3;
-    this.ySizeTwo += 0.3;
-    this.fillOpacityTwo -= 2;
+    this.xSizeTwo += 1;
+    this.ySizeTwo += 1;
+    this.fillOpacityTwo -= 5;
     if (this.fillOpacityTwo <= 0) {
       this.xSizeTwo = 0;
       this.ySizeTwo = 0;
@@ -210,9 +210,9 @@ class TextBox {
 
   fadeBox() {
     if (this.drawText && this.boxColorAlpha < 255) {
-      this.boxColorAlpha += 30;
+      this.boxColorAlpha += 40;
     } else if (!this.drawText && this.boxColorAlpha > 0) {
-      this.boxColorAlpha -= 30;
+      this.boxColorAlpha -= 40;
     }
   }
 

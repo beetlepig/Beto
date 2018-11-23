@@ -4,7 +4,6 @@
   left: 10%;
   width: 80%;
   height: 65%;
-  background-color: aliceblue;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -57,14 +56,12 @@
 .characterContainer {
   width: 33%;
   height: 100%;
-  background-color: chartreuse;
 }
 
 .characterGeneralContainer {
   position: relative;
   width: 100%;
   height: 90%;
-  background: rgba(100,100,100,1);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,7 +72,6 @@
   height: 0;
   padding-bottom: 54%;
   background-image: url("/assets/SpriteSheet/charzera.png");
-  background-color: rgba(100,100,100,1);
   background-position: 0 0;
   background-size: 1400%;
   display: block;
@@ -144,8 +140,8 @@
 .substanceContainer {
   width: 33%;
   height: 90%;
-  background-color: dodgerblue;
   display: flex;
+  align-items: center;
   flex-direction: column;
   box-sizing: border-box;
   border-left: solid rgba(215, 215, 215, 1);
@@ -234,24 +230,90 @@
   float: left;
 }
 
-.substanceSelectorGeneral {
+.substanceSelectorGeneralDiv {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+
+.substanceSelectorGeneralDiv h3 {
+  margin: 0 0 0.5vh 0;
+  box-sizing: border-box;
+  border-bottom: solid rgba(215, 215, 215, 1);
+  border-width: 0.25vh;
+  color: rgba(215, 215, 215, 1);
+  font-weight: 500;
+  font-size: 1vw;
+  text-align: center;
+}
+
+.substanceSelectorGeneral {
+  flex-grow: 1;
+  height: 10%;
+  width: 100%;
+  display: flex;
 }
 .leftArrow {
-  width: 20%;
-  background-color: #e2ee30;
+  width: 10%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.leftArrow div {
+  width: 40%;
+  height: 30%;
+  background: url("/assets/general/Arrow.svg") no-repeat center / contain;
 }
 
 .rightArrow {
-  width: 20%;
-  background-color: violet;
+  width: 10%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
 
+.rightArrow div {
+  width: 40%;
+  height: 30%;
+  transform: rotate(180deg);
+  background: url("/assets/general/Arrow.svg") no-repeat center / contain;
+}
+
+.buttonProbar {
+  flex-grow: 0.05;
+  padding: 0.2vh 1vw;
+  background: rgba(237, 134, 72, 0);
+  box-sizing: border-box;
+  border: solid rgba(237, 134, 72, 1) 0.1vw;
+  color: rgba(0, 0, 0, 0.6);
+  font-family: 'Dosis', sans-serif;
+  font-weight: 800;
+  font-size: 0.8vw;
+  border-radius: 1.5vh;
+}
+
+.buttonProbar:hover {
+  border: solid rgba(237, 134, 72, 0) 0.1vw;
+  background: rgba(237, 134, 72, 1);
+  color: rgba(255, 255, 255, 1);
+}
+
+.buttonProbar:disabled {
+  border: solid rgba(237, 134, 72, 0) 0.1vw;
+  background: rgba(237, 134, 72, 0.8);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+
+
 .dosisContainer {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(50, 200, 140, 1);
+  width: 10%;
+  flex-grow: 10;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -260,7 +322,6 @@
 .repeatedImages {
   margin: 1%;
   flex-grow: 1;
-  background-color: blue;
   min-width: 20%;
   background-position: center;
   background-size: contain;
