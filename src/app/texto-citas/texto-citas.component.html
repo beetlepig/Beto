@@ -1,7 +1,7 @@
 <div class="containerFrases">
   <div class="fuenteText">
     <div class="leftDivTextContainer">
-      <h4 [@moveSourceAnimation]="changeInfo" (@moveSourceAnimation.done)="animEnd($event)">{{activeInfo.sourceText}}</h4>
+      <a [href]="activeInfo.url" target="_blank"><h4 [@moveSourceAnimation]="changeInfo" (@moveSourceAnimation.done)="animEnd($event)">{{activeInfo.sourceText}}</h4></a>
     </div>
   </div>
   <div class="bigText"><h3 [@bigTextFade]="changeInfo">{{activeInfo.bigText}}</h3></div>

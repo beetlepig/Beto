@@ -231,3 +231,13 @@
   transform: translateY(90vh);
   background-color: cornflowerblue;
 }
+
+.scrollIcon {
+  position: absolute;
+  left: 47%;
+  bottom: 3%;
+  width: 6%;
+  height: 6%;
+  background: url("/assets/general/ScrollSvg.svg") no-repeat center;
+  background-size: contain;
+}

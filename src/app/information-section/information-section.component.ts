@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {createSketch, Ip5WithCustomAtributes} from './sketch.p5';
 import * as p5 from 'p5';
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import {animate, state, style, transition, trigger, AnimationEvent} from '@angular/animations';
 
 @Component({
   selector: 'app-information-section',
@@ -88,6 +88,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   characterState: CharacterStateModel;
 
   showAllInfo: boolean;
+  hideContainer: boolean;
 
 
   @HostListener('window:resize')
@@ -99,6 +100,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   constructor() {
     this.animationRunning = false;
     this.showAllInfo =  false;
+    this.hideContainer = true;
     this.clase = new Array<string>(2);
     this.clase[0] = 'characterAnimateDiv';
     this.clase[1] = '';
@@ -178,7 +180,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
     // this.canvas.onResize(this.containerSketch.nativeElement.clientWidth, this.containerSketch.nativeElement.clientHeight);
   }
 
-  animationListener (event: AnimationEvent) {
+  animationListener (event: Event) {
     if (event.type === 'animationend') {
       for (let i = 1; i < this.clase.length; i++) {
         this.clase[i] = '';
@@ -191,24 +193,22 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
 
       this.canvas.changeTextInBox([this.characterState.headInfo, this.characterState.eyeInfo, this.characterState.heardInfo]);
     }
-      switch (event.animationName) {
-        case 'idle':
-
-          break;
-
-        case 'run':
-
-
-          break;
-      }
   }
 
   closeOrOpenInfoPanel(closeOrOpen: boolean) {
     this.showAllInfo = closeOrOpen;
   }
 
+  onAnimationEnd(evt: AnimationEvent) {
+    console.log(evt);
+    if (!evt.toState) {
+      this.hideContainer = true;
+    }
+  }
+
   onMouseWheel(evt: Event) {
     this.showAllInfo =  !this.showAllInfo;
+    this.hideContainer = false;
   }
 
 

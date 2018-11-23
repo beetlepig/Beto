@@ -59,11 +59,13 @@
 
 </div>
 
-<div class="panelInfoGeneralContainer" (wheel)="onMouseWheel($event)">
-  <div class="completeInfoWindowBlack" [@opacityAnimation]="showAllInfo" (click)="closeOrOpenInfoPanel(false)"></div>
+<div class="panelInfoGeneralContainer" (wheel)="onMouseWheel($event)" [hidden]="hideContainer">
+  <div class="completeInfoWindowBlack" [@opacityAnimation]="showAllInfo" (@opacityAnimation.done)="onAnimationEnd($event)" (click)="closeOrOpenInfoPanel(false)"></div>
   <div class="completeInfoWindow" [@transformAnimation]="showAllInfo" (click)="closeOrOpenInfoPanel(true)">
     <h3>{{selectedSubstance.completeInfo}}</h3>
   </div>
 </div>
+
+<div class="scrollIcon"></div>
 
 
