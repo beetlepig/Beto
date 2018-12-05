@@ -1,13 +1,15 @@
 
 <div class="aboutAlexContainer">
-  <div class="logoContainer"><app-alex-logo _fontSize="2.5vw"></app-alex-logo></div>
+  <div class="logoContainer"><app-alex-logo></app-alex-logo></div>
 
   <div class="containerGeneralInfoAlex">
     <div class="titleInfoAlexContainer">
-      <h3>SOBRE</h3><app-alex-logo _fontSize="2.8vw"></app-alex-logo>
+      <div class="containerPAndLogo">
+      <h3>SOBRE</h3><div class="containerLogoALex"><app-alex-logo></app-alex-logo></div>
+      </div>
     </div>
     <div class="infoAlexContainer">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi suscipit rhoncus odio sit amet vestibulum. Maecenas consectetur, sapien aliquam placerat hendrerit, augue felis placerat tellus, nec efficitur mauris lacus ac lectus. Mauris interdum rhoncus mauris non dignissim. Nunc at urna lectus. Sed sit amet diam porta, consequat arcu sed, pretium nibh. Nullam vehicula aliquet nisl sit amet rutrum. Integer faucibus, ex eu luctus ornare, ipsum mauris dapibus odio, nec pharetra ipsum enim vitae nunc. Duis ac porttitor est. Donec vehicula pharetra lorem, et blandit justo consequat vitae. Suspendisse eu est mi. Mauris vel nisi tincidunt ipsum vulputate scelerisque. Donec sit amet congue tellus. Morbi porttitor, ex eu ornare sodales, arcu dui vulputate dolor, non pretium metus elit et nisl. Duis ut aliquet augue. Vestibulum lobortis erat a purus tincidunt, nec euismod nisl dignissim.<br><br>Etiam ac venenatis arcu. Sed vulputate neque a enim pharetra commodo. Duis sed viverra nibh. Ut eget sodales eros. Fusce faucibus velit ut volutpat dapibus. Maecenas ac congue nisl, sed facilisis massa. Ut eget enim eu nisl feugiat laoreet sit amet id urna. Morbi ante lacus, lacinia ac pellentesque vel, dictum eu urna.</p>
+      <p [innerHtml]="info"></p>
     </div>
   </div>
 

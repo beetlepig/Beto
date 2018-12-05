@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-alex-logo',
@@ -7,15 +8,12 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class AlexLogoComponent implements OnInit {
 
-  @Input() _fontSize: string;
 
-  constructor() {
+  constructor( private router: Router) { }
 
-  }
+  ngOnInit() { }
 
-  ngOnInit() {
-    if (null == this._fontSize) {
-      throw new Error('Attribute "FontSize" is required');
-    }
+  redirect() {
+    this.router.navigate(['/']);
   }
 }

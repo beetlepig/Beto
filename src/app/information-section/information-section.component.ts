@@ -90,6 +90,8 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   showAllInfo: boolean;
   hideContainer: boolean;
 
+  allow: boolean;
+
 
   @HostListener('window:resize')
   onResize() {
@@ -105,6 +107,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
     this.clase[0] = 'characterAnimateDiv';
     this.clase[1] = '';
     this.actualDosis = 1;
+    this.allow = true;
   }
 
   ngOnInit() {
@@ -228,7 +231,14 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   }
 
   onMouseWheel(evt: Event) {
-    this.showAllInfo =  !this.showAllInfo;
+    if (this.allow) {
+      this.showAllInfo = !this.showAllInfo;
+      this.allow = false;
+    } else {
+      setTimeout(() => {
+        this.allow = true;
+      }, 1000);
+    }
   }
 
 
