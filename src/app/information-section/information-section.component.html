@@ -2,7 +2,7 @@
 
   <div class="listContainer">
     <ul>
-      <li *ngFor="let sustancita of sustancia" (click)="changeSelectedSubstance(sustancita)" [className]="selectedSubstance === sustancita ? 'liItemActive' : ''">
+      <li *ngFor="let sustancita of sustancia" (click)="changeSelectedSubstance(sustancita)" [className]="selectedSubstance === sustancita ? 'liItemActive' : 'liItemNoActive'">
         <h5>{{ sustancita.nombre }}</h5>
       </li>
     </ul>
@@ -78,27 +78,21 @@
   <div class="completeInfoWindow" [@transformAnimation]="showAllInfo" (click)="closeOrOpenInfoPanel(true)">
     <div class="otherNames">
       <div class="namesContainer">
-      <h2>ÉXTASIS</h2>
-      <h2 class="coloredName">MDMA</h2>
-      <h2>TACHAS</h2>
-      <h2 class="coloredName">X</h2>
-      <h2>PILLS</h2>
+        <h2 *ngFor="let name of selectedSubstance.completeInfo.nombres; let i = index" class="{{((i + 1) % 2) === 0? 'coloredName': ''}}">
+            {{name}}
+        </h2>
       </div>
     </div>
 
     <div class="allSectionInfo">
-      <h3>{{selectedSubstance.completeInfo}}</h3>
+      <h3 [innerHTML]="selectedCompleteInfoSection.info"></h3>
     </div>
 
     <div class="completeSubstancesSections">
       <div class="SubstancesSectionContainer">
-        <h5>QUÉ ES</h5>
-        <h5>EFECTOS PRINCIPALES</h5>
-        <h5>EFECTOS SECUNDARIOS</h5>
-        <h5>RIESGOS ASOCIADOS</h5>
-        <h5>INTOXICACIÓN</h5>
-        <h5>NUTRICIÓN</h5>
-        <h5>DATOS CURIOSOS</h5>
+        <h5 *ngFor="let section of selectedSubstance.completeInfo.sections" [className]="selectedCompleteInfoSection === section? 'selectedCompleteSection': ''" (click)="selectedCompleteInfoSection = section">
+          {{section.topic}}
+        </h5>
       </div>
     </div>
   </div>

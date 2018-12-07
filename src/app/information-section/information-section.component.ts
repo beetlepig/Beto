@@ -53,7 +53,41 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
           ]
         )
       ],
-      'characterAnimateRun', 'esta es la info completa del café'
+      'characterAnimateRun',
+      new CompleteInfoModel(['ÉXTASIS', 'X', 'MDMA', 'TACHAS', 'PILLS'],
+        [{topic: 'QUÉ ES', info: 'Su nombre científico es 3,4-metilendioximetanfetamina y pertenece a la familia de las ' +
+            'fenetilaminas. Se conoce como MDMA, pepas, pills, tachas o cristal. Se puede adquirir en forma de comprimido o de cristal, ' +
+            'aunque también polvo o cápsulas.<br/><br/>La variabilidad de la concentración y composición del éxtasis, según dicte la oferta y ' +
+            'coyuntura del mercado, implica un riesgo debido a las dificultades de anticipar o controlar la dosis adecuada. No ' +
+            'obstante, el consumo requiere su aumento gradual para conseguir los mismos efectos. No genera dependencia física demostrada ' +
+            'pero sí psicológica.'},
+             {topic: 'EFECTOS PRINCIPALES', info: '<strong>Subida</strong>: desaparece el cansancio, euforia, ganas de bailar o realizar alguna actividad ' +
+                 'física.<br/><br/><strong>Mantenimiento</strong>: intensificación de las sensaciones emocionales, cercanía, confianza y empatía hacia las ' +
+                 'demás personas. En esta fase el efecto puede durar entre 2 a 3 horas, incluso suele durar unas 4 – 6 horas, siempre ' +
+                 'dependiendo de la dosis administrada y usuaria/o. Cuando se consume una dosis suplementaria, los efectos suelen ' +
+                 'prolongarse durante un par de horas más y pueden mantenerse con dosis sucesivas, que generalmente no afectan la ' +
+                 'intensidad de la experiencia, pero sí la alargan, a la vez que incrementan los efectos secundarios.<br/><br/><strong>Bajada</strong>: los ' +
+                 'efectos van desapareciendo dando paso a un cansancio físico y mental, mientras se experimenta bajón en el estado ' +
+                 'de ánimo.'},
+             {topic: 'EFECTOS SECUNDARIOS', info: 'Pueden aparecer pérdida de apetito, distorsiones visuales, movimientos oculares ' +
+                 'involuntarios, incremento de la tasa cardiaca y de la presión arterial (al elevar la dosis), nerviosismo, cambios en ' +
+                 'la regulación de la temperatura corporal, vómitos, ansiedad, sudoración, mareos, confusión, boca seca, tensión ' +
+                 'mandibular (broxismo), dificultades de concentración, midriasis (dilatación de las pupilas).'},
+             {topic: 'RIESGOS ASOCIADOS', info: 'La <strong>combinación</strong> con alcohol provoca aumento en la temperatura corporal y deshidratación, ' +
+                 'puede producir un “golpe de calor” ocasionando desmayos y náuseas. Con cocaína aumenta la presión arterial y el ' +
+                 'sistema nervioso provocando efectos no deseados.<br/><br/><strong>Hipertermia</strong> (golpe de calor, elevación importante de la ' +
+                 'temperatura corporal). Más probable en ambientes cerrados, cuando se realiza una intensa actividad física (por ' +
+                 'ejemplo, bailar durante muchas horas) y cuando la persona usuaria no se hidrata convenientemente. Para evitar estas ' +
+                 'complicaciones se recomienda realizar pausas en el baile y reponer líquidos (agua, zumos, o preferentemente, bebidas ' +
+                 'isotónicas con moderación, sin excederse, aproximadamente medio litro cada hora si se realiza una actividad física ' +
+                 'intensa y menos si se está en reposo).<br/><br/><strong>Hipotermia</strong> (disminución considerable de la temperatura corporal). ' +
+                 'Dependiendo del ambiente donde esté la persona usuaria. El éxtasis o MDMA produce elevaciones en la frecuencia ' +
+                 'cardiaca y en la presión arterial. Por tanto, personas con problemas cardíacos o de hipertensión deberán tener ' +
+                 'precaución en su consumo. Dosis altas y frecuentes de éxtasis o MDMA pueden derivar en pérdidas de memoria y ' +
+                 'alteraciones del estado de ánimo. El aumento de las dosis en una noche genera ansiedad, nerviosismo, mareos, tensión ' +
+                 'mandibular y depresión.'}
+        ]
+      )
     ),
 
 
@@ -73,7 +107,41 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
           ]
         )
       ],
-      'characterAnimateJump', 'información sobre la hierba'
+      'characterAnimateJump',
+      new CompleteInfoModel(['ÉXTASIS', 'X', 'MDMA', 'TACHAS', 'PILLS'],
+        [{topic: 'QUÉ ES', info: 'Su nombre científico es 3,4-metilendioximetanfetamina y pertenece a la familia de las ' +
+            'fenetilaminas. Se conoce como MDMA, pepas, pills, tachas o cristal. Se puede adquirir en forma de comprimido o de cristal, ' +
+            'aunque también polvo o cápsulas.</br>La variabilidad de la concentración y composición del éxtasis, según dicte la oferta y ' +
+            'coyuntura del mercado, implica un riesgo debido a las dificultades de anticipar o controlar la dosis adecuada. No ' +
+            'obstante, el consumo requiere su aumento gradual para conseguir los mismos efectos. No genera dependencia física demostrada ' +
+            'pero sí psicológica.'},
+          {topic: 'EFECTOS PRINCIPALES', info: 'Subida: desaparece el cansancio, euforia, ganas de bailar o realizar alguna actividad ' +
+              'física.<br/>Mantenimiento: intensificación de las sensaciones emocionales, cercanía, confianza y empatía hacia las ' +
+              'demás personas. En esta fase el efecto puede durar entre 2 a 3 horas, incluso suele durar unas 4 – 6 horas, siempre ' +
+              'dependiendo de la dosis administrada y usuaria/o. Cuando se consume una dosis suplementaria, los efectos suelen ' +
+              'prolongarse durante un par de horas más y pueden mantenerse con dosis sucesivas, que generalmente no afectan la ' +
+              'intensidad de la experiencia, pero sí la alargan, a la vez que incrementan los efectos secundarios.<br/>Bajada: los ' +
+              'efectos van desapareciendo dando paso a un cansancio físico y mental, mientras se experimenta bajón en el estado ' +
+              'de ánimo.'},
+          {topic: 'EFECTOS SECUNDARIOS', info: 'Pueden aparecer pérdida de apetito, distorsiones visuales, movimientos oculares ' +
+              'involuntarios, incremento de la tasa cardiaca y de la presión arterial (al elevar la dosis), nerviosismo, cambios en ' +
+              'la regulación de la temperatura corporal, vómitos, ansiedad, sudoración, mareos, confusión, boca seca, tensión ' +
+              'mandibular (broxismo), dificultades de concentración, midriasis (dilatación de las pupilas).'},
+          {topic: 'RIESGOS ASOCIADOS', info: 'La combinación con alcohol provoca aumento en la temperatura corporal y deshidratación, ' +
+              'puede producir un “golpe de calor” ocasionando desmayos y náuseas. Con cocaína aumenta la presión arterial y el ' +
+              'sistema nervioso provocando efectos no deseados.<br/>Hipertermia (golpe de calor, elevación importante de la ' +
+              'temperatura corporal). Más probable en ambientes cerrados, cuando se realiza una intensa actividad física (por ' +
+              'ejemplo, bailar durante muchas horas) y cuando la persona usuaria no se hidrata convenientemente. Para evitar estas ' +
+              'complicaciones se recomienda realizar pausas en el baile y reponer líquidos (agua, zumos, o preferentemente, bebidas ' +
+              'isotónicas con moderación, sin excederse, aproximadamente medio litro cada hora si se realiza una actividad física ' +
+              'intensa y menos si se está en reposo).<br/>Hipotermia (disminución considerable de la temperatura corporal). ' +
+              'Dependiendo del ambiente donde esté la persona usuaria. El éxtasis o MDMA produce elevaciones en la frecuencia ' +
+              'cardiaca y en la presión arterial. Por tanto, personas con problemas cardíacos o de hipertensión deberán tener ' +
+              'precaución en su consumo. Dosis altas y frecuentes de éxtasis o MDMA pueden derivar en pérdidas de memoria y ' +
+              'alteraciones del estado de ánimo. El aumento de las dosis en una noche genera ansiedad, nerviosismo, mareos, tensión ' +
+              'mandibular y depresión.'}
+        ]
+      )
     )
   ];
 
@@ -82,6 +150,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   selectedSubstance: SubstanceObjectModel;
   selectedPresentation: SubstancePresentationModel;
   selectedDosisInfo: DosisAndInformationModel;
+  selectedCompleteInfoSection: ICompleteInfoSections;
   actualDosis: number;
   clase: Array<string>;
   animationRunning: boolean;
@@ -115,6 +184,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
     this.selectedSubstance = this.sustancia[0];
     this.selectedPresentation = this.selectedSubstance.presentacion[0];
     this.selectedDosisInfo = this.selectedPresentation.infoPerDosis[0];
+    this.selectedCompleteInfoSection = this.selectedSubstance.completeInfo.sections[0];
   }
 
   clickElBoton(hi: number) {
@@ -139,6 +209,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   changeSelectedSubstance(substance: SubstanceObjectModel) {
     this.selectedSubstance = substance;
     this.selectedPresentation = this.selectedSubstance.presentacion[0];
+    this.selectedCompleteInfoSection = this.selectedSubstance.completeInfo.sections[0];
     this.actualDosis = 1;
   }
 
@@ -271,9 +342,9 @@ class SubstanceObjectModel {
   nombre: string;
   presentacion: SubstancePresentationModel[];
   animation: string;
-  completeInfo: string;
+  completeInfo: CompleteInfoModel;
 
-  constructor (name: string, presentaciones: SubstancePresentationModel[], animacion: string, _completeInfo: string) {
+  constructor (name: string, presentaciones: SubstancePresentationModel[], animacion: string, _completeInfo: CompleteInfoModel) {
     this.nombre = name;
     this.presentacion = presentaciones;
     this.animation = animacion;
@@ -281,12 +352,18 @@ class SubstanceObjectModel {
   }
 }
 
+interface ICompleteInfoSections {
+  topic: string;
+  info: string;
+}
+
 class CompleteInfoModel {
   nombres: string[];
-  sections: {topic: string, info: string}[];
+  sections: ICompleteInfoSections[];
 
-  constructor() {
-
+  constructor(_nombres: string[], _sections: ICompleteInfoSections[]) {
+    this.nombres = _nombres;
+    this.sections = _sections;
   }
 }
 
