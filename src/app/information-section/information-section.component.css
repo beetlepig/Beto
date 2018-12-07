@@ -63,14 +63,16 @@
 .characterContainer {
   width: 37%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .characterGeneralContainer {
   position: relative;
   width: 100%;
-  height: 90%;
+  height: 10%;
+  flex-grow: 15;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -128,12 +130,17 @@
 
 .faseConsumoContainer {
   height: 10%;
+  flex-grow: 1;
   width: 100%;
   background-color: goldenrod;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .faseConsumoContainer p {
   margin: 0 auto;
+  width: 100%;
   font-family: 'Dosis', sans-serif;
   font-weight: normal;
   font-size: 1.5vw;
@@ -143,6 +150,11 @@
 }
 
 .containerFaseDiv {
+  width: 100%;
+  height: 10%;
+  flex-grow: 1;
+  margin-top: 1vh;
+  background-color: red;
   display: flex;
   justify-content: space-around;
 }
