@@ -8,7 +8,7 @@
 
 .logoContainer {
   position: absolute;
-  left: 46.75%;
+  left: 46%;
   margin-top: 5%;
   width: 8%;
   height: 8%;
@@ -53,7 +53,7 @@
 .containerLogoALex {
   width: 20%;
   height: 100%;
-  flex-grow: 50;
+  flex-grow: 10;
 }
 
 .infoAlexContainer {

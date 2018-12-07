@@ -377,7 +377,7 @@
   height: 100%;
   left: 0;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   opacity: 0;
 }
 
@@ -387,10 +387,74 @@
   left: 16.67%;
   top: 10%;
   width: 75%;
-  height: 70%;
+  height: 72.5%;
   transform: translateY(90vh);
   background-color: cornflowerblue;
+  display: flex;
+  flex-direction: row;
 }
+
+.otherNames {
+  width: 10%;
+  height: 100%;
+  flex-grow: 1;
+  background-color: greenyellow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.namesContainer {
+  background-color: gray;
+}
+
+.namesContainer h2 {
+  margin: 1vh 0;
+  text-align: center;
+  color: white;
+  font-size: 3vw;
+}
+
+.coloredName {
+  background-color: orange;
+}
+
+.allSectionInfo {
+  width: 10%;
+  height: 100%;
+  flex-grow: 3;
+  background-color: rebeccapurple;
+}
+
+.completeSubstancesSections {
+  width: 10%;
+  height: 100%;
+  flex-grow: 2;
+  background-color: navajowhite;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.SubstancesSectionContainer {
+  width: 90%;
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.SubstancesSectionContainer h5 {
+  margin: 1vh 0;
+  padding: 0.2vh 0.5vw;
+  background-color: green;
+  text-align: left;
+  font-size: 1.5vw;
+}
+
+
 
 .scrollIcon {
   position: absolute;

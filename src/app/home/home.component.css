@@ -58,3 +58,8 @@
   background-color: rgba(212, 132, 77, 1);
   border-radius: 100vh;
 }
+
+.loginContainer {
+  width: 75%;
+  height: 15%;
+}

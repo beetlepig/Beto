@@ -76,7 +76,31 @@
 <div class="panelInfoGeneralContainer" (wheel)="onMouseWheel($event)" [hidden]="hideContainer">
   <div class="completeInfoWindowBlack" [@opacityAnimation]="showAllInfo" (@opacityAnimation.done)="onAnimationEnd($event)" (@opacityAnimation.start)="onAnimationStart($event)" (click)="closeOrOpenInfoPanel(false)"></div>
   <div class="completeInfoWindow" [@transformAnimation]="showAllInfo" (click)="closeOrOpenInfoPanel(true)">
-    <h3>{{selectedSubstance.completeInfo}}</h3>
+    <div class="otherNames">
+      <div class="namesContainer">
+      <h2>ÉXTASIS</h2>
+      <h2 class="coloredName">MDMA</h2>
+      <h2>TACHAS</h2>
+      <h2 class="coloredName">X</h2>
+      <h2>PILLS</h2>
+      </div>
+    </div>
+
+    <div class="allSectionInfo">
+      <h3>{{selectedSubstance.completeInfo}}</h3>
+    </div>
+
+    <div class="completeSubstancesSections">
+      <div class="SubstancesSectionContainer">
+        <h5>QUÉ ES</h5>
+        <h5>EFECTOS PRINCIPALES</h5>
+        <h5>EFECTOS SECUNDARIOS</h5>
+        <h5>RIESGOS ASOCIADOS</h5>
+        <h5>INTOXICACIÓN</h5>
+        <h5>NUTRICIÓN</h5>
+        <h5>DATOS CURIOSOS</h5>
+      </div>
+    </div>
   </div>
 </div>
 

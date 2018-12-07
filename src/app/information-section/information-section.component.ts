@@ -224,20 +224,17 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
     if (!evt.toState) {
       this.hideContainer = true;
     }
+    this.allow = !this.allow;
   }
 
   onAnimationStart(evt: AnimationEvent) {
     this.hideContainer = false;
+    this.allow = false;
   }
 
   onMouseWheel(evt: Event) {
     if (this.allow) {
       this.showAllInfo = !this.showAllInfo;
-      this.allow = false;
-    } else {
-      setTimeout(() => {
-        this.allow = true;
-      }, 1000);
     }
   }
 
@@ -281,6 +278,15 @@ class SubstanceObjectModel {
     this.presentacion = presentaciones;
     this.animation = animacion;
     this.completeInfo = _completeInfo;
+  }
+}
+
+class CompleteInfoModel {
+  nombres: string[];
+  sections: {topic: string, info: string}[];
+
+  constructor() {
+    
   }
 }
 
