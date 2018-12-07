@@ -286,7 +286,7 @@ class CompleteInfoModel {
   sections: {topic: string, info: string}[];
 
   constructor() {
-    
+
   }
 }
 
