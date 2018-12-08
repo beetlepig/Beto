@@ -537,3 +537,7 @@
   background: url("/assets/general/ScrollSvg.svg") no-repeat center;
   background-size: contain;
 }
+
+.scrollIcon:hover {
+  cursor: pointer;
+}
