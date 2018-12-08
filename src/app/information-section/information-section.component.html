@@ -9,25 +9,15 @@
   </div>
   <div class="characterContainer">
     <div class="characterGeneralContainer">
-      <div [ngClass]="clase" #AnimatedCharacter>
-
-      </div>
-
+      <div [ngClass]="clase" #AnimatedCharacter></div>
       <div id="p5CanvasContainer" #p5CanvasContainer></div>
-
-      <!--<div *ngIf="characterState">
-      <div class="eyesInfoDiv">{{characterState.eyeInfo}}</div>
-      <div class="heardInfoDiv">{{characterState.heardInfo}}</div>
-      <div class="headInfoDiv">{{characterState.headInfo}}</div>
-      </div>-->
-
     </div>
   <div class="faseConsumoContainer">
-      <p>Consumo</p>
+      <p>CONSUMO</p>
       <div class="containerFaseDiv">
-        <button type="button" [disabled]="animationRunning" >Experimental</button>
-        <button type="button" [disabled]="animationRunning" >Regular</button>
-        <button type="button" [disabled]="animationRunning" >Abusivo</button>
+        <button type="button" [disabled]="animationRunning" >EXPERIMENTAL</button>
+        <button type="button" [disabled]="animationRunning" >RECREATIVO</button>
+        <button type="button" [disabled]="animationRunning" >ABUSIVO</button>
       </div>
     </div>
   </div>
