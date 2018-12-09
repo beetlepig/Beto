@@ -6,7 +6,6 @@
   height: 100%;
 }
 
-
 .logoContainer {
   position: absolute;
   left: 46.75%;
@@ -24,17 +23,77 @@
 }
 
 .selectorDiv {
-  width: 28%;
-  margin-right: 0.6%;
+  flex-grow: 1;
+  width: 10%;
+  margin-right: 1%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  background-color: rgba(100, 100, 200, 0.3);
+  background-color: rgba(100, 100, 200, 0.5);
+}
+
+.selectorDiv h2 {
+  margin: 0;
+  font-family: 'Dosis', sans-serif;
+  font-size: 3vw;
+  color: rgba(237, 134, 72, 1);
+  font-weight: 700;
+}
+
+.loggedOutOptions {
+  margin: 0.3vh 0;
+  font-family: 'Dosis', sans-serif;
+  font-size: 1vw;
+  font-weight: 600;
+}
+
+.loggedOutOptions:hover {
+  cursor: pointer;
 }
 
 .inputsDiv {
+  flex-grow: 3;
+  width: 10%;
+  height: 100%;
+  margin-left: 1%;
+  background-color: rgba(200, 100, 50, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+.mailAndAlternative {
+  display: flex;
+  background: white;
+}
+
+.mailAndAlternative input {
+  flex-grow: 1.5;
+  margin-right: 2%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding-left: 2%;
+  border-radius: 0.3vh;
+  font-family: 'Dosis', sans-serif;
+  font-size: 1vw;
+  font-weight: 500;
+}
+
+.mailAndAlternative div {
   flex-grow: 1;
-  background-color: rgba(200, 100, 200, 0.5);
+}
+
+.mailAndAlternative div h5 {
+  margin: 0;
+  font-family: 'Dosis', sans-serif;
+  text-align: center;
+  font-size: 0.8vw;
+  font-weight: 500;
+}
+
+.mailAndAlternative div h5:last-child {
+  font-size: 1vw;
+  font-weight: 600;
+  color: rgba(237, 134, 72, 1);
 }
 
 .contactoForms {

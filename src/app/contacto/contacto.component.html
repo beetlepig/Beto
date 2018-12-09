@@ -7,17 +7,18 @@
         Cerrar Sesión
       </h4>
       <ng-template #loggedOut>
-        <div (click)="onChangeSection('MAIL')">Correo</div>
-        <div (click)="onChangeSection('ACCOUNTLOGIN')">Cuenta Anónima</div>
+        <div (click)="onChangeSection('MAIL')"><h5 class="loggedOutOptions">CORREO PERSONAL</h5></div>
+        <div (click)="onChangeSection('ACCOUNTLOGIN')"><h5 class="loggedOutOptions">USUARIO ANÓNIMO</h5></div>
       </ng-template>
     </div>
 
     <div [ngSwitch]="section" class="inputsDiv">
       <ng-container *ngSwitchCase="'MAIL'">
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
         <form (ngSubmit)="sendMessage(); contactForm.reset()" #contactForm="ngForm" class="contactoForms">
-          <div>
-            <label for="mail"></label>
+          <div class="mailAndAlternative">
             <input type="email" id="mail" placeholder="Tú Correo" required [(ngModel)]="model.mail" name="mail">
+            <div><h5>¿No te sientes comodo dando tu correo?</h5><h5>CREAR USUARIO ANONIMO</h5></div>
           </div>
           <div class="textAreaContainerDiv">
             <label for="contenido"></label>
