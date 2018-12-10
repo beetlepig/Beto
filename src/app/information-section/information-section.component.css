@@ -356,7 +356,7 @@
   padding: 0.2vh 1vw;
   background: rgba(237, 134, 72, 0);
   box-sizing: border-box;
-  border: solid rgba(237, 134, 72, 1) 0.2vw;
+  border: solid rgba(237, 134, 72, 1) 0.15vw;
   color: rgba(237, 134, 72, 1);
   font-family: 'Dosis', sans-serif;
   font-weight: 800;
@@ -365,14 +365,14 @@
 }
 
 .buttonProbar:hover {
-  border: solid rgba(237, 134, 72, 0) 0.2vw;
+  border: solid rgba(237, 134, 72, 0) 0.15vw;
   background: rgba(237, 134, 72, 1);
   color: rgba(255, 255, 255, 1);
   cursor: pointer;
 }
 
 .buttonProbar:disabled {
-  border: solid rgba(237, 134, 72, 0) 0.1vw;
+  border: solid rgba(237, 134, 72, 0) 0.15vw;
   background: rgba(237, 134, 72, 0.8);
   color: rgba(255, 255, 255, 0.8);
 }

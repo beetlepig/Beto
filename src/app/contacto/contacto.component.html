@@ -7,8 +7,8 @@
         Cerrar Sesión
       </h4>
       <ng-template #loggedOut>
-        <div (click)="onChangeSection('MAIL')"><h5 class="loggedOutOptions">CORREO PERSONAL</h5></div>
-        <div (click)="onChangeSection('ACCOUNTLOGIN')"><h5 class="loggedOutOptions">USUARIO ANÓNIMO</h5></div>
+        <div (click)="onChangeSection('MAIL')"><h5 [className]="section === 'MAIL'? 'loggedOutOptions selectedSection': 'loggedOutOptions'">CORREO PERSONAL</h5></div>
+        <div (click)="onChangeSection('ACCOUNTLOGIN')"><h5  [className]="section === 'ACCOUNTLOGIN' || section === 'ACCOUNTREGISTER'? 'loggedOutOptions selectedSection': 'loggedOutOptions'">USUARIO ANÓNIMO</h5></div>
       </ng-template>
     </div>
 
@@ -18,45 +18,51 @@
         <form (ngSubmit)="sendMessage(); contactForm.reset()" #contactForm="ngForm" class="contactoForms">
           <div class="mailAndAlternative">
             <input type="email" id="mail" placeholder="Tú Correo" required [(ngModel)]="model.mail" name="mail">
-            <div><h5>¿No te sientes comodo dando tu correo?</h5><h5>CREAR USUARIO ANONIMO</h5></div>
+            <div><h5>¿No te sientes comodo dando tu correo?</h5><h5 (click)="onChangeSection('ACCOUNTREGISTER')">CREAR USUARIO ANONIMO</h5></div>
           </div>
           <div class="textAreaContainerDiv">
             <label for="contenido"></label>
             <textarea class="textareaContenido" placeholder="Mensaje" maxlength="1000" id="contenido" required [(ngModel)]="model.content" name="content"></textarea>
           </div>
 
-          <button type="submit" [disabled]="!contactForm.form.valid">Enviar</button>
+          <button type="submit" [disabled]="!contactForm.form.valid">ENVIAR</button>
         </form>
     </ng-container>
       <ng-container *ngSwitchCase="'ACCOUNTLOGIN'">
+        <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <div  class="loginContainer">
         <form (ngSubmit)="loginUser(modelUser); contactForm.reset()" #contactForm="ngForm">
           <div>
             <label for="user"></label>
-            <input type="email" id="user" placeholder="Usuario" required [(ngModel)]="modelUser.usuario" name="mail">
+            <input type="email" id="user" placeholder="USUARIO" required [(ngModel)]="modelUser.usuario" name="mail">
           </div>
           <div>
             <label for="password"></label>
-            <input type="password"  placeholder="Contraseña" id="password" required [(ngModel)]="modelUser.contrasena" name="content">
+            <input type="password"  placeholder="CONTRASEÑA" id="password" required [(ngModel)]="modelUser.contrasena" name="content">
           </div>
 
-          <button type="submit" [disabled]="!contactForm.form.valid">Enviar</button>
+          <button type="submit" [disabled]="!contactForm.form.valid">CONTINUAR</button>
         </form>
-        <button type="button" (click)="onChangeSection('ACCOUNTREGISTER'); contactForm.reset()">Registrarse</button>
+
+        <button type="button" (click)="onChangeSection('ACCOUNTREGISTER'); contactForm.reset()">¿Aun no tienes tu usuario anonimo?</button>
+        </div>
     </ng-container>
       <ng-container *ngSwitchCase="'ACCOUNTREGISTER'">
-      <form (ngSubmit)="createUser(); CreateUserForm.reset()" #CreateUserForm="ngForm">
-        <div>
-          <label for="userCreate"></label>
-          <input type="text" id="userCreate" placeholder="Usuario" required [(ngModel)]="modelUser.usuario" name="usuario">
-        </div>
-        <div>
-          <label for="passwordCreate"></label>
-          <input type="password"  placeholder="Contraseña" id="passwordCreate" required [(ngModel)]="modelUser.contrasena" name="contrasena">
-        </div>
+        <div  class="loginContainer">
+          <form (ngSubmit)="createUser(); CreateUserForm.reset()" #CreateUserForm="ngForm">
+            <div>
+              <label for="userCreate"></label>
+              <input type="text" id="userCreate" placeholder="Usuario" required [(ngModel)]="modelUser.usuario" name="usuario">
+            </div>
+            <div>
+              <label for="passwordCreate"></label>
+              <input type="password"  placeholder="Contraseña" id="passwordCreate" required [(ngModel)]="modelUser.contrasena" name="contrasena">
+            </div>
 
-        <button type="submit" [disabled]="!CreateUserForm.form.valid">Enviar</button>
-      </form>
-      <button type="button" (click)="onChangeSection('ACCOUNTLOGIN'); CreateUserForm.reset()">Login</button>
+            <button type="submit" [disabled]="!CreateUserForm.form.valid">CREAR CUENTA</button>
+          </form>
+          <button type="button" (click)="onChangeSection('ACCOUNTLOGIN'); CreateUserForm.reset()">LOGIN</button>
+        </div>
     </ng-container>
       <ng-container *ngSwitchCase="'CHAT'">
         <div class="chatContactContainer">
