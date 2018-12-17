@@ -65,7 +65,7 @@
 
 <div class="panelInfoGeneralContainer" (wheel)="onMouseWheel($event)" [hidden]="hideContainer">
   <div class="completeInfoWindowBlack" [@opacityAnimation]="showAllInfo" (@opacityAnimation.done)="onAnimationEnd($event)" (@opacityAnimation.start)="onAnimationStart($event)" (click)="closeOrOpenInfoPanel(false)"></div>
-  <div class="completeInfoWindow" [@transformAnimation]="showAllInfo" (click)="closeOrOpenInfoPanel(true)">
+  <div class="completeInfoWindow" [@transformAnimation]="showAllInfo">
     <div class="otherNames">
       <div class="namesContainer">
         <h2 *ngFor="let name of selectedSubstance.completeInfo.nombres; let i = index" class="{{((i + 1) % 2) === 0? 'coloredName': ''}}">
@@ -85,6 +85,10 @@
         </h5>
       </div>
     </div>
+
+    <div class="completeInfoWindow-source"><a href="https://www.echelecabeza.com/" target="_blank"></a></div>
+
+    <div class="completeInfoWindow-close" (click)="closeOrOpenInfoPanel(false)"></div>
   </div>
 </div>
 

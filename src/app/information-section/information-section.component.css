@@ -451,15 +451,65 @@
 
 .completeInfoWindow {
   pointer-events: all;
-  position: absolute;
-  left: 16.67%;
-  top: 10%;
+  position: relative;
+  left: 12.5%;
+  top: 15%;
   width: 75%;
-  height: 72.5%;
+  height: 70%;
   transform: translateY(90vh);
   background-color: rgba(244, 244, 244, 1);
   display: flex;
   flex-direction: row;
+}
+
+.completeInfoWindow-source {
+  transition: 400ms ease-in-out;
+  position: absolute;
+  left: 24%;
+  bottom: 4.5%;
+  width: 46%;
+  height: 6%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.05);
+  opacity: 0.8;
+}
+
+.completeInfoWindow-source:hover {
+  transition: 400ms ease-in-out;
+  opacity: 1;
+  cursor: pointer;
+  background-color: rgba(216, 116, 48, 0.05);
+}
+
+.completeInfoWindow-source:hover > a {
+  transition: 500ms ease-in-out;
+  filter: grayscale(0);
+}
+
+.completeInfoWindow-source a {
+  transition: 500ms ease-in-out;
+  width: 70%;
+  height: 70%;
+  background: rgba(100,150,200,0.0) url("/assets/general/cabeza_logo.png") no-repeat center / contain;
+  filter: grayscale(100%);
+}
+
+.completeInfoWindow-close {
+  position: absolute;
+  right: 2%;
+  top: 5%;
+  width: 4%;
+  height: 5%;
+  background: url("/assets/general/clear-icon.svg") no-repeat center / contain;
+  opacity: 0.8;
+}
+
+.completeInfoWindow-close:hover {
+  opacity: 1;
+  cursor: pointer;
 }
 
 .otherNames {
@@ -551,7 +601,7 @@
   left: 46%;
   bottom: 5%;
   width: 8%;
-  height: 10%;
+  height: 12%;
 }
 
 .scrollIcon:hover {
