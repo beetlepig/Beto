@@ -75,7 +75,7 @@
             </div>
           </div>
         </div>
-        <div class="inputChatContactDiv"><input type="text" placeholder="Escribe un Mensaje" #box (keyup)="onKey(box.value)" (keyup.enter)="sendChatMessage(); box.value = ''"><button type="button" (click)="sendChatMessage(); box.value = ''">ENVIAR</button></div>
+        <div class="inputChatContactDiv"><input type="text" placeholder="Escribe un Mensaje" #box (keyup)="onKey(box.value)" (keyup.enter)="sendChatMessage(); box.value = ''"><button type="button" (click)="sendChatMessage(); box.value = ''"></button></div>
       </ng-container>
     </div>
 
