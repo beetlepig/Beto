@@ -29,10 +29,10 @@
 }
 
 .menuHomeTitlesContainer div:hover > h1 {
-  color: rgba(212, 132, 77, 1);
+  color: rgba(216, 116, 48, 1);
 }
 .menuHomeTitlesContainer div:hover > h2 {
-  color: rgba(212, 132, 77, 1);
+  color: rgba(216, 116, 48, 1);
 }
 
 .jugarClass {
@@ -55,7 +55,7 @@
 .animatedSubLine {
   height: 0.5vh;
   width: 0;
-  background-color: rgba(212, 132, 77, 1);
+  background-color: rgba(216, 116, 48, 1);
   border-radius: 100vh;
 }
 

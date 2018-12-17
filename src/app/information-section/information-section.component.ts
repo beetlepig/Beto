@@ -2,6 +2,7 @@ import {AfterViewInit, Component, ElementRef, HostListener, OnDestroy, OnInit, V
 import {createSketch, Ip5WithCustomAtributes} from './sketch.p5';
 import * as p5 from 'p5';
 import {animate, state, style, transition, trigger, AnimationEvent} from '@angular/animations';
+import createSketchModal from './sketch-modal-button.p5';
 
 @Component({
   selector: 'app-information-section',
@@ -34,6 +35,7 @@ import {animate, state, style, transition, trigger, AnimationEvent} from '@angul
 export class InformationSectionComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('AnimatedCharacter') myCharacter: ElementRef;
   @ViewChild('p5CanvasContainer') containerSketch: ElementRef;
+  @ViewChild('p5CanvasContainerModal') containerSketchModal: ElementRef;
   sustancia = [
     new SubstanceObjectModel('CAFEÍNA',
       [
@@ -146,6 +148,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   ];
 
   canvas: Ip5WithCustomAtributes;
+  canvasModal: Ip5WithCustomAtributes;
 
   selectedSubstance: SubstanceObjectModel;
   selectedPresentation: SubstancePresentationModel;
@@ -165,7 +168,9 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   @HostListener('window:resize')
   onResize() {
     const parent: HTMLElement = this.containerSketch.nativeElement;
+    const parentModal: HTMLElement = this.containerSketchModal.nativeElement;
     this.canvas.onResize(parent.clientWidth, parent.clientHeight);
+    this.canvasModal.onResize(parentModal.clientWidth, parentModal.clientHeight);
   }
 
   constructor() {
@@ -322,11 +327,16 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   private createCanvas () {
     const sketchFinal = createSketch(this.containerSketch.nativeElement.clientWidth, this.containerSketch.nativeElement.clientHeight);
     this.canvas = new p5(sketchFinal, this.containerSketch.nativeElement) as Ip5WithCustomAtributes;
+
+    const sketchModal = createSketchModal(this.containerSketchModal.nativeElement.clientWidth,
+      this.containerSketchModal.nativeElement.clientHeight);
+    this.canvasModal = new p5(sketchModal, this.containerSketchModal.nativeElement) as Ip5WithCustomAtributes;
   }
 
   private destroyCanvas () {
     if (this.canvas) {
       this.canvas.remove();
+      this.canvasModal.remove();
     }
   }
 

@@ -36,7 +36,7 @@
   margin: 0;
   font-family: 'Dosis', sans-serif;
   font-size: 3vw;
-  color: rgba(237, 134, 72, 1);
+  color: rgba(216, 116, 48, 1);
   font-weight: 700;
 }
 
@@ -97,7 +97,7 @@
 .mailAndAlternative div h5:last-child {
   font-size: 1vw;
   font-weight: 600;
-  color: rgba(237, 134, 72, 1);
+  color: rgba(216, 116, 48, 1);
 }
 
 .mailAndAlternative div h5:last-child:hover {
@@ -185,7 +185,7 @@
   font-size: 1.3vw;
   font-weight: 600;
   background: none;
-  border: solid rgba(237, 134, 72, 1) 0.25vh;
+  border: solid rgba(216, 116, 48, 1) 0.25vh;
   border-radius: 0.3vh;
 }
 
@@ -194,7 +194,7 @@
 }
 
 .loginContainer form button:disabled {
-  border: solid rgba(237, 134, 72, 0.5) 0.25vh;
+  border: solid rgba(216, 116, 48, 0.5) 0.25vh;
   cursor: not-allowed;
   text-decoration: none;
 }
@@ -212,7 +212,7 @@
 }
 
 .selectedSection {
-  color: rgba(237, 134, 72, 1);
+  color: rgba(216, 116, 48, 1);
 }
 
 

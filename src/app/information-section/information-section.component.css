@@ -10,7 +10,7 @@
 }
 
 .listContainer {
-  width: 29%;
+  width: 33%;
   height: 70%;
   box-sizing: border-box;
   border-width: 0.2vw;
@@ -50,18 +50,18 @@
 }
 
 .listContainer ul li:hover {
-  background-color: rgba(237, 134, 72, 1);
+  background-color: rgba(216, 116, 48, 1);
   color: white;
   cursor: pointer;
 }
 
 .liItemActive {
-  background-color: rgba(237, 134, 72, 1);
+  background-color: rgba(216, 116, 48, 1);
   color: white;
 }
 
 .characterContainer {
-  width: 37%;
+  width: 33%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -145,8 +145,8 @@
   font-weight: normal;
   font-size: 1.4vw;
   text-align: center;
-  color: rgba(237, 134, 72, 1);
-  border-bottom: solid rgba(237, 134, 72, 1) 0.3vh;
+  color: rgba(216, 116, 48, 1);
+  border-bottom: solid rgba(216, 116, 48, 1) 0.3vh;
 }
 
 .containerFaseDiv {
@@ -214,9 +214,9 @@
   box-sizing: border-box;
   width: 80%;
   text-align: center;
-  border-bottom: solid rgba(237, 134, 72, 0.5);
+  border-bottom: solid rgba(216, 116, 48, 0.5);
   border-width: 0.25vh;
-  color: rgba(237, 134, 72, 1);
+  color: rgba(216, 116, 48, 1);
   font-weight: 500;
   font-size: 1.2vw;
 }
@@ -298,9 +298,9 @@
   padding-bottom: 0.5vh;
   width: 80%;
   box-sizing: border-box;
-  border-bottom: solid rgba(237, 134, 72, 0.5);
+  border-bottom: solid rgba(216, 116, 48, 0.5);
   border-width: 0.25vh;
-  color: rgba(237, 134, 72, 1);
+  color: rgba(216, 116, 48, 1);
   font-weight: 500;
   font-size: 1.2vw;
   text-align: center;
@@ -356,8 +356,8 @@
   padding: 0.2vh 1vw;
   background: rgba(237, 134, 72, 0);
   box-sizing: border-box;
-  border: solid rgba(237, 134, 72, 1) 0.15vw;
-  color: rgba(237, 134, 72, 1);
+  border: solid rgba(216, 116, 48, 1) 0.15vw;
+  color: rgba(216, 116, 48, 1);
   font-family: 'Dosis', sans-serif;
   font-weight: 800;
   font-size: 0.8vw;
@@ -366,15 +366,15 @@
 
 .buttonProbar:hover {
   border: solid rgba(237, 134, 72, 0) 0.15vw;
-  background: rgba(237, 134, 72, 1);
+  background: rgba(216, 116, 48, 1);
   color: rgba(255, 255, 255, 1);
   cursor: pointer;
 }
 
 .buttonProbar:disabled {
   border: solid rgba(237, 134, 72, 0) 0.15vw;
-  background: rgba(237, 134, 72, 0.8);
-  color: rgba(255, 255, 255, 0.8);
+  background: rgba(216, 116, 48, 0.7);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 
@@ -420,7 +420,7 @@
   left: 55%;
   width: 10%;
   height: 15%;
-  background: orange;
+  background: rgba(216, 116, 48, 1);
 }
 
 #p5CanvasContainer {
@@ -484,7 +484,7 @@
 }
 
 .coloredName {
-  background-color: rgba(237, 134, 72, 1);
+  background-color: rgba(216, 116, 48, 1);
   color: rgba(250, 250, 250, 1);
 }
 
@@ -538,24 +538,45 @@
 .SubstancesSectionContainer h5:hover {
   cursor: pointer;
   color: white;
-  background-color: rgba(237, 134, 72, 1);;
+  background-color: rgba(216, 116, 48, 1);
 }
 
 .selectedCompleteSection {
-  background-color: rgba(237, 134, 72, 1);
+  background-color: rgba(216, 116, 48, 1);
   color: white;
 }
 
 .scrollIcon {
   position: absolute;
-  left: 47%;
+  left: 46%;
   bottom: 5%;
-  width: 6%;
-  height: 6%;
-  background: url("/assets/general/ScrollSvg.svg") no-repeat center;
-  background-size: contain;
+  width: 8%;
+  height: 10%;
 }
 
 .scrollIcon:hover {
   cursor: pointer;
+}
+
+.information-logoAlex-warp {
+  position: absolute;
+  left: 46%;
+  top: 5%;
+  height: 10%;
+  display: flex;
+  flex-direction: column;
+}
+
+.information-logoAlex-logo {
+  flex-grow: 1;
+  height: 10%;
+}
+
+.information-logoAlex-text {
+  margin: 0;
+  font-family: 'Dosis', sans-serif;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.4vw;
+  color: rgba(216, 116, 48, 1);
 }
