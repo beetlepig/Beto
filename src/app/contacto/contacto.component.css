@@ -63,6 +63,9 @@
 
 .inputsDiv p {
   margin: 1.5vh auto;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 500;
+  font-size: 1vw;
 }
 
 .mailAndAlternative {
@@ -215,14 +218,6 @@
   color: rgba(216, 116, 48, 1);
 }
 
-
-
-.chatContactContainer {
-  width: 100%;
-  height: 90%;
-  background-color: red;
-}
-
 .inputChatContactDiv {
   height: 10%;
   display: flex;
@@ -233,26 +228,72 @@
   padding-left: 1%;
   padding-right: 1%;
   flex-grow: 5;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 0.2vw;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 400;
+  font-size: 1vw;
 }
 
-.inputChatContactDiv div {
-  height: 10%;
+.inputChatContactDiv button {
+  flex-grow: 1;
+  margin-left: 1%;
+  box-sizing: border-box;
+  border: solid rgba(216, 116, 48, 1) 0.15vw;
+  border-radius: 1vh;
+  background: none;
+  font-size: 1vw;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 600;
+}
+
+.inputChatContactDiv button:hover {
+  background: rgba(216, 116, 48, 1);
+  cursor: pointer;
+  color: white;
 }
 
 .chatContactContainer {
+  width: 100%;
+  height: 90%;
+  background-color: red;
+}
+
+.messagesIfContainer {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.messagesIfContainer-individualMessages-wrapper {
+  margin: 1vh 1vw;
+  background-color: aquamarine;
   display: flex;
   flex-direction: column;
+}
+
+.messagesIfContainer-individualMessages-shape {
+  padding: 1vh 1vw;
+  border-radius: 0.5vw;
+  max-width: 45%;
+}
+
+.messagesIfContainer-individualMessages-shape h2 {
+  margin: 0;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 400;
+  font-size: 1vw;
 }
 
 .userContactMessage {
   align-self: flex-end;
+  background-color: aqua;
 }
 
-.messagesIfContainer {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
+.adminMessage {
+  align-self: flex-start;
+  background-color: violet;
 }
 
 

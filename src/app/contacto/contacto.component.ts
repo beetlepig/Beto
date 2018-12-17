@@ -31,12 +31,14 @@ export class ContactoComponent implements OnInit {
   }
 
   sendChatMessage() {
-    this.chatDoc.chat.push({by: 'user', message: this.inputMessageChat});
-    this.fireService.sendChatMessage({id: this.chatDoc.id, user: this.fireService.loggedUser.user, chat: this.chatDoc.chat}).then(() => {
-      this.inputMessageChat = '';
-    }).catch((error) => {
-      console.error(error);
-    });
+    if (this.inputMessageChat !== '') {
+      this.chatDoc.chat.push({by: 'user', message: this.inputMessageChat});
+      this.fireService.sendChatMessage({id: this.chatDoc.id, user: this.fireService.loggedUser.user, chat: this.chatDoc.chat}).then(() => {
+        this.inputMessageChat = '';
+      }).catch((error) => {
+        console.error(error);
+      });
+    }
   }
 
   loginUser(_model: UserForm) {

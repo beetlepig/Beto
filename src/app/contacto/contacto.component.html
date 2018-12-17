@@ -3,7 +3,7 @@
   <div class="containerGeneralMail">
     <div class="selectorDiv">
       <h2>CONTACTO</h2>
-      <h4 *ngIf="fireService.loggedUser; else loggedOut" (click)="logout()">
+      <h4 class="loggedOutOptions" *ngIf="fireService.loggedUser; else loggedOut" (click)="logout()">
         Cerrar Sesión
       </h4>
       <ng-template #loggedOut>
@@ -68,10 +68,14 @@
       <ng-container *ngSwitchCase="'CHAT'">
         <div class="chatContactContainer">
           <div *ngIf="chatDoc" class="messagesIfContainer">
-          <h2  *ngFor="let message of chatDoc.chat" ngClass="{{(message.by == 'user')? 'userContactMessage': 'adminMessage'}}">{{message.message}}</h2>
+            <div class="messagesIfContainer-individualMessages-wrapper" *ngFor="let message of chatDoc.chat">
+              <div class="messagesIfContainer-individualMessages-shape" ngClass="{{(message.by == 'user')? 'userContactMessage': 'adminMessage'}}">
+                <h2 >{{message.message}}</h2>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="inputChatContactDiv"><input type="text" placeholder="Escribe un Mensaje" #box (keyup)="onKey(box.value)"><button type="button" (click)="sendChatMessage(); box.value = ''">send</button></div>
+        <div class="inputChatContactDiv"><input type="text" placeholder="Escribe un Mensaje" #box (keyup)="onKey(box.value)" (keyup.enter)="sendChatMessage(); box.value = ''"><button type="button" (click)="sendChatMessage(); box.value = ''">ENVIAR</button></div>
       </ng-container>
     </div>
 
