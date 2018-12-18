@@ -1,6 +1,6 @@
 <div class="adminContainer">
   <div class="formLoginAdminContainer" *ngIf="!fireService.loggedAdmin; else dashboard">
-    <h3>Login Admin</h3>
+    <h3 class="formLoginAdminContainer-title">ADMIN</h3>
     <form (ngSubmit)="adminLogin(model); adminLoginForm.reset()" #adminLoginForm="ngForm" class="contactoForms">
       <div>
         <label for="userAdmin"></label>

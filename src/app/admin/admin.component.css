@@ -14,6 +14,44 @@
   width: 90%;
   height: 90%;
   background-color: darkblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formLoginAdminContainer-title {
+  margin: 2vh 0;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 600;
+  font-size: 2vw;
+  text-align: center;
+}
+
+.contactoForms {
+  height: 40%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.contactoForms div {
+  width: 100%;
+  flex-grow: 1;
+  margin: 1vh 0;
+}
+
+.contactoForms div input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1vh 1vw;
+  font-family: 'Dosis', sans-serif;
+  font-size: 1vw;
+  font-weight: 500;
+}
+
+.contactoForms button {
+  flex-grow: 1;
+  align-self: flex-end;
 }
 
 .adminDashboard {
