@@ -2,16 +2,9 @@
   <div class="formLoginAdminContainer" *ngIf="!fireService.loggedAdmin; else dashboard">
     <h3 class="formLoginAdminContainer-title">ADMIN</h3>
     <form (ngSubmit)="adminLogin(model); adminLoginForm.reset()" #adminLoginForm="ngForm" class="contactoForms">
-      <div>
-        <label for="userAdmin"></label>
         <input type="email" id="userAdmin" placeholder="Usuario" required [(ngModel)]="model.usuario" name="mail">
-      </div>
-      <div>
-        <label for="passAdmin"></label>
         <input type="password" placeholder="Contraseña" id="passAdmin" required [(ngModel)]="model.contrasena" name="content">
-      </div>
-
-      <button type="submit" [disabled]="!adminLoginForm.form.valid">Entrar</button>
+        <button type="submit" [disabled]="!adminLoginForm.form.valid">Entrar</button>
     </form>
   </div>
 

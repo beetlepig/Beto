@@ -29,29 +29,41 @@
 
 .contactoForms {
   height: 40%;
-  width: 50%;
+  width: 30%;
   display: flex;
   flex-direction: column;
+  background-color: violet;
 }
 
-.contactoForms div {
+.contactoForms input {
   width: 100%;
-  flex-grow: 1;
+  flex-grow: 2;
   margin: 1vh 0;
-}
-
-.contactoForms div input {
-  width: 100%;
   box-sizing: border-box;
   padding: 1vh 1vw;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 0.15vw;
   font-family: 'Dosis', sans-serif;
   font-size: 1vw;
   font-weight: 500;
+  color: rgba(0, 0, 0, 0.8)
 }
 
 .contactoForms button {
   flex-grow: 1;
   align-self: flex-end;
+  font-family: 'Dosis', sans-serif;
+  font-size: 1vw;
+  font-weight: 500;
+  background-color: transparent;
+  border: solid rgba(216, 116, 48, 1) 0.2vw;
+}
+
+.contactoForms button:hover {
+  cursor: pointer;
+  color: white;
+  background-color: rgba(216, 116, 48, 1);
 }
 
 .adminDashboard {
