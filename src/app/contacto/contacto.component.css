@@ -185,9 +185,13 @@
   background: none;
   border: solid rgba(216, 116, 48, 1) 0.25vh;
   border-radius: 0.3vh;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .loginContainer form button:hover {
+  text-decoration: none;
+  background-color: rgba(216, 116, 48, 1);
+  color: white;
   cursor: pointer;
 }
 
