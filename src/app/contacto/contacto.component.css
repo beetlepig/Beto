@@ -96,7 +96,7 @@
 .mailAndAlternative div h5:last-child {
   font-size: 1vw;
   font-weight: 600;
-  color: rgba(216, 116, 48, 1);
+  color: rgba(232,115,35, 1);
 }
 
 .mailAndAlternative div h5:last-child:hover {
@@ -183,20 +183,20 @@
   font-size: 1.3vw;
   font-weight: 600;
   background: none;
-  border: solid rgba(216, 116, 48, 1) 0.25vh;
+  border: solid rgba(232,115,35, 1) 0.25vh;
   border-radius: 0.3vh;
   color: rgba(0, 0, 0, 0.8);
 }
 
 .loginContainer form button:hover {
   text-decoration: none;
-  background-color: rgba(216, 116, 48, 1);
+  background-color: rgba(232,115,35, 1);
   color: white;
   cursor: pointer;
 }
 
 .loginContainer form button:disabled {
-  border: solid rgba(216, 116, 48, 0.5) 0.25vh;
+  border: solid rgba(232,115,35, 0.5) 0.25vh;
   cursor: not-allowed;
   text-decoration: none;
 }
@@ -214,7 +214,7 @@
 }
 
 .selectedSection {
-  color: rgba(216, 116, 48, 1);
+  color: rgba(232,115,35, 1);
 }
 
 .inputChatContactDiv {
@@ -239,8 +239,8 @@
   flex-grow: 1;
   margin-left: 1%;
   box-sizing: border-box;
-  border: solid rgba(216, 116, 48, 1) 0.1vw;
-  border-radius: 1vh;
+  border: solid rgba(232,115,35, 1) 0.1vw;
+  border-radius: 0.3vw;
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="rgba(0,0,0,0.6)" d="M10 17l5-5-5-5v10z"/><path fill="none" d="M0 24V0h24v24H0z"/></svg>') no-repeat center / contain;
   font-size: 1vw;
   font-family: 'Dosis', sans-serif;
@@ -248,7 +248,7 @@
 }
 
 .inputChatContactDiv button:hover {
-  background: rgba(216, 116, 48, 1) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="rgba(255,255,255,1)" d="M10 17l5-5-5-5v10z"/><path fill="none" d="M0 24V0h24v24H0z"/></svg>') no-repeat center / contain;
+  background: rgba(232,115,35, 1) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="rgba(255,255,255,1)" d="M10 17l5-5-5-5v10z"/><path fill="none" d="M0 24V0h24v24H0z"/></svg>') no-repeat center / contain;
   cursor: pointer;
 }
 
@@ -289,7 +289,7 @@
 .userContactMessage {
   align-self: flex-end;
   color: white;
-  background-color: rgba(216, 116, 48, 1);
+  background-color: rgba(232,115,35, 1);
 }
 
 .adminMessage {
