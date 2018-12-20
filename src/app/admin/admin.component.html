@@ -11,23 +11,38 @@
   <ng-template #dashboard>
     <div  class="adminDashboard">
       <div class="selectorPanel">
+        <div class="selectorPanel-mails-wrap">
         <h2>Mails</h2>
-        <h3 *ngFor="let mail of allMails" (click)="selectedChat = null; selectedMail = mail">{{mail.mail}}</h3>
-        <h2>Chats</h2>
-        <h3 *ngFor="let chat of allchats" (click)="selectedMail = null; selectedChat = chat">{{chat.user}}</h3>
+        <h3 *ngFor="let mail of allMails" (click)="selectedChat = null; selectedMail = mail" [class]="selectedMail === mail? 'selectorPanel-mails--active': null">{{mail.mail}}</h3>
+        </div>
+        <div class="selectorPanel-chats-wrap">
+          <h2>Chats</h2>
+          <h3 *ngFor="let chat of allchats" (click)="selectedMail = null; selectedChat = chat" [class]="selectedChat === chat? 'electorPanel-chats--active': null">{{chat.user}}</h3>
+        </div>
       </div>
       <div class="contentMessagesAndMails">
-        <div *ngIf="selectedMail; else chatContainer">
-          <h4 *ngFor="let messageMail of selectedMail.message">{{messageMail}}</h4>
-          <a [href]="'mailto:' + selectedMail.mail"><button>Responder</button></a>
-        </div>
+
+        <ng-container *ngIf="selectedMail; then mailsContainer; else chatContainer"></ng-container>
+
+        <ng-template #mailsContainer>
+            <div class="mails-wrap">
+              <div class="mails-mail-wrapper">
+                <h4 *ngFor="let messageMail of selectedMail.message">{{messageMail}}</h4>
+              </div>
+              <a [href]="'mailto:' + selectedMail.mail"><button>Responder</button></a>
+            </div>
+        </ng-template>
         <ng-template  #chatContainer>
-          <ng-container *ngIf="selectedChat">
-          <div class="chatContactContainer">
-            <h2 *ngFor="let message of selectedChat.chat" ngClass="{{(message.by == 'user')? 'userContactMessage': 'adminMessage'}}">{{message.message}}</h2>
+          <div *ngIf="selectedChat" class="chatContactContainer">
+            <div class="chat-messages-wrap">
+              <div class="messagesIfContainer-individualMessages-wrapper" *ngFor="let message of selectedChat.chat">
+                <div class="messagesIfContainer-individualMessages-shape" ngClass="{{(message.by == 'user')? 'userContactMessage': 'adminMessage'}}">
+                  <h2>{{message.message}}</h2>
+                </div>
+              </div>
+            </div>
+            <div class="inputChatContactDiv"><input type="text" placeholder="Escribe un Mensaje" #box (keyup)="onKey(box.value)" (keyup.enter)="sendChatMessage(); box.value = ''"><button type="button" (click)="sendChatMessage(); box.value = ''"></button></div>
           </div>
-          <div class="inputChatContactDiv"><input type="text" placeholder="Escribe un Mensaje" #box (keyup)="onKey(box.value)"><button type="button" (click)="sendChatMessage(); box.value = ''">send</button></div>
-          </ng-container>
         </ng-template>
       </div>
     </div>
