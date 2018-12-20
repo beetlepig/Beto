@@ -36,13 +36,17 @@ export class AdminComponent implements OnInit {
   }
 
   sendChatMessage() {
-    this.selectedChat.chat.push({by: 'admin', message: this.inputMessageChat});
-    this.fireService.sendChatMessage({id: this.selectedChat.id, user: this.fireService.loggedAdmin.user,
-      chat: this.selectedChat.chat}).then(() => {
-      this.inputMessageChat = '';
-    }).catch((error) => {
-      console.error(error);
-    });
+    if (this.inputMessageChat)  {
+      this.selectedChat.chat.push({by: 'admin', message: this.inputMessageChat});
+      this.fireService.sendChatMessage({
+        id: this.selectedChat.id, user: this.fireService.loggedAdmin.user,
+        chat: this.selectedChat.chat
+      }).then(() => {
+        this.inputMessageChat = '';
+      }).catch((error) => {
+        console.error(error);
+      });
+    }
   }
 
   private getMailMessages() {
