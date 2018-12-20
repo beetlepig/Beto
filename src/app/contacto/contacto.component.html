@@ -67,7 +67,7 @@
     </ng-container>
       <ng-container *ngSwitchCase="'CHAT'">
         <div class="chatContactContainer">
-          <div *ngIf="chatDoc" class="messagesIfContainer">
+          <div *ngIf="chatDoc" class="messagesIfContainer" #scrollMePapu>
             <div class="messagesIfContainer-individualMessages-wrapper" *ngFor="let message of chatDoc.chat">
               <div class="messagesIfContainer-individualMessages-shape" ngClass="{{(message.by == 'user')? 'userContactMessage': 'adminMessage'}}">
                 <h2 >{{message.message}}</h2>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewChecked, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FirestoreService, IMailMessage, IMessagesID, IUser} from '../firestore/firestore.service';
 import {Subscription} from 'rxjs';
 
@@ -7,7 +7,9 @@ import {Subscription} from 'rxjs';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent implements OnInit, AfterViewChecked {
+  @ViewChild('scrollMePapu') private elChatContainer: ElementRef;
+
   model: AdminUser;
   mailsSubscription: Subscription;
   chatsSubscription: Subscription;
@@ -65,6 +67,18 @@ export class AdminComponent implements OnInit {
 
   onKey(value: string) {
     this.inputMessageChat = value;
+  }
+
+  ngAfterViewChecked(): void {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom(): void {
+    try {
+      this.elChatContainer.nativeElement.scrollTop = this.elChatContainer.nativeElement.scrollHeight;
+    } catch (err) {
+
+    }
   }
 
 }

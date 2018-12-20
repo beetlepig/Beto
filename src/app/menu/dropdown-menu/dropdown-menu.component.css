@@ -54,7 +54,7 @@
 }
 
 .menuDropdownMenu h3:hover {
-  color: rgba(213, 133, 77, 1);
+  color: rgba(232, 115, 35, 0.8);
   cursor: pointer;
 }
 
@@ -63,5 +63,5 @@
 }
 
 .activeTextMenu {
-  color: rgba(213, 133, 77, 1);
+  color: rgba(232, 115, 35, 0.8);
 }

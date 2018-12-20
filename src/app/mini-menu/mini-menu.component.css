@@ -16,7 +16,7 @@
 }
 
 .miniMenuContainer div:hover h2 {
-  color: rgba(216, 116, 48, 1);
+  color: rgba(232, 115, 35, 1);
 }
 
 .miniMenuContainer div h2 {
@@ -30,6 +30,6 @@
 .animatedSubLine {
   height: 0.5vh;
   width: 0;
-  background-color: rgba(216, 116, 48, 1);
+  background-color: rgba(232, 115, 35, 1);
   border-radius: 100vh;
 }

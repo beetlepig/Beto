@@ -50,13 +50,13 @@
 }
 
 .listContainer ul li:hover {
-  background-color: rgba(216, 116, 48, 1);
+  background-color: rgba(232,115,35, 1);
   color: white;
   cursor: pointer;
 }
 
 .liItemActive {
-  background-color: rgba(216, 116, 48, 1);
+  background-color: rgba(232,115,35, 1);
   color: white;
 }
 
@@ -145,8 +145,8 @@
   font-weight: normal;
   font-size: 1.4vw;
   text-align: center;
-  color: rgba(216, 116, 48, 1);
-  border-bottom: solid rgba(216, 116, 48, 1) 0.3vh;
+  color: rgba(232,115,35, 1);
+  border-bottom: solid rgba(232,115,35, 1) 0.3vh;
 }
 
 .containerFaseDiv {
@@ -172,14 +172,14 @@
 
 .containerFaseDiv button:hover {
   border: solid rgba(237, 134, 72, 0) 0.1vw;
-  background: rgba(237, 134, 72, 1);
+  background: rgba(232,115,35, 1);
   color: rgba(255, 255, 255, 1);
   cursor: pointer;
 }
 
 .containerFaseDiv button:disabled {
   border: solid rgba(237, 134, 72, 0) 0.1vw;
-  background: rgba(237, 134, 72, 0.8);
+  background: rgba(232,115,35, 0.8);
   color: rgba(255, 255, 255, 0.8);
 }
 
@@ -214,10 +214,11 @@
   box-sizing: border-box;
   width: 80%;
   text-align: center;
-  border-bottom: solid rgba(216, 116, 48, 0.5);
+  border-bottom: solid rgba(232,115,35, 0.5);
   border-width: 0.25vh;
-  color: rgba(216, 116, 48, 1);
-  font-weight: 500;
+  color: rgba(232, 115, 35, 1);
+  font-family: 'Dosis', sans-serif;
+  font-weight: 600;
   font-size: 1.2vw;
 }
 
@@ -298,10 +299,11 @@
   padding-bottom: 0.5vh;
   width: 80%;
   box-sizing: border-box;
-  border-bottom: solid rgba(216, 116, 48, 0.5);
+  border-bottom: solid  rgba(232, 115, 35, 0.5);
   border-width: 0.25vh;
-  color: rgba(216, 116, 48, 1);
-  font-weight: 500;
+  color:  rgba(232, 115, 35, 1);;
+  font-weight: 600;
+  font-family: 'Dosis', sans-serif;
   font-size: 1.2vw;
   text-align: center;
 }
@@ -356,8 +358,8 @@
   padding: 0.2vh 1vw;
   background: rgba(237, 134, 72, 0);
   box-sizing: border-box;
-  border: solid rgba(216, 116, 48, 1) 0.15vw;
-  color: rgba(216, 116, 48, 1);
+  border: solid rgba(232, 115, 35, 1) 0.15vw;
+  color: rgba(232, 115, 35, 1);
   font-family: 'Dosis', sans-serif;
   font-weight: 800;
   font-size: 0.8vw;
@@ -366,7 +368,7 @@
 
 .buttonProbar:hover {
   border: solid rgba(237, 134, 72, 0) 0.15vw;
-  background: rgba(216, 116, 48, 1);
+  background: rgba(232, 115, 35, 1);
   color: rgba(255, 255, 255, 1);
   cursor: pointer;
 }
@@ -420,7 +422,7 @@
   left: 55%;
   width: 10%;
   height: 15%;
-  background: rgba(216, 116, 48, 1);
+  background: rgba(232, 115, 35, 1);
 }
 
 #p5CanvasContainer {
@@ -534,7 +536,7 @@
 }
 
 .coloredName {
-  background-color: rgba(216, 116, 48, 1);
+  background-color: rgba(232, 115, 35, 1);
   color: rgba(250, 250, 250, 1);
 }
 
@@ -588,11 +590,11 @@
 .SubstancesSectionContainer h5:hover {
   cursor: pointer;
   color: white;
-  background-color: rgba(216, 116, 48, 1);
+  background-color: rgba(232, 115, 35, 1);
 }
 
 .selectedCompleteSection {
-  background-color: rgba(216, 116, 48, 1);
+  background-color: rgba(232, 115, 35, 1);
   color: white;
 }
 
@@ -628,5 +630,5 @@
   text-align: center;
   font-weight: 700;
   font-size: 1.4vw;
-  color: rgba(216, 116, 48, 1);
+  color: rgba(232, 115, 35, 1);
 }

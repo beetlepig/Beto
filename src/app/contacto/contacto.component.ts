@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewChecked, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FirestoreService, IMessages, IMessagesID, SimpleMessage} from '../firestore/firestore.service';
 import {Subscription} from 'rxjs';
 
@@ -7,7 +7,8 @@ import {Subscription} from 'rxjs';
   templateUrl: './contacto.component.html',
   styleUrls: ['./contacto.component.css']
 })
-export class ContactoComponent implements OnInit {
+export class ContactoComponent implements OnInit, AfterViewChecked {
+  @ViewChild('scrollMePapu') private elChatContainer: ElementRef;
 
   model = new MailForm('', '');
   modelUser = new UserForm('', '');
@@ -91,6 +92,18 @@ export class ContactoComponent implements OnInit {
 
   onKey(value: string) {
     this.inputMessageChat = value;
+  }
+
+  ngAfterViewChecked(): void {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom(): void {
+    try {
+      this.elChatContainer.nativeElement.scrollTop = this.elChatContainer.nativeElement.scrollHeight;
+    } catch (err) {
+
+    }
   }
 
 

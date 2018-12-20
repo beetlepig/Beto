@@ -34,7 +34,7 @@
         </ng-template>
         <ng-template  #chatContainer>
           <div *ngIf="selectedChat" class="chatContactContainer">
-            <div class="chat-messages-wrap">
+            <div class="chat-messages-wrap" #scrollMePapu>
               <div class="messagesIfContainer-individualMessages-wrapper" *ngFor="let message of selectedChat.chat">
                 <div class="messagesIfContainer-individualMessages-shape" ngClass="{{(message.by == 'user')? 'userContactMessage': 'adminMessage'}}">
                   <h2>{{message.message}}</h2>
