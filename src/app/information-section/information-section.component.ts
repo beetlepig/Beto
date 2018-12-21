@@ -37,111 +37,89 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   @ViewChild('p5CanvasContainer') containerSketch: ElementRef;
   @ViewChild('p5CanvasContainerModal') containerSketchModal: ElementRef;
   sustancia = [
-    new SubstanceObjectModel('CAFEÍNA',
+    new SubstanceObjectModel('EXTASIS',
       [
-        new SubstancePresentationModel('SOBRE', '/assets/substancesImg/7702040127008.jpg',
+        new SubstancePresentationModel('PASTILLA', '/assets/substancesImg/7702040127008.jpg',
           [
                         new DosisAndInformationModel('head dosis sobre 1', 'eye dosis sobre 1', 'heard dosis sobre 1'),
                         new DosisAndInformationModel('head dosis sobre 2', 'eye dosis sobre 2', 'heard dosis sobre 2')
           ]
-        ),
-        new SubstancePresentationModel('LIQUIDO', '/assets/substancesImg/buen-cafe-full.jpg',
-          [
-                        new DosisAndInformationModel('head dosis liquido 1', 'eye dosis liquido 1', 'heard dosis liquido 1'),
-                        new DosisAndInformationModel('head dosis liquido 2', 'eye dosis liquido 2', 'heard dosis liquido 2'),
-                        new DosisAndInformationModel('head dosis liquido 3', 'eye dosis liquido 3', 'heard dosis liquido 3'),
-                        new DosisAndInformationModel('head dosis liquido 4', 'eye dosis liquido 4', 'heard dosis liquido 4'),
-                        new DosisAndInformationModel('head dosis liquido 5', 'eye dosis liquido 5', 'heard dosis liquido 5')
-          ]
         )
       ],
       'characterAnimateRun',
-      new CompleteInfoModel(['ÉXTASIS', 'X', 'MDMA', 'TACHAS', 'PILLS'],
-        [{topic: 'QUÉ ES', info: 'Su nombre científico es 3,4-metilendioximetanfetamina y pertenece a la familia de las ' +
+      new CompleteInfoModel(['X', 'MDMA', 'TACHAS', 'PILLS'],
+        [{topic: 'DESCRIPCIÓN', info: 'Su nombre científico es 3,4-metilendioximetanfetamina y pertenece a la familia de las ' +
             'fenetilaminas. Se conoce como MDMA, pepas, pills, tachas o cristal. Se puede adquirir en forma de comprimido o de cristal, ' +
-            'aunque también polvo o cápsulas.<br/><br/>La variabilidad de la concentración y composición del éxtasis, según dicte la oferta y ' +
-            'coyuntura del mercado, implica un riesgo debido a las dificultades de anticipar o controlar la dosis adecuada. No ' +
+            'aunque también polvo o cápsulas.<br><br>La variabilidad de la concentración y composición del éxtasis, según dicte la ' +
+            'oferta y coyuntura del mercado, implica un riesgo debido a las dificultades de anticipar o controlar la dosis adecuada. No ' +
             'obstante, el consumo requiere su aumento gradual para conseguir los mismos efectos. No genera dependencia física demostrada ' +
             'pero sí psicológica.'},
-             {topic: 'EFECTOS PRINCIPALES', info: '<strong>Subida</strong>: desaparece el cansancio, euforia, ganas de bailar o realizar alguna actividad ' +
-                 'física.<br/><br/><strong>Mantenimiento</strong>: intensificación de las sensaciones emocionales, cercanía, confianza y empatía hacia las ' +
-                 'demás personas. En esta fase el efecto puede durar entre 2 a 3 horas, incluso suele durar unas 4 – 6 horas, siempre ' +
-                 'dependiendo de la dosis administrada y usuaria/o. Cuando se consume una dosis suplementaria, los efectos suelen ' +
-                 'prolongarse durante un par de horas más y pueden mantenerse con dosis sucesivas, que generalmente no afectan la ' +
-                 'intensidad de la experiencia, pero sí la alargan, a la vez que incrementan los efectos secundarios.<br/><br/><strong>Bajada</strong>: los ' +
-                 'efectos van desapareciendo dando paso a un cansancio físico y mental, mientras se experimenta bajón en el estado ' +
-                 'de ánimo.'},
+             {topic: 'EFECTOS PRINCIPALES', info: 'Después de ingerirla sus efectos pueden tardar entre 20 y 90 minutos en manifestarse ' +
+                 'y por lo general se dividen en tres fases:<br><br><strong>Subida:</strong> desaparece el cansancio, euforia, ganas de ' +
+                 'bailar o realizar alguna actividad física.<br><br><strong>Mantenimiento:</strong> intensificación de las sensaciones ' +
+                 'emocionales, cercanía, confianza y empatía hacia las demás personas. En esta fase el efecto puede durar entre 2 a 3 ' +
+                 'horas, incluso suele durar unas 4 – 6 horas, siempre dependiendo de la dosis administrada y usuaria/o. Cuando se ' +
+                 'consume una dosis suplementaria, los efectos suelen prolongarse durante un par de horas más y pueden mantenerse con ' +
+                 'dosis sucesivas, que generalmente no afectan la intensidad de la experiencia, pero sí la alargan, a la vez que ' +
+                 'incrementan los efectos secundarios.<br><br><strong>Bajada:</strong> los efectos van desapareciendo dando paso a un ' +
+                 'cansancio físico y mental, mientras se experimenta bajón en el estado de ánimo.'},
              {topic: 'EFECTOS SECUNDARIOS', info: 'Pueden aparecer pérdida de apetito, distorsiones visuales, movimientos oculares ' +
                  'involuntarios, incremento de la tasa cardiaca y de la presión arterial (al elevar la dosis), nerviosismo, cambios en ' +
                  'la regulación de la temperatura corporal, vómitos, ansiedad, sudoración, mareos, confusión, boca seca, tensión ' +
                  'mandibular (broxismo), dificultades de concentración, midriasis (dilatación de las pupilas).'},
-             {topic: 'RIESGOS ASOCIADOS', info: 'La <strong>combinación</strong> con alcohol provoca aumento en la temperatura corporal y deshidratación, ' +
-                 'puede producir un “golpe de calor” ocasionando desmayos y náuseas. Con cocaína aumenta la presión arterial y el ' +
-                 'sistema nervioso provocando efectos no deseados.<br/><br/><strong>Hipertermia</strong> (golpe de calor, elevación importante de la ' +
-                 'temperatura corporal). Más probable en ambientes cerrados, cuando se realiza una intensa actividad física (por ' +
-                 'ejemplo, bailar durante muchas horas) y cuando la persona usuaria no se hidrata convenientemente. Para evitar estas ' +
-                 'complicaciones se recomienda realizar pausas en el baile y reponer líquidos (agua, zumos, o preferentemente, bebidas ' +
-                 'isotónicas con moderación, sin excederse, aproximadamente medio litro cada hora si se realiza una actividad física ' +
-                 'intensa y menos si se está en reposo).<br/><br/><strong>Hipotermia</strong> (disminución considerable de la temperatura corporal). ' +
-                 'Dependiendo del ambiente donde esté la persona usuaria. El éxtasis o MDMA produce elevaciones en la frecuencia ' +
-                 'cardiaca y en la presión arterial. Por tanto, personas con problemas cardíacos o de hipertensión deberán tener ' +
-                 'precaución en su consumo. Dosis altas y frecuentes de éxtasis o MDMA pueden derivar en pérdidas de memoria y ' +
-                 'alteraciones del estado de ánimo. El aumento de las dosis en una noche genera ansiedad, nerviosismo, mareos, tensión ' +
-                 'mandibular y depresión.'}
+             {topic: 'RIESGOS ASOCIADOS', info: 'La <strong>combinación</strong> con alcohol provoca aumento en la temperatura corporal ' +
+                 'y deshidratación, puede producir un “golpe de calor” ocasionando desmayos y náuseas. Con cocaína aumenta la presión ' +
+                 'arterial y el sistema nervioso provocando efectos no deseados.<br><br><strong>Hipertermia</strong> (golpe de calor, ' +
+                 'elevación importante de la temperatura corporal). Más probable en ambientes cerrados, cuando se realiza una intensa ' +
+                 'actividad física (por ejemplo, bailar durante muchas horas) y cuando la persona usuaria no se hidrata ' +
+                 'convenientemente. Para evitar estas complicaciones se recomienda realizar pausas en el baile y reponer líquidos ' +
+                 '(agua, zumos, o preferentemente, bebidas isotónicas con moderación, sin excederse, aproximadamente medio litro cada ' +
+                 'hora si se realiza una actividad física intensa y menos si se está en reposo).<br><br><strong>Hipotermia</strong> ' +
+                 '(disminución considerable de la temperatura corporal). Dependiendo del ambiente donde esté la persona usuaria.' +
+                 '<br><br>El éxtasis o MDMA produce elevaciones en la frecuencia cardiaca y en la presión arterial. Por tanto, personas ' +
+                 'con problemas cardíacos o de hipertensión deberán tener precaución en su consumo.<br><br>Dosis altas y frecuentes ' +
+                 'de éxtasis o MDMA pueden derivar en pérdidas de memoria y alteraciones del estado de ánimo.<br><br>El aumento de las ' +
+                 'dosis en una noche genera ansiedad, nerviosismo, mareos, tensión mandibular y depresión.'},
+             {topic: 'DATOS CURIOSOS', info: 'En 1912 la compañía Merck aisló accidentalmente la MDMA (3,4-metilendioximetanfetamina). ' +
+                 'Al no encontrarle un aplicación médica concreta, los laboratorios abandonaron su investigación. No obstante, entre ' +
+                 '1953 y 1954 el ejército estadounidense retomó las pesquisas. Aunque los primeros datos biológicos sobre las mismas ' +
+                 'se publicaron hasta 1973, no fue sino durante la década de los 80 cuando personajes como el químico estadounidense ' +
+                 'Alexander Shulguin la trajeron de nuevo a la luz pública. Según sus propias palabras: “Rescaté esta sustancia por ' +
+                 'sugerencia de un amigo. La probé y escribí mucho sobre ella en las revistas médicas. Descubrí que tenía notables ' +
+                 'beneficios terapéuticos. En su momento representó la aparición de una nueva familia de agentes que permiten al ' +
+                 'individuo expresar y experimentar contenidos afectivos reprimidos por las barreras culturales”.  El MDMA alcanzó gran ' +
+                 'popularidad entre la cultura underground californiana y la clientela de los clubes nocturnos. Los vendedores, en una ' +
+                 'acción de marketing, la rebautizaron con el nombre de éxtasis. En 1985, el gobierno estadounidense declaró esta ' +
+                 'sustancia ilegal, a pesar de que numerosos científicos argumentamos sobre sus propiedades para hacer aflorar ' +
+                 'pensamientos y recuerdos reprimidos.'}
         ]
       )
     ),
-
-
-    new SubstanceObjectModel('WEED',
+    new SubstanceObjectModel('LSD',
       [
-        new SubstancePresentationModel('Mota', '/assets/substancesImg/1423530503.jpg',
+        new SubstancePresentationModel('PAPELITO', '/assets/substancesImg/1423530503.jpg',
           [
                           new DosisAndInformationModel('head dosis mota 1', 'eye dosis mota 1', 'heard dosis mota 1'),
                           new DosisAndInformationModel('head dosis mota 2', 'eye dosis mota 2', 'heard dosis mota 2'),
                           new DosisAndInformationModel('head dosis mota 3', 'eye dosis mota 3', 'heard dosis mota 3')
           ]
-        ),
-        new SubstancePresentationModel('Chocolate', '/assets/substancesImg/Kiva_Tangerine_Large.jpg',
-          [
-                          new DosisAndInformationModel('head chocolate 1', 'eye chocolate 1', 'heard chocolate 1'),
-                          new DosisAndInformationModel('head chocolate 2', 'eye chocolate 2', 'heard chocolate 2')
-          ]
         )
       ],
       'characterAnimateJump',
-      new CompleteInfoModel(['ÉXTASIS', 'X', 'MDMA', 'TACHAS', 'PILLS'],
-        [{topic: 'QUÉ ES', info: 'Su nombre científico es 3,4-metilendioximetanfetamina y pertenece a la familia de las ' +
-            'fenetilaminas. Se conoce como MDMA, pepas, pills, tachas o cristal. Se puede adquirir en forma de comprimido o de cristal, ' +
-            'aunque también polvo o cápsulas.</br>La variabilidad de la concentración y composición del éxtasis, según dicte la oferta y ' +
-            'coyuntura del mercado, implica un riesgo debido a las dificultades de anticipar o controlar la dosis adecuada. No ' +
-            'obstante, el consumo requiere su aumento gradual para conseguir los mismos efectos. No genera dependencia física demostrada ' +
-            'pero sí psicológica.'},
-          {topic: 'EFECTOS PRINCIPALES', info: 'Subida: desaparece el cansancio, euforia, ganas de bailar o realizar alguna actividad ' +
-              'física.<br/>Mantenimiento: intensificación de las sensaciones emocionales, cercanía, confianza y empatía hacia las ' +
-              'demás personas. En esta fase el efecto puede durar entre 2 a 3 horas, incluso suele durar unas 4 – 6 horas, siempre ' +
-              'dependiendo de la dosis administrada y usuaria/o. Cuando se consume una dosis suplementaria, los efectos suelen ' +
-              'prolongarse durante un par de horas más y pueden mantenerse con dosis sucesivas, que generalmente no afectan la ' +
-              'intensidad de la experiencia, pero sí la alargan, a la vez que incrementan los efectos secundarios.<br/>Bajada: los ' +
-              'efectos van desapareciendo dando paso a un cansancio físico y mental, mientras se experimenta bajón en el estado ' +
-              'de ánimo.'},
+      new CompleteInfoModel(['ÁCIDOS', 'CARTONES', 'PAPELITOS', 'TRIPIS', 'CUADROS'],
+        [{topic: 'DESCRIPCIÓN', info: 'Dietilamida del ácido Lisérgico o LSD-25 sintetizada en 1938 en los laboratorios de la ' +
+            'compañía farmacéutica Sandoz por el químico suizo Albert Hofmann, en el transcurso de un programa de  investigación de los ' +
+            'alcaloides del hongo cornezuelo del centeno.<br><br>En su forma pura es incolora, inodora y levemente amarga. Suele ' +
+            'administrarse por vía oral, generalmente absorbida en papel secante, cubo de azúcar o pequeños comprimidos conocidos como ' +
+            'micropuntos. El LSD es una sustancia muy sensible, degradable fácilmente en contacto con luz, calor, aire y humedad.'},
+          {topic: 'COMPOSICIÓN', info: 'Su fórmula es C15H15N2CON(C2H5)2. Fue sintetizado por primera vez en 1938 y en 1943 el químico ' +
+              'suizo Albert Hofmann descubrió sus efectos por accidente durante la recristalización de una muestra de tartrato de LSD. ' +
+              'El número 25 (LSD-25) alude al orden que el científico iba dando a los compuestos que sintetizaba.'},
           {topic: 'EFECTOS SECUNDARIOS', info: 'Pueden aparecer pérdida de apetito, distorsiones visuales, movimientos oculares ' +
               'involuntarios, incremento de la tasa cardiaca y de la presión arterial (al elevar la dosis), nerviosismo, cambios en ' +
               'la regulación de la temperatura corporal, vómitos, ansiedad, sudoración, mareos, confusión, boca seca, tensión ' +
               'mandibular (broxismo), dificultades de concentración, midriasis (dilatación de las pupilas).'},
-          {topic: 'RIESGOS ASOCIADOS', info: 'La combinación con alcohol provoca aumento en la temperatura corporal y deshidratación, ' +
-              'puede producir un “golpe de calor” ocasionando desmayos y náuseas. Con cocaína aumenta la presión arterial y el ' +
-              'sistema nervioso provocando efectos no deseados.<br/>Hipertermia (golpe de calor, elevación importante de la ' +
-              'temperatura corporal). Más probable en ambientes cerrados, cuando se realiza una intensa actividad física (por ' +
-              'ejemplo, bailar durante muchas horas) y cuando la persona usuaria no se hidrata convenientemente. Para evitar estas ' +
-              'complicaciones se recomienda realizar pausas en el baile y reponer líquidos (agua, zumos, o preferentemente, bebidas ' +
-              'isotónicas con moderación, sin excederse, aproximadamente medio litro cada hora si se realiza una actividad física ' +
-              'intensa y menos si se está en reposo).<br/>Hipotermia (disminución considerable de la temperatura corporal). ' +
-              'Dependiendo del ambiente donde esté la persona usuaria. El éxtasis o MDMA produce elevaciones en la frecuencia ' +
-              'cardiaca y en la presión arterial. Por tanto, personas con problemas cardíacos o de hipertensión deberán tener ' +
-              'precaución en su consumo. Dosis altas y frecuentes de éxtasis o MDMA pueden derivar en pérdidas de memoria y ' +
-              'alteraciones del estado de ánimo. El aumento de las dosis en una noche genera ansiedad, nerviosismo, mareos, tensión ' +
-              'mandibular y depresión.'}
+          {topic: 'EFECTOS PRINCIPALES', info: '<strong>Susceptibilidad emocional, aumento o descenso de ansiedad.</strong><br><hr><strong>Modulaciones en el comportamiento interpersonal.</strong><br><hr><strong>Mayor sensibilidad a estímulos sonoros y visuales en general.</strong><br><hr><strong>Alteraciones de la propia imagen corporal.</strong><br><hr><strong>Distorsiones visuales que suelen ser simplemente ilusiones, aunque pueden en ocasiones ser también alucinaciones (indistinguibles de la realidad).</strong><br><hr><strong>Sinestesia de todo tipo.</strong><br><hr><strong>Contorsión de la percepción del tiempo, al sentir que se detiene, o que va hacia atrás o se acelera.</strong><br><hr><strong>Percepción perturbada del mundo externo, en cuanto algo inestable y escurridizo.</strong><br><hr><strong>Estimulación del pensamiento, ocasionando el paso acelerado de una idea a otra.</strong><br><hr><strong>Disrupción cognitiva o conceptual, algo que se ha interpretado como confusión o cuadros psicóticos pero también como impulso creativo.</strong><br><hr>Algunas personas consumidoras de LSD experimentan sensaciones de euforia, otras de introspección y autoexploración. Hay algunas, no obstante, que viven la experiencia en clave terrorífica, debido a la intensidad de los cambios en la percepción del mundo y de sí mismo, manifestados como incontrolables. Cuando la experiencia tiene un tono general desagradable, suele hablarse de “mal viaje“.<br><br>Durante el viaje sus efectos pueden durar entre 5 y 12 horas, según la dosis.<br><hr>'}
         ]
       )
     )

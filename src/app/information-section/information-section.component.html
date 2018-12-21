@@ -44,8 +44,8 @@
     <div class="substanceDiv substanceSelectorGeneralDiv">
       <h3>DOSIS</h3>
       <div class="substanceSelectorGeneral">
-        <div class="leftArrow" (click)="eliminateDosis()">
-          <div (click)="addDosis()"></div>
+        <div class="leftArrow">
+          <div (click)="eliminateDosis()"></div>
         </div>
         <div class="dosisContainer">
           <div *ngFor='let in of counter(actualDosis)' class="repeatedImages" [style.backgroundImage]="'url('+ selectedPresentation.img +')'"></div>

@@ -14,7 +14,7 @@
 
     <div [ngSwitch]="section" class="inputsDiv">
       <ng-container *ngSwitchCase="'MAIL'">
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        <p>Si tienes alguna duda o problema relacionado con drogas o consumo, no dudes en escribirnos y Bienestar Universitario será el responsable de comunicarse contigo. La información que proveas por este medio es totalmente confidencial. También puedes visitar las oficinas ubicadas en el segundo piso del edificio de Bienestar Universitario y Secretaría General, siempre estará presente para brindarte el apoyo que necesites.</p>
         <form (ngSubmit)="sendMessage(); contactForm.reset()" #contactForm="ngForm" class="contactoForms">
           <div class="mailAndAlternative">
             <input type="email" id="mail" placeholder="Tú Correo" required [(ngModel)]="model.mail" name="mail">
@@ -29,7 +29,7 @@
         </form>
     </ng-container>
       <ng-container *ngSwitchCase="'ACCOUNTLOGIN'">
-        <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <p>Sabemos que cuando hablamos de drogas tratamos un asunto personal y algunas veces queremos que se mantenga de esa manera, por esta razón, en este espacio de confianza, donde no existen los prejuicios, puedes contactarte con un o una especialista en el tema sin que se conozca tu identidad, por eso te ofrecemos la opción de crear un usuario anónimo.</p>
         <div  class="loginContainer">
         <form (ngSubmit)="loginUser(modelUser); contactForm.reset()" #contactForm="ngForm">
           <div>
@@ -48,7 +48,7 @@
         </div>
     </ng-container>
       <ng-container *ngSwitchCase="'ACCOUNTREGISTER'">
-        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+        <p>Sabemos que cuando hablamos de drogas tratamos un asunto personal y algunas veces queremos que se mantenga de esa manera, por esta razón, en este espacio de confianza, donde no existen los prejuicios, puedes contactarte con un o una especialista en el tema sin que se conozca tu identidad, por eso te ofrecemos la opción de crear un usuario anónimo.<br><br>Además de ser completamente anónimo, al usar tu usuario podrás contactarte directamente con el o la especialista mediante un chat en la página, así es posible tener una comunicación más fluida y eficiente.</p>
         <div  class="loginContainer">
           <form (ngSubmit)="createUser(); CreateUserForm.reset()" #CreateUserForm="ngForm">
             <div>

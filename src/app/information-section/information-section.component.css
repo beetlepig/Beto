@@ -556,6 +556,8 @@
   text-align: justify;
   font-family: 'Dosis', sans-serif;
   font-weight: normal;
+  max-height: 68%;
+  overflow: auto;
 }
 
 .completeSubstancesSections {
