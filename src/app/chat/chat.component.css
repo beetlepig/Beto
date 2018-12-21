@@ -19,20 +19,75 @@
 .messagesContainer {
   background-color: paleturquoise;
   overflow: auto;
-  height: 100%;
+  height: 40%;
+  flex-grow: 1;
+}
+
+.messagesIfContainer-individualMessages-wrapper {
+  margin: 1vh 1vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.messagesIfContainer-individualMessages-shape {
+  padding: 1vh 1vw;
+  border-radius: 0.5vw;
+  max-width: 45%;
+}
+
+.messagesIfContainer-individualMessages-shape h2 {
+  margin: 0;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 400;
+  font-size: 1vw;
 }
 
 .chatBar {
   height: 10%;
+  display: flex;
+}
+
+
+.chatBar input {
+  padding-left: 1%;
+  padding-right: 1%;
+  flex-grow: 15;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.8);
+  border: none;
+  border-radius: 0.2vw;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 400;
+  font-size: 1vw;
+}
+
+.chatBar button {
+  flex-grow: 1;
+  margin-left: 1%;
+  box-sizing: border-box;
+  border: solid rgba(232,115,35, 1) 0.1vw;
+  border-radius: 0.3vw;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="rgba(0,0,0,0.6)" d="M10 17l5-5-5-5v10z"/><path fill="none" d="M0 24V0h24v24H0z"/></svg>') no-repeat center / contain;
+  font-size: 1vw;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 600;
+}
+
+.chatBar button:hover {
+  background: rgba(232,115,35, 1) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="rgba(255,255,255,1)" d="M10 17l5-5-5-5v10z"/><path fill="none" d="M0 24V0h24v24H0z"/></svg>') no-repeat center / contain;
+  cursor: pointer;
 }
 
 .betoMessage {
-
+  align-self: flex-start;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .userMessage{
-  color: red;
-  text-align: right;
+  align-self: flex-end;
+  color: white;
+  background-color: rgba(232,115,35, 1);
 }
 
 .hiddenOptionsBar {

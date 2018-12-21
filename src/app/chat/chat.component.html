@@ -7,17 +7,26 @@
 
 
 
-  <div class="messagesContainer" #scrollMePapu><h2 *ngFor="let message of messagesArray" ngClass="{{message.isBeto? 'betoMessage': 'userMessage'}}">{{message.message}}</h2></div>
+  <div class="messagesContainer" #scrollMePapu>
+    <div class="messagesIfContainer-individualMessages-wrapper" *ngFor="let message of messagesArray">
+      <div class="messagesIfContainer-individualMessages-shape" ngClass="{{message.isBeto? 'betoMessage': 'userMessage'}}">
+        <h2 >{{message.message}}</h2>
+      </div>
+    </div>
+  </div>
 
   <div class="chatBar">
-
+    <input type="text" placeholder="Escribe un Mensaje">
+    <button type="button"></button>
   </div>
 
   <div [hidden]="!optionAText && !optionBText && !optionCText && !optionDText" class="hiddenOptionsBar">
-    <button type="button" [hidden]="!optionAText" (click)="clicked(optionAText, 'a')">{{optionAText || 'opcion 1 - pendiente'}}</button>
-    <button type="button" [hidden]="!optionBText" (click)="clicked(optionBText, 'b')">{{optionBText || 'opcion 2 - pendiente'}}</button>
-    <button type="button" [hidden]="!optionCText" (click)="clicked(optionCText, 'c')">{{optionCText || 'opcion 3 - pendiente'}}</button>
-    <button type="button" [hidden]="!optionDText" (click)="clicked(optionDText, 'd')">{{optionDText || 'opcion 4 - pendiente'}}</button>
+    <div>
+      <button type="button" [hidden]="!optionAText" (click)="clicked(optionAText, 'a')">{{optionAText || 'opcion 1 - pendiente'}}</button>
+      <button type="button" [hidden]="!optionBText" (click)="clicked(optionBText, 'b')">{{optionBText || 'opcion 2 - pendiente'}}</button>
+      <button type="button" [hidden]="!optionCText" (click)="clicked(optionCText, 'c')">{{optionCText || 'opcion 3 - pendiente'}}</button>
+      <button type="button" [hidden]="!optionDText" (click)="clicked(optionDText, 'd')">{{optionDText || 'opcion 4 - pendiente'}}</button>
+    </div>
   </div>
 
 </div>
