@@ -119,7 +119,60 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
               'involuntarios, incremento de la tasa cardiaca y de la presión arterial (al elevar la dosis), nerviosismo, cambios en ' +
               'la regulación de la temperatura corporal, vómitos, ansiedad, sudoración, mareos, confusión, boca seca, tensión ' +
               'mandibular (broxismo), dificultades de concentración, midriasis (dilatación de las pupilas).'},
-          {topic: 'EFECTOS PRINCIPALES', info: '<strong>Susceptibilidad emocional, aumento o descenso de ansiedad.</strong><br><hr><strong>Modulaciones en el comportamiento interpersonal.</strong><br><hr><strong>Mayor sensibilidad a estímulos sonoros y visuales en general.</strong><br><hr><strong>Alteraciones de la propia imagen corporal.</strong><br><hr><strong>Distorsiones visuales que suelen ser simplemente ilusiones, aunque pueden en ocasiones ser también alucinaciones (indistinguibles de la realidad).</strong><br><hr><strong>Sinestesia de todo tipo.</strong><br><hr><strong>Contorsión de la percepción del tiempo, al sentir que se detiene, o que va hacia atrás o se acelera.</strong><br><hr><strong>Percepción perturbada del mundo externo, en cuanto algo inestable y escurridizo.</strong><br><hr><strong>Estimulación del pensamiento, ocasionando el paso acelerado de una idea a otra.</strong><br><hr><strong>Disrupción cognitiva o conceptual, algo que se ha interpretado como confusión o cuadros psicóticos pero también como impulso creativo.</strong><br><hr>Algunas personas consumidoras de LSD experimentan sensaciones de euforia, otras de introspección y autoexploración. Hay algunas, no obstante, que viven la experiencia en clave terrorífica, debido a la intensidad de los cambios en la percepción del mundo y de sí mismo, manifestados como incontrolables. Cuando la experiencia tiene un tono general desagradable, suele hablarse de “mal viaje“.<br><br>Durante el viaje sus efectos pueden durar entre 5 y 12 horas, según la dosis.<br><hr>'}
+          {topic: 'EFECTOS PRINCIPALES', info: '<strong>Susceptibilidad emocional, aumento o descenso de ansiedad.' +
+              '</strong><br><hr><strong>Modulaciones en el comportamiento interpersonal.</strong><br><hr><strong>Mayor sensibilidad a ' +
+              'estímulos sonoros y visuales en general.</strong><br><hr><strong>Alteraciones de la propia imagen corporal.' +
+              '</strong><br><hr><strong>Distorsiones visuales que suelen ser simplemente ilusiones, aunque pueden en ocasiones ser ' +
+              'también alucinaciones (indistinguibles de la realidad).</strong><br><hr><strong>Sinestesia de todo tipo.' +
+              '</strong><br><hr><strong>Contorsión de la percepción del tiempo, al sentir que se detiene, o que va hacia atrás o se ' +
+              'acelera.</strong><br><hr><strong>Percepción perturbada del mundo externo, en cuanto algo inestable y escurridizo.' +
+              '</strong><br><hr><strong>Estimulación del pensamiento, ocasionando el paso acelerado de una idea a otra.' +
+              '</strong><br><hr><strong>Disrupción cognitiva o conceptual, algo que se ha interpretado como confusión o cuadros ' +
+              'psicóticos pero también como impulso creativo.</strong><br><hr>Algunas personas consumidoras de LSD experimentan ' +
+              'sensaciones de euforia, otras de introspección y autoexploración. Hay algunas, no obstante, que viven la experiencia en ' +
+              'clave terrorífica, debido a la intensidad de los cambios en la percepción del mundo y de sí mismo, manifestados como ' +
+              'incontrolables. Cuando la experiencia tiene un tono general desagradable, suele hablarse de “mal viaje“.<br><br>Durante ' +
+              'el viaje sus efectos pueden durar entre 5 y 12 horas, según la dosis.<br><hr><strong>INICIO (“SUBIDA”)</strong><br><br>' +
+              '<strong>Comienza a los 20 o 30 minutos</strong> del consumo y <strong>dura unas 2 horas</strong><br>&nbsp  °Aceleración ' +
+              'del ritmo cardíaco<br>&nbsp  °Exaltación, inquietud<br>&nbsp  °Euforia, desinhibición<br>&nbsp  °Enrojecimiento de la ' +
+              'piel<br><br><strong>VIAJE</strong><br><br>°Se presenta entre los <strong>30 y los 60 minutos posteriores a la ingesta' +
+              '</strong> y tiene una <strong>duración</strong> media de <strong>5 horas.</strong><br>°Ilusiones y/o alucinaciones.<br>' +
+              '°Alteraciones en el tiempo, las distancias, las formas y distorsión de imágenes y colores.<br>°En algunos casos el viaje ' +
+              'es de tipo introspectivo, con alteraciones de la conciencia y del pensamiento, sobre sí mismo y las demás personas.<br>' +
+              '<br><strong>REGRESO (“BAJADA”)</strong><br><br><strong>Entre 8 y 12 horas</strong> aproximadamente. Los efectos van ' +
+              'disminuyendo, quizás invitando a un estado de fatiga y abatimiento (dependiendo de la dosis consumida, la duración e ' +
+              'intensidad del viaje).<br><br>El LSD se utilizó inicialmente para tratar alcoholismo y esquizofrenia. En estos estudios ' +
+              'destacó el Instituto de Investigación Psicodélica en Estados Unidos. Defendía que dicha droga podría ayudar al equipo ' +
+              'investigador o personal médico hacia maneras de comprender sensaciones y emociones relacionadas con semejantes ' +
+              'problemáticas. Sin embargo, el uso clínico de esta sustancia abrió paso a la experimentación recreativa.'},
+          {topic: 'INTOXICACIÓN', info: 'No tiene consecuencias a nivel fisiológico, sino <strong>psicológico</strong>. De mezclarse ' +
+              'con otras sustancias, consumir dosis demasiado alta, pasar por mala racha o tener predisposición genética, puede ' +
+              'producir “mal viaje“, caracterizado por <strong>episodio de pánico</strong> con alucinaciones terroríficas, agitación, ' +
+              'desconfianza en las personas del entorno, temblores e hipertensión arterial. Es limitado en el tiempo aunque puede durar ' +
+              'más de 24 horas. En casos de prolongación excesiva de estos efectos negativos, es <strong>recomendable consultar con un ' +
+              'médico.</strong>'},
+          {topic: '¡¡ALERTA!!', info: 'Durante el último semestre del 2012 en Bogotá y en diferentes partes de Colombia, personas ' +
+              'consumidoras de LSD reportaron ganas de vomitar, mareo instantáneo, sabor muy amargo, adormecimiento de la boca y ' +
+              'sensación de dientes sueltos. Síntomas muy diferentes a los producidos normalmente por la ingesta de LSD. Frente a tal ' +
+              'situación, Energy Control (España) reportó presencia de 25I-NBOMe (2CI) en tres muestras analizadas. También se han ' +
+              'presentado hospitalizaciones y muertes relacionadas con sobredosificaciones de esta sustancia. Por lo anterior, ' +
+              'recomendable comenzar con dosis bajas (1/8) y no consumir si las características organolépticas (sabor y sensación en la ' +
+              'boca) son muy diferentes a las habituales.'},
+          {topic: 'DATO HISTÓRICO', info: 'En 1938 el químico Albert Hofmann estudiaba para los laboratorios Sandoz el cornezuelo de ' +
+              'centeno, una droga usada por las comadronas desde hace siglos. Fue entonces cuando sintetizó por primera vez LSD. Sin ' +
+              'embargo abandonaría su investigación sin descubrir los efectos de esta sustancia. Años más tarde, en 1943, por una ' +
+              'corazonada quiso continuar con este trabajo. Fue entonces cuando por accidente le cayó una gota de esta sustancia en la ' +
+              'mano. Tuvo que suspender la tarea al sentirse mareado y pidió a su ayudante que le acompañara a casa. Aquella anécdota se ' +
+              'conocería más tarde como “día de la bicicleta”. Hofmann había tomado sin quererlo una fuerte dosis de LSD por vía ' +
+              'subcutánea y estaba comprobando sus efectos. Más tarde corroboraría con más detalle su potencia y posibles usos. De tal ' +
+              'forma que en 1947 se comercializó el primer fármaco con LSD, denominado Delysid.'},
+          {topic: 'DATOS CURIOSOS', info: 'Cuando los Beatles publicaron su canción Lucy in the Sky with Diamonds, muchas personas ' +
+              '(entre ellas, Timothy Leary) interpretaron que el título era un acróstico intencionado de LSD. John Lennon desmintió ' +
+              'repetidamente esta interpretación, afirmando que tomó el personaje de un dibujo de su hijo.<br><br>Existe un libro que ' +
+              'representa el diario de una chica drogada. La primera sustancia que toma es, en efecto, LSD. El libro se llama ' +
+              '“Pregúntale a Alicia” cuyo título está basado en la canción “White Rabbit” de los Jefferson Airplane, a su vez inspirada ' +
+              'en los efectos de esta droga. Por otra parte, algunas investigaciones han demostrado el beneficio del usar LSD en ' +
+              'tratamientos a niñas o niños afectados severamente y diagnosticados con esquizofrenia o autismo infantil.'}
         ]
       )
     )
