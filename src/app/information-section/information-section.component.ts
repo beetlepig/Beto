@@ -103,6 +103,12 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
                           new DosisAndInformationModel('head dosis mota 2', 'eye dosis mota 2', 'heard dosis mota 2'),
                           new DosisAndInformationModel('head dosis mota 3', 'eye dosis mota 3', 'heard dosis mota 3')
           ]
+        ),
+        new SubstancePresentationModel('PILDORA', '/assets/substancesImg/1423530503.jpg',
+          [
+            new DosisAndInformationModel('head dosis mota 1', 'eye dosis mota 1', 'heard dosis mota 1'),
+            new DosisAndInformationModel('head dosis mota 2', 'eye dosis mota 2', 'heard dosis mota 2')
+          ]
         )
       ],
       'characterAnimateJump',

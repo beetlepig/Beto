@@ -25,9 +25,9 @@
     <div class="substanceDiv presentationSelectorContainer">
       <h3>PRESENTACIÓN DE SPA</h3>
       <div class="arrowsPresentationSelectorContainer">
-        <div class="arrowPresentation arrowPresentationLeft" (click)="changePresentationImage('iz')"></div>
+        <div [hidden]="(selectedSubstance.presentacion.length <= 1)" class="arrowPresentation arrowPresentationLeft" (click)="changePresentationImage('iz')"></div>
         <div class="substancePresentationText"><h5>{{selectedPresentation.tipo}}</h5></div>
-        <div class="arrowPresentation arrowPresentationRight" (click)="changePresentationImage('der')"></div>
+        <div [hidden]="(selectedSubstance.presentacion.length <= 1)" class="arrowPresentation arrowPresentationRight" (click)="changePresentationImage('der')"></div>
       </div>
 
       <!--<div *ngFor="let sustancitaPresenteishon of selectedSubstance.presentacion" (click)="changePresentationImage(sustancitaPresenteishon)">
