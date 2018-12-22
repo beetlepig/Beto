@@ -72,7 +72,8 @@ export class ChatComponent implements OnInit, AfterViewChecked {
           d: {message: null }}, general: false, to: null
       },
 
-      11: {message: 'El spice, vi en un grupo de Facebook que era como la nueva mota', delay: 3000, options: false, general: false, to: 12},
+      11: {message: 'El spice, vi en un grupo de Facebook que era como la nueva mota. Hace rato tambien la vi en una tienda naturista y ' +
+          'ya me dio curiosidad', delay: 3000, options: false, general: false, to: 12},
 
       12: {message: 'Pero creo que me equivoque de numero', delay: 3000, options: false, general: false, to: 18},
 
@@ -115,7 +116,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
       5: {message: 'Uy ya me metiste miedo', delay: 3000, options: false, general: false, to: 7},
       6: {message: 'Pues mejor cogerlo con cuidado', delay: 3000, options: false, general: false, to: 7},
       7: {message: 'Le voy a preguntar a ver, dame un momento', delay: 10000, options: false, general: false, to: 8},
-      8: {message: 'El tipo de dice que es marihuana sintetica, pero que sabe mejor, es una alternative legal, mas segura y que no es ' +
+      8: {message: 'El tipo de dice que es marihuana sintetica, pero que sabe mejor, es una alternativa legal, mas segura y que no es ' +
           'tan fuerte', delay: 3000, options: false, general: false, to: 9},
       9: {message: 'vos que decis?', delay: 10000, options: {a: {message: 'Vos verás', to: 10},
           b: {message: 'Tengo mi dudas', to: 11},
@@ -498,7 +499,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
         }, general: false, to: null
       },
       3: {message: 'Literalmente era marihuana sintética, solo que lo único natural eran los pedazos de matas, que no hacían ' +
-          'nada de por si', delay: 5000,
+          'nada en si', delay: 5000,
         options: false, general: false, to: 4
       },
       4: {message: 'Me dijo que lo psicoactivo eran una o varias sustancias que rociaban a las especias trituradas', delay: 5000,
@@ -516,7 +517,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
         options: false, general: false, to: 10
       },
       7: {message: 'Para saber de donde viene eso, lo que si era es literalmente marihuana sintética, ' +
-          'solo que lo único natural eran los pedazos de matas, que no hacían nada de por si', delay: 5000,
+          'solo que lo único natural eran los pedazos de matas, que no hacían nada en si', delay: 5000,
         options: false, general: false, to: 4
       },
       8: {message: 'Exactamente no se sabe, está intoxicado por este spice', delay: 5000,
