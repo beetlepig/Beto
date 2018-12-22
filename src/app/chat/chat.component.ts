@@ -115,8 +115,8 @@ export class ChatComponent implements OnInit, AfterViewChecked {
       5: {message: 'Uy ya me metiste miedo', delay: 3000, options: false, general: false, to: 7},
       6: {message: 'Pues mejor cogerlo con cuidado', delay: 3000, options: false, general: false, to: 7},
       7: {message: 'Le voy a preguntar a ver, dame un momento', delay: 10000, options: false, general: false, to: 8},
-      8: {message: 'El tipo de dice que es marihuana sintetica, pero que sabe mejor y que no es tan fuerte', delay: 3000, options: false,
-           general: false, to: 9},
+      8: {message: 'El tipo de dice que es marihuana sintetica, pero que sabe mejor, es una alternative legal, mas segura y que no es ' +
+          'tan fuerte', delay: 3000, options: false, general: false, to: 9},
       9: {message: 'vos que decis?', delay: 10000, options: {a: {message: 'Vos verás', to: 10},
           b: {message: 'Tengo mi dudas', to: 11},
           c: {message: 'Dale, no se ve tan heavy', to: 12},
@@ -136,15 +136,16 @@ export class ChatComponent implements OnInit, AfterViewChecked {
       }, general: false, to: null},
 
       1: {message: 'no, solo dice "not for human consumption" y se refieren como una "fake weed". Que raro', delay: 3000, options: false,
+        general: false, to: 2
+      },
+
+      2: {message: 'El empaque es plástico y tiene impreso un diseño con el logo de la marca que en este caso es Spice,' +
+          'hasta le hacen marca para vender más, muchos cracks', delay: 3000, options: false,
         general: false, to: 4
       },
 
-      2: {message: 'El empaque es plástico y tiene impreso un diseño con el logo de la marca', delay: 3000, options: false,
-        general: false, to: 4
-      },
-
-      3: {message: 'Negativo, no dice nada de eso', delay: 3000, options: false,
-        general: false, to: 4
+      3: {message: 'Negativo, no dice nada de eso. Solo dice en el empaque "not for human consumption"', delay: 3000, options: false,
+        general: false, to: 2
       },
 
       4: {message: 'Bueno, como sea. Llego el momento', delay: 3000, options: {a: {message: 'Momento para qué?', to: 5},
