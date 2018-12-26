@@ -31,8 +31,6 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   private resolve: Function|null = null;
   clickPromise: Promise<string>|null = null;
 
- // TODO: HACER QUE LAS SECCIONES GENERALES TAMBIÉN SIRVAN CON TO
-
   script = {
     0: {
       0: {message: 'Hola, Hay alguien?', delay: 5000, options: {a: {message: 'Quien es?', to: 1},
