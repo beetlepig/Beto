@@ -39,10 +39,22 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   sustancia = [
     new SubstanceObjectModel('EXTASIS',
       [
-        new SubstancePresentationModel('PASTILLA', '/assets/substancesImg/7702040127008.jpg',
+        new SubstancePresentationModel('CAPSULA', '/assets/substancesImg/EXTASIS/capsula.svg',
           [
                         new DosisAndInformationModel('head dosis sobre 1', 'eye dosis sobre 1', 'heard dosis sobre 1'),
                         new DosisAndInformationModel('head dosis sobre 2', 'eye dosis sobre 2', 'heard dosis sobre 2')
+          ]
+        ),
+        new SubstancePresentationModel('CRISTAL', '/assets/substancesImg/EXTASIS/cristal.svg',
+          [
+            new DosisAndInformationModel('head dosis sobre 1', 'eye dosis sobre 1', 'heard dosis sobre 1'),
+            new DosisAndInformationModel('head dosis sobre 2', 'eye dosis sobre 2', 'heard dosis sobre 2')
+          ]
+        ),
+        new SubstancePresentationModel('POLVO', '/assets/substancesImg/EXTASIS/polvo.svg',
+          [
+            new DosisAndInformationModel('head dosis sobre 1', 'eye dosis sobre 1', 'heard dosis sobre 1'),
+            new DosisAndInformationModel('head dosis sobre 2', 'eye dosis sobre 2', 'heard dosis sobre 2')
           ]
         )
       ],
@@ -97,14 +109,22 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
     ),
     new SubstanceObjectModel('LSD',
       [
-        new SubstancePresentationModel('PAPELITO', '/assets/substancesImg/1423530503.jpg',
+        new SubstancePresentationModel('PAPELITO', '/assets/substancesImg/LSD/papelito.svg',
           [
-                          new DosisAndInformationModel('head dosis mota 1', 'eye dosis mota 1', 'heard dosis mota 1'),
-                          new DosisAndInformationModel('head dosis mota 2', 'eye dosis mota 2', 'heard dosis mota 2'),
-                          new DosisAndInformationModel('head dosis mota 3', 'eye dosis mota 3', 'heard dosis mota 3')
+            new DosisAndInformationModel('head dosis mota 1', 'eye dosis mota 1', 'heard dosis mota 1'),
+            new DosisAndInformationModel('head dosis mota 2', 'eye dosis mota 2', 'heard dosis mota 2'),
+            new DosisAndInformationModel('head dosis mota 2', 'eye dosis mota 2', 'heard dosis mota 2'),
+            new DosisAndInformationModel('head dosis mota 2', 'eye dosis mota 2', 'heard dosis mota 2')
           ]
         ),
-        new SubstancePresentationModel('PILDORA', '/assets/substancesImg/1423530503.jpg',
+        new SubstancePresentationModel('CUBOS DE AZUCAR', '/assets/substancesImg/LSD/cubos_de_azucar.svg',
+          [
+            new DosisAndInformationModel('head dosis mota 1', 'eye dosis mota 1', 'heard dosis mota 1'),
+            new DosisAndInformationModel('head dosis mota 2', 'eye dosis mota 2', 'heard dosis mota 2'),
+            new DosisAndInformationModel('head dosis mota 3', 'eye dosis mota 3', 'heard dosis mota 3')
+          ]
+        ),
+        new SubstancePresentationModel('MICROPUNTOS', '/assets/substancesImg/LSD/micropuntos.svg',
           [
             new DosisAndInformationModel('head dosis mota 1', 'eye dosis mota 1', 'heard dosis mota 1'),
             new DosisAndInformationModel('head dosis mota 2', 'eye dosis mota 2', 'heard dosis mota 2')
