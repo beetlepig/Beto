@@ -39,33 +39,17 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   sustancia = [
     new SubstanceObjectModel('EXTASIS',
       [
-        new SubstancePresentationModel('CAPSULA', '/assets/substancesImg/EXTASIS/capsula.svg',
-          [
-                        new DosisAndInformationModel('head dosis sobre 1', 'eye dosis sobre 1', 'heard dosis sobre 1'),
-                        new DosisAndInformationModel('head dosis sobre 2', 'eye dosis sobre 2', 'heard dosis sobre 2')
-          ]
-        ),
-        new SubstancePresentationModel('CRISTAL', '/assets/substancesImg/EXTASIS/cristal.svg',
-          [
-            new DosisAndInformationModel('head dosis sobre 1', 'eye dosis sobre 1', 'heard dosis sobre 1'),
-            new DosisAndInformationModel('head dosis sobre 2', 'eye dosis sobre 2', 'heard dosis sobre 2')
-          ]
-        ),
-        new SubstancePresentationModel('POLVO', '/assets/substancesImg/EXTASIS/polvo.svg',
-          [
-            new DosisAndInformationModel('head dosis sobre 1', 'eye dosis sobre 1', 'heard dosis sobre 1'),
-            new DosisAndInformationModel('head dosis sobre 2', 'eye dosis sobre 2', 'heard dosis sobre 2')
-          ]
-        )
+        new SubstancePresentationModel('CAPSULA', '/assets/substancesImg/EXTASIS/capsula.svg', 3),
+        new SubstancePresentationModel('CRISTAL', '/assets/substancesImg/EXTASIS/cristal.svg', 4),
+        new SubstancePresentationModel('POLVO', '/assets/substancesImg/EXTASIS/polvo.svg', 5)
       ],
-      'characterAnimateRun',
-      new CompleteInfoModel(['X', 'MDMA', 'TACHAS', 'PILLS'],
-        [{topic: 'DESCRIPCIÓN', info: 'Su nombre científico es 3,4-metilendioximetanfetamina y pertenece a la familia de las ' +
-            'fenetilaminas. Se conoce como MDMA, pepas, pills, tachas o cristal. Se puede adquirir en forma de comprimido o de cristal, ' +
-            'aunque también polvo o cápsulas.<br><br>La variabilidad de la concentración y composición del éxtasis, según dicte la ' +
-            'oferta y coyuntura del mercado, implica un riesgo debido a las dificultades de anticipar o controlar la dosis adecuada. No ' +
-            'obstante, el consumo requiere su aumento gradual para conseguir los mismos efectos. No genera dependencia física demostrada ' +
-            'pero sí psicológica.'},
+      new CompleteInfoModel(['X', 'MDMA', 'TACHAS', 'PILLS'], [
+             {topic: 'DESCRIPCIÓN', info: 'Su nombre científico es 3,4-metilendioximetanfetamina y pertenece a la familia de las ' +
+                 'fenetilaminas. Se conoce como MDMA, pepas, pills, tachas o cristal. Se puede adquirir en forma de comprimido o de cristal, ' +
+                 'aunque también polvo o cápsulas.<br><br>La variabilidad de la concentración y composición del éxtasis, según dicte la ' +
+                 'oferta y coyuntura del mercado, implica un riesgo debido a las dificultades de anticipar o controlar la dosis adecuada. No ' +
+                 'obstante, el consumo requiere su aumento gradual para conseguir los mismos efectos. No genera dependencia física demostrada ' +
+                 'pero sí psicológica.'},
              {topic: 'EFECTOS PRINCIPALES', info: 'Después de ingerirla sus efectos pueden tardar entre 20 y 90 minutos en manifestarse ' +
                  'y por lo general se dividen en tres fases:<br><br><strong>Subida:</strong> desaparece el cansancio, euforia, ganas de ' +
                  'bailar o realizar alguna actividad física.<br><br><strong>Mantenimiento:</strong> intensificación de las sensaciones ' +
@@ -103,33 +87,16 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
                  'popularidad entre la cultura underground californiana y la clientela de los clubes nocturnos. Los vendedores, en una ' +
                  'acción de marketing, la rebautizaron con el nombre de éxtasis. En 1985, el gobierno estadounidense declaró esta ' +
                  'sustancia ilegal, a pesar de que numerosos científicos argumentamos sobre sus propiedades para hacer aflorar ' +
-                 'pensamientos y recuerdos reprimidos.'}
-        ]
-      )
+                 'pensamientos y recuerdos reprimidos.'
+             }]
+      ),
+      'characterAnimateRun'
     ),
     new SubstanceObjectModel('LSD',
       [
-        new SubstancePresentationModel('PAPELITO', '/assets/substancesImg/LSD/papelito.svg',
-          [
-            new DosisAndInformationModel('head dosis mota 1', 'eye dosis mota 1', 'heard dosis mota 1'),
-            new DosisAndInformationModel('head dosis mota 2', 'eye dosis mota 2', 'heard dosis mota 2'),
-            new DosisAndInformationModel('head dosis mota 2', 'eye dosis mota 2', 'heard dosis mota 2'),
-            new DosisAndInformationModel('head dosis mota 2', 'eye dosis mota 2', 'heard dosis mota 2')
-          ]
-        ),
-        new SubstancePresentationModel('CUBOS DE AZUCAR', '/assets/substancesImg/LSD/cubos_de_azucar.svg',
-          [
-            new DosisAndInformationModel('head dosis mota 1', 'eye dosis mota 1', 'heard dosis mota 1'),
-            new DosisAndInformationModel('head dosis mota 2', 'eye dosis mota 2', 'heard dosis mota 2'),
-            new DosisAndInformationModel('head dosis mota 3', 'eye dosis mota 3', 'heard dosis mota 3')
-          ]
-        ),
-        new SubstancePresentationModel('MICROPUNTOS', '/assets/substancesImg/LSD/micropuntos.svg',
-          [
-            new DosisAndInformationModel('head dosis mota 1', 'eye dosis mota 1', 'heard dosis mota 1'),
-            new DosisAndInformationModel('head dosis mota 2', 'eye dosis mota 2', 'heard dosis mota 2')
-          ]
-        )
+        new SubstancePresentationModel('PAPELITO', '/assets/substancesImg/LSD/papelito.svg', 5),
+        new SubstancePresentationModel('CUBOS DE AZUCAR', '/assets/substancesImg/LSD/cubos_de_azucar.svg', 3),
+        new SubstancePresentationModel('MICROPUNTOS', '/assets/substancesImg/LSD/micropuntos.svg', 4)
       ],
       'characterAnimateJump',
       new CompleteInfoModel(['ÁCIDOS', 'CARTONES', 'PAPELITOS', 'TRIPIS', 'CUADROS'],
@@ -408,14 +375,14 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
 class SubstanceObjectModel {
   nombre: string;
   presentacion: SubstancePresentationModel[];
-  animation: string;
   completeInfo: CompleteInfoModel;
+  animation: string;
 
-  constructor (name: string, presentaciones: SubstancePresentationModel[], animacion: string, _completeInfo: CompleteInfoModel) {
+  constructor (name: string, presentaciones: SubstancePresentationModel[], _completeInfo: CompleteInfoModel, animacion: string) {
     this.nombre = name;
     this.presentacion = presentaciones;
-    this.animation = animacion;
     this.completeInfo = _completeInfo;
+    this.animation = animacion;
   }
 }
 
@@ -438,11 +405,11 @@ class CompleteInfoModel {
 class SubstancePresentationModel {
   tipo: string;
   img: string;
-  infoPerDosis: DosisAndInformationModel[];
-  constructor(tipin: string, laimagen: string, _infoPerDosis: DosisAndInformationModel[]) {
+  maxDosis: number;
+  constructor(tipin: string, laimagen: string, _infoPerDosis: number) {
     this.tipo = tipin;
     this.img = laimagen;
-    this.infoPerDosis = _infoPerDosis;
+    this.maxDosis = _infoPerDosis;
   }
 }
 
