@@ -45,11 +45,11 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
       ],
       new CompleteInfoModel(['X', 'MDMA', 'TACHAS', 'PILLS'], [
              {topic: 'DESCRIPCIÓN', info: 'Su nombre científico es 3,4-metilendioximetanfetamina y pertenece a la familia de las ' +
-                 'fenetilaminas. Se conoce como MDMA, pepas, pills, tachas o cristal. Se puede adquirir en forma de comprimido o de cristal, ' +
-                 'aunque también polvo o cápsulas.<br><br>La variabilidad de la concentración y composición del éxtasis, según dicte la ' +
-                 'oferta y coyuntura del mercado, implica un riesgo debido a las dificultades de anticipar o controlar la dosis adecuada. No ' +
-                 'obstante, el consumo requiere su aumento gradual para conseguir los mismos efectos. No genera dependencia física demostrada ' +
-                 'pero sí psicológica.'},
+                 'fenetilaminas. Se conoce como MDMA, pepas, pills, tachas o cristal. Se puede adquirir en forma de comprimido o de ' +
+                 'cristal, aunque también polvo o cápsulas.<br><br>La variabilidad de la concentración y composición del éxtasis, según ' +
+                 'dicte la oferta y coyuntura del mercado, implica un riesgo debido a las dificultades de anticipar o controlar la dosis ' +
+                 'adecuada. No obstante, el consumo requiere su aumento gradual para conseguir los mismos efectos. No genera dependencia ' +
+                 'física demostrada pero sí psicológica.'},
              {topic: 'EFECTOS PRINCIPALES', info: 'Después de ingerirla sus efectos pueden tardar entre 20 y 90 minutos en manifestarse ' +
                  'y por lo general se dividen en tres fases:<br><br><strong>Subida:</strong> desaparece el cansancio, euforia, ganas de ' +
                  'bailar o realizar alguna actividad física.<br><br><strong>Mantenimiento:</strong> intensificación de las sensaciones ' +
@@ -89,7 +89,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
                  'sustancia ilegal, a pesar de que numerosos científicos argumentamos sobre sus propiedades para hacer aflorar ' +
                  'pensamientos y recuerdos reprimidos.'
              }]
-      ),
+      ), new TresFasesInfo(''),
       'characterAnimateRun'
     ),
     new SubstanceObjectModel('LSD',
@@ -98,7 +98,6 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
         new SubstancePresentationModel('CUBOS DE AZUCAR', '/assets/substancesImg/LSD/cubos_de_azucar.svg', 3),
         new SubstancePresentationModel('MICROPUNTOS', '/assets/substancesImg/LSD/micropuntos.svg', 4)
       ],
-      'characterAnimateJump',
       new CompleteInfoModel(['ÁCIDOS', 'CARTONES', 'PAPELITOS', 'TRIPIS', 'CUADROS'],
         [{topic: 'DESCRIPCIÓN', info: 'Dietilamida del ácido Lisérgico o LSD-25 sintetizada en 1938 en los laboratorios de la ' +
             'compañía farmacéutica Sandoz por el químico suizo Albert Hofmann, en el transcurso de un programa de  investigación de los ' +
@@ -167,7 +166,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
               'en los efectos de esta droga. Por otra parte, algunas investigaciones han demostrado el beneficio del usar LSD en ' +
               'tratamientos a niñas o niños afectados severamente y diagnosticados con esquizofrenia o autismo infantil.'}
         ]
-      )
+      ), 'characterAnimateJump',
     )
   ];
 
@@ -376,13 +375,28 @@ class SubstanceObjectModel {
   nombre: string;
   presentacion: SubstancePresentationModel[];
   completeInfo: CompleteInfoModel;
+  fases: TresFasesInfo;
   animation: string;
 
-  constructor (name: string, presentaciones: SubstancePresentationModel[], _completeInfo: CompleteInfoModel, animacion: string) {
+  constructor (name: string, presentaciones: SubstancePresentationModel[], _completeInfo: CompleteInfoModel, _fases: TresFasesInfo,
+               animacion: string) {
     this.nombre = name;
     this.presentacion = presentaciones;
     this.completeInfo = _completeInfo;
+    this.fases = _fases;
     this.animation = animacion;
+  }
+}
+
+class TresFasesInfo {
+  primeraFase: {name: string, animation: string};
+  segundaFase: string;
+  terceraFase: string;
+  points:
+  constructor (_primeraFase: string, _segundaFase: string, _terceraFase: string) {
+    this.primeraFase = _primeraFase;
+    this.segundaFase = _segundaFase;
+    this.terceraFase = _terceraFase;
   }
 }
 
