@@ -15,9 +15,7 @@
   <div class="faseConsumoContainer">
       <p>CONSUMO</p>
       <div class="containerFaseDiv">
-        <button type="button" [disabled]="animationRunning" >EXPERIMENTAL</button>
-        <button type="button" [disabled]="animationRunning" >RECREATIVO</button>
-        <button type="button" [disabled]="animationRunning" >ABUSIVO</button>
+        <button *ngFor="let fase of selectedSubstance.fases" [disabled]="animationRunning" [className]="selectedFase === fase? 'Fase activeFase': 'Fase'" (click)="cambiarFase(fase)">{{fase.name}}</button>
       </div>
     </div>
   </div>

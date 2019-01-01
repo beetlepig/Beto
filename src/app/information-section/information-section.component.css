@@ -158,7 +158,7 @@
   justify-content: space-around;
 }
 
-.containerFaseDiv button {
+.Fase {
   width: 32%;
   height: 100%;
   background: rgba(237, 134, 72, 0);
@@ -168,6 +168,11 @@
   font-weight: 800;
   font-size: 0.9vw;
   border-radius: 0.2vh;
+}
+
+.activeFase {
+  background: rgba(232,115,35, 1);
+  color: rgba(255, 255, 255, 1);
 }
 
 .containerFaseDiv button:hover {

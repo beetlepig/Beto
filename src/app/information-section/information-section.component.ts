@@ -89,7 +89,25 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
                  'sustancia ilegal, a pesar de que numerosos científicos argumentamos sobre sus propiedades para hacer aflorar ' +
                  'pensamientos y recuerdos reprimidos.'
              }]
-      ), new TresFasesInfo(''),
+      ), [
+                  new TresFasesInfo('SUBIDA', 'characterAnimateRun',
+                    new DosisAndInformationModel('“desaparece el cansancio”', 'Fuera de la Cabeza “Euforia”',
+                                      'Boca “Ganas de bailar o realizar alguna actividad física”'
+                    )
+                  ),
+                  new TresFasesInfo('VIAJE', 'characterAnimateRun',
+                    new DosisAndInformationModel('Ojos “intensificación de las sensaciones emocionales, cercanía, confianza y ' +
+                      'empatía hacia las demás personas.”', 'Ojos “intensificación de las sensaciones emocionales, cercanía, ' +
+                      'confianza y empatía hacia las demás personas.”',
+                      'Ojos “intensificación de las sensaciones emocionales, cercanía, confianza y empatía hacia las demás personas.”'
+                    )
+                  ),
+                  new TresFasesInfo('BAJADA', 'characterAnimateRun',
+                    new DosisAndInformationModel('Frente (sudor) “Cansancio físico”', 'Cerebro “Cansancio mental”',
+                      'Cara “Bajón de ánimo”'
+                    )
+                  ),
+                ],
       'characterAnimateRun'
     ),
     new SubstanceObjectModel('LSD',
@@ -166,7 +184,26 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
               'en los efectos de esta droga. Por otra parte, algunas investigaciones han demostrado el beneficio del usar LSD en ' +
               'tratamientos a niñas o niños afectados severamente y diagnosticados con esquizofrenia o autismo infantil.'}
         ]
-      ), 'characterAnimateJump',
+      ), [
+        new TresFasesInfo('SUBIDA', 'characterAnimateRun',
+          new DosisAndInformationModel('Cabeza “Exaltación, inquietud”', 'Cara “Enrojecimiento de la piel”',
+            'Corazón “Aceleración del ritmo cardíaco”'
+          )
+        ),
+          new TresFasesInfo('VIAJE', 'characterAnimateRun',
+            new DosisAndInformationModel('Cabeza “En algunos casos el viaje es de tipo introspectivo, con alteraciones de la ' +
+              'conciencia y del pensamiento, sobre sí mismo y las demás personas. “ ',
+              'Ojos “Ilusiones o alucinaciones”',
+              'Ojos “intensificación de las sensaciones emocionales, cercanía, confianza y empatía hacia las demás personas.”'
+            )
+          ),
+          new TresFasesInfo('BAJADA', 'characterAnimateRun',
+            new DosisAndInformationModel('Cara “Estado de abatimiento”', 'Boca “Estado de fatiga”',
+              'Cara “Bajón de ánimo”'
+            )
+          ),
+        ],
+      'characterAnimateJump',
     )
   ];
 
@@ -175,7 +212,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
 
   selectedSubstance: SubstanceObjectModel;
   selectedPresentation: SubstancePresentationModel;
-  selectedDosisInfo: DosisAndInformationModel;
+  selectedFase: TresFasesInfo;
   selectedCompleteInfoSection: ICompleteInfoSections;
   actualDosis: number;
   clase: Array<string>;
@@ -211,7 +248,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
     this.createCanvas();
     this.selectedSubstance = this.sustancia[0];
     this.selectedPresentation = this.selectedSubstance.presentacion[0];
-    this.selectedDosisInfo = this.selectedPresentation.infoPerDosis[0];
+    // this.selectedFase = this.selectedSubstance.fases[0].partes;
     this.selectedCompleteInfoSection = this.selectedSubstance.completeInfo.sections[0];
   }
 
@@ -238,6 +275,8 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
     this.selectedSubstance = substance;
     this.selectedPresentation = this.selectedSubstance.presentacion[0];
     this.selectedCompleteInfoSection = this.selectedSubstance.completeInfo.sections[0];
+    this.selectedFase = null;
+    this.canvas.canDraw = false;
     this.actualDosis = 1;
   }
 
@@ -271,7 +310,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   }
 
   addDosis() {
-    if (this.actualDosis < this.selectedPresentation.infoPerDosis.length) {
+    if (this.actualDosis < this.selectedPresentation.maxDosis) {
       this.actualDosis++;
     }
   }
@@ -284,7 +323,20 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
       this.animationRunning = true;
       this.canvas.canDraw = false;
       this.clase[1] = this.selectedSubstance.animation;
-      this.selectedDosisInfo = this.selectedPresentation.infoPerDosis[this.actualDosis - 1];
+      this.selectedFase = this.selectedSubstance.fases[0];
+      this.characterState = null;
+    }
+  }
+
+  cambiarFase(_fase: TresFasesInfo) {
+    if ( this.actualDosis > 0) {
+      for (let i = 1; i < this.clase.length; i++) {
+        this.clase[i] = '';
+      }
+      this.animationRunning = true;
+      this.canvas.canDraw = false;
+      this.clase[1] = _fase.animacion;
+      this.selectedFase = _fase;
       this.characterState = null;
     }
   }
@@ -308,10 +360,13 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
       this.animationRunning = false;
       this.canvas.canDraw = true;
 
-      this.characterState = new CharacterStateModel(this.selectedSubstance.nombre, this.selectedDosisInfo.headInfo,
-      this.selectedDosisInfo.eyeInfo, this.selectedDosisInfo.heardInfo);
+      this.characterState = new CharacterStateModel(this.selectedSubstance.nombre, this.selectedFase.partes.headInfo,
+      this.selectedFase.partes.eyeInfo, this.selectedFase.partes.heardInfo);
 
       this.canvas.changeTextInBox([this.characterState.headInfo, this.characterState.eyeInfo, this.characterState.heardInfo]);
+      if (this.selectedFase) {
+        this.clase[1] = this.selectedFase.animacion;
+      }
     }
   }
 
@@ -375,10 +430,10 @@ class SubstanceObjectModel {
   nombre: string;
   presentacion: SubstancePresentationModel[];
   completeInfo: CompleteInfoModel;
-  fases: TresFasesInfo;
+  fases: TresFasesInfo[];
   animation: string;
 
-  constructor (name: string, presentaciones: SubstancePresentationModel[], _completeInfo: CompleteInfoModel, _fases: TresFasesInfo,
+  constructor (name: string, presentaciones: SubstancePresentationModel[], _completeInfo: CompleteInfoModel, _fases: TresFasesInfo[],
                animacion: string) {
     this.nombre = name;
     this.presentacion = presentaciones;
@@ -389,16 +444,17 @@ class SubstanceObjectModel {
 }
 
 class TresFasesInfo {
-  primeraFase: {name: string, animation: string};
-  segundaFase: string;
-  terceraFase: string;
-  points:
-  constructor (_primeraFase: string, _segundaFase: string, _terceraFase: string) {
-    this.primeraFase = _primeraFase;
-    this.segundaFase = _segundaFase;
-    this.terceraFase = _terceraFase;
+  name: string;
+  animacion: string;
+  partes: DosisAndInformationModel;
+  constructor (_name: string, _animacion: string, _partes: DosisAndInformationModel) {
+    this.name = _name;
+    this.animacion = _animacion;
+    this.partes = _partes;
   }
 }
+
+
 
 interface ICompleteInfoSections {
   topic: string;
