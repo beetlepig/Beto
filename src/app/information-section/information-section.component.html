@@ -8,8 +8,8 @@
     </ul>
   </div>
   <div class="characterContainer">
-    <div class="characterGeneralContainer">
-      <div [ngClass]="clase" #AnimatedCharacter></div>
+    <div class="characterGeneralContainer" #characterGeneralContainer>
+      <div class="characterAnimateDiv" [ngClass]="clase" [ngStyle]="{'max-height.px': characterGeneralContainer.offsetWidth * 2.889, 'width.px': characterGeneralContainer.offsetHeight * 0.346}" #AnimatedCharacter></div>
       <div id="p5CanvasContainer" #p5CanvasContainer></div>
     </div>
   <div class="faseConsumoContainer">

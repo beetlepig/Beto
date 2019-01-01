@@ -224,6 +224,8 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
 
   allow: boolean;
 
+  heightRatioDiv: number;
+
 
   @HostListener('window:resize')
   onResize() {
@@ -231,6 +233,8 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
     const parentModal: HTMLElement = this.containerSketchModal.nativeElement;
     this.canvas.onResize(parent.clientWidth, parent.clientHeight);
     this.canvasModal.onResize(parentModal.clientWidth, parentModal.clientHeight);
+
+    this.heightRatioDiv = this.myCharacter.nativeElement.offsetHeight * 1.77;
   }
 
   constructor() {
@@ -238,7 +242,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
     this.showAllInfo =  false;
     this.hideContainer = false;
     this.clase = new Array<string>(2);
-    this.clase[0] = 'characterAnimateDiv';
+    this.clase[0] = 'normalIdleAnimation';
     this.clase[1] = '';
     this.actualDosis = 1;
     this.allow = true;

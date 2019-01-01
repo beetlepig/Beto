@@ -72,28 +72,26 @@
   width: 100%;
   height: 10%;
   flex-grow: 15;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: olive;
 }
 
 .characterAnimateDiv {
-  width: 40%;
-  height: 0;
-  padding-bottom: 70%;
+  height: 100%;
+  background: pink;
+  max-width: 100%;
+  background-size: 6500%;
+  margin: auto;
+  position: absolute;
+  top:0;bottom:0; /* vertical center */
+  left:0;right:0; /* horizontal center */
+}
+
+.normalIdleAnimation {
   background-image: url("/assets/SpriteSheet/charzera.png");
-  background-position: 0 0;
-  background-size: 1400%;
-  display: block;
   animation: idle 1s steps(13) infinite;
-  /*animation: run 1s steps(13) infinite;*/
-  background-color: aqua;
 }
 
 .LSD--subida {
-  width: 30%;
-  padding-bottom: 86%;
-  background-size: 6500%;
   background-image: url("/assets/SpriteSheet/LSD/subida-lsd.png");
   animation: LSD--subida 4s steps(70) infinite;
 }
@@ -139,11 +137,11 @@
 
 @keyframes LSD--subida {
   0% {
-    background-position: 0 0;
+    background-position: 0 center;
   }
 
   100% {
-    background-position: 100% 0;
+    background-position: 100% center;
   }
 }
 
