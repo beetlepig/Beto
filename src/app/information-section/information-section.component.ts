@@ -185,7 +185,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
               'tratamientos a niñas o niños afectados severamente y diagnosticados con esquizofrenia o autismo infantil.'}
         ]
       ), [
-        new TresFasesInfo('SUBIDA', 'characterAnimateRun',
+        new TresFasesInfo('SUBIDA', 'LSD--subida',
           new DosisAndInformationModel('Cabeza “Exaltación, inquietud”', 'Cara “Enrojecimiento de la piel”',
             'Corazón “Aceleración del ritmo cardíaco”'
           )
