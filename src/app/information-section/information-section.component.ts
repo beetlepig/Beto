@@ -333,7 +333,6 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
       for (let i = 1; i < this.clase.length; i++) {
         this.clase[i] = '';
       }
-      this.animationRunning = true;
       this.canvas.canDraw = false;
       this.clase[1] = _fase.animacion;
       this.selectedFase = _fase;
