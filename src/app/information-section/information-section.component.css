@@ -72,12 +72,10 @@
   width: 100%;
   height: 10%;
   flex-grow: 15;
-  background-color: olive;
 }
 
 .characterAnimateDiv {
   height: 100%;
-  background: pink;
   max-width: 100%;
   background-size: 6500%;
   margin: auto;
@@ -203,6 +201,7 @@
   border: solid rgba(237, 134, 72, 0) 0.1vw;
   background: rgba(232,115,35, 0.8);
   color: rgba(255, 255, 255, 0.8);
+  cursor: not-allowed;
 }
 
 .substanceContainer {

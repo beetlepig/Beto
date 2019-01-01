@@ -224,8 +224,6 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
 
   allow: boolean;
 
-  heightRatioDiv: number;
-
 
   @HostListener('window:resize')
   onResize() {
@@ -233,8 +231,6 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
     const parentModal: HTMLElement = this.containerSketchModal.nativeElement;
     this.canvas.onResize(parent.clientWidth, parent.clientHeight);
     this.canvasModal.onResize(parentModal.clientWidth, parentModal.clientHeight);
-
-    this.heightRatioDiv = this.myCharacter.nativeElement.offsetHeight * 1.77;
   }
 
   constructor() {
@@ -276,6 +272,9 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   }
 
   changeSelectedSubstance(substance: SubstanceObjectModel) {
+    for (let i = 1; i < this.clase.length; i++) {
+      this.clase[i] = '';
+    }
     this.selectedSubstance = substance;
     this.selectedPresentation = this.selectedSubstance.presentacion[0];
     this.selectedCompleteInfoSection = this.selectedSubstance.completeInfo.sections[0];
@@ -334,13 +333,13 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
 
   cambiarFase(_fase: TresFasesInfo) {
     if ( this.actualDosis > 0) {
-      for (let i = 1; i < this.clase.length; i++) {
-        this.clase[i] = '';
-      }
-      this.canvas.canDraw = false;
+      this.canvas.canDraw = true;
       this.clase[1] = _fase.animacion;
       this.selectedFase = _fase;
-      this.characterState = null;
+      this.characterState = new CharacterStateModel(this.selectedSubstance.nombre, this.selectedFase.partes.headInfo,
+        this.selectedFase.partes.eyeInfo, this.selectedFase.partes.heardInfo);
+
+      this.canvas.changeTextInBox([this.characterState.headInfo, this.characterState.eyeInfo, this.characterState.heardInfo]);
     }
   }
 
