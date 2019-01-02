@@ -2,7 +2,7 @@ import * as p5 from 'p5';
 
 export interface Ip5WithCustomAtributes extends p5 {
   onResize: (width: number, height: number) => void;
-  changeTextInBox: (texts: string[]) => void;
+  setPuntos: (_puntos: {info: string, posX: number, posY: number}[]) => void;
   canDraw: boolean;
 }
 
@@ -11,10 +11,6 @@ export function createSketch(width: number, height: number) {
   return function sketch(p: Ip5WithCustomAtributes) {
     let sketchWidth: number = width;
     let sketchHeight: number = height;
-
-    let headPointPos: p5.Vector;
-    let eyePointPos: p5.Vector;
-    let heardPointPos: p5.Vector;
 
     let puntos: PuntoPalpitante[];
 
@@ -28,14 +24,15 @@ export function createSketch(width: number, height: number) {
 
       puntos = [];
 
-      headPointPos = p.createVector(sketchWidth / 2, sketchHeight / 3.5);
-      eyePointPos = p.createVector(sketchWidth / 1.7, sketchHeight / 2.5);
-      heardPointPos = p.createVector(sketchWidth / 1.9, sketchHeight / 2);
+      p.setPuntos([{posX: 2, posY: 3.5, info: 'ffssfdfs'}]);
 
-      puntos.push(new PuntoPalpitante(headPointPos.x, headPointPos.y,  sketchWidth, sketchHeight, p));
-      puntos.push(new PuntoPalpitante(eyePointPos.x, eyePointPos.y,  sketchWidth, sketchHeight, p));
-      puntos.push(new PuntoPalpitante(heardPointPos.x, heardPointPos.y,  sketchWidth, sketchHeight, p));
+    };
 
+    p.setPuntos = (_puntos: {info: string, posX: number, posY: number}[]) => {
+      puntos = [];
+      _puntos.forEach((punto: {info: string, posX: number, posY: number}) => {
+        puntos.push(new PuntoPalpitante(punto.posX, punto.posY, sketchWidth, sketchHeight, p, punto.info));
+      });
     };
 
     p.draw = function () {
@@ -64,23 +61,11 @@ export function createSketch(width: number, height: number) {
       sketchWidth = widthR;
       sketchHeight = heightR;
 
-      headPointPos.set(sketchWidth / 2, sketchHeight / 3.5);
-      eyePointPos.set(sketchWidth / 1.7, sketchHeight / 2.5);
-      heardPointPos.set(sketchWidth / 1.9, sketchHeight / 2);
-
-      if (puntos) {
-        puntos[0].onResize(headPointPos.x, headPointPos.y, sketchWidth, sketchHeight);
-        puntos[1].onResize(eyePointPos.x, eyePointPos.y, sketchWidth, sketchHeight);
-        puntos[2].onResize(heardPointPos.x, heardPointPos.y, sketchWidth, sketchHeight);
-      }
+      puntos.forEach((puntin: PuntoPalpitante) => {
+        puntin.onResize(sketchWidth, sketchHeight);
+      });
 
       p.resizeCanvas(sketchWidth, sketchHeight);
-    };
-
-    p.changeTextInBox = function (texts: string[]) {
-      puntos[0].setSustanceText(texts[0]);
-      puntos[1].setSustanceText(texts[1]);
-      puntos[2].setSustanceText(texts[2]);
     };
 
   };
@@ -90,6 +75,9 @@ export function createSketch(width: number, height: number) {
 class PuntoPalpitante {
   private xPos: number;
   private yPos: number;
+
+  private xDivider: number;
+  private yDivider: number;
 
   private xSize: number;
   private ySize: number;
@@ -106,11 +94,13 @@ class PuntoPalpitante {
 
   private pInstance: p5;
 
-  constructor(_xPos: number, _yPos: number, _canvasWidth: number, _canvasHeight: number, _p: p5) {
-    this.xPos = _xPos;
-    this.yPos = _yPos;
+  constructor(_xDivider: number, _yDivider: number, _canvasWidth: number, _canvasHeight: number, _p: p5, text: string) {
+    this.xDivider = _xDivider;
+    this.yDivider = _yDivider;
     this.canvasWidth = _canvasWidth;
     this.canvasHeight = _canvasHeight;
+    this.xPos = this.canvasWidth / this.xDivider;
+    this.yPos = this.canvasHeight / this.yDivider;
 
     this.xSize = this.canvasWidth / 40;
     this.ySize = this.canvasWidth / 40;
@@ -123,6 +113,8 @@ class PuntoPalpitante {
     this.pInstance = _p;
 
     this.createTextRect();
+
+    this.textRect.text = text;
   }
 
   createTextRect() {
@@ -160,17 +152,13 @@ class PuntoPalpitante {
     }
   }
 
-  onResize(xPosR: number, yPosR: number, _canvasWidth: number, _canvasHeight: number) {
-    this.xPos = xPosR;
-    this.yPos = yPosR;
+  onResize(_canvasWidth: number, _canvasHeight: number) {
     this.canvasWidth = _canvasWidth;
     this.canvasHeight = _canvasHeight;
+    this.xPos = this.canvasWidth / this.xDivider;
+    this.yPos = this.canvasHeight / this.yDivider;
     this.textRect.onResize(this.pInstance.createVector(this.xPos, this.yPos), this.canvasWidth * 0.3,
     this.canvasHeight * 0.15);
-  }
-
-  setSustanceText(text: string) {
-    this.textRect.text = text;
   }
 
 }

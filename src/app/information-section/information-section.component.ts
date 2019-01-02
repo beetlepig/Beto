@@ -91,21 +91,14 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
              }]
       ), [
                   new TresFasesInfo('SUBIDA', 'characterAnimateRun',
-                    new DosisAndInformationModel('“desaparece el cansancio”', 'Fuera de la Cabeza “Euforia”',
-                                      'Boca “Ganas de bailar o realizar alguna actividad física”'
-                    )
+                    [new DosisAndInformationModel('head', 'desaparece el cansancio')]
                   ),
                   new TresFasesInfo('VIAJE', 'characterAnimateRun',
-                    new DosisAndInformationModel('Ojos “intensificación de las sensaciones emocionales, cercanía, confianza y ' +
-                      'empatía hacia las demás personas.”', 'Ojos “intensificación de las sensaciones emocionales, cercanía, ' +
-                      'confianza y empatía hacia las demás personas.”',
-                      'Ojos “intensificación de las sensaciones emocionales, cercanía, confianza y empatía hacia las demás personas.”'
-                    )
+                    [new DosisAndInformationModel('eyes', 'intensificación de las sensaciones emocionales, cercanía, ' +
+                      'confianza y empatía hacia las demás personas.')]
                   ),
                   new TresFasesInfo('BAJADA', 'characterAnimateRun',
-                    new DosisAndInformationModel('Frente (sudor) “Cansancio físico”', 'Cerebro “Cansancio mental”',
-                      'Cara “Bajón de ánimo”'
-                    )
+                    [new DosisAndInformationModel('head', 'Cansancio físico')]
                   ),
                 ],
       'characterAnimateRun'
@@ -185,22 +178,18 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
               'tratamientos a niñas o niños afectados severamente y diagnosticados con esquizofrenia o autismo infantil.'}
         ]
       ), [
-        new TresFasesInfo('SUBIDA', 'LSD--subida',
-          new DosisAndInformationModel('Cabeza “Exaltación, inquietud”', 'Cara “Enrojecimiento de la piel”',
-            'Corazón “Aceleración del ritmo cardíaco”'
-          )
+        new TresFasesInfo('SUBIDA', 'LSD--subida', [
+          new DosisAndInformationModel('heard', 'Aceleración del ritmo cardíaco'),
+          new DosisAndInformationModel('head', 'Exaltación, inquietud'),
+          ]
         ),
-          new TresFasesInfo('VIAJE', 'characterAnimateRun',
-            new DosisAndInformationModel('Cabeza “En algunos casos el viaje es de tipo introspectivo, con alteraciones de la ' +
-              'conciencia y del pensamiento, sobre sí mismo y las demás personas. “ ',
-              'Ojos “Ilusiones o alucinaciones”',
-              'Ojos “intensificación de las sensaciones emocionales, cercanía, confianza y empatía hacia las demás personas.”'
-            )
+          new TresFasesInfo('VIAJE', 'characterAnimateRun', [
+            new DosisAndInformationModel('eyes', 'Ilusiones o alucinaciones'),
+            new DosisAndInformationModel('head', 'En algunos casos el viaje es de tipo introspectivo, con alteraciones de la ' +
+              'conciencia y del pensamiento, sobre sí mismo y las demás personas.')
+            ]
           ),
-          new TresFasesInfo('BAJADA', 'characterAnimateRun',
-            new DosisAndInformationModel('Cara “Estado de abatimiento”', 'Boca “Estado de fatiga”',
-              'Cara “Bajón de ánimo”'
-            )
+          new TresFasesInfo('BAJADA', 'characterAnimateRun', [new DosisAndInformationModel('head', 'Estado de abatimiento')]
           ),
         ],
       'characterAnimateJump',
@@ -217,7 +206,6 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   actualDosis: number;
   clase: Array<string>;
   animationRunning: boolean;
-  characterState: CharacterStateModel;
 
   showAllInfo: boolean;
   hideContainer: boolean;
@@ -327,7 +315,6 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
       this.canvas.canDraw = false;
       this.clase[1] = this.selectedSubstance.animation;
       this.selectedFase = this.selectedSubstance.fases[0];
-      this.characterState = null;
     }
   }
 
@@ -336,10 +323,6 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
       this.canvas.canDraw = true;
       this.clase[1] = _fase.animacion;
       this.selectedFase = _fase;
-      this.characterState = new CharacterStateModel(this.selectedSubstance.nombre, this.selectedFase.partes.headInfo,
-        this.selectedFase.partes.eyeInfo, this.selectedFase.partes.heardInfo);
-
-      this.canvas.changeTextInBox([this.characterState.headInfo, this.characterState.eyeInfo, this.characterState.heardInfo]);
     }
   }
 
@@ -362,10 +345,13 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
       this.animationRunning = false;
       this.canvas.canDraw = true;
 
-      this.characterState = new CharacterStateModel(this.selectedSubstance.nombre, this.selectedFase.partes.headInfo,
-      this.selectedFase.partes.eyeInfo, this.selectedFase.partes.heardInfo);
+      const pointsToCanvas: {info: string, posX: number, posY: number}[] =
+        this.selectedFase.partes.map((parteee: DosisAndInformationModel) => {
+        return {posX: parteee.xPos, posY: parteee.yPos, info: parteee.info};
+      });
 
-      this.canvas.changeTextInBox([this.characterState.headInfo, this.characterState.eyeInfo, this.characterState.heardInfo]);
+      this.canvas.setPuntos(pointsToCanvas);
+
       if (this.selectedFase) {
         this.clase[1] = this.selectedFase.animacion;
       }
@@ -448,8 +434,8 @@ class SubstanceObjectModel {
 class TresFasesInfo {
   name: string;
   animacion: string;
-  partes: DosisAndInformationModel;
-  constructor (_name: string, _animacion: string, _partes: DosisAndInformationModel) {
+  partes: DosisAndInformationModel[];
+  constructor (_name: string, _animacion: string, _partes: DosisAndInformationModel[]) {
     this.name = _name;
     this.animacion = _animacion;
     this.partes = _partes;
@@ -486,14 +472,26 @@ class SubstancePresentationModel {
 }
 
 class DosisAndInformationModel {
-  headInfo: string;
-  eyeInfo: string;
-  heardInfo: string;
+  info: string;
+  xPos: number;
+  yPos: number;
 
-  constructor (_headInfo: string, _eyeInfo: string, _heardInfo: string) {
-    this.headInfo = _headInfo;
-    this.eyeInfo = _eyeInfo;
-    this.heardInfo = _heardInfo;
+  constructor (type: string, _info: string) {
+    this.info = _info;
+    switch (type) {
+      case 'head':
+        this.xPos = 2;
+        this.yPos = 3.5;
+        break;
+      case 'eyes':
+        this.xPos = 1.7;
+        this.yPos = 2.5;
+        break;
+      case 'heard':
+        this.xPos = 1.9;
+        this.yPos = 2;
+        break;
+    }
   }
 
 }
