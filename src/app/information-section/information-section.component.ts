@@ -183,13 +183,14 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
           new DosisAndInformationModel('head', 'Exaltación, inquietud'),
           ]
         ),
-          new TresFasesInfo('VIAJE', 'characterAnimateRun', [
+          new TresFasesInfo('VIAJE', 'LSD--subida', [
             new DosisAndInformationModel('eyes', 'Ilusiones o alucinaciones'),
             new DosisAndInformationModel('head', 'En algunos casos el viaje es de tipo introspectivo, con alteraciones de la ' +
               'conciencia y del pensamiento, sobre sí mismo y las demás personas.')
             ]
           ),
-          new TresFasesInfo('BAJADA', 'characterAnimateRun', [new DosisAndInformationModel('head', 'Estado de abatimiento')]
+          new TresFasesInfo('BAJADA', 'LSD--subida', [
+            new DosisAndInformationModel('head', 'Estado de abatimiento')]
           ),
         ],
       'characterAnimateJump',
@@ -320,9 +321,11 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
 
   cambiarFase(_fase: TresFasesInfo) {
     if ( this.actualDosis > 0) {
-      this.canvas.canDraw = true;
       this.clase[1] = _fase.animacion;
       this.selectedFase = _fase;
+      this.canvas.setPuntos(this.selectedFase.partes.map((parteee: DosisAndInformationModel) => {
+        return {posX: parteee.xPos, posY: parteee.yPos, info: parteee.info};
+      }));
     }
   }
 
@@ -345,16 +348,8 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
       this.animationRunning = false;
       this.canvas.canDraw = true;
 
-      const pointsToCanvas: {info: string, posX: number, posY: number}[] =
-        this.selectedFase.partes.map((parteee: DosisAndInformationModel) => {
-        return {posX: parteee.xPos, posY: parteee.yPos, info: parteee.info};
-      });
+      this.cambiarFase(this.selectedFase);
 
-      this.canvas.setPuntos(pointsToCanvas);
-
-      if (this.selectedFase) {
-        this.clase[1] = this.selectedFase.animacion;
-      }
     }
   }
 
@@ -480,31 +475,18 @@ class DosisAndInformationModel {
     this.info = _info;
     switch (type) {
       case 'head':
-        this.xPos = 2;
-        this.yPos = 3.5;
+        this.xPos = 1.95;
+        this.yPos = 15;
         break;
       case 'eyes':
         this.xPos = 1.7;
-        this.yPos = 2.5;
+        this.yPos = 6.5;
         break;
       case 'heard':
-        this.xPos = 1.9;
-        this.yPos = 2;
+        this.xPos = 1.85;
+        this.yPos = 2.8;
         break;
     }
   }
 
-}
-
-class CharacterStateModel {
-  name: string;
-  headInfo: string;
-  eyeInfo: string;
-  heardInfo: string;
-  constructor(_name: string, _headInfo: string, _eyeInfo: string, _heardInfo: string) {
-    this.headInfo = _headInfo;
-    this.eyeInfo = _eyeInfo;
-    this.heardInfo = _heardInfo;
-    this.name = _name;
-  }
 }

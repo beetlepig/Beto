@@ -115,27 +115,27 @@ class PuntoPalpitante {
   }
 
   animatePoint() {
-    this.xSize += 0.55;
-    this.ySize += 0.55;
-    this.fillOpacity -= 2;
+    this.xSize += (this.canvasWidth + this.canvasHeight) * 0.002;
+    this.ySize += (this.canvasWidth + this.canvasHeight) * 0.002;
+    this.fillOpacity -= this.pInstance.map((this.canvasWidth + this.canvasHeight), 10, 600, 3, 1);
     if (this.fillOpacity <= 0) {
       this.xSize = 0;
       this.ySize = 0;
       this.fillOpacity = 255;
     }
 
-    this.xSizeTwo += 0.55;
-    this.ySizeTwo += 0.55;
-    this.fillOpacityTwo -= 2;
+    this.xSizeTwo += (this.canvasWidth + this.canvasHeight) * 0.002;
+    this.ySizeTwo += (this.canvasWidth + this.canvasHeight) * 0.002;
+    this.fillOpacityTwo -= this.pInstance.map((this.canvasWidth + this.canvasHeight), 10, 600, 3, 1);
     if (this.fillOpacityTwo <= 0) {
       this.xSizeTwo = 0;
       this.ySizeTwo = 0;
       this.fillOpacityTwo = 255;
     }
 
-    this.xSizeThree += 0.55;
-    this.ySizeThree += 0.55;
-    this.fillOpacityThree -= 2;
+    this.xSizeThree += (this.canvasWidth + this.canvasHeight) * 0.002;
+    this.ySizeThree += (this.canvasWidth + this.canvasHeight) * 0.002;
+    this.fillOpacityThree -= this.pInstance.map((this.canvasWidth + this.canvasHeight), 10, 600, 3, 1);
     if (this.fillOpacityThree <= 0) {
       this.xSizeThree = 0;
       this.ySizeThree = 0;

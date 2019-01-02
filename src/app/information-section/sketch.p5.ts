@@ -133,18 +133,18 @@ class PuntoPalpitante {
   }
 
   animatePoint() {
-    this.xSize += 1;
-    this.ySize += 1;
-    this.fillOpacity -= 5;
+    this.xSize += (this.canvasWidth + this.canvasHeight) * 0.0008;
+    this.ySize += (this.canvasWidth + this.canvasHeight) * 0.0008;
+    this.fillOpacity -= this.pInstance.map((this.canvasWidth + this.canvasHeight), 50, 2000, 10, 1);
     if (this.fillOpacity <= 0) {
       this.xSize = 0;
       this.ySize = 0;
       this.fillOpacity = 255;
     }
 
-    this.xSizeTwo += 1;
-    this.ySizeTwo += 1;
-    this.fillOpacityTwo -= 5;
+    this.xSizeTwo += (this.canvasWidth + this.canvasHeight) * 0.0008;
+    this.ySizeTwo += (this.canvasWidth + this.canvasHeight) * 0.0008;
+    this.fillOpacityTwo -= this.pInstance.map((this.canvasWidth + this.canvasHeight), 50, 2000, 10, 1);
     if (this.fillOpacityTwo <= 0) {
       this.xSizeTwo = 0;
       this.ySizeTwo = 0;
