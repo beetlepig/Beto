@@ -91,7 +91,17 @@
 
 .LSD--subida {
   background-image: url("/assets/SpriteSheet/LSD/subida-lsd.png");
-  animation: LSD--subida 4s steps(70) infinite;
+  animation: LSD--subida 4.7s steps(70) infinite;
+}
+
+.LSD--viaje {
+  background-image: url("/assets/SpriteSheet/LSD/viaje-lsd.png");
+  animation: LSD--viaje 4.7s steps(70) infinite;
+}
+
+.LSD--bajada {
+  background-image: url("/assets/SpriteSheet/LSD/bajada-lsd.png");
+  animation: LSD--viaje 4.7s steps(70) infinite;
 }
 
 .characterAnimateRun{
@@ -134,6 +144,26 @@
 }
 
 @keyframes LSD--subida {
+  0% {
+    background-position: 0 center;
+  }
+
+  100% {
+    background-position: 100% center;
+  }
+}
+
+@keyframes LSD--viaje {
+  0% {
+    background-position: 0 center;
+  }
+
+  100% {
+    background-position: 100% center;
+  }
+}
+
+@keyframes LSD--bajada {
   0% {
     background-position: 0 center;
   }

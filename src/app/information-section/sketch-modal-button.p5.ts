@@ -40,6 +40,7 @@ export default function createSketchModal(width: number, height: number) {
         puntos[i].update();
       }
       p.fill(216, 116, 48, 200);
+      p.textSize(sketchWidth / 13);
       p.text('VER MÁS', sketchWidth / 2, sketchHeight * 0.92);
     };
 

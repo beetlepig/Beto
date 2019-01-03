@@ -112,23 +112,21 @@ class PuntoPalpitante {
 
     this.pInstance = _p;
 
-    this.createTextRect();
-
-    this.textRect.text = text;
+    this.createTextRect(text);
   }
 
-  createTextRect() {
-    this.textRect = new TextBox(this.pInstance.createVector(this.xPos, this.yPos), this.canvasWidth * 0.3,
-    this.canvasHeight * 0.15, 'Hola Amigo', this.pInstance);
+  createTextRect(text: string) {
+    this.textRect = new TextBox(this.pInstance.createVector(this.xPos, this.yPos), this.canvasWidth,
+    this.canvasHeight, text, this.pInstance);
   }
 
   update() {
     this.animatePoint();
     this.textRect.update();
     this.pInstance.noStroke();
-    this.pInstance.fill(255, 150, 150, this.fillOpacity);
+    this.pInstance.fill(76, 175, 80, this.fillOpacity);
     this.pInstance.ellipse(this.xPos, this.yPos, this.xSize, this.ySize);
-    this.pInstance.fill(255, 150, 150, this.fillOpacityTwo);
+    this.pInstance.fill(76, 175, 80, this.fillOpacityTwo);
     this.pInstance.ellipse(this.xPos, this.yPos, this.xSizeTwo, this.ySizeTwo);
   }
 
@@ -157,8 +155,7 @@ class PuntoPalpitante {
     this.canvasHeight = _canvasHeight;
     this.xPos = this.canvasWidth / this.xDivider;
     this.yPos = this.canvasHeight / this.yDivider;
-    this.textRect.onResize(this.pInstance.createVector(this.xPos, this.yPos), this.canvasWidth * 0.3,
-    this.canvasHeight * 0.15);
+    this.textRect.onResize(this.pInstance.createVector(this.xPos, this.yPos), this.canvasWidth, this.canvasHeight);
   }
 
 }
@@ -166,10 +163,13 @@ class PuntoPalpitante {
 class TextBox {
   private position: p5.Vector;
 
-  private boxWidth: number;
-  private boxHeight: number;
+  private canvasWidth: number;
+  private canvasHeight: number;
 
-  text: string;
+  private boxWidth: number;
+  private boxHeigth: number;
+
+  private readonly text: string;
   drawText: boolean;
 
   boxColorAlpha: number;
@@ -177,28 +177,43 @@ class TextBox {
   private p5Instance: p5;
 
 
-  constructor(_position: p5.Vector, _boxWidth: number, _boxHeight: number, _text: string, _p5Instance: p5) {
+  constructor(_position: p5.Vector, _canvasWidth: number, _canvasHeight: number, _text: string, _p5Instance: p5) {
     this.position = _position;
-    this.boxWidth = _boxWidth;
-    this.boxHeight = _boxHeight;
+    this.canvasWidth = _canvasWidth;
+    this.canvasHeight = _canvasHeight;
     this.boxColorAlpha = 0;
     this.text = _text;
     this.drawText = false;
     this.p5Instance = _p5Instance;
+    this.p5Instance.textSize((this.canvasWidth + this.canvasHeight) * 0.015);
+    this.p5Instance.textLeading(this.p5Instance.textSize() * 1.1);
   }
 
   update() {
     this.fadeBox();
-    this.p5Instance.fill(155, 155, 255, this.boxColorAlpha);
-    this.p5Instance.rect(this.position.x * 1.05, this.position.y * 1.05, this.boxWidth, this.boxHeight);
-    this.p5Instance.fill(50, this.boxColorAlpha);
-    this.p5Instance.text(this.text, this.position.x * 1.05, this.position.y * 1.05, this.boxWidth, this.boxHeight);
+    this.calculateBoxSize();
+    this.p5Instance.fill(232, 115, 35, this.boxColorAlpha);
+    this.p5Instance.rect(this.position.x, this.position.y, this.boxWidth * 1.05, this.boxHeigth);
+    this.p5Instance.fill(250, this.boxColorAlpha);
+    this.p5Instance.text(this.text, this.position.x, this.position.y,
+      this.boxWidth * 1.05, this.boxHeigth);
 
   }
 
+  calculateBoxSize() {
+    const saltosDeLinea = Math.ceil(this.p5Instance.textWidth(this.text) / (this.canvasWidth * 0.4));
+    if (saltosDeLinea === 1) {
+      this.boxWidth = this.p5Instance.textWidth(this.text);
+    } else {
+      this.boxWidth = this.canvasWidth * 0.4;
+    }
+    this.boxHeigth = this.p5Instance.textLeading() * (saltosDeLinea);
+  }
+
   fadeBox() {
-    if (this.drawText && this.boxColorAlpha < 255) {
+    if (this.drawText && this.boxColorAlpha < 210) {
       this.boxColorAlpha += 40;
+      console.log(Math.ceil(this.p5Instance.textWidth(this.text) / (this.canvasWidth * 0.4)));
     } else if (!this.drawText && this.boxColorAlpha > 0) {
       this.boxColorAlpha -= 40;
     }
@@ -219,10 +234,11 @@ class TextBox {
     this.drawText = p5.Vector.dist(this.position, this.p5Instance.createVector(mouseX, mouseY)) < 20;
   }
 
-  onResize(_position: p5.Vector, _boxWidth: number, _boxHeight: number) {
+  onResize(_position: p5.Vector, _canvasWidth: number, _canvasHeight: number) {
     this.position = _position;
-    this.boxWidth = _boxWidth;
-    this.boxHeight = _boxHeight;
+    this.canvasWidth = _canvasWidth;
+    this.canvasHeight = _canvasHeight;
+    this.p5Instance.textSize((this.canvasWidth + this.canvasHeight) * 0.015);
   }
 
 

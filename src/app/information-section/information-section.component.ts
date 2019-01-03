@@ -91,14 +91,20 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
              }]
       ), [
                   new TresFasesInfo('SUBIDA', 'characterAnimateRun',
-                    [new DosisAndInformationModel('head', 'desaparece el cansancio')]
+                    [new DosisAndInformationModel('head', 'desaparece el cansancio'),
+                      new DosisAndInformationModel('outside-head', 'Euforia'),
+                      new DosisAndInformationModel('mouth', 'Ganas de bailar o realizar alguna actividad física')
+                    ]
                   ),
                   new TresFasesInfo('VIAJE', 'characterAnimateRun',
                     [new DosisAndInformationModel('eyes', 'intensificación de las sensaciones emocionales, cercanía, ' +
                       'confianza y empatía hacia las demás personas.')]
                   ),
                   new TresFasesInfo('BAJADA', 'characterAnimateRun',
-                    [new DosisAndInformationModel('head', 'Cansancio físico')]
+                    [new DosisAndInformationModel('frente', 'Cansancio físico'),
+                      new DosisAndInformationModel('head', 'Cansancio mental'),
+                      new DosisAndInformationModel('face', 'Bajón de ánimo')
+                    ]
                   ),
                 ],
       'characterAnimateRun'
@@ -181,16 +187,18 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
         new TresFasesInfo('SUBIDA', 'LSD--subida', [
           new DosisAndInformationModel('heard', 'Aceleración del ritmo cardíaco'),
           new DosisAndInformationModel('head', 'Exaltación, inquietud'),
+          new DosisAndInformationModel('face', 'Enrojecimiento de la piel')
           ]
         ),
-          new TresFasesInfo('VIAJE', 'LSD--subida', [
+          new TresFasesInfo('VIAJE', 'LSD--viaje', [
             new DosisAndInformationModel('eyes', 'Ilusiones o alucinaciones'),
             new DosisAndInformationModel('head', 'En algunos casos el viaje es de tipo introspectivo, con alteraciones de la ' +
               'conciencia y del pensamiento, sobre sí mismo y las demás personas.')
             ]
           ),
-          new TresFasesInfo('BAJADA', 'LSD--subida', [
-            new DosisAndInformationModel('head', 'Estado de abatimiento')]
+          new TresFasesInfo('BAJADA', 'LSD--bajada', [
+            new DosisAndInformationModel('face', 'Estado de abatimiento'),
+            new DosisAndInformationModel('mouth', 'Estado de fatiga')]
           ),
         ],
       'characterAnimateJump',
@@ -478,9 +486,25 @@ class DosisAndInformationModel {
         this.xPos = 1.95;
         this.yPos = 15;
         break;
+      case  'outside-head':
+        this.xPos = 1.5;
+        this.yPos = 10;
+        break;
+      case 'frente':
+        this.xPos = 2;
+        this.yPos = 10;
+        break;
       case 'eyes':
-        this.xPos = 1.7;
+        this.xPos = 1.9;
         this.yPos = 6.5;
+        break;
+      case 'face':
+        this.xPos = 2.15;
+        this.yPos = 5.4;
+        break;
+      case 'mouth':
+        this.xPos = 2;
+        this.yPos = 4.8;
         break;
       case 'heard':
         this.xPos = 1.85;
