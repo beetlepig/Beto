@@ -21,6 +21,7 @@ import {FormsModule} from '@angular/forms';
 import { AdminComponent } from './admin/admin.component';
 import { TextoCitasComponent } from './texto-citas/texto-citas.component';
 import { TeamComponent } from './team/team.component';
+import { EvaluateComponent } from './evaluate/evaluate.component';
 
 
 
@@ -32,6 +33,7 @@ const appRoutes: Routes = [
   { path: 'Team', component: TeamComponent },
   { path: 'Contact', component: ContactoComponent },
   { path: 'Admin', component: AdminComponent },
+  { path: 'Evaluate', component: EvaluateComponent },
   { path: '**', component: HomeComponent }
 ];
 
@@ -51,7 +53,8 @@ const appRoutes: Routes = [
     ContactoComponent,
     AdminComponent,
     TextoCitasComponent,
-    TeamComponent
+    TeamComponent,
+    EvaluateComponent
   ],
   imports: [
     BrowserModule,
