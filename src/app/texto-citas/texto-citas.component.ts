@@ -79,6 +79,10 @@ export class TextoCitasComponent implements OnInit, AfterViewInit {
         '17 MILLONES DE PERSONAS', 'Consumieron cocaína en el último año alrededor del mundo',
         'https://www.unodc.org/wdr2017/field/WDR_Booklet1_Exsum_Spanish.pdf'
       ),
+      new RotatingInfoModel('AURON',
+        'TOMA ZUMITOS', 'PORROS NO',
+        'https://www.youtube.com/watch?v=kDZhwJMYISY'
+      ),
       new RotatingInfoModel('ODC',
         'EL CANNABIS', 'Es la droga más ampliamente usada',
         'http://www.odc.gov.co/Portals/1/publicaciones/pdf/odc-libro-blanco/reporte_drogas_colombia_2017.pdf'
@@ -101,6 +105,10 @@ export class TextoCitasComponent implements OnInit, AfterViewInit {
         'CADA AÑO', 'Aumenta significativamente el consumo de alcohol',
         'http://www.odc.gov.co/Portals/1/publicaciones/pdf/consumo/estudios/nacionales/CO03322016-estudio-epidemiologico-andino-' +
         'consumo-drogas-poblacion-universitaria-colombia-2016.pdf'
+      ),
+      new RotatingInfoModel('AURON',
+        'DROGAS NO', 'ZUMITOS SI',
+        'https://www.youtube.com/watch?v=NdoNBMKGmi4'
       )
     ];
 
