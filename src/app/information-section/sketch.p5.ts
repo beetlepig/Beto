@@ -244,7 +244,8 @@ class TextBox {
     this.position = _position;
     this.canvasWidth = _canvasWidth;
     this.canvasHeight = _canvasHeight;
-    this.p5Instance.textSize((this.canvasWidth + this.canvasHeight) * 0.015);
+    this.p5Instance.textSize((this.canvasWidth + this.canvasHeight) * 0.02);
+    this.p5Instance.textLeading(this.p5Instance.textSize() * 1.1);
   }
 
 
