@@ -199,7 +199,7 @@ class TextBox {
     this.calculateBoxSize();
     this.p5Instance.fill(232, 115, 35, this.boxColorAlpha);
     this.p5Instance.rect(this.position.x + (this.canvasWidth * 0.02), this.position.y + (this.canvasHeight * 0.02),
-      this.boxWidth + (this.canvasWidth * 0.03), this.boxHeigth + (this.canvasHeight * 0.03), this.canvasWidth * 0.01);
+      this.boxWidth + (this.canvasWidth * 0.03), this.boxHeigth + (this.canvasHeight * 0.035), this.canvasWidth * 0.01);
     this.p5Instance.fill(250, this.boxColorAlpha);
     this.p5Instance.text(this.text, this.position.x + (this.canvasWidth * 0.03), this.position.y + (this.canvasHeight * 0.03),
       this.boxWidth * 1.039, this.boxHeigth);
