@@ -174,6 +174,8 @@ class TextBox {
 
   boxColorAlpha: number;
 
+  font: p5.Font;
+
   private p5Instance: p5;
 
 
@@ -185,18 +187,22 @@ class TextBox {
     this.text = _text;
     this.drawText = false;
     this.p5Instance = _p5Instance;
-    this.p5Instance.textSize((this.canvasWidth + this.canvasHeight) * 0.015);
+    this.font = this.p5Instance.loadFont('assets/fonts/Dosis-Medium.ttf');
+    this.p5Instance.textFont(this.font);
+    this.p5Instance.textSize((this.canvasWidth + this.canvasHeight) * 0.02);
     this.p5Instance.textLeading(this.p5Instance.textSize() * 1.1);
+    this.p5Instance.textAlign(this.p5Instance.CENTER, this.p5Instance.TOP);
   }
 
   update() {
     this.fadeBox();
     this.calculateBoxSize();
     this.p5Instance.fill(232, 115, 35, this.boxColorAlpha);
-    this.p5Instance.rect(this.position.x, this.position.y, this.boxWidth * 1.05, this.boxHeigth);
+    this.p5Instance.rect(this.position.x + (this.canvasWidth * 0.02), this.position.y + (this.canvasHeight * 0.02),
+      this.boxWidth + (this.canvasWidth * 0.03), this.boxHeigth + (this.canvasHeight * 0.03), this.canvasWidth * 0.01);
     this.p5Instance.fill(250, this.boxColorAlpha);
-    this.p5Instance.text(this.text, this.position.x, this.position.y,
-      this.boxWidth * 1.05, this.boxHeigth);
+    this.p5Instance.text(this.text, this.position.x + (this.canvasWidth * 0.03), this.position.y + (this.canvasHeight * 0.03),
+      this.boxWidth * 1.039, this.boxHeigth);
 
   }
 
@@ -231,7 +237,7 @@ class TextBox {
       this.drawText = false;
     }
     */
-    this.drawText = p5.Vector.dist(this.position, this.p5Instance.createVector(mouseX, mouseY)) < 20;
+    this.drawText = p5.Vector.dist(this.position, this.p5Instance.createVector(mouseX, mouseY)) < this.canvasWidth * 0.02;
   }
 
   onResize(_position: p5.Vector, _canvasWidth: number, _canvasHeight: number) {
