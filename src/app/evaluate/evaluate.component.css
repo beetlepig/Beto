@@ -1,24 +1,87 @@
 .container {
-  left: 20.8%;
-  top: 20%;
+  left: 16.7%;
+  top: 25%;
   position: absolute;
-  width: 58.3%;
+  width: 66.7%;
   height: 50%;
-  background-color: cadetblue;
   display: flex;
 }
 
 .title-wrapper {
-  background-color: red;
-  flex-grow: 2.8;
+  width: 16%;
+  flex-grow: 1;
 }
 
 .title-wrapper h2 {
+  margin: 0;
   font-family: 'Dosis', sans-serif;
   font-weight: 700;
+  font-size: 2vw;
+  text-align: center;
 }
 
 .info-wrapper {
-  background-color: olive;
-  flex-grow: 10;
+  width: 83%;
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.info-wrapper h3 {
+  margin:  0;
+  padding: 1.5vh 0.5vw;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 600;
+  font-size: 1vw;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(232,115,35, 1);
+}
+
+.info-wrapper h5 {
+  margin: 2vh;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 600;
+  font-size: 1vw;
+  text-align: center;
+}
+
+.info-wrapper ul {
+  list-style-type: none;
+}
+
+.info-wrapper ul li {
+  margin: 0.5vh;
+  padding: 0.5vh 0;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 500;
+  font-size: 0.8vw;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.info-wrapper h4 {
+  margin: 1vh 0;
+  padding: 0.5vh 0;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 700;
+  font-size: 1vw;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.info-wrapper h1 {
+  margin:  1vh 0;
+  padding: 0.5vh 0vw;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 600;
+  font-size: 1vw;
+  text-align: center;
+}
+
+.logoContainer {
+  position: absolute;
+  left: 46%;
+  top: 5%;
+  width: 8%;
+  height: 8%;
 }
