@@ -189,24 +189,24 @@ class TextBox {
     this.p5Instance = _p5Instance;
     this.font = this.p5Instance.loadFont('assets/fonts/Dosis-Medium.ttf');
     this.p5Instance.textFont(this.font);
-    this.p5Instance.textSize((this.canvasWidth + this.canvasHeight) * 0.02);
+    this.p5Instance.textSize((this.canvasWidth + this.canvasHeight) * 0.017);
     this.p5Instance.textLeading(this.p5Instance.textSize() * 1.1);
     this.p5Instance.textAlign(this.p5Instance.CENTER, this.p5Instance.TOP);
   }
 
   update() {
     this.fadeBox();
-    this.calculateBoxSize();
     this.p5Instance.fill(232, 115, 35, this.boxColorAlpha);
     this.p5Instance.rect(this.position.x + (this.canvasWidth * 0.02), this.position.y + (this.canvasHeight * 0.02),
       this.boxWidth + (this.canvasWidth * 0.03), this.boxHeigth + (this.canvasHeight * 0.035), this.canvasWidth * 0.01);
     this.p5Instance.fill(250, this.boxColorAlpha);
     this.p5Instance.text(this.text, this.position.x + (this.canvasWidth * 0.03), this.position.y + (this.canvasHeight * 0.03),
-      this.boxWidth * 1.039, this.boxHeigth);
+      this.boxWidth * 1.0325, this.boxHeigth);
+    this.calculateBoxSize();
   }
 
   calculateBoxSize() {
-    const saltosDeLinea = Math.ceil(this.p5Instance.textWidth(this.text) / (this.canvasWidth * 0.4));
+    const saltosDeLinea = Math.ceil((this.p5Instance.textWidth(this.text) * 1.041 ) / (this.canvasWidth * 0.4));
     if (saltosDeLinea === 1) {
       this.boxWidth = this.p5Instance.textWidth(this.text);
     } else {
@@ -243,7 +243,7 @@ class TextBox {
     this.position = _position;
     this.canvasWidth = _canvasWidth;
     this.canvasHeight = _canvasHeight;
-    this.p5Instance.textSize((this.canvasWidth + this.canvasHeight) * 0.02);
+    this.p5Instance.textSize((this.canvasWidth + this.canvasHeight) * 0.017);
     this.p5Instance.textLeading(this.p5Instance.textSize() * 1.1);
   }
 

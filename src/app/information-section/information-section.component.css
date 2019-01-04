@@ -70,38 +70,41 @@
 .characterGeneralContainer {
   position: relative;
   width: 100%;
-  height: 10%;
-  flex-grow: 15;
+  height: 30%;
+  flex-grow: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
 }
 
 .characterAnimateDiv {
   height: 100%;
   max-width: 100%;
-  background-size: 6500%;
-  margin: auto;
-  position: absolute;
-  top:0;bottom:0; /* vertical center */
-  left:0;right:0; /* horizontal center */
+  background-size: 7200%;
 }
 
 .normalIdleAnimation {
-  background-image: url("/assets/SpriteSheet/SOBER/sobrio.png");
-  animation: idle 3s steps(70) infinite;
+  background-size: 7200%;
+  background-image: url("/assets/SpriteSheet/SOBER/idle.png");
+  animation: idle 4.7s steps(71) infinite;
 }
 
 .LSD--subida {
-  background-image: url("/assets/SpriteSheet/LSD/subida-lsd.png");
-  animation: LSD--subida 3s steps(70) infinite;
+  background-size: 7200%;
+  background-image: url("/assets/SpriteSheet/LSD/LSD-subida.png");
+  animation: LSD--subida 4.7s steps(71) infinite;
 }
 
 .LSD--viaje {
-  background-image: url("/assets/SpriteSheet/LSD/viaje-lsd.png");
-  animation: LSD--viaje 3s steps(70) infinite;
+  background-size: 7200%;
+  background-image: url("/assets/SpriteSheet/LSD/LSD-viaje.png");
+  animation: LSD--viaje 4.7s steps(71) infinite;
 }
 
 .LSD--bajada {
-  background-image: url("/assets/SpriteSheet/LSD/bajada-lsd.png");
-  animation: LSD--viaje 3s steps(70) infinite;
+  background-image: url("/assets/SpriteSheet/LSD/LSD-bajada.png");
+  animation: LSD--viaje 4.7s steps(71) infinite;
 }
 
 .characterAnimateRun{
@@ -176,7 +179,6 @@
 .faseConsumoContainer {
   height: 10%;
   flex-grow: 1;
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -211,7 +213,7 @@
   color: rgba(0, 0, 0, 0.6);
   font-family: 'Dosis', sans-serif;
   font-weight: 800;
-  font-size: 0.9vw;
+  font-size: 0.8vw;
   border-radius: 0.2vh;
 }
 
