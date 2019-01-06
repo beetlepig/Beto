@@ -103,8 +103,27 @@
 }
 
 .LSD--bajada {
+  background-size: 7200%;
   background-image: url("/assets/SpriteSheet/LSD/LSD-bajada.png");
   animation: LSD--viaje 4.7s steps(71) infinite;
+}
+
+.EXTASIS--subida {
+  background-size: 7200%;
+  background-image: url("/assets/SpriteSheet/EXTASIS/subida-extasis.png");
+  animation: EXTASIS--subida 4.7s steps(71) infinite;
+}
+
+.EXTASIS--viaje {
+  background-size: 7200%;
+  background-image: url("/assets/SpriteSheet/EXTASIS/viaje-extasis.png");
+  animation: EXTASIS--viaje 4.7s steps(71) infinite;
+}
+
+.EXTASIS--bajada {
+  background-size: 7200%;
+  background-image: url("/assets/SpriteSheet/EXTASIS/bajada-extasis.png");
+  animation: EXTASIS--viaje 4.7s steps(71) infinite;
 }
 
 .characterAnimateRun{
@@ -167,6 +186,36 @@
 }
 
 @keyframes LSD--bajada {
+  0% {
+    background-position: 0 center;
+  }
+
+  100% {
+    background-position: 100% center;
+  }
+}
+
+@keyframes EXTASIS--subida {
+  0% {
+    background-position: 0 center;
+  }
+
+  100% {
+    background-position: 100% center;
+  }
+}
+
+@keyframes EXTASIS--viaje {
+  0% {
+    background-position: 0 center;
+  }
+
+  100% {
+    background-position: 100% center;
+  }
+}
+
+@keyframes EXTASIS--bajada {
   0% {
     background-position: 0 center;
   }

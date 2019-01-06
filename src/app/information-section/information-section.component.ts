@@ -90,17 +90,17 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
                  'pensamientos y recuerdos reprimidos.'
              }]
       ), [
-                  new TresFasesInfo('SUBIDA', 'characterAnimateRun',
+                  new TresFasesInfo('SUBIDA', 'EXTASIS--subida',
                     [new DosisAndInformationModel('head', 'desaparece el cansancio'),
                       new DosisAndInformationModel('outside-head', 'Euforia'),
                       new DosisAndInformationModel('mouth', 'Ganas de bailar o realizar alguna actividad física')
                     ]
                   ),
-                  new TresFasesInfo('VIAJE', 'characterAnimateRun',
+                  new TresFasesInfo('VIAJE', 'EXTASIS--viaje',
                     [new DosisAndInformationModel('eyes', 'intensificación de las sensaciones emocionales, cercanía, ' +
                       'confianza y empatía hacia las demás personas.')]
                   ),
-                  new TresFasesInfo('BAJADA', 'characterAnimateRun',
+                  new TresFasesInfo('BAJADA', 'EXTASIS--bajada',
                     [new DosisAndInformationModel('frente', 'Cansancio físico'),
                       new DosisAndInformationModel('head', 'Cansancio mental'),
                       new DosisAndInformationModel('face', 'Bajón de ánimo')
@@ -503,8 +503,8 @@ class DosisAndInformationModel {
         this.yPos = 5.4;
         break;
       case 'mouth':
-        this.xPos = 2;
-        this.yPos = 4.8;
+        this.xPos = 2.05;
+        this.yPos = 5.1;
         break;
       case 'heard':
         this.xPos = 1.85;

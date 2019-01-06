@@ -201,7 +201,7 @@ class TextBox {
       this.boxWidth + (this.canvasWidth * 0.03), this.boxHeigth + (this.canvasHeight * 0.035), this.canvasWidth * 0.01);
     this.p5Instance.fill(250, this.boxColorAlpha);
     this.p5Instance.text(this.text, this.position.x + (this.canvasWidth * 0.03), this.position.y + (this.canvasHeight * 0.03),
-      this.boxWidth * 1.0325, this.boxHeigth);
+      this.boxWidth * 1.0337, this.boxHeigth);
     this.calculateBoxSize();
   }
 
