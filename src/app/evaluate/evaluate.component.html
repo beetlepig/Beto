@@ -7,12 +7,12 @@
   <div class="info-wrapper">
     <h3>Averigua en menos de 1 minuto si tienes un problema con el consumo de drogas; cambia la palabra <span style="color: white">alcohol</span> por la sustancia que elijas.</h3>
     <h5>Contesta <span style="background-color: rgba(232,115,35, 1); color: white; padding: 0.1vh 0.3vw;">SI</span> o <span style="background-color: rgba(232,115,35, 1); color: white; padding: 0.1vh 0.3vw;">NO</span> a las siguientes preguntas:</h5>
-    <ul>
-      <li>¿Alguna vez ha sentido la necesidad de controlar o bajar la cantidad de alcohol que consume?</li>
-      <li>¿Alguna vez se ha sentido usted incómodo porque alguien criticaba su forma de tomar?</li>
-      <li>¿Alguna vez se ha sentido avergonzado o culpable de su forma de tomar?</li>
-      <li>¿Alguna vez se ha tomado usted un trago temprano en la mañana para aliviar los efectos del guayabo o resaca de la noche anterior?</li>
-    </ul>
+    <ol>
+      <li><p>¿Alguna vez ha sentido la necesidad de controlar o bajar la cantidad de alcohol que consume?</p><div #CuestionOne class="yes" (click)="CuestionOne.className === 'yes'? onClick(CuestionOne, CuestionNegativeOne, 'yesActive', 'no'): CuestionOne.className = 'yes'"><p>SÍ</p></div><div #CuestionNegativeOne class="no" (click)="CuestionNegativeOne.className === 'no'? onClick(CuestionNegativeOne, CuestionOne, 'noActive', 'yes'): CuestionNegativeOne.className = 'no'"><p>NO</p></div></li>
+      <li><p>¿Alguna vez se ha sentido usted incómodo porque alguien criticaba su forma de tomar?</p><div #CuestionTwo class="yes" (click)="CuestionTwo.className === 'yes'? onClick(CuestionTwo, CuestionNegativeTwo, 'yesActive', 'no'): CuestionTwo.className = 'yes'"><p>SÍ</p></div><div #CuestionNegativeTwo class="no" (click)="CuestionNegativeTwo.className === 'no'? onClick(CuestionNegativeTwo, CuestionTwo, 'noActive', 'yes'): CuestionNegativeTwo.className = 'no'"><p>NO</p></div></li>
+      <li><p>¿Alguna vez se ha sentido avergonzado o culpable de su forma de tomar?</p><div #CuestionThree class="yes" (click)="CuestionThree.className === 'yes'? onClick(CuestionThree, CuestionNegativeThree, 'yesActive', 'no'): CuestionThree.className = 'yes'"><p>SÍ</p></div><div #CuestionNegativeThree class="no" (click)="CuestionNegativeThree.className === 'no'? onClick(CuestionNegativeThree, CuestionThree, 'noActive', 'yes'): CuestionNegativeThree.className = 'no'"><p>NO</p></div></li>
+      <li><p>¿Alguna vez se ha tomado usted un trago temprano en la mañana para aliviar los efectos del guayabo o resaca de la noche anterior?</p><div #CuestionFour class="yes" (click)="CuestionFour.className === 'yes'? onClick(CuestionFour, CuestionNegativeFour, 'yesActive', 'no'): CuestionFour.className = 'yes'"><p>SÍ</p></div><div #CuestionNegativeFour class="no" (click)="CuestionNegativeFour.className === 'no'? onClick(CuestionNegativeFour, CuestionFour, 'noActive', 'yes'): CuestionNegativeFour.className = 'no'"><p>NO</p></div></li>
+    </ol>
     <h4>Si la respuesta a alguna de estas preguntas es SI, entonces preguntate si sucedió en los últimos 12 meses</h4>
     <ul>
       <li>Si respondiste que SI a 1 ó 2 preguntas el último año es posible que estés abusando del alcohol o la sustancia que hayas elegido.</li>

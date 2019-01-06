@@ -124,9 +124,9 @@ class PuntoPalpitante {
     this.animatePoint();
     this.textRect.update();
     this.pInstance.noStroke();
-    this.pInstance.fill(76, 175, 80, this.fillOpacity);
+    this.pInstance.fill(236, 64, 122, this.fillOpacity);
     this.pInstance.ellipse(this.xPos, this.yPos, this.xSize, this.ySize);
-    this.pInstance.fill(76, 175, 80, this.fillOpacityTwo);
+    this.pInstance.fill(233, 30, 99, this.fillOpacityTwo);
     this.pInstance.ellipse(this.xPos, this.yPos, this.xSizeTwo, this.ySizeTwo);
   }
 

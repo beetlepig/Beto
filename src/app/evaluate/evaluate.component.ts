@@ -12,4 +12,9 @@ export class EvaluateComponent implements OnInit {
   ngOnInit() {
   }
 
+  onClick (target: Element, targetTwo: Element, classOne: string, classTwo: string) {
+    target.className = classOne;
+    targetTwo.className = classTwo;
+  }
+
 }

@@ -1,9 +1,9 @@
 .container {
   left: 16.7%;
-  top: 25%;
+  top: 23%;
   position: absolute;
   width: 66.7%;
-  height: 50%;
+  height: 55%;
   display: flex;
 }
 
@@ -57,6 +57,74 @@
   font-size: 0.8vw;
   text-align: left;
   color: rgba(0, 0, 0, 0.8);
+}
+
+.info-wrapper ul {
+  list-style-type: none;
+}
+
+.info-wrapper ol li {
+  margin: 0.5vh;
+  padding: 0.3vh 0;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 500;
+  font-size: 0.8vw;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.8);
+  display: flex;
+}
+
+.info-wrapper ol li p {
+  flex-grow: 1;
+  margin: 0;
+  padding: 0.2vh 0;
+  pointer-events: none;
+}
+
+.info-wrapper ol li div {
+  width: 2%;
+}
+
+.info-wrapper ol li div:hover {
+  cursor: pointer;
+}
+
+.yes {
+  background-color: transparent;
+  margin-right: 3%;
+  text-align: center;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 500;
+  font-size: 0.8vw;
+}
+
+.yesActive {
+  background-color: rgba(232, 115, 35, 1);
+  margin-right: 3%;
+  text-align: center;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 500;
+  font-size: 0.8vw;
+  color: white;
+}
+
+.no {
+  background-color: transparent;
+  margin-right: 20%;
+  text-align: center;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 500;
+  font-size: 0.8vw;
+}
+
+.noActive {
+  background-color: rgba(236, 64, 122, 1);
+  margin-right: 20%;
+  text-align: center;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 500;
+  font-size: 0.8vw;
+  color: white;
 }
 
 .info-wrapper h4 {

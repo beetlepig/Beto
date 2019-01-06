@@ -107,11 +107,11 @@ class PuntoPalpitante {
   update() {
     this.animatePoint();
     this.pInstance.noStroke();
-    this.pInstance.fill(76, 175, 80, this.fillOpacity);
+    this.pInstance.fill(236, 64, 122, this.fillOpacity);
     this.pInstance.rect(this.xPos, this.yPos, this.xSize, this.ySize);
-    this.pInstance.fill(76, 175, 80, this.fillOpacityTwo);
+    this.pInstance.fill(233, 30, 99, this.fillOpacityTwo);
     this.pInstance.rect(this.xPos, this.yPos, this.xSizeTwo, this.ySizeTwo);
-    this.pInstance.fill(76, 175, 80, this.fillOpacityThree);
+    this.pInstance.fill(216, 27, 96, this.fillOpacityThree);
     this.pInstance.rect(this.xPos, this.yPos, this.xSizeThree, this.ySizeThree);
   }
 
