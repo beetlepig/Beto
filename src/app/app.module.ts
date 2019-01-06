@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 
@@ -22,6 +22,7 @@ import { AdminComponent } from './admin/admin.component';
 import { TextoCitasComponent } from './texto-citas/texto-citas.component';
 import { TeamComponent } from './team/team.component';
 import { EvaluateComponent } from './evaluate/evaluate.component';
+import {ImagesProviderService} from './images-provider.service';
 
 
 
@@ -36,6 +37,10 @@ const appRoutes: Routes = [
   { path: 'Evaluate', component: EvaluateComponent },
   { path: '**', component: HomeComponent }
 ];
+
+export function imagesFactory(provider: ImagesProviderService) {
+  return () => provider.load();
+}
 
 
 @NgModule({
@@ -64,7 +69,10 @@ const appRoutes: Routes = [
     AngularFirestoreModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [
+    ImagesProviderService,
+    { provide: APP_INITIALIZER, useFactory: imagesFactory, deps: [ImagesProviderService], multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
