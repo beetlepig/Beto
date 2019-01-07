@@ -91,24 +91,24 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
             'pensamientos y recuerdos reprimidos.'
         }]
       ), [
-        new TresFasesInfo('SUBIDA', 'EXTASIS--subida', '',
+        new TresFasesInfo('SUBIDA', 'EXTASIS--subida',
           [new DosisAndInformationModel('head', 'desaparece el cansancio'),
             new DosisAndInformationModel('outside-head', 'Euforia'),
             new DosisAndInformationModel('mouth', 'Ganas de bailar o realizar alguna actividad física')
           ]
         ),
-        new TresFasesInfo('VIAJE', 'EXTASIS--viaje', '',
+        new TresFasesInfo('VIAJE', 'EXTASIS--viaje',
           [new DosisAndInformationModel('eyes', 'intensificación de las sensaciones emocionales, cercanía, ' +
             'confianza y empatía hacia las demás personas.')]
         ),
-        new TresFasesInfo('BAJADA', 'EXTASIS--bajada', '',
+        new TresFasesInfo('BAJADA', 'EXTASIS--bajada',
           [new DosisAndInformationModel('frente', 'Cansancio físico'),
             new DosisAndInformationModel('head', 'Cansancio mental'),
             new DosisAndInformationModel('face', 'Bajón de ánimo')
           ]
         ),
       ],
-      'characterAnimateRun'
+      'characterAnimateRun', ''
     ),
     new SubstanceObjectModel('LSD',
       [
@@ -185,24 +185,24 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
               'tratamientos a niñas o niños afectados severamente y diagnosticados con esquizofrenia o autismo infantil.'}
         ]
       ), [
-        new TresFasesInfo('SUBIDA', 'LSD--subida', '', [
+        new TresFasesInfo('SUBIDA', 'LSD--subida', [
             new DosisAndInformationModel('heard', 'Aceleración del ritmo cardíaco'),
             new DosisAndInformationModel('head', 'Exaltación, inquietud'),
             new DosisAndInformationModel('face', 'Enrojecimiento de la piel')
           ]
         ),
-        new TresFasesInfo('VIAJE', 'LSD--viaje', '', [
+        new TresFasesInfo('VIAJE', 'LSD--viaje', [
             new DosisAndInformationModel('eyes', 'Ilusiones o alucinaciones'),
             new DosisAndInformationModel('head', 'En algunos casos el viaje es de tipo introspectivo, con alteraciones de la ' +
               'conciencia y del pensamiento, sobre sí mismo y las demás personas.')
           ]
         ),
-        new TresFasesInfo('BAJADA', 'LSD--bajada', '', [
+        new TresFasesInfo('BAJADA', 'LSD--bajada', [
           new DosisAndInformationModel('face', 'Estado de abatimiento'),
           new DosisAndInformationModel('mouth', 'Estado de fatiga')]
         ),
       ],
-      'characterAnimateJump',
+      'characterAnimateJump', ''
     )
   ];
 
@@ -232,11 +232,9 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   }
 
   constructor(private imagesProvider: ImagesProviderService, private renderer: Renderer2) {
-    imagesProvider.images.forEach((sustanceImages: string[], index: number) => {
-      sustanceImages.forEach((image: string, jndex: number) => {
-        this.sustancia[index].fases[jndex].image = image;
-      });
-    });
+    for (let i = 0; i < this.sustancia.length; + i++) {
+      this.sustancia[i].fasesAnimation = imagesProvider.images[i + 1];
+    }
     this.animationRunning = false;
     this.showAllInfo =  false;
     this.hideContainer = false;
@@ -248,12 +246,13 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   }
 
   ngOnInit() {
-    this.renderer.setStyle(this.myCharacter.nativeElement, 'background-image', `url(${this.imagesProvider.idleBase64})`);
+    this.renderer.setStyle(this.myCharacter.nativeElement, 'background-image', `url(${this.imagesProvider.images[0]})`);
     this.createCanvas();
     this.selectedSubstance = this.sustancia[0];
     this.selectedPresentation = this.selectedSubstance.presentacion[0];
     // this.selectedFase = this.selectedSubstance.fases[0].partes;
     this.selectedCompleteInfoSection = this.selectedSubstance.completeInfo.sections[0];
+    this.selectedFase = null;
   }
 
   clickElBoton(hi: number) {
@@ -283,7 +282,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
     this.selectedPresentation = this.selectedSubstance.presentacion[0];
     this.selectedCompleteInfoSection = this.selectedSubstance.completeInfo.sections[0];
     this.selectedFase = null;
-    this.renderer.setStyle(this.myCharacter.nativeElement, 'background-image', `url(${this.imagesProvider.idleBase64})`);
+    this.renderer.setStyle(this.myCharacter.nativeElement, 'background-image', `url("${this.imagesProvider.images[0]}")`);
     this.canvas.canDraw = false;
     this.actualDosis = 1;
   }
@@ -330,16 +329,22 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
       }
       this.animationRunning = true;
       this.canvas.canDraw = false;
-      this.clase[1] = this.selectedSubstance.animation;
-      this.selectedFase = this.selectedSubstance.fases[0];
+      this.clase[1] = this.selectedSubstance.consumeAnimation;
     }
   }
 
   cambiarFase(_fase: TresFasesInfo) {
     if ( this.actualDosis > 0) {
       this.clase[1] = _fase.animacion;
+      /*
+      if ((<HTMLDivElement>this.myCharacter.nativeElement).style.backgroundImage === `url("${this.imagesProvider.images[0]}")`) {
+        this.renderer.setStyle(this.myCharacter.nativeElement, 'background-image', `url(${this.selectedSubstance.fasesAnimation})`);
+      }
+      */
+      if (this.selectedFase === null) {
+        this.renderer.setStyle(this.myCharacter.nativeElement, 'background-image', `url(${this.selectedSubstance.fasesAnimation})`);
+      }
       this.selectedFase = _fase;
-      this.renderer.setStyle(this.myCharacter.nativeElement, 'background-image', `url(${_fase.image})`);
       this.canvas.setPuntos(this.selectedFase.partes.map((parteee: DosisAndInformationModel) => {
         return {posX: parteee.xPos, posY: parteee.yPos, info: parteee.info};
       }));
@@ -365,8 +370,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
       this.animationRunning = false;
       this.canvas.canDraw = true;
 
-      this.cambiarFase(this.selectedFase);
-
+      this.cambiarFase(this.selectedSubstance.fases[0]);
     }
   }
 
@@ -431,27 +435,27 @@ class SubstanceObjectModel {
   presentacion: SubstancePresentationModel[];
   completeInfo: CompleteInfoModel;
   fases: TresFasesInfo[];
-  animation: string;
+  consumeAnimation: string;
+  fasesAnimation: string;
 
   constructor (name: string, presentaciones: SubstancePresentationModel[], _completeInfo: CompleteInfoModel, _fases: TresFasesInfo[],
-               animacion: string) {
+               _consumeAnimation: string, _fasesAnimation: string) {
     this.nombre = name;
     this.presentacion = presentaciones;
     this.completeInfo = _completeInfo;
     this.fases = _fases;
-    this.animation = animacion;
+    this.consumeAnimation = _consumeAnimation;
+    this.fasesAnimation = _fasesAnimation;
   }
 }
 
 class TresFasesInfo {
   name: string;
   animacion: string;
-  image: string;
   partes: DosisAndInformationModel[];
-  constructor (_name: string, _animacion: string, _image: string, _partes: DosisAndInformationModel[]) {
+  constructor (_name: string, _animacion: string, _partes: DosisAndInformationModel[]) {
     this.name = _name;
     this.animacion = _animacion;
-    this.image = _image;
     this.partes = _partes;
   }
 }

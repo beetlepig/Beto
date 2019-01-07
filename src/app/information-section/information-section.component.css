@@ -101,7 +101,7 @@
 
 .LSD--bajada {
   background-size: 7200%;
-  animation: LSD--viaje 4.7s steps(71) infinite;
+  animation: LSD--bajada 4.7s steps(71) infinite;
 }
 
 .EXTASIS--subida {
@@ -116,7 +116,7 @@
 
 .EXTASIS--bajada {
   background-size: 7200%;
-  animation: EXTASIS--viaje 4.7s steps(71) infinite;
+  animation: EXTASIS--bajada 4.7s steps(71) infinite;
 }
 
 .characterAnimateRun{
@@ -160,11 +160,11 @@
 
 @keyframes LSD--subida {
   0% {
-    background-position: 0 center;
+    background-position: 0 top;
   }
 
   100% {
-    background-position: 100% center;
+    background-position: 100% top;
   }
 }
 
@@ -180,21 +180,21 @@
 
 @keyframes LSD--bajada {
   0% {
-    background-position: 0 center;
+    background-position: 0 bottom;
   }
 
   100% {
-    background-position: 100% center;
+    background-position: 100% bottom;
   }
 }
 
 @keyframes EXTASIS--subida {
   0% {
-    background-position: 0 center;
+    background-position: 0 top;
   }
 
   100% {
-    background-position: 100% center;
+    background-position: 100% top;
   }
 }
 
@@ -210,11 +210,11 @@
 
 @keyframes EXTASIS--bajada {
   0% {
-    background-position: 0 center;
+    background-position: 0 bottom;
   }
 
   100% {
-    background-position: 100% center;
+    background-position: 100% bottom;
   }
 }
 
