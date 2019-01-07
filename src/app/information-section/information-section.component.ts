@@ -1,8 +1,9 @@
-import {AfterViewInit, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener, OnDestroy, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {createSketch, Ip5WithCustomAtributes} from './sketch.p5';
 import * as p5 from 'p5';
 import {animate, state, style, transition, trigger, AnimationEvent} from '@angular/animations';
 import createSketchModal from './sketch-modal-button.p5';
+import {ImagesProviderService} from '../images-provider.service';
 
 @Component({
   selector: 'app-information-section',
@@ -44,69 +45,69 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
         new SubstancePresentationModel('POLVO', '/assets/substancesImg/EXTASIS/polvo.svg', 5)
       ],
       new CompleteInfoModel(['X', 'MDMA', 'TACHAS', 'PILLS'], [
-             {topic: 'DESCRIPCIÓN', info: 'Su nombre científico es 3,4-metilendioximetanfetamina y pertenece a la familia de las ' +
-                 'fenetilaminas. Se conoce como MDMA, pepas, pills, tachas o cristal. Se puede adquirir en forma de comprimido o de ' +
-                 'cristal, aunque también polvo o cápsulas.<br><br>La variabilidad de la concentración y composición del éxtasis, según ' +
-                 'dicte la oferta y coyuntura del mercado, implica un riesgo debido a las dificultades de anticipar o controlar la dosis ' +
-                 'adecuada. No obstante, el consumo requiere su aumento gradual para conseguir los mismos efectos. No genera dependencia ' +
-                 'física demostrada pero sí psicológica.'},
-             {topic: 'EFECTOS PRINCIPALES', info: 'Después de ingerirla sus efectos pueden tardar entre 20 y 90 minutos en manifestarse ' +
-                 'y por lo general se dividen en tres fases:<br><br><strong>Subida:</strong> desaparece el cansancio, euforia, ganas de ' +
-                 'bailar o realizar alguna actividad física.<br><br><strong>Mantenimiento:</strong> intensificación de las sensaciones ' +
-                 'emocionales, cercanía, confianza y empatía hacia las demás personas. En esta fase el efecto puede durar entre 2 a 3 ' +
-                 'horas, incluso suele durar unas 4 – 6 horas, siempre dependiendo de la dosis administrada y usuaria/o. Cuando se ' +
-                 'consume una dosis suplementaria, los efectos suelen prolongarse durante un par de horas más y pueden mantenerse con ' +
-                 'dosis sucesivas, que generalmente no afectan la intensidad de la experiencia, pero sí la alargan, a la vez que ' +
-                 'incrementan los efectos secundarios.<br><br><strong>Bajada:</strong> los efectos van desapareciendo dando paso a un ' +
-                 'cansancio físico y mental, mientras se experimenta bajón en el estado de ánimo.'},
-             {topic: 'EFECTOS SECUNDARIOS', info: 'Pueden aparecer pérdida de apetito, distorsiones visuales, movimientos oculares ' +
-                 'involuntarios, incremento de la tasa cardiaca y de la presión arterial (al elevar la dosis), nerviosismo, cambios en ' +
-                 'la regulación de la temperatura corporal, vómitos, ansiedad, sudoración, mareos, confusión, boca seca, tensión ' +
-                 'mandibular (broxismo), dificultades de concentración, midriasis (dilatación de las pupilas).'},
-             {topic: 'RIESGOS ASOCIADOS', info: 'La <strong>combinación</strong> con alcohol provoca aumento en la temperatura corporal ' +
-                 'y deshidratación, puede producir un “golpe de calor” ocasionando desmayos y náuseas. Con cocaína aumenta la presión ' +
-                 'arterial y el sistema nervioso provocando efectos no deseados.<br><br><strong>Hipertermia</strong> (golpe de calor, ' +
-                 'elevación importante de la temperatura corporal). Más probable en ambientes cerrados, cuando se realiza una intensa ' +
-                 'actividad física (por ejemplo, bailar durante muchas horas) y cuando la persona usuaria no se hidrata ' +
-                 'convenientemente. Para evitar estas complicaciones se recomienda realizar pausas en el baile y reponer líquidos ' +
-                 '(agua, zumos, o preferentemente, bebidas isotónicas con moderación, sin excederse, aproximadamente medio litro cada ' +
-                 'hora si se realiza una actividad física intensa y menos si se está en reposo).<br><br><strong>Hipotermia</strong> ' +
-                 '(disminución considerable de la temperatura corporal). Dependiendo del ambiente donde esté la persona usuaria.' +
-                 '<br><br>El éxtasis o MDMA produce elevaciones en la frecuencia cardiaca y en la presión arterial. Por tanto, personas ' +
-                 'con problemas cardíacos o de hipertensión deberán tener precaución en su consumo.<br><br>Dosis altas y frecuentes ' +
-                 'de éxtasis o MDMA pueden derivar en pérdidas de memoria y alteraciones del estado de ánimo.<br><br>El aumento de las ' +
-                 'dosis en una noche genera ansiedad, nerviosismo, mareos, tensión mandibular y depresión.'},
-             {topic: 'DATOS CURIOSOS', info: 'En 1912 la compañía Merck aisló accidentalmente la MDMA (3,4-metilendioximetanfetamina). ' +
-                 'Al no encontrarle un aplicación médica concreta, los laboratorios abandonaron su investigación. No obstante, entre ' +
-                 '1953 y 1954 el ejército estadounidense retomó las pesquisas. Aunque los primeros datos biológicos sobre las mismas ' +
-                 'se publicaron hasta 1973, no fue sino durante la década de los 80 cuando personajes como el químico estadounidense ' +
-                 'Alexander Shulguin la trajeron de nuevo a la luz pública. Según sus propias palabras: “Rescaté esta sustancia por ' +
-                 'sugerencia de un amigo. La probé y escribí mucho sobre ella en las revistas médicas. Descubrí que tenía notables ' +
-                 'beneficios terapéuticos. En su momento representó la aparición de una nueva familia de agentes que permiten al ' +
-                 'individuo expresar y experimentar contenidos afectivos reprimidos por las barreras culturales”.  El MDMA alcanzó gran ' +
-                 'popularidad entre la cultura underground californiana y la clientela de los clubes nocturnos. Los vendedores, en una ' +
-                 'acción de marketing, la rebautizaron con el nombre de éxtasis. En 1985, el gobierno estadounidense declaró esta ' +
-                 'sustancia ilegal, a pesar de que numerosos científicos argumentamos sobre sus propiedades para hacer aflorar ' +
-                 'pensamientos y recuerdos reprimidos.'
-             }]
+        {topic: 'DESCRIPCIÓN', info: 'Su nombre científico es 3,4-metilendioximetanfetamina y pertenece a la familia de las ' +
+            'fenetilaminas. Se conoce como MDMA, pepas, pills, tachas o cristal. Se puede adquirir en forma de comprimido o de ' +
+            'cristal, aunque también polvo o cápsulas.<br><br>La variabilidad de la concentración y composición del éxtasis, según ' +
+            'dicte la oferta y coyuntura del mercado, implica un riesgo debido a las dificultades de anticipar o controlar la dosis ' +
+            'adecuada. No obstante, el consumo requiere su aumento gradual para conseguir los mismos efectos. No genera dependencia ' +
+            'física demostrada pero sí psicológica.'},
+        {topic: 'EFECTOS PRINCIPALES', info: 'Después de ingerirla sus efectos pueden tardar entre 20 y 90 minutos en manifestarse ' +
+            'y por lo general se dividen en tres fases:<br><br><strong>Subida:</strong> desaparece el cansancio, euforia, ganas de ' +
+            'bailar o realizar alguna actividad física.<br><br><strong>Mantenimiento:</strong> intensificación de las sensaciones ' +
+            'emocionales, cercanía, confianza y empatía hacia las demás personas. En esta fase el efecto puede durar entre 2 a 3 ' +
+            'horas, incluso suele durar unas 4 – 6 horas, siempre dependiendo de la dosis administrada y usuaria/o. Cuando se ' +
+            'consume una dosis suplementaria, los efectos suelen prolongarse durante un par de horas más y pueden mantenerse con ' +
+            'dosis sucesivas, que generalmente no afectan la intensidad de la experiencia, pero sí la alargan, a la vez que ' +
+            'incrementan los efectos secundarios.<br><br><strong>Bajada:</strong> los efectos van desapareciendo dando paso a un ' +
+            'cansancio físico y mental, mientras se experimenta bajón en el estado de ánimo.'},
+        {topic: 'EFECTOS SECUNDARIOS', info: 'Pueden aparecer pérdida de apetito, distorsiones visuales, movimientos oculares ' +
+            'involuntarios, incremento de la tasa cardiaca y de la presión arterial (al elevar la dosis), nerviosismo, cambios en ' +
+            'la regulación de la temperatura corporal, vómitos, ansiedad, sudoración, mareos, confusión, boca seca, tensión ' +
+            'mandibular (broxismo), dificultades de concentración, midriasis (dilatación de las pupilas).'},
+        {topic: 'RIESGOS ASOCIADOS', info: 'La <strong>combinación</strong> con alcohol provoca aumento en la temperatura corporal ' +
+            'y deshidratación, puede producir un “golpe de calor” ocasionando desmayos y náuseas. Con cocaína aumenta la presión ' +
+            'arterial y el sistema nervioso provocando efectos no deseados.<br><br><strong>Hipertermia</strong> (golpe de calor, ' +
+            'elevación importante de la temperatura corporal). Más probable en ambientes cerrados, cuando se realiza una intensa ' +
+            'actividad física (por ejemplo, bailar durante muchas horas) y cuando la persona usuaria no se hidrata ' +
+            'convenientemente. Para evitar estas complicaciones se recomienda realizar pausas en el baile y reponer líquidos ' +
+            '(agua, zumos, o preferentemente, bebidas isotónicas con moderación, sin excederse, aproximadamente medio litro cada ' +
+            'hora si se realiza una actividad física intensa y menos si se está en reposo).<br><br><strong>Hipotermia</strong> ' +
+            '(disminución considerable de la temperatura corporal). Dependiendo del ambiente donde esté la persona usuaria.' +
+            '<br><br>El éxtasis o MDMA produce elevaciones en la frecuencia cardiaca y en la presión arterial. Por tanto, personas ' +
+            'con problemas cardíacos o de hipertensión deberán tener precaución en su consumo.<br><br>Dosis altas y frecuentes ' +
+            'de éxtasis o MDMA pueden derivar en pérdidas de memoria y alteraciones del estado de ánimo.<br><br>El aumento de las ' +
+            'dosis en una noche genera ansiedad, nerviosismo, mareos, tensión mandibular y depresión.'},
+        {topic: 'DATOS CURIOSOS', info: 'En 1912 la compañía Merck aisló accidentalmente la MDMA (3,4-metilendioximetanfetamina). ' +
+            'Al no encontrarle un aplicación médica concreta, los laboratorios abandonaron su investigación. No obstante, entre ' +
+            '1953 y 1954 el ejército estadounidense retomó las pesquisas. Aunque los primeros datos biológicos sobre las mismas ' +
+            'se publicaron hasta 1973, no fue sino durante la década de los 80 cuando personajes como el químico estadounidense ' +
+            'Alexander Shulguin la trajeron de nuevo a la luz pública. Según sus propias palabras: “Rescaté esta sustancia por ' +
+            'sugerencia de un amigo. La probé y escribí mucho sobre ella en las revistas médicas. Descubrí que tenía notables ' +
+            'beneficios terapéuticos. En su momento representó la aparición de una nueva familia de agentes que permiten al ' +
+            'individuo expresar y experimentar contenidos afectivos reprimidos por las barreras culturales”.  El MDMA alcanzó gran ' +
+            'popularidad entre la cultura underground californiana y la clientela de los clubes nocturnos. Los vendedores, en una ' +
+            'acción de marketing, la rebautizaron con el nombre de éxtasis. En 1985, el gobierno estadounidense declaró esta ' +
+            'sustancia ilegal, a pesar de que numerosos científicos argumentamos sobre sus propiedades para hacer aflorar ' +
+            'pensamientos y recuerdos reprimidos.'
+        }]
       ), [
-                  new TresFasesInfo('SUBIDA', 'EXTASIS--subida',
-                    [new DosisAndInformationModel('head', 'desaparece el cansancio'),
-                      new DosisAndInformationModel('outside-head', 'Euforia'),
-                      new DosisAndInformationModel('mouth', 'Ganas de bailar o realizar alguna actividad física')
-                    ]
-                  ),
-                  new TresFasesInfo('VIAJE', 'EXTASIS--viaje',
-                    [new DosisAndInformationModel('eyes', 'intensificación de las sensaciones emocionales, cercanía, ' +
-                      'confianza y empatía hacia las demás personas.')]
-                  ),
-                  new TresFasesInfo('BAJADA', 'EXTASIS--bajada',
-                    [new DosisAndInformationModel('frente', 'Cansancio físico'),
-                      new DosisAndInformationModel('head', 'Cansancio mental'),
-                      new DosisAndInformationModel('face', 'Bajón de ánimo')
-                    ]
-                  ),
-                ],
+        new TresFasesInfo('SUBIDA', 'EXTASIS--subida', '',
+          [new DosisAndInformationModel('head', 'desaparece el cansancio'),
+            new DosisAndInformationModel('outside-head', 'Euforia'),
+            new DosisAndInformationModel('mouth', 'Ganas de bailar o realizar alguna actividad física')
+          ]
+        ),
+        new TresFasesInfo('VIAJE', 'EXTASIS--viaje', '',
+          [new DosisAndInformationModel('eyes', 'intensificación de las sensaciones emocionales, cercanía, ' +
+            'confianza y empatía hacia las demás personas.')]
+        ),
+        new TresFasesInfo('BAJADA', 'EXTASIS--bajada', '',
+          [new DosisAndInformationModel('frente', 'Cansancio físico'),
+            new DosisAndInformationModel('head', 'Cansancio mental'),
+            new DosisAndInformationModel('face', 'Bajón de ánimo')
+          ]
+        ),
+      ],
       'characterAnimateRun'
     ),
     new SubstanceObjectModel('LSD',
@@ -184,23 +185,23 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
               'tratamientos a niñas o niños afectados severamente y diagnosticados con esquizofrenia o autismo infantil.'}
         ]
       ), [
-        new TresFasesInfo('SUBIDA', 'LSD--subida', [
-          new DosisAndInformationModel('heard', 'Aceleración del ritmo cardíaco'),
-          new DosisAndInformationModel('head', 'Exaltación, inquietud'),
-          new DosisAndInformationModel('face', 'Enrojecimiento de la piel')
+        new TresFasesInfo('SUBIDA', 'LSD--subida', '', [
+            new DosisAndInformationModel('heard', 'Aceleración del ritmo cardíaco'),
+            new DosisAndInformationModel('head', 'Exaltación, inquietud'),
+            new DosisAndInformationModel('face', 'Enrojecimiento de la piel')
           ]
         ),
-          new TresFasesInfo('VIAJE', 'LSD--viaje', [
+        new TresFasesInfo('VIAJE', 'LSD--viaje', '', [
             new DosisAndInformationModel('eyes', 'Ilusiones o alucinaciones'),
             new DosisAndInformationModel('head', 'En algunos casos el viaje es de tipo introspectivo, con alteraciones de la ' +
               'conciencia y del pensamiento, sobre sí mismo y las demás personas.')
-            ]
-          ),
-          new TresFasesInfo('BAJADA', 'LSD--bajada', [
-            new DosisAndInformationModel('face', 'Estado de abatimiento'),
-            new DosisAndInformationModel('mouth', 'Estado de fatiga')]
-          ),
-        ],
+          ]
+        ),
+        new TresFasesInfo('BAJADA', 'LSD--bajada', '', [
+          new DosisAndInformationModel('face', 'Estado de abatimiento'),
+          new DosisAndInformationModel('mouth', 'Estado de fatiga')]
+        ),
+      ],
       'characterAnimateJump',
     )
   ];
@@ -230,7 +231,12 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
     this.canvasModal.onResize(parentModal.clientWidth, parentModal.clientHeight);
   }
 
-  constructor() {
+  constructor(private imagesProvider: ImagesProviderService, private renderer: Renderer2) {
+    imagesProvider.images.forEach((sustanceImages: string[], index: number) => {
+      sustanceImages.forEach((image: string, jndex: number) => {
+        this.sustancia[index].fases[jndex].image = image;
+      });
+    });
     this.animationRunning = false;
     this.showAllInfo =  false;
     this.hideContainer = false;
@@ -242,6 +248,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   }
 
   ngOnInit() {
+    this.renderer.setStyle(this.myCharacter.nativeElement, 'background-image', `url(${this.imagesProvider.idleBase64})`);
     this.createCanvas();
     this.selectedSubstance = this.sustancia[0];
     this.selectedPresentation = this.selectedSubstance.presentacion[0];
@@ -276,6 +283,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
     this.selectedPresentation = this.selectedSubstance.presentacion[0];
     this.selectedCompleteInfoSection = this.selectedSubstance.completeInfo.sections[0];
     this.selectedFase = null;
+    this.renderer.setStyle(this.myCharacter.nativeElement, 'background-image', `url(${this.imagesProvider.idleBase64})`);
     this.canvas.canDraw = false;
     this.actualDosis = 1;
   }
@@ -331,6 +339,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
     if ( this.actualDosis > 0) {
       this.clase[1] = _fase.animacion;
       this.selectedFase = _fase;
+      this.renderer.setStyle(this.myCharacter.nativeElement, 'background-image', `url(${_fase.image})`);
       this.canvas.setPuntos(this.selectedFase.partes.map((parteee: DosisAndInformationModel) => {
         return {posX: parteee.xPos, posY: parteee.yPos, info: parteee.info};
       }));
@@ -437,10 +446,12 @@ class SubstanceObjectModel {
 class TresFasesInfo {
   name: string;
   animacion: string;
+  image: string;
   partes: DosisAndInformationModel[];
-  constructor (_name: string, _animacion: string, _partes: DosisAndInformationModel[]) {
+  constructor (_name: string, _animacion: string, _image: string, _partes: DosisAndInformationModel[]) {
     this.name = _name;
     this.animacion = _animacion;
+    this.image = _image;
     this.partes = _partes;
   }
 }

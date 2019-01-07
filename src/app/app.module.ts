@@ -23,6 +23,7 @@ import { TextoCitasComponent } from './texto-citas/texto-citas.component';
 import { TeamComponent } from './team/team.component';
 import { EvaluateComponent } from './evaluate/evaluate.component';
 import {ImagesProviderService} from './images-provider.service';
+import {HttpClientModule} from '@angular/common/http';
 
 
 
@@ -67,7 +68,8 @@ export function imagesFactory(provider: ImagesProviderService) {
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [
     ImagesProviderService,
