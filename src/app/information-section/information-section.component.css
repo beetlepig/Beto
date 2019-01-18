@@ -89,6 +89,11 @@
   animation: idle 4.7s steps(71) infinite;
 }
 
+.normalIdleAnimationTwo {
+  background-size: 7200%;
+  animation: idle 4.7s steps(71);
+}
+
 .LSD--subida {
   background-size: 7200%;
   animation: LSD--subida 4.7s steps(71) infinite;

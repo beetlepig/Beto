@@ -108,7 +108,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
           ]
         ),
       ],
-      'characterAnimateRun', ''
+      'normalIdleAnimationTwo', ''
     ),
     new SubstanceObjectModel('LSD',
       [
@@ -202,7 +202,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
           new DosisAndInformationModel('mouth', 'Estado de fatiga')]
         ),
       ],
-      'characterAnimateJump', ''
+      'normalIdleAnimationTwo', ''
     )
   ];
 
@@ -329,6 +329,7 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
       }
       this.animationRunning = true;
       this.canvas.canDraw = false;
+      this.renderer.setStyle(this.myCharacter.nativeElement, 'background-image', `url(${this.imagesProvider.images[0]})`);
       this.clase[1] = this.selectedSubstance.consumeAnimation;
     }
   }
@@ -336,14 +337,16 @@ export class InformationSectionComponent implements OnInit, AfterViewInit, OnDes
   cambiarFase(_fase: TresFasesInfo) {
     if ( this.actualDosis > 0) {
       this.clase[1] = _fase.animacion;
-      /*
+
       if ((<HTMLDivElement>this.myCharacter.nativeElement).style.backgroundImage === `url("${this.imagesProvider.images[0]}")`) {
         this.renderer.setStyle(this.myCharacter.nativeElement, 'background-image', `url(${this.selectedSubstance.fasesAnimation})`);
       }
-      */
+
+      /*
       if (this.selectedFase === null) {
         this.renderer.setStyle(this.myCharacter.nativeElement, 'background-image', `url(${this.selectedSubstance.fasesAnimation})`);
       }
+      */
       this.selectedFase = _fase;
       this.canvas.setPuntos(this.selectedFase.partes.map((parteee: DosisAndInformationModel) => {
         return {posX: parteee.xPos, posY: parteee.yPos, info: parteee.info};

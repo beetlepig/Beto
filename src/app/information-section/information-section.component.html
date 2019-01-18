@@ -5,6 +5,10 @@
       <li *ngFor="let sustancita of sustancia" (click)="changeSelectedSubstance(sustancita)" [className]="selectedSubstance === sustancita ? 'liItemActive' : 'liItemNoActive'">
         <h5>{{ sustancita.nombre }}</h5>
       </li>
+      <li><h5>MARIHUANA</h5></li>
+      <li><h5>ALCOHOL</h5></li>
+      <li><h5>BAZUCO</h5></li>
+      <li><h5>COCAÍNA</h5></li>
     </ul>
   </div>
   <div class="characterContainer">
@@ -39,7 +43,7 @@
       </div>
     </div>
 
-    <div class="substanceDiv substanceSelectorGeneralDiv">
+    <!--<div class="substanceDiv substanceSelectorGeneralDiv">
       <h3>DOSIS</h3>
       <div class="substanceSelectorGeneral">
         <div class="leftArrow">
@@ -52,7 +56,7 @@
          <div (click)="addDosis()"></div>
        </div>
       </div>
-    </div>
+    </div> -->
 
     <button class="buttonProbar" [disabled]="animationRunning" (click)="probarSustancia()">
       PROBAR
